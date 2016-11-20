@@ -96,6 +96,7 @@ var Menu = function (_Component) {
 		key: 'classNames',
 		get: function get() {
 			return {
+				menu: 'js-menu',
 				openMenu: 'js-open-menu',
 				closeMenu: 'js-close-menu',
 				menuVisible: 'menu--visible'
@@ -103,12 +104,12 @@ var Menu = function (_Component) {
 		}
 	}]);
 
-	function Menu(selector) {
+	function Menu() {
 		_classCallCheck(this, Menu);
 
 		var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this));
 
-		_this.$menu = document.querySelector(selector);
+		_this.$menu = document.querySelector('.' + _this.classNames.menu);
 
 		_this.$openMenuBtns = document.querySelectorAll('.' + _this.classNames.openMenu);
 		_this.$closeMenuBtns = document.querySelectorAll('.' + _this.classNames.closeMenu);
@@ -227,11 +228,79 @@ var _menu = __webpack_require__(0);
 
 var _menu2 = _interopRequireDefault(_menu);
 
+var _links = __webpack_require__(3);
+
+var _links2 = _interopRequireDefault(_links);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 if (window.location.hash.length) window.location.hash = '';
 
-new _menu2.default('.js-menu');
+new _menu2.default();
+new _links2.default();
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _component = __webpack_require__(1);
+
+var _component2 = _interopRequireDefault(_component);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RouterLinks = function (_Component) {
+	_inherits(RouterLinks, _Component);
+
+	function RouterLinks(props) {
+		_classCallCheck(this, RouterLinks);
+
+		var _this = _possibleConstructorReturn(this, (RouterLinks.__proto__ || Object.getPrototypeOf(RouterLinks)).call(this, props));
+
+		_this.$allLinks = document.querySelectorAll('[data-route]');
+
+		_this.initializeLister();
+		return _this;
+	}
+
+	_createClass(RouterLinks, [{
+		key: 'initializeLister',
+		value: function initializeLister() {
+
+			this._linkClickHandler = this._linkClickHandler.bind(this);
+
+			this.addListeners(this.$allLinks, 'click', this._linkClickHandler);
+		}
+	}, {
+		key: '_linkClickHandler',
+		value: function _linkClickHandler(e) {
+			if ('history' in window && 'pushState' in window.history) {
+				e.preventDefault();
+			} else return;
+
+			// Trigger view change
+		}
+	}]);
+
+	return RouterLinks;
+}(_component2.default);
+
+exports.default = RouterLinks;
 
 /***/ }
 /******/ ]);

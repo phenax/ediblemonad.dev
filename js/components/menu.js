@@ -5,16 +5,17 @@ export default class Menu extends Component {
 
 	get classNames() {
 		return {
+			menu: 'js-menu',
 			openMenu: 'js-open-menu',
 			closeMenu: 'js-close-menu',
 			menuVisible: 'menu--visible'
 		};
 	}
 
-	constructor(selector) {
+	constructor() {
 		super();
 
-		this.$menu= document.querySelector(selector);
+		this.$menu= document.querySelector(`.${this.classNames.menu}`);
 
 		this.$openMenuBtns= document.querySelectorAll(`.${this.classNames.openMenu}`);
 		this.$closeMenuBtns= document.querySelectorAll(`.${this.classNames.closeMenu}`);
