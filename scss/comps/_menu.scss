@@ -9,17 +9,23 @@
 	z-index: 10;
 	pointer-events: none;
 
-	$animationTime: .4s;
+	contain: strict;
 
+	// The animation duration for the menu closing
+	$animationTime: .4s;
+	$transition: transform #{$animationTime} ease-in-out;
+
+
+	// Show the menu
 	&:target, &.menu--visible {
 		pointer-events: auto;
 
-		.menu__side {
+		.menu__side,
+		.menu__list,
+		.menu__section__container {
+			transition: #{$transition};
 			transform: none;
-		}
-
-		.menu__list {
-			transform: none;
+			opacity: 1;
 		}
 	}
 
@@ -30,7 +36,7 @@
 		z-index: 11;
 		padding: 1em;
 		color: #fff;
-		font-size: 1.5em;
+		font-size: 1.8em;
 	}
 
 	&__section {
@@ -38,8 +44,9 @@
 		align-items: center;
 		justify-content: center;
 
+		opacity: 0;
 		will-change: transform, opacity;
-		transition: transform #{$animationTime} ease-in-out, opacity 0s linear #{$animationTime};
+		transition: #{$transition}, opacity 0s linear #{$animationTime};
 	}
 
 	&__side {

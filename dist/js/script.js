@@ -92,6 +92,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Menu = function (_Component) {
 	_inherits(Menu, _Component);
 
+	_createClass(Menu, [{
+		key: 'classNames',
+		get: function get() {
+			return {
+				openMenu: 'js-open-menu',
+				closeMenu: 'js-close-menu',
+				menuVisible: 'menu--visible'
+			};
+		}
+	}]);
+
 	function Menu(selector) {
 		_classCallCheck(this, Menu);
 
@@ -99,10 +110,8 @@ var Menu = function (_Component) {
 
 		_this.$menu = document.querySelector(selector);
 
-		_this.$openMenuBtns = document.querySelectorAll('.js-open-menu');
-		_this.$closeMenuBtns = document.querySelectorAll('.js-close-menu');
-
-		_this._menuModifierClass = 'menu--visible';
+		_this.$openMenuBtns = document.querySelectorAll('.' + _this.classNames.openMenu);
+		_this.$closeMenuBtns = document.querySelectorAll('.' + _this.classNames.closeMenu);
 
 		_this._initListeners();
 		return _this;
@@ -124,14 +133,14 @@ var Menu = function (_Component) {
 		value: function _openMenuClickHandler(e) {
 			e.preventDefault();
 
-			this.$menu.classList.add(this._menuModifierClass);
+			this.$menu.classList.add(this.classNames.menuVisible);
 		}
 	}, {
 		key: '_closeMenuClickHandler',
 		value: function _closeMenuClickHandler(e) {
 			e.preventDefault();
 
-			this.$menu.classList.remove(this._menuModifierClass);
+			this.$menu.classList.remove(this.classNames.menuVisible);
 		}
 	}]);
 
@@ -161,6 +170,12 @@ var Component = function () {
 	}
 
 	_createClass(Component, [{
+		key: 'onMount',
+		value: function onMount() {}
+	}, {
+		key: 'onUnMount',
+		value: function onUnMount() {}
+	}, {
 		key: 'addListeners',
 		value: function addListeners($elems, events, callback) {
 			var _this = this;
@@ -175,6 +190,23 @@ var Component = function () {
 
 			events.split(' ').forEach(function (event) {
 				return $el.addEventListener(event, callback);
+			});
+		}
+	}, {
+		key: 'removeListeners',
+		value: function removeListeners($elems, events, callback) {
+			var _this2 = this;
+
+			Array.from($elems).forEach(function ($el) {
+				return _this2.removeListener($el, events, callback);
+			});
+		}
+	}, {
+		key: 'removeListener',
+		value: function removeListener($el, events, callback) {
+
+			events.split(' ').forEach(function (event) {
+				return $el.removeEventListener(event, callback);
 			});
 		}
 	}]);
@@ -196,6 +228,8 @@ var _menu = __webpack_require__(0);
 var _menu2 = _interopRequireDefault(_menu);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+if (window.location.hash.length) window.location.hash = '';
 
 new _menu2.default('.js-menu');
 

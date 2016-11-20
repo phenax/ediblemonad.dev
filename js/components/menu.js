@@ -3,15 +3,21 @@ import Component from '../component';
 
 export default class Menu extends Component {
 
+	get classNames() {
+		return {
+			openMenu: 'js-open-menu',
+			closeMenu: 'js-close-menu',
+			menuVisible: 'menu--visible'
+		};
+	}
+
 	constructor(selector) {
 		super();
 
 		this.$menu= document.querySelector(selector);
 
-		this.$openMenuBtns= document.querySelectorAll('.js-open-menu');
-		this.$closeMenuBtns= document.querySelectorAll('.js-close-menu');
-
-		this._menuModifierClass= 'menu--visible';
+		this.$openMenuBtns= document.querySelectorAll(`.${this.classNames.openMenu}`);
+		this.$closeMenuBtns= document.querySelectorAll(`.${this.classNames.closeMenu}`);
 
 		this._initListeners();
 	}
@@ -35,13 +41,13 @@ export default class Menu extends Component {
 	_openMenuClickHandler(e) {
 		e.preventDefault();
 
-		this.$menu.classList.add(this._menuModifierClass);
+		this.$menu.classList.add(this.classNames.menuVisible);
 	}
 
 	_closeMenuClickHandler(e) {
 		e.preventDefault();
 
-		this.$menu.classList.remove(this._menuModifierClass);
+		this.$menu.classList.remove(this.classNames.menuVisible);
 	}
 
 }

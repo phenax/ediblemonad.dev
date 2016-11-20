@@ -102,7 +102,6 @@ a {
 
 .banner {
   background-color: #222222;
-  font-size: 1.16vw;
   padding: 1em; }
   .banner__content {
     width: 80%;
@@ -123,13 +122,18 @@ a {
   width: 100%;
   height: 100%;
   z-index: 10;
-  pointer-events: none; }
+  pointer-events: none;
+  contain: strict; }
   .menu:target, .menu.menu--visible {
     pointer-events: auto; }
-    .menu:target .menu__side, .menu.menu--visible .menu__side {
-      transform: none; }
-    .menu:target .menu__list, .menu.menu--visible .menu__list {
-      transform: none; }
+    .menu:target .menu__side,
+    .menu:target .menu__list,
+    .menu:target .menu__section__container, .menu.menu--visible .menu__side,
+    .menu.menu--visible .menu__list,
+    .menu.menu--visible .menu__section__container {
+      transition: transform 0.4s ease-in-out;
+      transform: none;
+      opacity: 1; }
   .menu__closebtn {
     position: absolute;
     right: 0;
@@ -137,11 +141,12 @@ a {
     z-index: 11;
     padding: 1em;
     color: #fff;
-    font-size: 1.5em; }
+    font-size: 1.8em; }
   .menu__section {
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
     will-change: transform, opacity;
     transition: transform 0.4s ease-in-out, opacity 0s linear 0.4s; }
   .menu__side {
