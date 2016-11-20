@@ -1,0 +1,21 @@
+
+@import 'reset';
+@import 'fonts';
+@import 'colors';
+@import 'media';
+@import 'grid';
+
+:root {
+	font-size: 16px;
+	color: #222;
+	font-family: $font;
+}
+
+* {
+	box-sizing: border-box;
+
+	&::after, &::before {
+		content: '';
+	}
+}
+

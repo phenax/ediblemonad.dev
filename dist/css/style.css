@@ -1,0 +1,166 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  text-decoration: none; }
+
+@media (max-width: 1000px) {
+  .hide-1 {
+    display: none !important; } }
+
+@media (max-width: 500px) {
+  .hide-2 {
+    display: none !important; } }
+
+.row {
+  display: flex; }
+  .row.sp-bt {
+    justify-content: space-between; }
+  .row.sp-ar {
+    justify-content: space-around; }
+  .row .col {
+    flex: 1; }
+
+@media (max-width: 500px) {
+  .row {
+    display: block; } }
+
+:root {
+  font-size: 16px;
+  color: #222;
+  font-family: "Raleway", "Helvetica", "sans-serif"; }
+
+* {
+  box-sizing: border-box; }
+  *::after, *::before {
+    content: ''; }
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: .1em;
+  font-size: 1.5em; }
+  .header__child {
+    display: flex;
+    flex: 1; }
+    .header__child > a {
+      display: inline-block;
+      padding: 1em 1.1em;
+      color: #fff; }
+  .header__logo {
+    justify-content: flex-start; }
+  .header__menubtn {
+    justify-content: flex-end; }
+
+.banner {
+  background-color: #222222;
+  font-size: 1.16vw;
+  padding: 1em; }
+  .banner__content {
+    width: 80%;
+    margin: 9em auto;
+    color: #fff;
+    padding: 1em; }
+    .banner__content__name {
+      font-size: 4em;
+      padding: .25em 0; }
+    .banner__content__text {
+      font-size: 1.3em;
+      font-weight: 100; }
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none; }
+  .menu:target, .menu.menu--visible {
+    pointer-events: auto; }
+    .menu:target .menu__side, .menu.menu--visible .menu__side {
+      transform: none; }
+    .menu:target .menu__list, .menu.menu--visible .menu__list {
+      transform: none; }
+  .menu__closebtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 11;
+    padding: 1em;
+    color: #fff;
+    font-size: 1.5em; }
+  .menu__section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform, opacity;
+    transition: transform 0.4s ease-in-out, opacity 0s linear 0.4s; }
+  .menu__side {
+    background-color: #519d9e;
+    transform: translateX(-100%); }
+  .menu__list {
+    background-color: #222222;
+    flex-direction: column;
+    transform: translateX(100%); }
+    .menu__list li {
+      width: 45%; }
+    .menu__list__link {
+      color: #fff;
+      padding: 1em;
+      font-weight: 100; }
+      .menu__list__link .title {
+        font-size: 2em; }
+      .menu__list__link .descr {
+        font-size: .9em;
+        opacity: .8;
+        letter-spacing: .05em;
+        padding-top: .2em; }

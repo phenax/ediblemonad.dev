@@ -1,0 +1,23 @@
+
+.row {
+	display: flex;
+
+	&.sp-bt {
+		justify-content: space-between;
+	}
+	&.sp-ar {
+		justify-content: space-around;
+	}
+
+	.col {
+		flex: 1;
+	}
+}
+
+
+
+@media (max-width: 500px) {
+	.row {
+		display: block;
+	}
+}

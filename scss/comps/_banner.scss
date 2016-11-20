@@ -1,0 +1,55 @@
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+	padding: .1em;
+
+	font-size: 1.5em;
+
+	&__child {
+		display: flex;
+		flex: 1;
+
+		& > a {
+			display: inline-block;
+			padding: 1em 1.1em;
+			color: #fff;
+		}
+	}
+
+	&__logo {
+		justify-content: flex-start;
+	}
+
+	&__menubtn {
+		justify-content: flex-end;
+	}
+}
+
+.banner {
+	background-color: $color_primary;
+	font-size: 1.16vw;
+	padding: 1em;
+
+	&__content {
+		width: 80%;
+		margin: 9em auto;
+		color: #fff;
+		padding: 1em;
+
+		&__name {
+			font-size: 4em;
+			padding: .25em 0;
+		}
+
+		&__text {
+			font-size: 1.3em;
+			font-weight: 100;
+		}
+	}
+}
