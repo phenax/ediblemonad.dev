@@ -13,21 +13,20 @@ export default class RouterLinks extends Component {
 
 	initializeLister() {
 
-		this._linkClickHandler= this._linkClickHandler.bind(this);
-
-		this.addListeners(
-			this.$allLinks, 'click',
-			this._linkClickHandler
-		);
+		if('history' in window && 'pushState' in window.history) {
+			this._linkClickHandler= this._linkClickHandler.bind(this);
+			
+			this.addListeners(
+				this.$allLinks, 'click',
+				this._linkClickHandler
+			);
+		}
 	}
 
 	_linkClickHandler(e) {
-		if('history' in window && 'pushState' in window.history) {
-			e.preventDefault();
-		} else return;
+		e.preventDefault();
 
 		// Trigger view change
 
 	}
-
 }
