@@ -1,13 +1,9 @@
 
 export default class Component {
 
-	constructor() {
-		
-	}
-
 	onMount() {}
 
-	onUnMount() {}
+	onUnmount() {}
 
 	addListeners($elems, events, callback) {
 

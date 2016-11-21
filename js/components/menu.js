@@ -12,8 +12,7 @@ export default class Menu extends Component {
 		};
 	}
 
-	constructor() {
-		super();
+	onMount() {
 
 		this.$menu= document.querySelector(`.${this.classNames.menu}`);
 

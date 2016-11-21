@@ -81,6 +81,8 @@ class Router extends EventEmitter {
 
 	// Get view for a route
 	getView(routeUrl) {
+
+		// For each views, filter out the ones that match the current route
 		return Array
 			.from(this.$views)
 			.filter(
@@ -113,33 +115,41 @@ class Router extends EventEmitter {
 		}
 	}
 
+	// Add a new route
 	add(route={}) {
 
-		this.routes[route.url] = route;
+		// If the route had a url field, add the route
+		if(route.url)
+			this.routes[route.url] = route;
 
 		return this;
 	}
 
+	// Navigate to a new url
 	trigger(url) {
 
+		// Change history
 		history.pushState({}, null, url);
 
+		// Update view
 		this.triggerUpdate();
 	}
 
+	// Trigger view update
 	triggerUpdate() {
 		this.emit(Router.ROUTE_CHANGE);
 	}
 
+	// Add route change listeners
 	onRouteChange(callback) {
 		this.on(Router.ROUTE_CHANGE, callback);
 	}
 
+	// Remove route change listeners
 	removeListener(callback) {
 		this.off(Router.ROUTE_CHANGE, callback);
 	}
 }
 
-const router= new Router();
-
-export default router;
+// Create and export an instance of the router
+export default new Router();

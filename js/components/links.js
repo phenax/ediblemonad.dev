@@ -4,9 +4,8 @@ import Router from '../libs/router';
 
 export default class RouterLinks extends Component {
 
-	constructor(props) {
-		super(props);
-		
+	onMount() {
+
 		this.$allLinks= document.querySelectorAll('[data-route]');
 
 		this.initializeLister();

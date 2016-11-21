@@ -88,8 +88,8 @@ var Component = function () {
 		key: 'onMount',
 		value: function onMount() {}
 	}, {
-		key: 'onUnMount',
-		value: function onUnMount() {}
+		key: 'onUnmount',
+		value: function onUnmount() {}
 	}, {
 		key: 'addListeners',
 		value: function addListeners($elems, events, callback) {
@@ -163,18 +163,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var RouterLinks = function (_Component) {
 	_inherits(RouterLinks, _Component);
 
-	function RouterLinks(props) {
+	function RouterLinks() {
 		_classCallCheck(this, RouterLinks);
 
-		var _this = _possibleConstructorReturn(this, (RouterLinks.__proto__ || Object.getPrototypeOf(RouterLinks)).call(this, props));
-
-		_this.$allLinks = document.querySelectorAll('[data-route]');
-
-		_this.initializeLister();
-		return _this;
+		return _possibleConstructorReturn(this, (RouterLinks.__proto__ || Object.getPrototypeOf(RouterLinks)).apply(this, arguments));
 	}
 
 	_createClass(RouterLinks, [{
+		key: 'onMount',
+		value: function onMount() {
+
+			this.$allLinks = document.querySelectorAll('[data-route]');
+
+			this.initializeLister();
+		}
+	}, {
 		key: 'initializeLister',
 		value: function initializeLister() {
 
@@ -227,33 +230,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Menu = function (_Component) {
 	_inherits(Menu, _Component);
 
-	_createClass(Menu, [{
-		key: 'classNames',
-		get: function get() {
-			return {
-				menu: 'js-menu',
-				openMenu: 'js-open-menu',
-				closeMenu: 'js-close-menu',
-				menuVisible: 'menu--visible'
-			};
-		}
-	}]);
-
 	function Menu() {
 		_classCallCheck(this, Menu);
 
-		var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this));
-
-		_this.$menu = document.querySelector('.' + _this.classNames.menu);
-
-		_this.$openMenuBtns = document.querySelectorAll('.' + _this.classNames.openMenu);
-		_this.$closeMenuBtns = document.querySelectorAll('.' + _this.classNames.closeMenu);
-
-		_this._initListeners();
-		return _this;
+		return _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).apply(this, arguments));
 	}
 
 	_createClass(Menu, [{
+		key: 'onMount',
+		value: function onMount() {
+
+			this.$menu = document.querySelector('.' + this.classNames.menu);
+
+			this.$openMenuBtns = document.querySelectorAll('.' + this.classNames.openMenu);
+			this.$closeMenuBtns = document.querySelectorAll('.' + this.classNames.closeMenu);
+
+			this._initListeners();
+		}
+	}, {
 		key: '_initListeners',
 		value: function _initListeners() {
 
@@ -289,6 +283,16 @@ var Menu = function (_Component) {
 		value: function hide() {
 
 			if (this.$menu.classList.contains(this.classNames.menuVisible)) this.$menu.classList.remove(this.classNames.menuVisible);
+		}
+	}, {
+		key: 'classNames',
+		get: function get() {
+			return {
+				menu: 'js-menu',
+				openMenu: 'js-open-menu',
+				closeMenu: 'js-close-menu',
+				menuVisible: 'menu--visible'
+			};
 		}
 	}]);
 
@@ -423,6 +427,8 @@ var Router = function (_EventEmitter) {
 	}, {
 		key: 'getView',
 		value: function getView(routeUrl) {
+
+			// For each views, filter out the ones that match the current route
 			return Array.from(this.$views).filter(function ($el) {
 				return $el.dataset.view === routeUrl;
 			});
@@ -452,34 +458,52 @@ var Router = function (_EventEmitter) {
 				$views[0].dataset.active = 'true';
 			}
 		}
+
+		// Add a new route
+
 	}, {
 		key: 'add',
 		value: function add() {
 			var route = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 
-			this.routes[route.url] = route;
+			// If the route had a url field, add the route
+			if (route.url) this.routes[route.url] = route;
 
 			return this;
 		}
+
+		// Navigate to a new url
+
 	}, {
 		key: 'trigger',
 		value: function trigger(url) {
 
+			// Change history
 			history.pushState({}, null, url);
 
+			// Update view
 			this.triggerUpdate();
 		}
+
+		// Trigger view update
+
 	}, {
 		key: 'triggerUpdate',
 		value: function triggerUpdate() {
 			this.emit(Router.ROUTE_CHANGE);
 		}
+
+		// Add route change listeners
+
 	}, {
 		key: 'onRouteChange',
 		value: function onRouteChange(callback) {
 			this.on(Router.ROUTE_CHANGE, callback);
 		}
+
+		// Remove route change listeners
+
 	}, {
 		key: 'removeListener',
 		value: function removeListener(callback) {
@@ -490,9 +514,10 @@ var Router = function (_EventEmitter) {
 	return Router;
 }(_events.EventEmitter);
 
-var router = new Router();
+// Create and export an instance of the router
 
-exports.default = router;
+
+exports.default = new Router();
 
 /***/ },
 /* 4 */
@@ -823,8 +848,10 @@ var _links2 = _interopRequireDefault(_links);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//  All mountables(elements to mount when the router is set up)
 var mountElems = [new _menu2.default(), new _links2.default()];
 
+// Add a route change listener
 _router2.default.onRouteChange(function () {
 
 	if (window.location.hash.length) window.location.hash = '';
@@ -832,7 +859,8 @@ _router2.default.onRouteChange(function () {
 	mountElems[0].hide();
 });
 
-_router2.default.add({ url: '/' }).add({ url: '/about' }).init({
+// Router configuration
+_router2.default.add({ url: '/' }).add({ url: '/about' }).add({ url: '/contact' }).init({
 	otherwise: '/',
 	mounts: mountElems
 });
