@@ -27,10 +27,12 @@
 			&__title {
 				display: inline-block;
 				color: #666;
+				text-transform: uppercase;
+				font-weight: 100;
 				font-size: 1.9em;
 				padding: 1.5em .6em .3em;
 				margin-bottom: .5em;
-				border-bottom: 2px solid $color_accent_light;
+				border-bottom: 1px solid $color_accent_light;
 			}
 
 			&__content {
@@ -38,7 +40,9 @@
 				color: #888;
 				font-size: .9em;
 				line-height: 2em;
+				letter-spacing: .07em;
 				padding: 1em;
+				min-height: $full_height*2.9/5;
 			}
 
 			&__links {
@@ -51,6 +55,7 @@
 					font-family: $font_alt;
 					font-weight: 300;
 					color: $color_accent_dark;
+					text-transform: uppercase;
 
 					opacity: .6;
 					transition: opacity .2s ease-in-out;

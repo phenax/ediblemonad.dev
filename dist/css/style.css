@@ -207,16 +207,20 @@ html, body {
       .work__project .block__title {
         display: inline-block;
         color: #666;
+        text-transform: uppercase;
+        font-weight: 100;
         font-size: 1.9em;
         padding: 1.5em .6em .3em;
         margin-bottom: .5em;
-        border-bottom: 2px solid #9dc8c8; }
+        border-bottom: 1px solid #9dc8c8; }
       .work__project .block__content {
         text-align: left;
         color: #888;
         font-size: .9em;
         line-height: 2em;
-        padding: 1em; }
+        letter-spacing: .07em;
+        padding: 1em;
+        min-height: 13.34em; }
       .work__project .block__links {
         text-align: right;
         font-size: 1.2em; }
@@ -226,6 +230,7 @@ html, body {
           font-family: "Oswald", Raleway, Helvetica, sans-serif;
           font-weight: 300;
           color: #519d9e;
+          text-transform: uppercase;
           opacity: .6;
           transition: opacity .2s ease-in-out;
           will-change: opacity; }
