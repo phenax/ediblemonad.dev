@@ -4,3 +4,11 @@
 @import 'comps/banner';
 @import 'comps/menu';
 
+
+[data-view] {
+	display: none;
+}
+
+body [data-active='true'] {
+	display: block;
+}

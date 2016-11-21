@@ -42,13 +42,25 @@ export default class Menu extends Component {
 	_openMenuClickHandler(e) {
 		e.preventDefault();
 
-		this.$menu.classList.add(this.classNames.menuVisible);
+		this.show();
 	}
 
 	_closeMenuClickHandler(e) {
 		e.preventDefault();
 
-		this.$menu.classList.remove(this.classNames.menuVisible);
+		this.hide();
+	}
+
+	show() {
+
+		if(!this.$menu.classList.contains(this.classNames.menuVisible))
+			this.$menu.classList.add(this.classNames.menuVisible);
+	}
+
+	hide() {
+
+		if(this.$menu.classList.contains(this.classNames.menuVisible))
+			this.$menu.classList.remove(this.classNames.menuVisible);
 	}
 
 }

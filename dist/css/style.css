@@ -169,3 +169,9 @@ a {
         opacity: .8;
         letter-spacing: .05em;
         padding-top: .2em; }
+
+[data-view] {
+  display: none; }
+
+body [data-active='true'] {
+  display: block; }

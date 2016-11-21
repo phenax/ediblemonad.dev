@@ -1,5 +1,6 @@
 
 import Component from '../component';
+import Router from '../libs/router';
 
 export default class RouterLinks extends Component {
 
@@ -27,6 +28,6 @@ export default class RouterLinks extends Component {
 		e.preventDefault();
 
 		// Trigger view change
-
+		Router.trigger(e.currentTarget.getAttribute('href'));
 	}
 }

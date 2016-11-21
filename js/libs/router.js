@@ -1,80 +1,133 @@
 
 import { EventEmitter } from 'events';
 
+
+/**
+ * Router class for handling client-side routing
+ */
 class Router extends EventEmitter {
 
+	// Route update event listener
 	static get ROUTE_CHANGE() { return 'ROUTE_CHANGE'; }
 
 	constructor() {
 		super();
 
-		this.routes= [];
+		// All routes
+		// TODO: Use Map with a polyfill maybe?
+		this.routes= {};
 
-		this._routeChangeListener= this._routeChangeListener.bind(this);
-
-		this.onRouteChange(this._routeChangeListener);
+		this._routeChangeHandler= this._routeChangeHandler.bind(this);
+		this.triggerUpdate= this.triggerUpdate.bind(this);
 	}
 
+	// Initialize router
 	init(config) {
 
 		this.baseUrl= config.baseUrl || '/';
 		this.otherwise= config.otherwise || '/';
 		this.mounts= config.mounts || [];
 
-		this.mounts.forEach( elem => {
-			elem.onMount();
-		});
+		// When the router initializes, mount all mountables
+		this.mounts.forEach( elem => elem.onMount());
 
+		// All the view elements in the DOM
 		this.$views= document.querySelectorAll('[data-view]');
+
+		this._attachEventHandlers();
+
+		// Trigger a manual update to check what route the user is currently in
+		this.triggerUpdate();
 
 		return this;
 	}
 
-	_routeChangeListener() {
 
-		this.routes
-			.forEach( route => {
+	// Attach route change handler to events
+	_attachEventHandlers() {
 
-				const currentUrl= `${this.baseUrl}/${location.pathname}`.replace(/[\/]+/gi, '/');
+		// Attach route change handler
+		this.onRouteChange(this._routeChangeHandler);
 
-				if(route.url == currentUrl) {
-					if(route.controller)
-						route.controller();
-
-					this.showView(route);
-				}
-			});
+		// Attach route change handler to popstate listener
+		window.addEventListener('popstate', this._routeChangeHandler);
 	}
 
-	getView(view) {
+
+	// Is called when the route changes(To trigger view update)
+	_routeChangeHandler() {
+
+		// Resolve a url i.e. get rid of extra '/'
+		const resolveRoute= (url) => `${this.baseUrl}/${url}`.replace(/[\/]+/gi, '/');
+
+		// Find the matching route for the current url
+		const matchingRoute= this.routes[resolveRoute(window.location.pathname)];
+
+		// If a match exists
+		if(matchingRoute) {
+
+			// Call the controller and if it returns true, dont render view
+			if(matchingRoute.controller && matchingRoute.controller())
+				return;
+
+			// Render view for the route
+			this.showView(matchingRoute);
+		} else {
+
+			// If a match is not found, navigate back to the default(this.otherwise) route
+			this.trigger(this.otherwise);
+		}
+	}
+
+	// Get view for a route
+	getView(routeUrl) {
 		return Array
 			.from(this.$views)
 			.filter(
-				$el => $el.dataset.view === view
+				$el => $el.dataset.view === routeUrl
 			);
 	}
 
+	// Render the view
 	showView(route) {
-		const $el= this.getView(route.url);
 
-		if($el.length) {
-			console.log($el);
+		const $views= this.getView(route.url);
+
+		if($views.length) {
+
+			// If the view is already rendered, dont re-render
+			if($views[0] === document.querySelector('[data-active="true"]'))
+				return;
+
+			// "Un-render" all other views
+			Array
+				.from(this.$views)
+				.filter( $el => $el !== $views[0] )
+				.forEach(
+					$el => 
+						$el.removeAttribute('data-active')
+					);
+
+			// Render the current view
+			$views[0].dataset.active='true';
 		}
 	}
 
 	add(route={}) {
 
-		this.routes.push(route);
+		this.routes[route.url] = route;
 
 		return this;
 	}
 
 	trigger(url) {
+
 		history.pushState({}, null, url);
-		this.emitRouteChange();
+
+		this.triggerUpdate();
 	}
 
-	emitRouteChange() {
+	triggerUpdate() {
 		this.emit(Router.ROUTE_CHANGE);
 	}
 

@@ -61,97 +61,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(1);
-
-var _component2 = _interopRequireDefault(_component);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Menu = function (_Component) {
-	_inherits(Menu, _Component);
-
-	_createClass(Menu, [{
-		key: 'classNames',
-		get: function get() {
-			return {
-				menu: 'js-menu',
-				openMenu: 'js-open-menu',
-				closeMenu: 'js-close-menu',
-				menuVisible: 'menu--visible'
-			};
-		}
-	}]);
-
-	function Menu() {
-		_classCallCheck(this, Menu);
-
-		var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this));
-
-		_this.$menu = document.querySelector('.' + _this.classNames.menu);
-
-		_this.$openMenuBtns = document.querySelectorAll('.' + _this.classNames.openMenu);
-		_this.$closeMenuBtns = document.querySelectorAll('.' + _this.classNames.closeMenu);
-
-		_this._initListeners();
-		return _this;
-	}
-
-	_createClass(Menu, [{
-		key: '_initListeners',
-		value: function _initListeners() {
-
-			this._openMenuClickHandler = this._openMenuClickHandler.bind(this);
-			this._closeMenuClickHandler = this._closeMenuClickHandler.bind(this);
-
-			this.addListeners(this.$openMenuBtns, 'click', this._openMenuClickHandler);
-
-			this.addListeners(this.$closeMenuBtns, 'click', this._closeMenuClickHandler);
-		}
-	}, {
-		key: '_openMenuClickHandler',
-		value: function _openMenuClickHandler(e) {
-			e.preventDefault();
-
-			this.$menu.classList.add(this.classNames.menuVisible);
-		}
-	}, {
-		key: '_closeMenuClickHandler',
-		value: function _closeMenuClickHandler(e) {
-			e.preventDefault();
-
-			this.$menu.classList.remove(this.classNames.menuVisible);
-		}
-	}]);
-
-	return Menu;
-}(_component2.default);
-
-exports.default = Menu;
-
-/***/ },
-/* 1 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -218,41 +132,7 @@ var Component = function () {
 exports.default = Component;
 
 /***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-var _router = __webpack_require__(4);
-
-var _router2 = _interopRequireDefault(_router);
-
-var _menu = __webpack_require__(0);
-
-var _menu2 = _interopRequireDefault(_menu);
-
-var _links = __webpack_require__(3);
-
-var _links2 = _interopRequireDefault(_links);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-if (window.location.hash.length) window.location.hash = '';
-
-var mountElems = [new _menu2.default(), new _links2.default()];
-
-_router2.default.add({
-	url: '/'
-}).add({
-	url: '/about'
-}).init({
-	otherwise: '/',
-	mounts: mountElems
-});
-
-/***/ },
-/* 3 */
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -264,9 +144,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _component = __webpack_require__(1);
+var _component = __webpack_require__(0);
 
 var _component2 = _interopRequireDefault(_component);
+
+var _router = __webpack_require__(3);
+
+var _router2 = _interopRequireDefault(_router);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -306,6 +190,7 @@ var RouterLinks = function (_Component) {
 			e.preventDefault();
 
 			// Trigger view change
+			_router2.default.trigger(e.currentTarget.getAttribute('href'));
 		}
 	}]);
 
@@ -315,7 +200,7 @@ var RouterLinks = function (_Component) {
 exports.default = RouterLinks;
 
 /***/ },
-/* 4 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -327,7 +212,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _events = __webpack_require__(5);
+var _component = __webpack_require__(0);
+
+var _component2 = _interopRequireDefault(_component);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -335,11 +224,111 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var Menu = function (_Component) {
+	_inherits(Menu, _Component);
+
+	_createClass(Menu, [{
+		key: 'classNames',
+		get: function get() {
+			return {
+				menu: 'js-menu',
+				openMenu: 'js-open-menu',
+				closeMenu: 'js-close-menu',
+				menuVisible: 'menu--visible'
+			};
+		}
+	}]);
+
+	function Menu() {
+		_classCallCheck(this, Menu);
+
+		var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this));
+
+		_this.$menu = document.querySelector('.' + _this.classNames.menu);
+
+		_this.$openMenuBtns = document.querySelectorAll('.' + _this.classNames.openMenu);
+		_this.$closeMenuBtns = document.querySelectorAll('.' + _this.classNames.closeMenu);
+
+		_this._initListeners();
+		return _this;
+	}
+
+	_createClass(Menu, [{
+		key: '_initListeners',
+		value: function _initListeners() {
+
+			this._openMenuClickHandler = this._openMenuClickHandler.bind(this);
+			this._closeMenuClickHandler = this._closeMenuClickHandler.bind(this);
+
+			this.addListeners(this.$openMenuBtns, 'click', this._openMenuClickHandler);
+
+			this.addListeners(this.$closeMenuBtns, 'click', this._closeMenuClickHandler);
+		}
+	}, {
+		key: '_openMenuClickHandler',
+		value: function _openMenuClickHandler(e) {
+			e.preventDefault();
+
+			this.show();
+		}
+	}, {
+		key: '_closeMenuClickHandler',
+		value: function _closeMenuClickHandler(e) {
+			e.preventDefault();
+
+			this.hide();
+		}
+	}, {
+		key: 'show',
+		value: function show() {
+
+			if (!this.$menu.classList.contains(this.classNames.menuVisible)) this.$menu.classList.add(this.classNames.menuVisible);
+		}
+	}, {
+		key: 'hide',
+		value: function hide() {
+
+			if (this.$menu.classList.contains(this.classNames.menuVisible)) this.$menu.classList.remove(this.classNames.menuVisible);
+		}
+	}]);
+
+	return Menu;
+}(_component2.default);
+
+exports.default = Menu;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _events = __webpack_require__(4);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Router class for handling client-side routing
+ */
 var Router = function (_EventEmitter) {
 	_inherits(Router, _EventEmitter);
 
 	_createClass(Router, null, [{
 		key: 'ROUTE_CHANGE',
+
+
+		// Route update event listener
 		get: function get() {
 			return 'ROUTE_CHANGE';
 		}
@@ -348,15 +337,19 @@ var Router = function (_EventEmitter) {
 	function Router() {
 		_classCallCheck(this, Router);
 
+		// All routes
+		// TODO: Use Map with a polyfill maybe?
 		var _this = _possibleConstructorReturn(this, (Router.__proto__ || Object.getPrototypeOf(Router)).call(this));
 
-		_this.routes = [];
+		_this.routes = {};
 
-		_this._routeChangeListener = _this._routeChangeListener.bind(_this);
-
-		_this.onRouteChange(_this._routeChangeListener);
+		_this._routeChangeHandler = _this._routeChangeHandler.bind(_this);
+		_this.triggerUpdate = _this.triggerUpdate.bind(_this);
 		return _this;
 	}
+
+	// Initialize router
+
 
 	_createClass(Router, [{
 		key: 'init',
@@ -366,44 +359,97 @@ var Router = function (_EventEmitter) {
 			this.otherwise = config.otherwise || '/';
 			this.mounts = config.mounts || [];
 
+			// When the router initializes, mount all mountables
 			this.mounts.forEach(function (elem) {
-				elem.onMount();
+				return elem.onMount();
 			});
 
+			// All the view elements in the DOM
 			this.$views = document.querySelectorAll('[data-view]');
+
+			this._attachEventHandlers();
+
+			// Trigger a manual update to check what route the user is currently in
+			this.triggerUpdate();
 
 			return this;
 		}
+
+		// Attach route change handler to events
+
 	}, {
-		key: '_routeChangeListener',
-		value: function _routeChangeListener() {
+		key: '_attachEventHandlers',
+		value: function _attachEventHandlers() {
+
+			// Attach route change handler
+			this.onRouteChange(this._routeChangeHandler);
+
+			// Attach route change handler to popstate listener
+			window.addEventListener('popstate', this._routeChangeHandler);
+		}
+
+		// Is called when the route changes(To trigger view update)
+
+	}, {
+		key: '_routeChangeHandler',
+		value: function _routeChangeHandler() {
 			var _this2 = this;
 
-			this.routes.forEach(function (route) {
+			// Resolve a url i.e. get rid of extra '/'
+			var resolveRoute = function resolveRoute(url) {
+				return (_this2.baseUrl + '/' + url).replace(/[\/]+/gi, '/');
+			};
 
-				var currentUrl = (_this2.baseUrl + '/' + location.pathname).replace(/[\/]+/gi, '/');
+			// Find the matching route for the current url
+			var matchingRoute = this.routes[resolveRoute(window.location.pathname)];
 
-				if (route.url == currentUrl) {
-					if (route.controller) route.controller();
+			// If a match exists
+			if (matchingRoute) {
 
-					_this2.showView(route);
-				}
-			});
+				// Call the controller and if it returns true, dont render view
+				if (matchingRoute.controller && matchingRoute.controller()) return;
+
+				// Render view for the route
+				this.showView(matchingRoute);
+			} else {
+
+				// If a match is not found, navigate back to the default(this.otherwise) route
+				this.trigger(this.otherwise);
+			}
 		}
+
+		// Get view for a route
+
 	}, {
 		key: 'getView',
-		value: function getView(view) {
+		value: function getView(routeUrl) {
 			return Array.from(this.$views).filter(function ($el) {
-				return $el.dataset.view === view;
+				return $el.dataset.view === routeUrl;
 			});
 		}
+
+		// Render the view
+
 	}, {
 		key: 'showView',
 		value: function showView(route) {
-			var $el = this.getView(route.url);
 
-			if ($el.length) {
-				console.log($el);
+			var $views = this.getView(route.url);
+
+			if ($views.length) {
+
+				// If the view is already rendered, dont re-render
+				if ($views[0] === document.querySelector('[data-active="true"]')) return;
+
+				// "Un-render" all other views
+				Array.from(this.$views).filter(function ($el) {
+					return $el !== $views[0];
+				}).forEach(function ($el) {
+					return $el.removeAttribute('data-active');
+				});
+
+				// Render the current view
+				$views[0].dataset.active = 'true';
 			}
 		}
 	}, {
@@ -412,19 +458,21 @@ var Router = function (_EventEmitter) {
 			var route = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 
-			this.routes.push(route);
+			this.routes[route.url] = route;
 
 			return this;
 		}
 	}, {
 		key: 'trigger',
 		value: function trigger(url) {
+
 			history.pushState({}, null, url);
-			this.emitRouteChange();
+
+			this.triggerUpdate();
 		}
 	}, {
-		key: 'emitRouteChange',
-		value: function emitRouteChange() {
+		key: 'triggerUpdate',
+		value: function triggerUpdate() {
 			this.emit(Router.ROUTE_CHANGE);
 		}
 	}, {
@@ -447,7 +495,7 @@ var router = new Router();
 exports.default = router;
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -753,6 +801,41 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+var _router = __webpack_require__(3);
+
+var _router2 = _interopRequireDefault(_router);
+
+var _menu = __webpack_require__(2);
+
+var _menu2 = _interopRequireDefault(_menu);
+
+var _links = __webpack_require__(1);
+
+var _links2 = _interopRequireDefault(_links);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mountElems = [new _menu2.default(), new _links2.default()];
+
+_router2.default.onRouteChange(function () {
+
+	if (window.location.hash.length) window.location.hash = '';
+
+	mountElems[0].hide();
+});
+
+_router2.default.add({ url: '/' }).add({ url: '/about' }).init({
+	otherwise: '/',
+	mounts: mountElems
+});
 
 /***/ }
 /******/ ]);
