@@ -104,11 +104,12 @@ html, body {
     justify-content: flex-end; }
 
 .banner {
-  background-color: #222222;
-  padding: 1em; }
+  background-color: #252C33;
+  padding: 1em;
+  padding-top: 3em; }
   .banner__content {
     width: 80%;
-    margin: 9em auto;
+    margin: 6em auto;
     color: #fff;
     padding: 1em; }
     .banner__content__name {
@@ -158,22 +159,24 @@ html, body {
     contain: strict;
     transform: translateX(-100%); }
   .menu__list {
-    background-color: #222222;
+    background-color: #252C33;
     flex-direction: column;
     transform: translateX(100%); }
     .menu__list__li {
       width: 45%;
       transition: transform 0.4s ease-in-out;
-      will-change: transform;
-      transform: translateX(300px); }
+      transform: translateX(300px);
+      will-change: transform; }
       .menu__list__li:nth-child(1) {
         transition-delay: 0s; }
       .menu__list__li:nth-child(2) {
-        transition-delay: 0.1s; }
+        transition-delay: 0.05s; }
       .menu__list__li:nth-child(3) {
-        transition-delay: 0.2s; }
+        transition-delay: 0.1s; }
       .menu__list__li:nth-child(4) {
-        transition-delay: 0.3s; }
+        transition-delay: 0.15s; }
+      .menu__list__li:nth-child(5) {
+        transition-delay: 0.2s; }
     .menu__list__link {
       color: #fff;
       padding: 1em;
@@ -205,8 +208,8 @@ html, body {
       min-height: 23em;
       text-align: center; }
       .work__project .block__title {
+        color: #222;
         display: inline-block;
-        color: #666;
         text-transform: uppercase;
         font-weight: 100;
         font-size: 1.9em;
@@ -215,7 +218,7 @@ html, body {
         border-bottom: 1px solid #9dc8c8; }
       .work__project .block__content {
         text-align: left;
-        color: #888;
+        color: #555;
         font-size: .9em;
         line-height: 2em;
         letter-spacing: .07em;
@@ -226,7 +229,7 @@ html, body {
         font-size: 1.2em; }
         .work__project .block__links__a {
           display: inline-block;
-          padding: .5em;
+          padding: .5em .8em;
           font-family: "Oswald", Raleway, Helvetica, sans-serif;
           font-weight: 300;
           color: #519d9e;
