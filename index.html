@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="//fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400" rel="stylesheet" />
 </head>
 <body>
 
@@ -15,21 +16,21 @@
 		<ul class='menu__section col menu__list'>
 			<a href='#' class='menu__closebtn js-close-menu fa fa-close'></a>
 
-			<li>
+			<li class='menu__list__li'>
 				<a href='/' class='menu__list__link' data-route>
 					<div class='title'>Home</div>
 					<div class='descr'>Some details about this</div>
 				</a>
 			</li>
 
-			<li>
+			<li class='menu__list__li'>
 				<a href='/about' class='menu__list__link' data-route>
 					<div class='title'>About</div>
 					<div class='descr'>Some details about this</div>
 				</a>
 			</li>
 
-			<li>
+			<li class='menu__list__li'>
 				<a href='/contact' class='menu__list__link' data-route>
 					<div class='title'>Contact</div>
 					<div class='descr'>Some details about this</div>
@@ -58,7 +59,31 @@
 	<section class='container'>
 
 		<div class='home-view' data-view='/'>
-			Home
+			
+			<div class='work'>
+
+				<div class='work__project'>
+					<div class='wrap row'>
+						<div class='col block block-bg'></div>
+						
+						<div class='col block block-sm'>
+						
+							<div class='block__title'>Project Title</div>
+						
+							<div class='block__content'>
+								Alcohol concrete neon tube table shrine DIY rebar. Market convenience store Chiba tanto cartel assassin range-rover woman fluidity pistol narrative. Grenade industrial grade human chrome futurity tanto papier-mache plastic Kowloon stimulate A.I. jeans.
+							</div>
+						
+							<div class='block__links'>
+								<a class='block__links__a fa fa-link' href='#'>Docs</a>
+								<a class='block__links__a fa fa-github' href='#'>Github</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
 		</div>
 
 		<div class='about-view' data-view='/about'>
@@ -74,7 +99,6 @@
 
 	<script async defer src='./dist/js/script.js'></script>
 
-	<link type="text/css" href="./dist/css/style.css" rel="stylesheet" />
-	<link href="//fonts.googleapis.com/css?family=Raleway:100,400" rel="stylesheet" />
+	<link href="./dist/css/style.css" rel="stylesheet" />
 </body>
 </html>

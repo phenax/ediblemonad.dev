@@ -2,7 +2,7 @@
 import Component from '../component';
 import Router from '../libs/router';
 
-export default class RouterLinks extends Component {
+class RouterLinks extends Component {
 
 	onMount() {
 
@@ -30,3 +30,5 @@ export default class RouterLinks extends Component {
 		Router.trigger(e.currentTarget.getAttribute('href'));
 	}
 }
+
+export default new RouterLinks();

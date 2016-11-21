@@ -1,22 +1,24 @@
 
 import Router from './libs/router';
 
-import Menu from './components/menu';
-import RouterLinks from './components/links';
+import menu from './components/menu';
+import routerLinks from './components/links';
 
 //  All mountables(elements to mount when the router is set up)
 const mountElems= [
-	new Menu(),
-	new RouterLinks(),
+	menu,
+	routerLinks,
 ];
 
 // Add a route change listener
 Router.onRouteChange(() => {
 
+	// Remove hash(if the user had js disabled and just enabled it)
 	if(window.location.hash.length)
 		window.location.hash= '';
 
-	mountElems[0].hide();
+	// Hide menu
+	menu.hide();
 });
 
 // Router configuration

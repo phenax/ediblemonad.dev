@@ -5,6 +5,10 @@
 @import 'media';
 @import 'grid';
 
+html, body {
+	background-color: #eee;
+}
+
 :root {
 	font-size: 16px;
 	color: #222;

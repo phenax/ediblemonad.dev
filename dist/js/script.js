@@ -200,7 +200,7 @@ var RouterLinks = function (_Component) {
 	return RouterLinks;
 }(_component2.default);
 
-exports.default = RouterLinks;
+exports.default = new RouterLinks();
 
 /***/ },
 /* 2 */
@@ -299,7 +299,7 @@ var Menu = function (_Component) {
 	return Menu;
 }(_component2.default);
 
-exports.default = Menu;
+exports.default = new Menu();
 
 /***/ },
 /* 3 */
@@ -849,14 +849,16 @@ var _links2 = _interopRequireDefault(_links);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //  All mountables(elements to mount when the router is set up)
-var mountElems = [new _menu2.default(), new _links2.default()];
+var mountElems = [_menu2.default, _links2.default];
 
 // Add a route change listener
 _router2.default.onRouteChange(function () {
 
+	// Remove hash(if the user had js disabled and just enabled it)
 	if (window.location.hash.length) window.location.hash = '';
 
-	mountElems[0].hide();
+	// Hide menu
+	_menu2.default.hide();
 });
 
 // Router configuration

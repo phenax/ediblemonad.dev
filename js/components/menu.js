@@ -1,7 +1,7 @@
 
 import Component from '../component';
 
-export default class Menu extends Component {
+class Menu extends Component {
 
 	get classNames() {
 		return {
@@ -61,5 +61,6 @@ export default class Menu extends Component {
 		if(this.$menu.classList.contains(this.classNames.menuVisible))
 			this.$menu.classList.remove(this.classNames.menuVisible);
 	}
-
 }
+
+export default new Menu();

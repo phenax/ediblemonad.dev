@@ -21,11 +21,14 @@
 		pointer-events: auto;
 
 		.menu__side,
-		.menu__list,
-		.menu__section__container {
+		.menu__list {
 			transition: #{$transition};
 			transform: none;
 			opacity: 1;
+		}
+
+		.menu__list__li {
+			transform: none;
 		}
 	}
 
@@ -44,6 +47,8 @@
 		align-items: center;
 		justify-content: center;
 
+		box-shadow: 0 0 30px 1px rgba(0,0,0,.2);
+
 		opacity: 0;
 		will-change: transform, opacity;
 		transition: #{$transition}, opacity 0s linear #{$animationTime};
@@ -52,6 +57,7 @@
 	&__side {
 		background-color: $color_accent_dark;
 
+		contain: strict;
 		transform: translateX(-100%);
 	}
 
@@ -61,14 +67,30 @@
 
 		transform: translateX(100%);
 
-		li {
+		&__li {
 			width: 45%;
+			transition: transform #{$animationTime} ease-in-out ;
+
+			@for $i from 1 through 4 {
+				&:nth-child(#{$i}) {
+					transition-delay:#{($i - 1) * .1}s;
+				}
+			}
+
+			will-change: transform;
+			transform: translateX(300px);
 		}
 		
 		&__link {
 			color: #fff;
 			padding: 1em;
 			font-weight: 100;
+
+			transition: color .3s ease-in-out;
+
+			&:hover {
+				color: $color_accent;
+			}
 
 			.title {
 				font-size: 2em;
@@ -77,7 +99,7 @@
 			.descr {
 				font-size: .9em;
 				opacity: .8;
-				letter-spacing: .05em;
+				letter-spacing: .08em;
 				padding-top: .2em;
 			}
 		}
