@@ -14,8 +14,7 @@ class Router extends EventEmitter {
 		super();
 
 		// All routes
-		// TODO: Use Map with a polyfill maybe?
-		this.routes= {};
+		this.routes= new Map();
 
 		this._routeChangeHandler= this._routeChangeHandler.bind(this);
 		this.triggerUpdate= this.triggerUpdate.bind(this);
@@ -61,7 +60,7 @@ class Router extends EventEmitter {
 		const resolveRoute= (url) => `${this.baseUrl}/${url}`.replace(/[\/]+/gi, '/');
 
 		// Find the matching route for the current url
-		const matchingRoute= this.routes[resolveRoute(window.location.pathname)];
+		const matchingRoute= this.routes.get(resolveRoute(window.location.pathname));
 
 		// If a match exists
 		if(matchingRoute) {
@@ -120,7 +119,7 @@ class Router extends EventEmitter {
 
 		// If the route had a url field, add the route
 		if(route.url)
-			this.routes[route.url] = route;
+			this.routes.set(route.url, route);
 
 		return this;
 	}

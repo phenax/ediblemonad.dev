@@ -105,10 +105,9 @@ var Router = function (_EventEmitter) {
 		_classCallCheck(this, Router);
 
 		// All routes
-		// TODO: Use Map with a polyfill maybe?
 		var _this = _possibleConstructorReturn(this, (Router.__proto__ || Object.getPrototypeOf(Router)).call(this));
 
-		_this.routes = {};
+		_this.routes = new Map();
 
 		_this._routeChangeHandler = _this._routeChangeHandler.bind(_this);
 		_this.triggerUpdate = _this.triggerUpdate.bind(_this);
@@ -168,7 +167,7 @@ var Router = function (_EventEmitter) {
 			};
 
 			// Find the matching route for the current url
-			var matchingRoute = this.routes[resolveRoute(window.location.pathname)];
+			var matchingRoute = this.routes.get(resolveRoute(window.location.pathname));
 
 			// If a match exists
 			if (matchingRoute) {
@@ -231,7 +230,7 @@ var Router = function (_EventEmitter) {
 
 
 			// If the route had a url field, add the route
-			if (route.url) this.routes[route.url] = route;
+			if (route.url) this.routes.set(route.url, route);
 
 			return this;
 		}
