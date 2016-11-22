@@ -3,8 +3,8 @@ const autoprefixer= require('gulp-autoprefixer');
 const sass= require('gulp-sass');
 const minify= require('gulp-clean-css');
 
-const BUILD_DIR= "./dist/css";
-const APP_DIR= "./scss";
+const BUILD_DIR= "./src/dist/css";
+const APP_DIR= "./src/scss";
 
 
 function getCompiledStream() {

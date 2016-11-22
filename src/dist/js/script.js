@@ -167,7 +167,7 @@ var Router = function (_EventEmitter) {
 			};
 
 			// Find the matching route for the current url
-			var matchingRoute = this.routes.get(resolveRoute(window.location.pathname));
+			var matchingRoute = this.routes.get(resolveRoute(window.location.pathname.replace(/\/$/, '')));
 
 			// If a match exists
 			if (matchingRoute) {
@@ -180,7 +180,7 @@ var Router = function (_EventEmitter) {
 			} else {
 
 				// If a match is not found, navigate back to the default(this.otherwise) route
-				this.trigger(this.otherwise);
+				// this.trigger(this.otherwise);
 			}
 		}
 
@@ -850,21 +850,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //  All mountables(elements to mount when the router is set up)
 var mountElems = [_menu2.default, _links2.default];
 
-// Add a route change listener
-_router2.default.onRouteChange(function () {
+// If it supports pushState routing
+if ('history' in window && 'pushState' in window.history) {
 
-	// Remove hash(if the user had js disabled and just enabled it)
-	if (window.location.hash.length) window.location.hash = '';
+	// Add a route change listener
+	_router2.default.onRouteChange(function () {
 
-	// Hide menu
-	_menu2.default.hide();
-});
+		// Remove hash(if the user had js disabled and just enabled it)
+		if (window.location.hash.length) window.location.hash = '';
 
-// Router configuration
-_router2.default.add({ url: '/' }).add({ url: '/about' }).add({ url: '/contact' }).init({
-	otherwise: '/',
-	mounts: mountElems
-});
+		// Hide menu
+		_menu2.default.hide();
+	});
+
+	// Router configuration
+	_router2.default.add({ url: '/' }).add({ url: '/about' }).add({ url: '/skills' }).add({ url: '/contact' }).init({
+		otherwise: '/',
+		mounts: mountElems
+	});
+} else {
+
+	// Else mount the elements
+	mountElems.forEach(function (el) {
+		return el.onMount();
+	});
+}
 
 /***/ }
 /******/ ]);

@@ -1,6 +1,6 @@
 
 /**
- * ContactPage
+ * TopBar
  *
  * My react component description
  *
@@ -24,12 +24,23 @@
 
 import React from 'react';
 
-export default class ContactPage extends React.Component {
+
+export default class TopBar extends React.Component {
 	render() {
 		return (
-			<div class='contact-view' data-view='/contact'>
-				Contact
-			</div>
+			<header className='header'>
+				<div className='header__child header__logo'>
+					<a href='/' data-route>A</a>
+				</div>
+
+				<div className='header__child header__menubtn'>
+					<a href='#menu' className='js-open-menu fa fa-bars'></a>
+				</div>
+			</header>
 		);
 	}
 }
+
+TopBar.propTypes= {
+	
+};

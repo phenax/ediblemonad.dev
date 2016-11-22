@@ -1,6 +1,6 @@
 
 /**
- * SkillsPage
+ * AboutPage
  *
  * My react component description
  *
@@ -24,11 +24,11 @@
 
 import React from 'react';
 
-export default class SkillsPage extends React.Component {
+export default class AboutPage extends React.Component {
 	render() {
 		return (
-			<div class='skills-view' data-view='/skills'>
-				My skills
+			<div className='about-view' data-view='/about' data-active={this.props.active.toString()}>
+				About
 			</div>
 		);
 	}

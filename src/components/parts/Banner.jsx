@@ -28,10 +28,10 @@ import React from 'react';
 export default class Banner extends React.Component {
 	render() {
 		return (
-			<section class='banner'>
-				<div class='banner__content'>
-					<div class='banner__content__name'>Akshay&nbsp;Nair</div>
-					<div class='banner__content__text'>Full Stack Web Developer</div>
+			<section className='banner'>
+				<div className='banner__content'>
+					<div className='banner__content__name'>{this.props.name}</div>
+					<div className='banner__content__text'>{this.props.subtitle}</div>
 				</div>
 			</section>
 		);

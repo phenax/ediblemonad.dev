@@ -1,6 +1,6 @@
 
 /**
- * TopBar
+ * MainMenu
  *
  * My react component description
  *
@@ -24,23 +24,38 @@
 
 import React from 'react';
 
+export default class MainMenu extends React.Component {
 
-export default class TopBar extends React.Component {
 	render() {
+
 		return (
-			<header class='header'>
-				<div class='header__child header__logo'>
-					<a href='/' data-route>A</a>
+
+			<div className='menu row js-menu' id='menu'>
+
+				<div className='menu__section col menu__side hide-2'>
+					{this.props.children}
 				</div>
 
-				<div class='header__child header__menubtn'>
-					<a href='#menu' class='js-open-menu fa fa-bars'></a>
-				</div>
-			</header>
+				<ul className='menu__section col menu__list'>
+
+					<a href='#' className='menu__closebtn js-close-menu fa fa-close'></a>
+
+					{this.props.items.map(
+						item => (
+							<li className='menu__list__li' key={item.url}>
+								<a href={item.url} className='menu__list__link' data-route>
+									<div className='title'>{item.title}</div>
+									<div className='descr'>{item.descr}</div>
+								</a>
+							</li>
+						)
+					)}
+				</ul>
+			</div>
 		);
 	}
 }
 
-TopBar.propTypes= {
-	
+MainMenu.propTypes= {
+	items: React.PropTypes.array.isRequired
 };

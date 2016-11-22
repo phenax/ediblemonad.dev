@@ -33,10 +33,10 @@ export default class Container extends React.Component {
 	render() {
 
 		const activeProps= {
-			home: { active: false },
-			about: { active: false },
-			skills: { active: false },
-			contact: { active: false },
+			'/': { active: false },
+			'/about': { active: false },
+			'/skills': { active: false },
+			'/contact': { active: false },
 		};
 
 		if(this.props.page in activeProps) {
@@ -44,12 +44,12 @@ export default class Container extends React.Component {
 		}
 
 		return (
-			<section class='container'>
+			<section className='container'>
 				
-				<HomePage    {...activeProps.home} />
-				<AboutPage   {...activeProps.about} />
-				<SkillsPage  {...activeProps.skills} />
-				<ContactPage {...activeProps.contact} />
+				<HomePage    {...activeProps['/']} />
+				<AboutPage   {...activeProps['/about']} />
+				<SkillsPage  {...activeProps['/skills']} />
+				<ContactPage {...activeProps['/contact']} />
 
 			</section>
 		);

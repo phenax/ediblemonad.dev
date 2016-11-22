@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const {resolve} = require('path');
 
-const BUILD_DIR= resolve(__dirname, 'dist/js');     // Build directory
-const APP_DIR= resolve(__dirname, 'js');         // Source directory
+const BUILD_DIR= resolve(__dirname, 'src/dist/js');     // Build directory
+const APP_DIR= resolve(__dirname, 'src/js');         // Source directory
 
 const webpackConfig = {
 

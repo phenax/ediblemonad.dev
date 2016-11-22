@@ -1,6 +1,6 @@
 {
   "name": "portf",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "__",
   "main": "index.html",
   "scripts": {
@@ -11,6 +11,8 @@
     "build:css": "gulp build",
     "build:css:watch": "gulp",
     "build:css:prod": "gulp build -p",
+    "build:html": "node ./src/builder.js -file=./src/components/Index.jsx -out=index.html",
+    "build:html:watch": "nodemon -e jsx --exec \"npm run build:html\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,6 +31,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
+    "fs-path": "0.0.22",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean-css": "^2.0.13",

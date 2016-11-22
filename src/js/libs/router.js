@@ -60,7 +60,11 @@ class Router extends EventEmitter {
 		const resolveRoute= (url) => `${this.baseUrl}/${url}`.replace(/[\/]+/gi, '/');
 
 		// Find the matching route for the current url
-		const matchingRoute= this.routes.get(resolveRoute(window.location.pathname));
+		const matchingRoute= this.routes.get(
+			resolveRoute(
+				window.location.pathname.replace(/\/$/, '')
+			)
+		);
 
 		// If a match exists
 		if(matchingRoute) {
@@ -74,7 +78,7 @@ class Router extends EventEmitter {
 		} else {
 
 			// If a match is not found, navigate back to the default(this.otherwise) route
-			this.trigger(this.otherwise);
+			// this.trigger(this.otherwise);
 		}
 	}
 

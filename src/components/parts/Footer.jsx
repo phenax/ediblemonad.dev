@@ -1,6 +1,6 @@
 
 /**
- * AboutPage
+ * Footer
  *
  * My react component description
  *
@@ -24,12 +24,18 @@
 
 import React from 'react';
 
-export default class AboutPage extends React.Component {
+
+export default class Footer extends React.Component {
 	render() {
 		return (
-			<div class='about-view' data-view='/about'>
-				About
-			</div>
+			<footer className='footer'>
+
+				<div className='footer__bottom'>All rights reserved. Akshay Nair 2016 &copy;</div>
+			</footer>
 		);
 	}
 }
+
+Footer.propTypes= {
+	
+};
