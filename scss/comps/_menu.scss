@@ -11,6 +11,8 @@
 
 	contain: strict;
 
+	font-size: 1em;
+
 	// The animation duration for the menu closing
 	$animationTime: .4s;
 	$transition: transform #{$animationTime} ease-in-out;

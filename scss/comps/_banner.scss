@@ -1,8 +1,10 @@
 
 .banner {
 	background-color: $color_primary;
-	padding: 1em;
-	padding-top: 3em;
+	padding: 2em 1em;
+	font-size: 1em;
+	text-align: left;
+	// padding-top: 3em;
 
 	&__content {
 		width: 80%;
