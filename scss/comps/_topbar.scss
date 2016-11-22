@@ -1,0 +1,42 @@
+
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+	padding: .1em;
+
+	z-index: 9;
+
+	// background-color: darken($color_primary, 2%);
+	// background-color: $color_accent_dark;
+	// box-shadow: 0 0 10px 3px rgba(0,0,0,.2);
+
+	font-size: 1.4em;
+
+	&__child {
+		display: flex;
+		flex: 1;
+
+		& > a {
+			display: inline-block;
+			padding: 1.5em 1.8em;
+			color: #fff;
+		}
+	}
+
+	&__logo {
+		justify-content: flex-start;
+
+		a {
+			// background-color: darken($color_primary, 2%);
+		}
+	}
+
+	&__menubtn {
+		justify-content: flex-end;
+	}
+}

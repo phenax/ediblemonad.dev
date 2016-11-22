@@ -1,36 +1,4 @@
 
-.header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-
-	display: flex;
-	justify-content: space-between;
-	padding: .1em;
-
-	font-size: 1.5em;
-
-	&__child {
-		display: flex;
-		flex: 1;
-
-		& > a {
-			display: inline-block;
-			padding: 1em 1.1em;
-			color: #fff;
-		}
-	}
-
-	&__logo {
-		justify-content: flex-start;
-	}
-
-	&__menubtn {
-		justify-content: flex-end;
-	}
-}
-
 .banner {
 	background-color: $color_primary;
 	padding: 1em;
