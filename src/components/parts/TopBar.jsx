@@ -2,7 +2,7 @@
 /**
  * TopBar
  *
- * My react component description
+ * The topbar/header of the page
  *
  * Copyright (C) 2016 Akshay Nair
  *
@@ -30,7 +30,9 @@ export default class TopBar extends React.Component {
 		return (
 			<header className='header'>
 				<div className='header__child header__logo'>
-					<a href='/' data-route>A</a>
+					<a href='/' data-route>
+						
+					</a>
 				</div>
 
 				<div className='header__child header__menubtn'>

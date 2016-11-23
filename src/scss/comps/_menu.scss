@@ -36,14 +36,14 @@
 		}
 	}
 
-	&__closebtn {
+	&__closebtn.menu__closebtn {
 		position: absolute;
 		right: 0;
 		top: 0;
 		z-index: 11;
 		padding: 1em;
 		color: #fff;
-		font-size: 1.8em;
+		font-size: 1.7em;
 	}
 
 	&__section {
@@ -110,5 +110,18 @@
 				padding-top: .2em;
 			}
 		}
+	}
+}
+
+.logo {
+	text-align: center;
+
+	&__img {
+
+	}
+
+	&__text {
+		font-size: 1.5em;
+		color: #fff;
 	}
 }

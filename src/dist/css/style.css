@@ -181,14 +181,14 @@ html, body {
       opacity: 1; }
     .menu:target .menu__list__li, .menu.menu--visible .menu__list__li {
       transform: none; }
-  .menu__closebtn {
+  .menu__closebtn.menu__closebtn {
     position: absolute;
     right: 0;
     top: 0;
     z-index: 11;
     padding: 1em;
     color: #fff;
-    font-size: 1.8em; }
+    font-size: 1.7em; }
   .menu__section {
     display: flex;
     align-items: center;
@@ -237,6 +237,12 @@ html, body {
         opacity: .8;
         letter-spacing: .08em;
         padding-top: .2em; }
+
+.logo {
+  text-align: center; }
+  .logo__text {
+    font-size: 1.5em;
+    color: #fff; }
 
 .work {
   width: 100%;

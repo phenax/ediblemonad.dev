@@ -71,9 +71,14 @@ export default class IndexLayout extends React.Component {
 				<body>
 					
 					<MainMenu items={IndexLayout.pages}>
-						<div>
-							Hello World
+						{/*<a href='/'>*/}
+		
+						<div className='logo'>
+							<img className='logo__img' src='/src/dist/img/logo.png' width='150' />
+							<div className='logo__text'>Hello World</div>
 						</div>
+		
+						{/*</a>*/}
 					</MainMenu>
 
 					<TopBar />
