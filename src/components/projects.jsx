@@ -24,11 +24,6 @@ export default [
 		links: [
 			{
 				url: '#',
-				icon: 'fa-link',
-				title: 'Docs'
-			},
-			{
-				url: '#',
 				icon: 'fa-github',
 				title: 'Github'
 			},

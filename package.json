@@ -5,14 +5,14 @@
   "main": "index.html",
   "scripts": {
     "start": "live-server --no-browser",
+    "build:html": "./src/builder.js -file=./src/components/Index.jsx -out=index.html",
     "build:js": "webpack",
-    "build:js:watch": "webpack -w",
-    "build:js:prod": "webpack -p",
     "build:css": "gulp build",
-    "build:css:watch": "gulp",
+    "build:js:prod": "webpack -p",
     "build:css:prod": "gulp build -p",
-    "build:html": "node ./src/builder.js -file=./src/components/Index.jsx -out=index.html",
-    "build:html:watch": "nodemon -e jsx --exec \"npm run build:html\"",
+    "watch:js": "webpack -w",
+    "watch:css": "gulp",
+    "watch:html": "nodemon -e jsx --exec \"npm run build:html\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
