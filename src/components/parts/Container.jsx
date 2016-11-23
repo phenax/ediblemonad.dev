@@ -2,7 +2,7 @@
 /**
  * Container
  *
- * My react component description
+ * Page container
  *
  * Copyright (C) 2016 Akshay Nair
  *
@@ -30,32 +30,34 @@ import SkillsPage from '../pages/SkillsPage.jsx';
 import ContactPage from '../pages/ContactPage.jsx';
 
 export default class Container extends React.Component {
+
+	static propTypes= {
+		page: React.PropTypes.string.isRequired
+	};
+
+	activeProps= {
+		'/':        { active: false },
+		'/about':   { active: false },
+		'/skills':  { active: false },
+		'/contact': { active: false },
+	};
+
 	render() {
 
-		const activeProps= {
-			'/': { active: false },
-			'/about': { active: false },
-			'/skills': { active: false },
-			'/contact': { active: false },
-		};
-
-		if(this.props.page in activeProps) {
-			activeProps[this.props.page].active= true;
+		if(this.props.page in this.activeProps) {
+			this.activeProps[this.props.page].active= true;
 		}
 
 		return (
 			<section className='container'>
 				
-				<HomePage    {...activeProps['/']} />
-				<AboutPage   {...activeProps['/about']} />
-				<SkillsPage  {...activeProps['/skills']} />
-				<ContactPage {...activeProps['/contact']} />
+				<HomePage    {...this.activeProps['/']} />
+				<AboutPage   {...this.activeProps['/about']} />
+				<SkillsPage  {...this.activeProps['/skills']} />
+				<ContactPage {...this.activeProps['/contact']} />
 
 			</section>
 		);
 	}
 }
 
-Container.propTypes= {
-	page: React.PropTypes.string.isRequired
-};

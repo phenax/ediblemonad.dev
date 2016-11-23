@@ -78,7 +78,7 @@ class Router extends EventEmitter {
 		} else {
 
 			// If a match is not found, navigate back to the default(this.otherwise) route
-			// this.trigger(this.otherwise);
+			this.trigger(this.otherwise);
 		}
 	}
 
@@ -101,8 +101,9 @@ class Router extends EventEmitter {
 		if($views.length) {
 
 			// If the view is already rendered, dont re-render
-			if($views[0] === document.querySelector('[data-active="true"]'))
+			if($views.filter($view => ($view.dataset.active === 'true')).length) {
 				return;
+			}
 
 			// "Un-render" all other views
 			Array
@@ -114,7 +115,7 @@ class Router extends EventEmitter {
 					);
 
 			// Render the current view
-			$views[0].dataset.active='true';
+			$views.forEach( $view => { $view.dataset.active= 'true'; });
 		}
 	}
 

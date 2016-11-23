@@ -2,7 +2,7 @@
 /**
  * Footer
  *
- * My react component description
+ * Page footer
  *
  * Copyright (C) 2016 Akshay Nair
  *
@@ -29,13 +29,8 @@ export default class Footer extends React.Component {
 	render() {
 		return (
 			<footer className='footer'>
-
 				<div className='footer__bottom'>All rights reserved. Akshay Nair 2016 &copy;</div>
 			</footer>
 		);
 	}
 }
-
-Footer.propTypes= {
-	
-};

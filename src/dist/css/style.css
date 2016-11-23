@@ -155,8 +155,11 @@ html, body {
   .header__menubtn {
     justify-content: flex-end; }
 
-.footer {
-  margin: 10em auto; }
+.footer__bottom {
+  color: #666;
+  text-align: center;
+  font-size: .8em;
+  padding: 1.5em 0; }
 
 .menu {
   position: fixed;
@@ -222,7 +225,9 @@ html, body {
       color: #fff;
       padding: 1em;
       font-weight: 100;
-      transition: color .3s ease-in-out; }
+      contain: content style;
+      will-change: color;
+      transition: color .25s ease-in-out; }
       .menu__list__link:hover {
         color: #58c9b9; }
       .menu__list__link .title {

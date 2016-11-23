@@ -91,7 +91,9 @@
 			padding: 1em;
 			font-weight: 100;
 
-			transition: color .3s ease-in-out;
+			contain: content style;
+			will-change: color;
+			transition: color .25s ease-in-out;
 
 			&:hover {
 				color: $color_accent;

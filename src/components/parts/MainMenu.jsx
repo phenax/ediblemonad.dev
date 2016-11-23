@@ -2,7 +2,7 @@
 /**
  * MainMenu
  *
- * My react component description
+ * The fullscreen main menu
  *
  * Copyright (C) 2016 Akshay Nair
  *
@@ -25,6 +25,10 @@
 import React from 'react';
 
 export default class MainMenu extends React.Component {
+
+	static propTypes= {
+		items: React.PropTypes.array.isRequired
+	};
 
 	render() {
 
@@ -56,6 +60,3 @@ export default class MainMenu extends React.Component {
 	}
 }
 
-MainMenu.propTypes= {
-	items: React.PropTypes.array.isRequired
-};

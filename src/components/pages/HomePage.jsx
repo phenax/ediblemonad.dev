@@ -2,7 +2,7 @@
 /**
  * HomePage
  *
- * My react component description
+ * The home page for the / route
  *
  * Copyright (C) 2016 Akshay Nair
  *
@@ -28,6 +28,10 @@ import projectList from '../projects.jsx';
 
 
 export default class HomePage extends React.Component {
+
+	static propTypes= {
+		active: React.PropTypes.bool
+	};
 
 	render() {
 

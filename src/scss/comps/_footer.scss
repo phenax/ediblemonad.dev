@@ -1,4 +1,11 @@
 
 .footer {
-	margin: 10em auto;
+
+
+	&__bottom {
+		color: #666;
+		text-align: center;
+		font-size: .8em;
+		padding: 1.5em 0;
+	}
 }

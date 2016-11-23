@@ -2,7 +2,7 @@
 /**
  * Head
  *
- * My react component description
+ * The stuff that goes inside the <head>
  *
  * Copyright (C) 2016 Akshay Nair
  *
@@ -25,6 +25,11 @@
 import React from 'react';
 
 export default class Head extends React.Component {
+
+	static propTypes= {
+		title: React.PropTypes.string.isRequired
+	};
+
 	render() {
 		return (
 			<head>
@@ -35,6 +40,3 @@ export default class Head extends React.Component {
 	}
 }
 
-Head.propTypes= {
-	title: React.PropTypes.string.isRequired
-};

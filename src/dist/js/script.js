@@ -180,7 +180,7 @@ var Router = function (_EventEmitter) {
 			} else {
 
 				// If a match is not found, navigate back to the default(this.otherwise) route
-				// this.trigger(this.otherwise);
+				this.trigger(this.otherwise);
 			}
 		}
 
@@ -207,7 +207,11 @@ var Router = function (_EventEmitter) {
 			if ($views.length) {
 
 				// If the view is already rendered, dont re-render
-				if ($views[0] === document.querySelector('[data-active="true"]')) return;
+				if ($views.filter(function ($view) {
+					return $view.dataset.active === 'true';
+				}).length) {
+					return;
+				}
 
 				// "Un-render" all other views
 				Array.from(this.$views).filter(function ($el) {
@@ -217,7 +221,9 @@ var Router = function (_EventEmitter) {
 				});
 
 				// Render the current view
-				$views[0].dataset.active = 'true';
+				$views.forEach(function ($view) {
+					$view.dataset.active = 'true';
+				});
 			}
 		}
 

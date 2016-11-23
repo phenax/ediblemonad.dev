@@ -33,30 +33,33 @@ import Container from './parts/Container.jsx';
 
 export default class IndexLayout extends React.Component {
 
-	static get pages() {
-		return [
-			{
-				url: '/',
-				title: 'Work',
-				descr: 'Cool projects(not bragging)'
-			},
-			{
-				url: '/about',
-				title: 'About',
-				descr: 'Some info about this metal head'
-			},
-			{
-				url: '/skills',
-				title: 'Skills',
-				descr: 'I haz mad 5killz bro'
-			},
-			{
-				url: '/contact',
-				title: 'Contact',
-				descr: 'Get in touch'
-			},
-		];
-	}
+	static propTypes= {
+		page: React.PropTypes.object.isRequired
+	};
+
+	static pages= [
+		{
+			url: '/',
+			title: 'Work',
+			descr: 'Cool projects(not bragging)'
+		},
+		{
+			url: '/about',
+			title: 'About',
+			descr: 'Some info about this metal head'
+		},
+		{
+			url: '/skills',
+			title: 'Skills',
+			descr: 'I haz mad 5killz bro'
+		},
+		{
+			url: '/contact',
+			title: 'Contact',
+			descr: 'Get in touch'
+		},
+	];
+
 
 	render() {
 
@@ -84,15 +87,12 @@ export default class IndexLayout extends React.Component {
 					<script async defer src='/src/dist/js/script.js'></script>
 
 					{ /* In the body to prevent render blocking */ }
+					<link href="/src/dist/css/style.css" rel="stylesheet" />
 					<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 					<link href="//fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400" rel="stylesheet" />
-					<link href="/src/dist/css/style.css" rel="stylesheet" />
 				</body>
 			</html>
 		);
 	}
 }
 
-IndexLayout.propTypes= {
-	page: React.PropTypes.object.isRequired
-};

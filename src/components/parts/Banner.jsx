@@ -2,7 +2,7 @@
 /**
  * Banner
  *
- * My react component description
+ * Portfolio banner component
  *
  * Copyright (C) 2016 Akshay Nair
  *
@@ -24,8 +24,13 @@
 
 import React from 'react';
 
-
 export default class Banner extends React.Component {
+
+	static propTypes= {
+		name: React.PropTypes.string.isRequired,
+		subtitle: React.PropTypes.string.isRequired
+	};
+
 	render() {
 		return (
 			<section className='banner'>
@@ -38,6 +43,3 @@ export default class Banner extends React.Component {
 	}
 }
 
-Banner.propTypes= {
-	
-};
