@@ -2,7 +2,7 @@
 /**
  * Index
  *
- * My react component description
+ * The main layout that has everything
  *
  * Copyright (C) 2016 Akshay Nair
  *
@@ -37,26 +37,31 @@ export default class IndexLayout extends React.Component {
 		page: React.PropTypes.object.isRequired
 	};
 
+	// All the routes
 	static pages= [
 		{
 			url: '/',
 			title: 'Work',
-			descr: 'Cool projects(not bragging)'
+			descr: 'Cool projects(not bragging)',
+			menu: true,
 		},
 		{
 			url: '/about',
 			title: 'About',
-			descr: 'Some info about this metal head'
+			descr: 'Some info about this metal head',
+			menu: true,
 		},
 		{
 			url: '/skills',
 			title: 'Skills',
-			descr: 'I haz mad 5killz bro'
+			descr: 'I haz mad 5killz bro',
+			menu: true,
 		},
 		{
 			url: '/contact',
 			title: 'Contact',
-			descr: 'Get in touch'
+			descr: 'Get in touch',
+			menu: true,
 		},
 	];
 
@@ -70,19 +75,18 @@ export default class IndexLayout extends React.Component {
 
 				<body>
 					
-					<MainMenu items={IndexLayout.pages}>
+					<MainMenu items={IndexLayout.pages.filter( page => page.menu )}>
 						{/*<a href='/'>*/}
 		
 						<div className='logo'>
-							<img className='logo__img' src='/src/dist/img/logo.png' width='150' />
-							<div className='logo__text'>Hello World</div>
+							<img className='logo__img' src='/src/dist/img/logo.png' />
+							<div className='logo__text'>Hey There</div>
 						</div>
 		
 						{/*</a>*/}
 					</MainMenu>
 
 					<TopBar />
-
 					<Banner name='Akshay Nair' subtitle='Full Stack Web Developer' />
 
 					<Container page={this.props.page.url} />

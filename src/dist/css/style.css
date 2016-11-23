@@ -155,11 +155,13 @@ html, body {
   .header__menubtn {
     justify-content: flex-end; }
 
-.footer__bottom {
-  color: #666;
-  text-align: center;
-  font-size: .8em;
-  padding: 1.5em 0; }
+.footer {
+  background-color: #252C33; }
+  .footer__bottom {
+    color: #aaa;
+    text-align: center;
+    font-size: .8em;
+    padding: 1.5em 0; }
 
 .menu {
   position: fixed;
@@ -173,13 +175,9 @@ html, body {
   font-size: 1em; }
   .menu:target, .menu.menu--visible {
     pointer-events: auto; }
-    .menu:target .menu__side,
-    .menu:target .menu__list, .menu.menu--visible .menu__side,
-    .menu.menu--visible .menu__list {
-      transition: transform 0.4s ease-in-out;
-      transform: none;
-      opacity: 1; }
-    .menu:target .menu__list__li, .menu.menu--visible .menu__list__li {
+    .menu:target .menu__section,
+    .menu:target .menu__list__li, .menu.menu--visible .menu__section,
+    .menu.menu--visible .menu__list__li {
       transform: none; }
   .menu__closebtn.menu__closebtn {
     position: absolute;
@@ -195,22 +193,22 @@ html, body {
     justify-content: center;
     height: 100vh;
     box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    will-change: transform, opacity;
-    transition: transform 0.4s ease-in-out, opacity 0s linear 0.4s; }
+    will-change: transform;
+    contain: strict;
+    transition: transform 0.4s ease-in-out; }
   .menu__side {
     background-color: #519d9e;
-    contain: strict;
-    transform: translateX(-100%); }
+    transform: translateX(-102%); }
   .menu__list {
     background-color: #252C33;
     flex-direction: column;
-    transform: translateX(100%); }
+    transform: translateX(102%); }
     .menu__list__li {
       width: 45%;
       transition: transform 0.4s ease-in-out;
       transform: translateX(300px);
-      will-change: transform; }
+      will-change: transform;
+      containt: strict; }
       .menu__list__li:nth-child(1) {
         transition-delay: 0s; }
       .menu__list__li:nth-child(2) {
@@ -225,7 +223,7 @@ html, body {
       color: #fff;
       padding: 1em;
       font-weight: 100;
-      contain: content style;
+      contain: content;
       will-change: color;
       transition: color .25s ease-in-out; }
       .menu__list__link:hover {
@@ -240,6 +238,8 @@ html, body {
 
 .logo {
   text-align: center; }
+  .logo__img {
+    width: 150px; }
   .logo__text {
     font-size: 1.5em;
     color: #fff; }

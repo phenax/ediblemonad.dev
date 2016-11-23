@@ -24,13 +24,7 @@
 	&:target, &.menu--visible {
 		pointer-events: auto;
 
-		.menu__side,
-		.menu__list {
-			transition: #{$transition};
-			transform: none;
-			opacity: 1;
-		}
-
+		.menu__section,
 		.menu__list__li {
 			transform: none;
 		}
@@ -54,23 +48,21 @@
 
 		box-shadow: 0 0 30px 1px rgba(0,0,0,.2);
 
-		opacity: 0;
-		will-change: transform, opacity;
-		transition: #{$transition}, opacity 0s linear #{$animationTime};
+		will-change: transform;
+		contain: strict;
+		transition: #{$transition};
 	}
 
 	&__side {
 		background-color: $color_accent_dark;
-
-		contain: strict;
-		transform: translateX(-100%);
+		transform: translateX(-102%);
 	}
 
 	&__list {
 		background-color: $color_primary;
 		flex-direction: column;
 
-		transform: translateX(100%);
+		transform: translateX(102%);
 
 		&__li {
 			width: 45%;
@@ -78,6 +70,7 @@
 
 			transform: translateX(300px);
 			will-change: transform;
+			containt: strict;
 
 			@for $i from 1 through ($numberOfMenuItems + 1) {
 				&:nth-child(#{$i}) {
@@ -91,7 +84,7 @@
 			padding: 1em;
 			font-weight: 100;
 
-			contain: content style;
+			contain: content;
 			will-change: color;
 			transition: color .25s ease-in-out;
 
@@ -117,7 +110,7 @@
 	text-align: center;
 
 	&__img {
-
+		width: 150px;
 	}
 
 	&__text {
