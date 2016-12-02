@@ -47,7 +47,7 @@ export default class IndexLayout extends React.Component {
 		},
 		{
 			url: '/about',
-			title: 'About',
+			title: 'About Me',
 			descr: 'Some info about this metal head',
 			menu: true,
 		},

@@ -1,0 +1,19 @@
+
+.about {
+	padding: 1.6em 1em;
+	max-width: 1000px;
+	margin: 2.5em auto;
+
+	&__title {
+		font-size: 2em;
+		// text-transform: uppercase;
+		font-weight: 100;
+		padding: .25em .5em;
+	}
+
+	&__text {
+		font-size: 1.2em;
+		padding: 1em 0;
+		line-height: 1.5em;
+	}
+}

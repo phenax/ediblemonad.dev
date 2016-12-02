@@ -158,7 +158,8 @@ html, body {
 .footer {
   background-color: #252C33; }
   .footer__bottom {
-    color: #aaa;
+    color: #fff;
+    opacity: .7;
     text-align: center;
     font-size: .8em;
     padding: 1.5em 0; }
@@ -223,6 +224,8 @@ html, body {
       color: #fff;
       padding: 1em;
       font-weight: 100;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       contain: content;
       will-change: color;
       transition: color .25s ease-in-out; }
@@ -315,6 +318,19 @@ html, body {
       .work__project .block-sm::before {
         right: 100%;
         border-right-color: #fff; }
+
+.about {
+  padding: 1.6em 1em;
+  max-width: 1000px;
+  margin: 2.5em auto; }
+  .about__title {
+    font-size: 2em;
+    font-weight: 100;
+    padding: .25em .5em; }
+  .about__text {
+    font-size: 1.2em;
+    padding: 1em 0;
+    line-height: 1.5em; }
 
 [data-view] {
   display: none; }

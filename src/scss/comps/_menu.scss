@@ -83,6 +83,8 @@
 			color: #fff;
 			padding: 1em;
 			font-weight: 100;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
 
 			contain: content;
 			will-change: color;
