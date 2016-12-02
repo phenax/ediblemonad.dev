@@ -33,9 +33,6 @@ import Container from './parts/Container.jsx';
 
 export default class IndexLayout extends React.Component {
 
-	static propTypes= {
-		page: React.PropTypes.object.isRequired
-	};
 
 	// All the routes
 	static pages= [
@@ -68,13 +65,28 @@ export default class IndexLayout extends React.Component {
 
 	render() {
 
+		// TODO: Look for a no js solution to this
+		const asyncLoad= {
+			media: 'bullshit-media-query-to-trick-the-browser',
+			id: 'asyncStyleSheet',
+			rel: 'stylesheet',
+		};
+
 		return (
 			<html>
 
 				<Head title='Akshay Nair' />
 
 				<body>
-					
+
+					{/* Load when theres nothing left to block */}
+					<link {...asyncLoad} lazyload href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' />
+					<link {...asyncLoad} lazyload href='//fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400' />
+
+					{ /* In the body to prevent render blocking */ }
+					<link href='/src/dist/css/style.css' rel='stylesheet' />
+
+
 					<MainMenu items={IndexLayout.pages.filter( page => page.menu )}>
 						{/*<a href='/'>*/}
 		
@@ -94,14 +106,38 @@ export default class IndexLayout extends React.Component {
 					<Footer />
 
 					<script async defer src='/src/dist/js/script.js'></script>
-
-					{ /* In the body to prevent render blocking */ }
-					<link href="/src/dist/css/style.css" rel="stylesheet" />
-					<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-					<link href="//fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400" rel="stylesheet" />
+					<script dangerouslySetInnerHTML={{ __html: this.deferAsyncForLinks }} />
 				</body>
 			</html>
 		);
 	}
+
+
+	deferAsyncForLinks= `
+
+		document.addEventListener('DOMContentLoaded', function loadStyleSheets() {
+
+			var $deferLinksWrapper= document.getElementById('deferedStylesheets');
+			var $asyncLinks= document.querySelectorAll('#asyncStyleSheet');
+
+			Array.from($asyncLinks)
+				.forEach(function($link) {
+					$link.setAttribute('media', 'all');
+				});					
+
+			if($deferLinksWrapper) {
+				var $wrapper= document.createElement('div');
+				$wrapper.innerHTML= $deferLinksWrapper.textContent;
+
+				document.body.appendChild($wrapper);
+			}
+		});
+
+	`.replace(/\s+/g, ' ');
+
+
+	static propTypes= {
+		page: React.PropTypes.object.isRequired
+	};
 }
 

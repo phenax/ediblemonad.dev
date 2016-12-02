@@ -6,7 +6,7 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 ### RIGHT NOW
 - [x] Add a react based templating thingy
 - [x] Complete router
-- [ ] Add about me page content
+- [x] Add about me page content
 - [ ] Add contact me page content
 - [ ] Make adaptive to mobile viewport
 
