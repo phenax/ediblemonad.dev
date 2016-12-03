@@ -59,7 +59,7 @@ export default class IndexLayout extends React.Component {
 			title: 'Contact',
 			descr: 'Get in touch',
 			menu: true,
-		},
+		}
 	];
 
 

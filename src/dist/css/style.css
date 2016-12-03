@@ -156,13 +156,29 @@ html, body {
     justify-content: flex-end; }
 
 .footer {
+  padding: 1px 0;
   background-color: #252C33; }
   .footer__bottom {
     color: #fff;
     opacity: .7;
     text-align: center;
     font-size: .8em;
-    padding: 1.5em 0; }
+    padding: .5em 0;
+    background-color: rgba(0, 0, 0, 0.05); }
+  .footer__links {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: .5em 1em;
+    text-align: center; }
+    .footer__links .col {
+      padding: 1em 0; }
+    .footer__links__a {
+      display: inline-block;
+      color: #58c9b9;
+      opacity: .5;
+      transition: opacity .2s ease-in-out; }
+      .footer__links__a:hover {
+        opacity: 1; }
 
 .menu {
   position: fixed;

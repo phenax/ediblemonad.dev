@@ -1,5 +1,6 @@
 
 .footer {
+	padding: 1px 0;
 	background-color: $color_primary;
 
 	&__bottom {
@@ -7,6 +8,29 @@
 		opacity: .7;
 		text-align: center;
 		font-size: .8em;
-		padding: 1.5em 0;
+		padding: .5em 0;
+		background-color: rgba(0,0,0,.05);
+	}
+
+	&__links {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: .5em 1em;
+		text-align: center;
+
+		.col {
+			padding: 1em 0;
+		}
+
+		&__a {
+			display: inline-block;
+			color: $color_accent;
+			opacity: .5;
+			transition: opacity .2s ease-in-out;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
 	}
 }
