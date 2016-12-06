@@ -1,0 +1,17 @@
+{
+	"short_name": "Akshay Nair",
+	"name": "Akshay Nair",
+	"author": "Akshay Nair <phenax5@gmail.com>",
+	"icons": [
+		{
+			"src": "/src/dist/img/logo.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		}
+	],
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#252C33",
+	"theme_color": "#252C33"
+}
