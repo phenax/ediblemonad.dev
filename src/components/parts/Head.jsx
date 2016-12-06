@@ -56,7 +56,7 @@ export default (props) => {
 			<meta name="twitter:description" content={descr} />
 			<meta name="twitter:image" content={logo} />
 
-			<meta name="theme-color" content="#252C33" />
+			<meta name="theme-color" content="#1E2329" />
 			<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
 			<title>{props.title}</title>
