@@ -59,6 +59,7 @@ export default props => (
 
 											link => 
 												<a key={link.title}
+													target='_blank _parent'
 													className={`block__links__a fa ${link.icon}`}
 													href={link.url}>
 
