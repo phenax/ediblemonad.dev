@@ -4,7 +4,6 @@
   "description": "__",
   "main": "index.html",
   "scripts": {
-    "start": "live-server --no-browser",
     "build:html": "./src/builder.js -file=./src/components/Index.jsx -out=index.html",
     "build:js": "webpack",
     "build:css": "gulp build",
