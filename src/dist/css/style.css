@@ -163,7 +163,7 @@ html, body {
     opacity: .7;
     text-align: center;
     font-size: .8em;
-    padding: .5em 0;
+    padding: .8em 0;
     background-color: rgba(0, 0, 0, 0.05); }
   .footer__links {
     max-width: 1000px;
@@ -335,18 +335,55 @@ html, body {
         right: 100%;
         border-right-color: #fff; }
 
-.about {
+.page-wrapper {
   padding: 1.6em 1em;
-  max-width: 1000px;
-  margin: 2.5em auto; }
-  .about__title {
+  max-width: 900px;
+  margin: 2.5em auto;
+  font-size: 1em; }
+  .page-wrapper__title {
     font-size: 2em;
     font-weight: 100;
     padding: .25em .5em; }
-  .about__text {
-    font-size: 1.2em;
+  .page-wrapper__text {
+    font-size: 1em;
     padding: 1em 0;
-    line-height: 1.5em; }
+    line-height: 1.8em; }
+    .page-wrapper__text p, .page-wrapper__text .part {
+      padding: .5em 0; }
+
+.skills__css__selector {
+  font-size: 2em;
+  font-family: "Oswald", Raleway, Helvetica, sans-serif; }
+
+.skills__css__props {
+  padding: 1em 0;
+  padding-left: 3em;
+  font-family: "Lucida Console", "Monaco", "monospace", "Raleway", "Helvetica", "sans-serif"; }
+
+.skills .css-prop__name {
+  color: #252C33; }
+  .skills .css-prop__name::after {
+    content: ':';
+    padding: 0 .4em 0 .1em; }
+
+.skills .css-prop__value::after {
+  content: ';'; }
+
+.skills .css-prop__value::before {
+  content: 'learning';
+  color: #888; }
+
+.skills .css-prop__value.cool::before {
+  content: 'good';
+  color: #519d9e; }
+
+.skills .css-prop__value.awesome::before {
+  content: 'awesome';
+  color: #A593E0; }
+
+.skills .css-prop__value.stud::before {
+  content: 'stud';
+  color: #8e44ad; }
 
 [data-view] {
   display: none; }

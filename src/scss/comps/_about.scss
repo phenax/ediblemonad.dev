@@ -1,19 +1,87 @@
 
-.about {
+.page-wrapper {
 	padding: 1.6em 1em;
-	max-width: 1000px;
+	max-width: 900px;
 	margin: 2.5em auto;
+	font-size: 1em;
 
 	&__title {
 		font-size: 2em;
-		// text-transform: uppercase;
 		font-weight: 100;
 		padding: .25em .5em;
 	}
 
 	&__text {
-		font-size: 1.2em;
+		font-size: 1em;
 		padding: 1em 0;
-		line-height: 1.5em;
+		line-height: 1.8em;
+
+		p, .part {
+			padding: .5em 0;
+		}
+	}
+}
+
+.about {
+
+
+}
+
+
+.skills {
+
+	&__css {
+
+		&__selector {
+			font-size: 2em;
+			font-family: $font_alt;
+		}
+
+		&__props {
+			padding: 1em 0;
+			padding-left: 3em;
+			// font-weight: bold;
+			font-family: 'Lucida Console', 'Monaco', 'monospace', $font;
+		}
+	}
+
+	.css-prop {
+
+		&__name {
+			color: $color_primary;
+
+			&::after {
+				content: ':';
+				padding: 0 .4em 0 .1em;
+			}
+		}
+
+		&__value {
+
+			&::after {
+				content: ';';
+			}
+
+			&::before {
+				content: 'learning';
+				color: #888;
+			}
+
+			&.cool::before {
+				content: 'good';
+				color: $color_accent_dark;
+			}
+
+			&.awesome::before {
+				content: 'awesome';
+				color: #A593E0;
+			}
+
+			&.stud::before {
+				content: 'stud';
+				color: #8e44ad;
+			}
+
+		}
 	}
 }

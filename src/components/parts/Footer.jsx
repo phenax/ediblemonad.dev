@@ -29,15 +29,17 @@ export default class Footer extends React.Component {
 	render() {
 		return (
 			<footer className='footer'>
-
-				<div className='footer__links row'>
-					<div className='col'><a href='#' className='footer__links__a'>Blog</a></div>
-					<div className='col'><a href='#' className='footer__links__a'>Lab</a></div>
-					<div className='col'><a href='#' className='footer__links__a'>Awesome</a></div>
-				</div>
-
 				<div className='footer__bottom'>All rights reserved. Akshay Nair 2016 &copy;</div>
 			</footer>
 		);
 	}
 }
+
+/*
+				<div className='footer__links row'>
+					<div className='col'><a href='/blog' className='footer__links__a'>Blog</a></div>
+					<div className='col'><a href='#' className='footer__links__a'>Lab</a></div>
+					<div className='col'><a href='#' className='footer__links__a'>Awesome</a></div>
+				</div>
+
+ */

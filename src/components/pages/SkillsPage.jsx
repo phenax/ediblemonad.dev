@@ -24,12 +24,46 @@
 
 import React from 'react';
 
-export default class SkillsPage extends React.Component {
-	render() {
-		return (
-			<div className='skills-view' data-view='/skills' data-active={this.props.active.toString()}>
-				My skills
+export default props => {
+
+	const skillsList= [
+		{ name: 'html5', level: 'stud' },
+		{ name: 'css3', level: 'stud' },
+		{ name: 'javascript-es2015', level: 'stud' },
+		{ name: 'node-js', level: 'stud' },
+		{ name: 'react-js', level: 'awesome' },
+		{ name: 'express-js', level: 'awesome' },
+		{ name: 'koa-js', level: 'cool' },
+		{ name: 'php', level: 'cool' },
+		{ name: 'flight-php', level: 'awesome' },
+		{ name: 'python', level: 'awesome' },
+		{ name: 'python-flask', level: 'cool' },
+		{ name: 'j-query', level: 'stud' },
+		{ name: 'unit testing', level: 'cool' },
+		{ name: 'progressive-webapps', level: 'learning' },
+	];
+
+	return (
+		<div className='skills-view skills page-wrapper' data-view='/skills' data-active={props.active.toString()}>
+		
+			<div className='page-wrapper__text skills__css'>
+				<div className='skills__css__selector' dangerouslySetInnerHTML={{ __html: '.skills {' }} />
+
+				<div className='skills__css__props'>
+
+					{skillsList.map(
+						(skill, i) => (
+							<div className='css-prop'>
+								<span className='css-prop__name'>{skill.name}</span>
+								<span className={`css-prop__value ${skill.level}`} />
+							</div>
+						)
+					)}
+
+				</div>
+
+				<div className='skills__css__selector' dangerouslySetInnerHTML={{ __html: '}' }} />
 			</div>
-		);
-	}
+		</div>
+	);
 }
