@@ -28,7 +28,8 @@ export default (props) => {
 
 	const descr= 'Akshay Nair is a full stack web developer with a passion for writing performant, maintainable code.';
 	const url= 'https://phenax.github.io/';
-	const logo= '/src/dist/img/logo.png';
+	const logoPath= '/src/dist/img/logo/';
+	const logo= logoPath + 'logo.png';
 
 	return (
 		<head>
@@ -61,10 +62,15 @@ export default (props) => {
 
 			<title>{props.title}</title>
 
-			<link rel="apple-touch-icon" href={logo} />
-			<link rel="icon" sizes="192x192" href={logo} />
-			<link rel="apple-touch-startup-image" href={logo} />
+			<link rel="icon" sizes="192x192" href={logoPath + "android-icon-192x192.png"} />
 			<meta name="msapplication-square310x310logo" content={logo} />
+
+			<meta name="msapplication-TileColor" content="#1E2329" />
+			<meta name="msapplication-TileImage" content={logoPath + "ms-icon-144x144.png"} />
+
+			<link rel="icon" type="image/png" sizes="192x192"  href={logoPath + "android-icon-192x192.png"} />
+			<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+			<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
 			<link rel="manifest" href="/manifest.json" />
 			<link rel="author" href="https://plus.google.com/u/0/108089047891809102209" />
@@ -72,4 +78,3 @@ export default (props) => {
 		</head>
 	);
 };
-
