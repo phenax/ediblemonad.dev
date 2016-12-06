@@ -31,10 +31,11 @@ export default props => (
 		<div className='page-wrapper__title'>Hi</div>
 
 		<div className='page-wrapper__text'>
-			<p>Rebar systema denim advert pen futurity jeans. Disposable tower boat sprawl car computer decay Legba wonton soup sunglasses denim military-grade claymore mine rain papier-mache. Industrial grade singularity shoes boat meta-post-woman sunglasses computer construct tank-traps sign courier assassin. Network tanto rain advert San Francisco dolphin receding pen bicycle.</p>
-			<p>Rebar systema denim advert pen futurity jeans. Disposable tower boat sprawl car computer decay Legba wonton soup sunglasses denim military-grade claymore mine rain papier-mache. Industrial grade singularity shoes boat meta-post-woman sunglasses computer construct tank-traps sign courier assassin. Network tanto rain advert San Francisco dolphin receding pen bicycle.</p>
-			<p>Rebar systema denim advert pen futurity jeans. Disposable tower boat sprawl car computer decay Legba wonton soup sunglasses denim military-grade claymore mine rain papier-mache. Industrial grade singularity shoes boat meta-post-woman sunglasses computer construct tank-traps sign courier assassin. Network tanto rain advert San Francisco dolphin receding pen bicycle.</p>
-			<p>Rebar systema denim advert pen futurity jeans. Disposable tower boat sprawl car computer decay Legba wonton soup sunglasses denim military-grade claymore mine rain papier-mache. Industrial grade singularity shoes boat meta-post-woman sunglasses computer construct tank-traps sign courier assassin. Network tanto rain advert San Francisco dolphin receding pen bicycle.</p>
+
+			<p>
+				Something
+			</p>
+
 		</div>
 	</div>
 );

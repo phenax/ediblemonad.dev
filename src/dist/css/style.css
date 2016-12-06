@@ -57,6 +57,8 @@ a {
 @media (max-width: 600px) {
   .hide-2 {
     display: none !important; }
+  body .contact .page-wrapper__text {
+    font-size: .7em; }
   body .work__project .block {
     min-height: 15em; }
     body .work__project .block__title {
@@ -99,7 +101,7 @@ a {
     flex: 1; }
 
 @media (max-width: 600px) {
-  .row {
+  .row:not(.no-collapse) {
     display: block; } }
 
 html, body {
@@ -314,7 +316,10 @@ html, body {
           .work__project .block__links__a:hover {
             opacity: 1; }
     .work__project .block-bg {
-      flex: 3; }
+      flex: 3;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top left; }
     .work__project .block-sm {
       flex: 2;
       padding: 1em;
@@ -391,16 +396,17 @@ html, body {
 .contact__email {
   font-size: 1.6em;
   text-align: center;
-  padding: 1em 0; }
+  padding: 2em 0 1em; }
 
 .contact__social {
+  margin-top: 1em;
   text-align: center;
   font-size: 2.3em;
   padding: .5em 0; }
   .contact__social a {
-    display: inline-block;
+    display: block;
     position: relative;
-    padding: 0 1em;
+    width: 100%;
     opacity: .6;
     transition: opacity .3s ease-in-out; }
     .contact__social a::after {

@@ -43,13 +43,13 @@ export default props => (
 				<a href='mailto:akshaynair1597@gmail.com'>akshaynair1597@gmail.com</a>
 			</div>
 
-			<div className='contact__social'>
+			<div className='contact__social row no-collapse'>
 				{socialLinks.map(
 					(soc, i) => 
 						<a key={i} target='_blank _parent'
 							rel='noopener'
 							href={soc.url} 
-							className={`fa fa-${soc.icon}`} 
+							className={`fa fa-${soc.icon} col`} 
 							data-name={soc.name}
 						/>
 				)}

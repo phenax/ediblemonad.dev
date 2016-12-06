@@ -42,7 +42,10 @@ export default props => (
 
 							<div className='wrap row'>
 
-								<div className='col block block-bg'></div>
+								<div
+									className='col block block-bg'
+									style={{ backgroundImage: `url(${project.image})` }}
+								/>
 								
 								<div className='col block block-sm'>
 								

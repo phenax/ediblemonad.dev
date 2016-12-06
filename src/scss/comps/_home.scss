@@ -76,6 +76,12 @@
 
 		.block-bg {
 			flex: 3;
+
+			background: {
+				size: cover;
+				repeat: no-repeat;
+				position: top left;
+			};
 		}
 
 		.block-sm {
