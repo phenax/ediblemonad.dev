@@ -39,7 +39,7 @@ export default props => {
 		{ name: 'python', level: 'awesome' },
 		{ name: 'python-flask', level: 'cool' },
 		{ name: 'j-query', level: 'stud' },
-		{ name: 'unit testing', level: 'cool' },
+		{ name: 'unit-testing', level: 'cool' },
 		{ name: 'progressive-webapps', level: 'learning' },
 	];
 
@@ -53,7 +53,7 @@ export default props => {
 
 					{skillsList.map(
 						(skill, i) => (
-							<div className='css-prop'>
+							<div className='css-prop' key={i}>
 								<span className='css-prop__name'>{skill.name}</span>
 								<span className={`css-prop__value ${skill.level}`} />
 							</div>

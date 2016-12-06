@@ -27,61 +27,49 @@ import React from 'react';
 import projectList from '../projects.jsx';
 
 
-export default class HomePage extends React.Component {
+export default props => (
 
-	static propTypes= {
-		active: React.PropTypes.bool
-	};
+	<div className='home-view' data-view='/' data-active={props.active.toString()}>
 
-	render() {
+		<div className='work'>
 
-		const projects= 
-			projectList
+			{projectList
 				.filter( project => project.complete )
+				.map(
+					(project, i) => (
 
-		return (
-			<div className='home-view' data-view='/' data-active={this.props.active.toString()}>
+						<div className='work__project' key={i}>
 
-				<div className='work'>
+							<div className='wrap row'>
 
-					{projects.map(
+								<div className='col block block-bg'></div>
+								
+								<div className='col block block-sm'>
+								
+									<div className='block__title'>{project.title}</div>
+								
+									<div className='block__content'>{project.descr}</div>
+								
+									<div className='block__links'>
 
-						(project, i) => (
+										{project.links.map(
 
-							<div className='work__project' key={i}>
+											link => 
+												<a key={link.title}
+													className={`block__links__a fa ${link.icon}`}
+													href={link.url}>
 
-								<div className='wrap row'>
-
-									<div className='col block block-bg'></div>
-									
-									<div className='col block block-sm'>
-									
-										<div className='block__title'>{project.title}</div>
-									
-										<div className='block__content'>{project.descr}</div>
-									
-										<div className='block__links'>
-
-											{project.links.map(
-
-												link => 
-													<a
-														key={link.title}
-														className={`block__links__a fa ${link.icon}`}
-														href={link.url}>
-
-														{link.title}
-													</a>
-											)}
-										</div>
+													{link.title}
+												</a>
+										)}
 									</div>
 								</div>
 							</div>
-						)
-					)}
+						</div>
+					)
+				)
+			}
 
-				</div>
-			</div>
-		);
-	}
-}
+		</div>
+	</div>
+);

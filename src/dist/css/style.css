@@ -385,6 +385,43 @@ html, body {
   content: 'stud';
   color: #8e44ad; }
 
+.contact a {
+  color: #58c9b9; }
+
+.contact__email {
+  font-size: 1.6em;
+  text-align: center;
+  padding: 1em 0; }
+
+.contact__social {
+  text-align: center;
+  font-size: 2.3em;
+  padding: .5em 0; }
+  .contact__social a {
+    display: inline-block;
+    position: relative;
+    padding: 0 1em;
+    opacity: .6;
+    transition: opacity .3s ease-in-out; }
+    .contact__social a::after {
+      content: attr(data-name);
+      letter-spacing: 0;
+      position: absolute;
+      top: 150%;
+      left: 50%;
+      font-size: .35em;
+      transform: translate(-50%, 10px);
+      background-color: #252C33;
+      padding: .4em .7em;
+      border-radius: 2px;
+      opacity: 0;
+      transition: all .3s ease-in-out; }
+    .contact__social a:hover {
+      opacity: 1; }
+      .contact__social a:hover::after {
+        opacity: 1;
+        transform: translate(-50%, 0); }
+
 [data-view] {
   display: none; }
 

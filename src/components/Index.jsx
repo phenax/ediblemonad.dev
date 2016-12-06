@@ -91,7 +91,7 @@ export default class IndexLayout extends React.Component {
 						{/*<a href='/'>*/}
 		
 						<div className='logo'>
-							<img className='logo__img' src='/src/dist/img/logo.png' />
+							<img className='logo__img' src='/src/dist/img/logo.png' alt={'Akshay Nair\'s logo'} />
 							<div className='logo__text'>Hey There</div>
 						</div>
 		
