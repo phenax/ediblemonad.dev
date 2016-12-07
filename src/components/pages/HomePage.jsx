@@ -37,34 +37,28 @@ export default props => (
 				.filter( project => project.complete )
 				.map(
 					(project, i) => (
-
 						<div className='work__project' key={i}>
-
 							<div className='wrap row'>
-
 								<div
 									className='col block block-bg'
 									style={{ backgroundImage: `url(${project.image})` }}
 								/>
 								
 								<div className='col block block-sm'>
-								
 									<div className='block__title'>{project.title}</div>
-								
 									<div className='block__content'>{project.descr}</div>
-								
 									<div className='block__links'>
 
-										{project.links.map(
+										{project.links.map((link,i) => 
+											<a key={i}
+												target='_blank _parent'
+												className='block__links__a'
+												href={link.url}>
 
-											link => 
-												<a key={link.title}
-													target='_blank _parent'
-													className={`block__links__a fa ${link.icon}`}
-													href={link.url}>
+												<i className={`block__links__a__icon ${link.icon}`} />
 
-													{link.title}
-												</a>
+												{link.title}
+											</a>
 										)}
 									</div>
 								</div>

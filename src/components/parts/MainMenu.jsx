@@ -42,7 +42,7 @@ export default class MainMenu extends React.Component {
 
 				<ul className='menu__section col menu__list'>
 
-					<a href='#' className='menu__closebtn js-close-menu fa fa-close'></a>
+					<a href='#' className='menu__closebtn js-close-menu icon-cancel'></a>
 
 					{this.props.items.map(
 						item => (

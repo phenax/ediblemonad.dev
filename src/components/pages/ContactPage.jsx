@@ -25,11 +25,11 @@
 import React from 'react';
 
 const socialLinks= [
-	{ icon: 'github',    name: 'Github',    url: 'https://github.com/phenax' },
-	{ icon: 'codepen',   name: 'Codepen',   url: 'https://codepen.io/phenax/' },
-	{ icon: 'facebook',  name: 'Facebook',  url: 'https://fb.com/einstein1997' },
-	{ icon: 'linkedin',  name: 'LinkedIn',  url: 'https://www.linkedin.com/in/akshay-nair5' },
-	{ icon: 'twitter',   name: 'Twitter',   url: 'https://twitter.com/phenax5' },
+	{ icon: 'github-circled',  name: 'Github',    url: 'https://github.com/phenax' },
+	{ icon: 'codepen',         name: 'Codepen',   url: 'https://codepen.io/phenax/' },
+	{ icon: 'facebook',        name: 'Facebook',  url: 'https://fb.com/einstein1997' },
+	{ icon: 'linkedin',        name: 'LinkedIn',  url: 'https://www.linkedin.com/in/akshay-nair5' },
+	{ icon: 'twitter',         name: 'Twitter',   url: 'https://twitter.com/phenax5' },
 ];
 
 export default props => (
@@ -49,7 +49,7 @@ export default props => (
 						<a key={i} target='_blank _parent'
 							rel='noopener'
 							href={soc.url} 
-							className={`fa fa-${soc.icon} col`} 
+							className={`icon-${soc.icon} col`} 
 							data-name={soc.name}
 						/>
 				)}

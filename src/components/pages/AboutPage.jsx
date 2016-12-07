@@ -28,13 +28,20 @@ export default props => (
 
 	<div className='about-view about page-wrapper' data-view='/about' data-active={props.active.toString()}>
 
-		<div className='page-wrapper__title'>Hi</div>
+		<div className='page-wrapper__title'>Hello</div>
 
 		<div className='page-wrapper__text'>
 
-			<p>
-				Something
-			</p>
+			<p dangerouslySetInnerHTML={{__html: `
+					I'm Akshay Nair, a Full Stack Web Developer with an obsession for writing maintainable, performant code.
+					I live in Mumbai, India. I am passionate about JavaScript and writing open source software.
+				`.replace(/\s+/g, ' ')}}
+			/>
+
+			<p dangerouslySetInnerHTML={{__html: `
+
+				`}}
+			/>
 
 		</div>
 	</div>

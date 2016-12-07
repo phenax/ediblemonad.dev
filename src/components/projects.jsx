@@ -8,7 +8,7 @@ export default [
 		links: [
 			{
 				url: 'https://github.com/phenax/plasmajs',
-				icon: 'fa-github',
+				icon: 'icon-github-circled',
 				title: 'Github'
 			}
 		]
@@ -22,12 +22,12 @@ export default [
 		links: [
 			{
 				url: 'https://phenax.github.io/zomato-nearby-delicacy/static/',
-				icon: 'fa-link',
+				icon: 'icon-link',
 				title: 'Preview'
 			},
 			{
 				url: 'https://github.com/phenax/zomato-nearby-delicacy',
-				icon: 'fa-github',
+				icon: 'icon-github-circled',
 				title: 'Github'
 			},
 		]
@@ -41,12 +41,12 @@ export default [
 		links: [
 			{
 				url: 'https://phenax.github.io/arcade-game-project-fend/',
-				icon: 'fa-link',
+				icon: 'icon-link',
 				title: 'Preview'
 			},
 			{
 				url: 'https://github.com/phenax/arcade-game-project-fend',
-				icon: 'fa-github',
+				icon: 'icon-github-circled',
 				title: 'Github'
 			},
 		]
@@ -60,12 +60,12 @@ export default [
 		links: [
 			{
 				url: 'http://phenax.github.io/oxyrouter/#/',
-				icon: 'fa-link',
+				icon: 'icon-link',
 				title: 'Docs + Demo'
 			},
 			{
 				url: 'https://github.com/phenax/oxyrouter',
-				icon: 'fa-github',
+				icon: 'icon-github-circled',
 				title: 'Github'
 			},
 		]

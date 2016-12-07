@@ -62,9 +62,10 @@
 					transition: opacity .2s ease-in-out;
 					will-change: opacity;
 
-					&::before {
-						padding-right: .5em;
-						font-family: 'FontAwesome', #{$font} !important;
+					&__icon {
+						display: inline-block;
+						padding-right: .2em;
+						font-family: 'fontello', #{$font} !important;
 					}
 
 					&:hover {

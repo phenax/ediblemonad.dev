@@ -68,8 +68,9 @@ export default class IndexLayout extends React.Component {
 		// TODO: Look for a no js solution to this
 		const asyncLoad= {
 			media: 'bullshit-media-query-to-trick-the-browser',
-			id: 'asyncStyleSheet',
+			className: 'asyncStyleSheet',
 			rel: 'stylesheet',
+			lazyload: true,
 		};
 
 		return (
@@ -79,11 +80,15 @@ export default class IndexLayout extends React.Component {
 
 				<body>
 
-					{/* Load when theres nothing left to block */}
-					<link {...asyncLoad} lazyload href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' />
-					<link {...asyncLoad} lazyload href='//fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400' />
+					<div className='message-for-peeking-toms--look-here' dangerouslySetInnerHTML={{
+						__html: this.innerComment
+					}} />
 
-					{ /* In the body to prevent render blocking */ }
+
+					{/* Load when theres nothing left to block */}
+					<link {...asyncLoad} href='/src/dist/fontello/css/fontello.css' />
+					<link {...asyncLoad} href='//fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400' />
+
 					<link href='/src/dist/css/style.css' rel='stylesheet' />
 
 
@@ -112,6 +117,23 @@ export default class IndexLayout extends React.Component {
 	}
 
 
+	innerComment= `<!--
+
+		Hey fellow nerd. Let me explain the stuff you might be looking for.
+		It has a simple push state routing(with display:none; kinda templates. Because... I'm lazy)
+		Also, I built a simple build process with react that converts stateless react components into 
+		static html pages and also generates the html content for the other pages so it works even when 
+		javascript is disabled.
+		The font stylesheets are loaded asynchronously using the media query hack.
+		And I'm planning to write a service worker too. Why? Because its my portfolio and I am a rebel.
+
+
+		Check out the repo here - https://github.com/phenax/phenax.github.io
+		Leave a star. Or a pull request.
+
+-->`
+
+
 	googleAnalytics= `
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -128,7 +150,7 @@ export default class IndexLayout extends React.Component {
 		document.addEventListener('DOMContentLoaded', function loadStyleSheets() {
 
 			var $deferLinksWrapper= document.getElementById('deferedStylesheets');
-			var $asyncLinks= document.querySelectorAll('#asyncStyleSheet');
+			var $asyncLinks= document.querySelectorAll('.asyncStyleSheet');
 
 			Array.from($asyncLinks)
 				.forEach(function($link) {

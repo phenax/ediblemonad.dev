@@ -33,7 +33,7 @@ export default class TopBar extends React.Component {
 				</div>*/}
 
 				<div className='header__child header__menubtn'>
-					<a href='#menu' className='js-open-menu fa fa-bars'></a>
+					<a href='#menu' className='js-open-menu icon-menu'></a>
 				</div>
 			</header>
 		);
