@@ -35,7 +35,7 @@ export default [
 
 	{
 		complete: true,
-		title: 'Frogger Clone(Evil Bugs!)',
+		title: 'Evil Bugs Game',
 		descr: 'Built an arcade game(Evil Bugs[Brilliant name, right?]) with the objective of collecting stars and bringing them back to the grass area. Thats it, I think.... Oh, and the bugs are evil. So... avoid them.',
 		image: '/src/dist/img/evil_bugs.png',
 		links: [

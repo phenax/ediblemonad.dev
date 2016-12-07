@@ -80,17 +80,16 @@ export default class IndexLayout extends React.Component {
 
 				<body>
 
-					<div className='message-for-peeking-toms--look-here' dangerouslySetInnerHTML={{
-						__html: this.innerComment
-					}} />
-
-
 					{/* Load when theres nothing left to block */}
 					<link {...asyncLoad} href='/src/dist/fontello/css/fontello.css' />
 					<link {...asyncLoad} href='//fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400' />
 
 					<link href='/src/dist/css/style.css' rel='stylesheet' />
 
+					<div
+						className='message-for-peeking-toms--look-here'
+						dangerouslySetInnerHTML={{ __html: this.innerComment }}
+					/>
 
 					<MainMenu items={IndexLayout.pages.filter( page => page.menu )}>
 						<div className='logo'>
@@ -108,9 +107,7 @@ export default class IndexLayout extends React.Component {
 
 					<script async defer src='/src/dist/js/script.js'></script>
 					<script dangerouslySetInnerHTML={{ __html: this.deferAsyncForLinks }} />
-					<script dangerouslySetInnerHTML={{
-						__html: this.googleAnalytics 
-					}} />
+					<script dangerouslySetInnerHTML={{ __html: this.googleAnalytics }} />
 				</body>
 			</html>
 		);
@@ -152,10 +149,8 @@ export default class IndexLayout extends React.Component {
 			var $deferLinksWrapper= document.getElementById('deferedStylesheets');
 			var $asyncLinks= document.querySelectorAll('.asyncStyleSheet');
 
-			Array.from($asyncLinks)
-				.forEach(function($link) {
-					$link.setAttribute('media', 'all');
-				});					
+			for(var i= 0; i< $asyncLinks.length; i++)
+				$asyncLinks[i].setAttribute('media', 'all');
 
 			if($deferLinksWrapper) {
 				var $wrapper= document.createElement('div');

@@ -24,6 +24,10 @@
 
 import React from 'react';
 
+const Para= 
+	props => 
+		<p dangerouslySetInnerHTML={{__html: props.content.replace(/\s+/g, ' ')}}/>;
+
 export default props => (
 
 	<div className='about-view about page-wrapper' data-view='/about' data-active={props.active.toString()}>
@@ -32,16 +36,32 @@ export default props => (
 
 		<div className='page-wrapper__text'>
 
-			<p dangerouslySetInnerHTML={{__html: `
-					I'm Akshay Nair, a Full Stack Web Developer with an obsession for writing maintainable, performant code.
-					I live in Mumbai, India. I am passionate about JavaScript and writing open source software.
-				`.replace(/\s+/g, ' ')}}
-			/>
+			<Para content={`
+				I'm Akshay Nair, a Full Stack Web Developer with an obsession for writing maintainable, performant code.
+				I live in Mumbai, India. I am passionate about JavaScript, Linux and writing open source software.
+			`} />
 
-			<p dangerouslySetInnerHTML={{__html: `
+			<Para content={`
+				I build the back-end with technologies like NodeJS(with ExpressJS, PlasmaJS and KoaJS), PHP(with FlightPHP and SlimPHP) 
+				and Python(with flask and sanic(gotta go fest)).
+				For the front-end, I enjoy messing around with libraries like ReactJS, jQuery, RxJS and frameworks like React+Redux, 
+				PolymerJS, Angular 2. I am also a pro-platform guy, i.e. fetch over axios, custom elements v1 over the other component 
+				libraries, and so on.
+				I have also built stuff with React Native for developing native android applications.
+			`} />
 
-				`}}
-			/>
+			<Para content={`
+				And about this website....
+				The js is built with webpack and babel, and the css files with gulp(gulp-sass). 
+				For html, I built a react based build script to generate static pages out of react components.
+				Also, I used progressive enhancement to make sure it works fine even when the browser doesn't support JavaScript.
+			`} />
+
+			<Para content={`
+				Thats it, I guess...
+				Oh.. and I listen to a lot of metal songs... Specifically, Metal-Core, Death-Core, Nu Metal, Heavy Metal, Gothic Metal,
+				etc sub-genres.
+			`} />
 
 		</div>
 	</div>

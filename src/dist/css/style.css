@@ -46,7 +46,8 @@ table {
   border-spacing: 0; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  outline: none !important; }
 
 @media (max-width: 1000px) {
   .hide-1 {
@@ -355,9 +356,8 @@ html, body {
     padding: 1em 0;
     line-height: 1.8em; }
     .page-wrapper__text p, .page-wrapper__text .part {
-      padding: .5em 0; }
-      .page-wrapper__text p:first-letter, .page-wrapper__text .part:first-letter {
-        padding-left: 1em; }
+      padding: .5em 0;
+      text-indent: 1em; }
 
 .skills__css__selector {
   font-size: 2em;

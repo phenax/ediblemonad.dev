@@ -18,10 +18,7 @@
 
 		p, .part {
 			padding: .5em 0;
-
-			&:first-letter {
-				padding-left: 1em;
-			}
+			text-indent: 1em;
 		}
 	}
 }

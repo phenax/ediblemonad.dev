@@ -1,6 +1,11 @@
 
 import { EventEmitter } from 'events';
 
+// Need to support old people
+Array.from= 
+	Array.from || 
+	(list => [].slice.call(list));
+
 
 /**
  * Router class for handling client-side routing

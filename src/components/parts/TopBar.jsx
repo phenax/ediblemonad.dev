@@ -24,19 +24,10 @@
 
 import React from 'react';
 
-export default class TopBar extends React.Component {
-	render() {
-		return (
-			<header className='header'>
-				{/*<div className='header__child header__logo'>
-					<a href='/' data-route></a>
-				</div>*/}
-
-				<div className='header__child header__menubtn'>
-					<a href='#menu' className='js-open-menu icon-menu'></a>
-				</div>
-			</header>
-		);
-	}
-}
-
+export default props => (
+	<header className='header'>
+		<div className='header__child header__menubtn'>
+			<a href='#menu' className='js-open-menu icon-menu'></a>
+		</div>
+	</header>
+);
