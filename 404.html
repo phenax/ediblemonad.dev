@@ -2,10 +2,61 @@
 <html>
 <head>
 	<title>404 Error</title>
+	<style>
+
+		html, body {
+			margin: 0;
+			padding: 0;
+			color: #252C33;
+		}
+
+		.error {
+			text-align: center;
+			line-height: 1.5em;
+			font-size: 1.1em;
+
+			font-family: "Raleway", "Helvetica", "sans-serif";
+		}
+
+		.error__title {
+			font-size: 6em;
+			padding: 1em 0;
+			font-weight: 100;
+			color: #58c9b9;
+			background-color: #252C33;
+		}
+
+		.error__text {
+			padding: 1.3em .9em;
+		}
+
+
+	</style>
 </head>
 <body>
 
+	<div class='error'>
+		
+		<div class='error__title'>404</div>
+		<div class='error__text'>
+			I got nothing. You probably wanna check the link you clicked on, bruh. 
+		</div>
+		<div class='error__links'>
+			<a href='/'>Visit My Portfolio</a>
+		</div>
+	</div>
 
+	<noscript id='fontRes'>
+		<link href="https://fonts.googleapis.com/css?family=Raleway:100,300" rel="stylesheet" />
+	</noscript>
 
+	<script>
+		var $fontRes= document.getElementById('fontRes');
+		document.addEventListener('DOMContentLoaded', function() {
+			var $wrapper= document.createElement('div');
+			$wrapper.innerHTML= $fontRes.textContent;
+			document.body.appendChild($wrapper);
+		});
+	</script>
 </body>
 </html>
