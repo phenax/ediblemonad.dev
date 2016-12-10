@@ -275,6 +275,7 @@ html, body {
     background-color: #9dc8c8;
     box-shadow: 0 0.3em 0.7em 0.05em rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    border-radius: 3px;
     margin-top: 3em; }
     .work__project:nth-child(even) .wrap {
       flex-direction: row-reverse; }
