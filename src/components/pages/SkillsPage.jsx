@@ -34,7 +34,7 @@ export default props => {
 		{ name: 'react-js', level: 'awesome' },
 		{ name: 'express-js', level: 'awesome' },
 		{ name: 'koa-js', level: 'cool' },
-		{ name: 'php', level: 'cool' },
+		{ name: 'php', level: 'awesome' },
 		{ name: 'flight-php', level: 'awesome' },
 		{ name: 'python', level: 'awesome' },
 		{ name: 'python-flask', level: 'cool' },

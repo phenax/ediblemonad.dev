@@ -39,17 +39,17 @@
 			}
 
 			&.cool::before {
-				content: 'good';
+				content: 'beginner';
 				color: $color_accent_dark;
 			}
 
 			&.awesome::before {
-				content: 'awesome';
+				content: 'intermediate';
 				color: #A593E0;
 			}
 
 			&.stud::before {
-				content: 'stud';
+				content: 'confident';
 				color: #8e44ad;
 			}
 		}

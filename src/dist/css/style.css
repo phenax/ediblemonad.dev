@@ -383,15 +383,15 @@ html, body {
   color: #888; }
 
 .skills .css-prop__value.cool::before {
-  content: 'good';
+  content: 'beginner';
   color: #519d9e; }
 
 .skills .css-prop__value.awesome::before {
-  content: 'awesome';
+  content: 'intermediate';
   color: #A593E0; }
 
 .skills .css-prop__value.stud::before {
-  content: 'stud';
+  content: 'confident';
   color: #8e44ad; }
 
 .contact a {
