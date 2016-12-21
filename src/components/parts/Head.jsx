@@ -62,6 +62,8 @@ export default (props) => {
 
 			<title>{props.title}</title>
 
+			{props.children}
+
 			<link rel="icon" sizes="192x192" href={logoPath + "android-icon-192x192.png"} />
 			<meta name="msapplication-square310x310logo" content={logo} />
 

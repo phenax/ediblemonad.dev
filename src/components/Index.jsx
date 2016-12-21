@@ -69,20 +69,23 @@ export default class IndexLayout extends React.Component {
 		const asyncLoad= {
 			media: 'bullshit-media-query-to-trick-the-browser',
 			className: 'asyncStyleSheet',
-			rel: 'stylesheet',
 			lazyload: true,
 		};
 
 		return (
 			<html>
 
-				<Head title='Akshay Nair' />
+				<Head title='Akshay Nair'>
+					<script dangerouslySetInnerHTML={{ __html: this.serviceWorkerRegistration }} />
+				</Head>
 
 				<body>
 
 					{/* Load when theres nothing left to block */}
-					<link {...asyncLoad} href='/src/dist/fontello/css/fontello.css' />
-					<link {...asyncLoad} href='//fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400' />
+					<noscript id='deferedStylesheets'>
+						<link rel='stylesheet' href='/src/dist/fontello/css/fontello.css' />
+						<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400' />
+					</noscript>
 
 					<link href='/src/dist/css/style.css' rel='stylesheet' />
 
@@ -159,6 +162,18 @@ export default class IndexLayout extends React.Component {
 				document.body.appendChild($wrapper);
 			}
 		});
+
+	`.replace(/\s+/g, ' ');
+
+	serviceWorkerRegistration= `
+
+		if('serviceWorker' in navigator) {
+
+			navigator.serviceWorker
+				.register('/sw.js')
+				.then(() => console.log('Service Worker Registered'))
+				.catch(e => console.error(e));
+		}
 
 	`.replace(/\s+/g, ' ');
 
