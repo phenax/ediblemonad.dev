@@ -11,7 +11,10 @@ const FILES_PRECACHE= 'precache_v1';
  * @type {Array}
  */
 const precache= [
-
+	'/',
+	'/about',
+	'/contact',
+	'/skills'
 ];
 
 
@@ -99,9 +102,6 @@ self.addEventListener('fetch', e => {
 		else if(typeof route === 'string')
 			return reqUrl.endsWith(route);
 	});
-
-
-	console.log(reqUrl, matchResult);
 
 
 	// If there is a matching route, respond with cacheFirst strategy(promise)
