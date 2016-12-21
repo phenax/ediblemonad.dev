@@ -11,10 +11,10 @@ const FILES_PRECACHE= 'precache_v1';
  * @type {Array}
  */
 const precache= [
-	'/',
-	'/about',
-	'/contact',
-	'/skills'
+	// '/',
+	// '/about',
+	// '/contact',
+	// '/skills'
 ];
 
 
