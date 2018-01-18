@@ -119,17 +119,17 @@ export default class IndexLayout extends React.Component {
 
 	innerComment= `<!--
 
-		Hey fellow nerd. Let me explain the stuff you might be looking for.
-		It has a simple push state routing(with display:none; kinda templates. Because... I'm lazy)
-		Also, I built a simple build process with react that converts stateless react components into 
-		static html pages and also generates the html content for the other pages so it works even when 
-		javascript is disabled.
-		The font stylesheets are loaded asynchronously using the media query hack.
-		And I'm planning to write a service worker too. Why? Because its my portfolio and I am a rebel.
+	Hey fellow nerd. Let me explain the stuff you might be looking for.
+	It has a simple push state routing(with display:none; kinda templates. Because... I'm lazy)
+	Also, I built a simple build process with react that converts stateless react components into 
+	static html pages and also generates the html content for the other pages so it works even when 
+	javascript is disabled.
+	The font stylesheets are loaded asynchronously using the media query hack.
+	And I'm planning to write a service worker too. Why? Because its my portfolio and I am a rebel.
 
 
-		Check out the repo here - https://github.com/phenax/phenax.github.io
-		Leave a star. Or a pull request.
+	Check out the repo here - https://github.com/phenax/phenax.github.io
+	Leave a star. Or a pull request.
 
 -->`
 

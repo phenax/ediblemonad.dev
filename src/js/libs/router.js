@@ -1,5 +1,5 @@
 
-import { EventEmitter } from 'events';
+import EventHandler from './events';
 
 // Need to support old people
 Array.from= 
@@ -10,7 +10,7 @@ Array.from=
 /**
  * Router class for handling client-side routing
  */
-class Router extends EventEmitter {
+class Router extends EventHandler {
 
 	// Route update event listener
 	static get ROUTE_CHANGE() { return 'ROUTE_CHANGE'; }
@@ -62,7 +62,7 @@ class Router extends EventEmitter {
 	_routeChangeHandler() {
 
 		// Resolve a url i.e. get rid of extra '/'
-		const resolveRoute= (url) => `${this.baseUrl}/${url}`.replace(/[\/]+/gi, '/');
+		const resolveRoute= url => `${this.baseUrl}/${url}`.replace(/[\/]+/gi, '/');
 
 		// Find the matching route for the current url
 		const matchingRoute= this.routes.get(
@@ -93,9 +93,7 @@ class Router extends EventEmitter {
 		// For each views, filter out the ones that match the current route
 		return Array
 			.from(this.$views)
-			.filter(
-				$el => $el.dataset.view === routeUrl
-			);
+			.filter( $el => $el.dataset.view === routeUrl );
 	}
 
 	// Render the view

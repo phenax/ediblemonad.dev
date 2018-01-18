@@ -27,7 +27,7 @@ const precache= [
 const fileRoutes= [
 
 	// All pages(/, /about, /contact, /skills)
-	/^(https?\:)\/\/([^\/])*\/((about|contact|skills)\/?)?$/gi,
+	/^(https?:)\/\/([^/])*\/((about|contact|skills)\/?)?$/gi,
 
 	// All static files
 	/\/src\/dist\/(css|js|img|fontello)/gi,
