@@ -27,22 +27,22 @@ import React from 'react';
 export default props => {
 
 	const skillsList= [
-		{ name: 'html5', level: 'stud' },
-		{ name: 'css3', level: 'stud' },
 		{ name: 'javascript', level: 'stud' },
 		{ name: 'node-js', level: 'stud' },
 		{ name: 'react-js', level: 'stud' },
+		{ name: 'pwa', level: 'cool' },
 		{ name: 'express-js', level: 'awesome' },
 		{ name: 'koa-js', level: 'awesome' },
 		{ name: 'kotlin', level: 'awesome' },
 		{ name: 'go-lang', level: 'awesome' },
 		{ name: 'vert-x', level: 'cool' },
+		{ name: 'python', level: 'awesome' },
+		{ name: 'flask', level: 'cool' },
+		{ name: 'html5', level: 'stud' },
+		{ name: 'css3', level: 'stud' },
 		{ name: 'php', level: 'stud' },
 		{ name: 'cake-php', level: 'stud' },
 		{ name: 'flight-php', level: 'awesome' },
-		{ name: 'python', level: 'awesome' },
-		{ name: 'flask', level: 'cool' },
-		{ name: 'pwa', level: 'cool' },
 	];
 
 	return (

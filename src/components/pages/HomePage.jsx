@@ -46,6 +46,9 @@ export default props => (
 								
 								<div className='col block block-sm'>
 									<div className='block__title'>{project.title}</div>
+									<div className='block__tags'>{(project.tags || []).map(t =>
+										<span className='block__tags__tag'>{t}</span>
+									)}</div>
 									<div className='block__content'>{project.descr}</div>
 									<div className='block__links'>
 

@@ -37,6 +37,19 @@
 				border-bottom: 1px solid $color_accent_light;
 			}
 
+			&__tags {
+				font-size: .7em;
+
+				&__tag {
+					display: inline-block;
+					padding: .2em .6em;
+					background-color: $color_accent_light;
+					color: #fff;
+					border-radius: 3px;
+					margin-left: .2em;
+				}
+			}
+
 			&__content {
 				text-align: left;
 				color: #555;
@@ -49,22 +62,28 @@
 
 			&__links {
 				text-align: right;
-				font-size: 1.2em;
+				font-size: 1.12em;
 
 				&__a {
 					display: inline-block;
+					font-size: 1em;
 					padding: .5em .8em;
 					font-family: $font_alt;
 					font-weight: 300;
-					color: $color_accent_dark;
+					background-color: $color_accent_dark;
+					color: #fff;
 					text-transform: uppercase;
+					box-shadow: #{$box_shadow};//1px 1px 3px 1px rgba(0,0,0,.2);
+					border-radius: 3px;
+					margin: .2em .2em;
 
-					opacity: .6;
+					opacity: .8;
 					transition: opacity .2s ease-in-out;
 					will-change: opacity;
 
 					&__icon {
 						display: inline-block;
+						padding: 0;
 						padding-right: .2em;
 						font-family: 'fontello', #{$font} !important;
 					}

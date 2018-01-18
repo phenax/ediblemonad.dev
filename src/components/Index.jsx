@@ -38,20 +38,20 @@ export default class IndexLayout extends React.Component {
 	static pages= [
 		{
 			url: '/',
-			title: 'Work',
-			descr: 'Cool projects(not bragging)',
+			title: 'Projects',
+			descr: 'Fun stuff',
 			menu: true,
 		},
 		{
 			url: '/about',
 			title: 'About Me',
-			descr: 'Some info about this metal head',
+			descr: 'Know more about this metal head',
 			menu: true,
 		},
 		{
 			url: '/skills',
 			title: 'Skills',
-			descr: 'I haz mad 5killz bro',
+			descr: 'I haz m@d 5ki11z br0',
 			menu: true,
 		},
 		{

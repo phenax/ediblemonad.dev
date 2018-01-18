@@ -121,7 +121,7 @@ html, body {
 .banner {
   background-color: #252C33;
   padding: 2em 1em;
-  font-size: 1em;
+  font-size: .8em;
   text-align: left; }
   .banner__content {
     width: 80%;
@@ -291,6 +291,15 @@ html, body {
         padding: 1.5em .6em .3em;
         margin-bottom: .5em;
         border-bottom: 1px solid #9dc8c8; }
+      .work__project .block__tags {
+        font-size: .7em; }
+        .work__project .block__tags__tag {
+          display: inline-block;
+          padding: .2em .6em;
+          background-color: #9dc8c8;
+          color: #fff;
+          border-radius: 3px;
+          margin-left: .2em; }
       .work__project .block__content {
         text-align: left;
         color: #555;
@@ -301,19 +310,25 @@ html, body {
         min-height: 13.34em; }
       .work__project .block__links {
         text-align: right;
-        font-size: 1.2em; }
+        font-size: 1.12em; }
         .work__project .block__links__a {
           display: inline-block;
+          font-size: 1em;
           padding: .5em .8em;
           font-family: "Oswald", Raleway, Helvetica, sans-serif;
           font-weight: 300;
-          color: #519d9e;
+          background-color: #519d9e;
+          color: #fff;
           text-transform: uppercase;
-          opacity: .6;
+          box-shadow: 0 0.3em 0.7em 0.05em rgba(0, 0, 0, 0.1);
+          border-radius: 3px;
+          margin: .2em .2em;
+          opacity: .8;
           transition: opacity .2s ease-in-out;
           will-change: opacity; }
           .work__project .block__links__a__icon {
             display: inline-block;
+            padding: 0;
             padding-right: .2em;
             font-family: "fontello", Raleway, Helvetica, sans-serif !important; }
           .work__project .block__links__a:hover {
