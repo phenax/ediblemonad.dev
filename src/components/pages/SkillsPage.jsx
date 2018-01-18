@@ -29,28 +29,30 @@ export default props => {
 	const skillsList= [
 		{ name: 'html5', level: 'stud' },
 		{ name: 'css3', level: 'stud' },
-		{ name: 'javascript-es2015', level: 'stud' },
+		{ name: 'javascript', level: 'stud' },
 		{ name: 'node-js', level: 'stud' },
-		{ name: 'react-js', level: 'awesome' },
+		{ name: 'react-js', level: 'stud' },
 		{ name: 'express-js', level: 'awesome' },
-		{ name: 'koa-js', level: 'cool' },
-		{ name: 'php', level: 'awesome' },
+		{ name: 'koa-js', level: 'awesome' },
+		{ name: 'kotlin', level: 'awesome' },
+		{ name: 'go-lang', level: 'awesome' },
+		{ name: 'vert-x', level: 'cool' },
+		{ name: 'php', level: 'stud' },
+		{ name: 'cake-php', level: 'stud' },
 		{ name: 'flight-php', level: 'awesome' },
 		{ name: 'python', level: 'awesome' },
-		{ name: 'python-flask', level: 'cool' },
-		{ name: 'j-query', level: 'stud' },
-		{ name: 'unit-testing', level: 'cool' },
-		{ name: 'progressive-webapps', level: 'learning' },
+		{ name: 'flask', level: 'cool' },
+		{ name: 'pwa', level: 'cool' },
 	];
 
 	return (
 		<div className='skills-view skills page-wrapper' data-view='/skills' data-active={props.active.toString()}>
-		
+
 			<div className='page-wrapper__text skills__css'>
-				<div className='skills__css__selector' dangerouslySetInnerHTML={{ __html: '.skills {' }} />
+
+				<div className='skills__css__selector'>.skills {'{'}</div>
 
 				<div className='skills__css__props'>
-
 					{skillsList.map(
 						(skill, i) => (
 							<div className='css-prop' key={i}>
@@ -59,10 +61,9 @@ export default props => {
 							</div>
 						)
 					)}
-
 				</div>
 
-				<div className='skills__css__selector' dangerouslySetInnerHTML={{ __html: '}' }} />
+				<div className='skills__css__selector'>{'}'}</div>
 			</div>
 		</div>
 	);
