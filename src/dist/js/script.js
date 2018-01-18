@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -33,16 +33,18 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmory imports with the correct context
+/******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
 /******/
-/******/ 	// define getter function for harmory exports
+/******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		Object.defineProperty(exports, name, {
-/******/ 			configurable: false,
-/******/ 			enumerable: true,
-/******/ 			get: getter
-/******/ 		});
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -61,15 +63,15 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -77,7 +79,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _events = __webpack_require__(4);
+var _events = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -293,12 +295,12 @@ var Router = function (_EventEmitter) {
 
 exports.default = new Router();
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -360,12 +362,12 @@ var Component = function () {
 
 exports.default = Component;
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -431,12 +433,12 @@ var RouterLinks = function (_Component) {
 
 exports.default = new RouterLinks();
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -530,9 +532,59 @@ var Menu = function (_Component) {
 
 exports.default = new Menu();
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _router = __webpack_require__(0);
+
+var _router2 = _interopRequireDefault(_router);
+
+var _menu = __webpack_require__(3);
+
+var _menu2 = _interopRequireDefault(_menu);
+
+var _links = __webpack_require__(2);
+
+var _links2 = _interopRequireDefault(_links);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//  All mountables(elements to mount when the router is set up)
+var mountElems = [_menu2.default, _links2.default];
+
+// If it supports pushState routing
+if ('history' in window && 'pushState' in window.history) {
+
+	// Add a route change listener
+	_router2.default.onRouteChange(function () {
+
+		// Remove hash(if the user had js disabled and just enabled it)
+		if (window.location.hash.length) window.location.hash = '';
+
+		// Hide menu
+		_menu2.default.hide();
+	});
+
+	// Router configuration
+	_router2.default.add({ url: '/' }).add({ url: '/about' }).add({ url: '/skills' }).add({ url: '/contact' }).init({
+		otherwise: '/',
+		mounts: mountElems
+	});
+} else {
+
+	// Else mount the elements
+	mountElems.forEach(function (el) {
+		return el.onMount();
+	});
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -838,56 +890,6 @@ function isUndefined(arg) {
 }
 
 
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-var _router = __webpack_require__(0);
-
-var _router2 = _interopRequireDefault(_router);
-
-var _menu = __webpack_require__(3);
-
-var _menu2 = _interopRequireDefault(_menu);
-
-var _links = __webpack_require__(2);
-
-var _links2 = _interopRequireDefault(_links);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//  All mountables(elements to mount when the router is set up)
-var mountElems = [_menu2.default, _links2.default];
-
-// If it supports pushState routing
-if ('history' in window && 'pushState' in window.history) {
-
-	// Add a route change listener
-	_router2.default.onRouteChange(function () {
-
-		// Remove hash(if the user had js disabled and just enabled it)
-		if (window.location.hash.length) window.location.hash = '';
-
-		// Hide menu
-		_menu2.default.hide();
-	});
-
-	// Router configuration
-	_router2.default.add({ url: '/' }).add({ url: '/about' }).add({ url: '/skills' }).add({ url: '/contact' }).init({
-		otherwise: '/',
-		mounts: mountElems
-	});
-} else {
-
-	// Else mount the elements
-	mountElems.forEach(function (el) {
-		return el.onMount();
-	});
-}
-
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=script.js.map

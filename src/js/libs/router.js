@@ -114,10 +114,7 @@ class Router extends EventEmitter {
 			Array
 				.from(this.$views)
 				.filter( $el => $el !== $views[0] )
-				.forEach(
-					$el => 
-						$el.removeAttribute('data-active')
-					);
+				.forEach( $el => $el.removeAttribute('data-active') );
 
 			// Render the current view
 			$views.forEach( $view => { $view.dataset.active= 'true'; });
