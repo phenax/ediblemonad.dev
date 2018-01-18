@@ -76,7 +76,8 @@ export default class IndexLayout extends React.Component {
 			<html>
 
 				<Head title='Akshay Nair'>
-					<script dangerouslySetInnerHTML={{ __html: this.serviceWorkerRegistration }} />
+					{ (process.env.NODE_ENV === 'production')?
+						<script dangerouslySetInnerHTML={{ __html: this.serviceWorkerRegistration }} />: null }
 				</Head>
 
 				<body>

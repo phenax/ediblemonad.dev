@@ -7,6 +7,7 @@
     "build:html": "./src/builder.js -file=./src/components/Index.jsx -out=index.html",
     "build:js": "webpack",
     "build:css": "gulp build",
+    "build:html:prod": "NODE_ENV=production npm run build:html",
     "build:js:prod": "webpack -p",
     "build:css:prod": "gulp build -p",
     "watch:js": "webpack -w",
