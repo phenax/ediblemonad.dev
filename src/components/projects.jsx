@@ -90,7 +90,7 @@ const projects = {
 	'diary-pwa': {
 		complete: true,
 		title: 'Diary PWA',
-		descr: `Build a progressive web app in Kotlin that lets you carry a personalized secure diary in your pocket.
+		descr: `Build a progressive web app in go-lang that lets you carry a personalized secure diary in your pocket.
 			Write down memories, keep your thoughts and ideas for the day in one place.
 			You can also enable pattern lock for each session making your diary even more secure.`,
 		image: img('diary-pwa.png'),
