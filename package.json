@@ -9,7 +9,7 @@
     "develop": "gatsby develop",
     "lint": "eslint src",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "npm run build && gh-pages -d public -b master",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
@@ -20,19 +20,19 @@
     "@types/react-dom": "^16.8.2",
     "gatsby": "^2.1.16",
     "gatsby-mdx": "^0.4.0",
+    "gatsby-plugin-react-helmet": "^3.0.6",
     "gatsby-plugin-typescript": "^2.0.9",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "react-helmet": "^5.2.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/phenax/phenax.github.io"
   },
   "devDependencies": {
+    "@types/react-helmet": "^5.0.8",
     "@typescript-eslint/eslint-plugin": "^1.4.0",
     "@typescript-eslint/parser": "^1.4.0",
     "eslint": "^5.14.1",
