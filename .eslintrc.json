@@ -3,13 +3,17 @@
     "airbnb",
     "react-app",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint"
   ],
   "plugins": [
-    "prettier"
+    "prettier",
+    "@typescript-eslint"
   ],
+  "parser": "@typescript-eslint/parser",
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".tsx", ".mdx"] }],
     "max-len": [2, { "code": 300 }],
     "no-console": 0,
     "import/prefer-default-export": 0,
@@ -19,7 +23,8 @@
     "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
     "camelcase": 0,
     "prettier/prettier":["error", {"trailingComma": "all", "singleQuote": true, "printWidth": 140, "semi": true }],
-    "no-return-assign": 0
+    "no-return-assign": 0,
+    "@typescript-eslint/explicit-function-return-type": 2
   },
   "env": {
     "es6": true,
