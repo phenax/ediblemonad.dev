@@ -1,18 +1,27 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "portfolio-blog",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Akshay's portfolio and blog",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "lint": "eslint src",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
+    "@mdx-js/mdx": "^0.17.5",
+    "@mdx-js/tag": "^0.17.5",
+    "@types/node": "^11.9.4",
+    "@types/react": "^16.8.4",
+    "@types/react-dom": "^16.8.2",
     "gatsby": "^2.1.16",
+    "gatsby-mdx": "^0.4.0",
+    "gatsby-plugin-typescript": "^2.0.9",
+    "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },
@@ -22,5 +31,13 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-config-react-app": "^3.0.7",
+    "eslint-plugin-prettier": "^3.0.1",
+    "typescript": "^3.3.3333"
   }
 }
