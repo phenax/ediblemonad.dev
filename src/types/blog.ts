@@ -5,4 +5,5 @@ export interface FrontMatter {
   tags: string,
   slug: string,
   published: boolean,
+  publishDate: string,
 };

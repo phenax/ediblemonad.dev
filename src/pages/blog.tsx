@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import { FrontMatter } from '../types/blog';
+import { toBlogFormat } from '../helpers/datetime';
 
 interface BlogPost {
   node: {
@@ -33,8 +34,7 @@ const BlogIndex = ({ data: { allMdx } = { allMdx: void 0 } }: BlogIndexProps) =>
             <Link to={`/blog/${post.frontmatter.slug}`}>
               <div>{post.frontmatter.title}</div>
               <small>
-                <div>{post.frontmatter.description}</div>
-                {post.frontmatter.tags.split(/,\s*/).map(tag => <span>{tag}</span>)}
+                <div>{post.frontmatter.description} - {toBlogFormat(post.frontmatter.publishDate)}</div>
               </small>
             </Link>
           </div>
@@ -56,7 +56,7 @@ export const pageQuery = graphql`
             title
             slug
             description
-            tags
+            publishDate
           }
           wordCount {
             paragraphs
