@@ -1,18 +1,24 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
+
+import { FrontMatter } from './types/blog';
 
 interface Props {
-  children: any
+  children: any,
+  pageContext: {
+    frontmatter: FrontMatter
+  }
 }; 
 
-export default ({ children, ...props }: Props) => (
+export default ({ children, pageContext: { frontmatter }, ...props }: Props) => (
   <div>
-    <style>{`
-    .gatsby-highlight pre[class*="language-"].line-numbers {
-      padding-left: 2.8em; /* 3 */
-    }
-    `}</style>
-    <div>Post</div>
-    <pre>{JSON.stringify(props, 0, 2)}</pre>
+    <Helmet>
+      <title>{frontmatter.title}</title>
+      <meta name="content" content={frontmatter.description} />
+      <meta name="keywords" content={frontmatter.tags} />
+    </Helmet>
+    <h1>{frontmatter.title}</h1>
+    <pre>{JSON.stringify(props, null, 2)}</pre>
     {children}
   </div>
 );

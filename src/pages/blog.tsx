@@ -1,14 +1,12 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
+import { FrontMatter } from '../types/blog';
+
 interface BlogPost {
   node: {
     id: string,
-    frontmatter: {
-      title: string
-      slug: string
-      tags: string
-    }
+    frontmatter: FrontMatter
   }
 };
 
@@ -33,12 +31,11 @@ const BlogIndex = ({ data: { allMdx } = { allMdx: void 0 } }: BlogIndexProps) =>
         {edges.map(({ node: post }) => (
           <div key={post.id}>
             <Link to={`/blog/${post.frontmatter.slug}`}>
-              {post.frontmatter.title}
-              <div>
-                <small>
-                  {post.frontmatter.tags.split(/,\s*/).map(tag => <span>{tag}</span>)}
-                </small>
-              </div>
+              <div>{post.frontmatter.title}</div>
+              <small>
+                <div>{post.frontmatter.description}</div>
+                {post.frontmatter.tags.split(/,\s*/).map(tag => <span>{tag}</span>)}
+              </small>
             </Link>
           </div>
         ))}

@@ -1,7 +1,7 @@
 /* eslint-disable */
 module.exports = {
   siteMetadata: {
-    siteName: 'Akshay Nair',
+    siteName: 'Portfolio/blog',
   },
   plugins: [
     'gatsby-plugin-typescript',
