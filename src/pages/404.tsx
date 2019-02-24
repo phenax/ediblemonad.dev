@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { wrapper, title, text, links } from '../styles/errorPage.module.scss';
+import s from '../styles/errorPage.module.scss';
 
 const node404 = (
   <div>
-    <div className={wrapper}>
-      <div className={title}>404</div>
-      <div className={text}>
+    <div className={s.wrapper}>
+      <div className={s.title}>404</div>
+      <div className={s.text}>
         I got nothing. You probably wanna check the link you clicked on, bruh. 
       </div>
-      <div className={links}>
+      <div className={s.links}>
         <Link to="/">Visit My Portfolio</Link>
       </div>
     </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import s from './PageHeader.module.scss';
 
 type Props = {
-  type?: string,
+  type?: string, // Not implemented
   title: string,
   subtitle?: string,
 };
@@ -14,7 +14,7 @@ const defaultProps = {
 };
 
 const PageHeader = (passedProps: Props) => {
-  const { type, title, subtitle } = { ...defaultProps, ...passedProps };
+  const { title, subtitle } = { ...defaultProps, ...passedProps };
 
   return (
     <div className={s.wrapper}>
