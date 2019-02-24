@@ -5,9 +5,31 @@ import styles from './Menu.module.scss';
 import rootStyles from '../../styles/common.module.scss';
 
 const items = [
-  { url: '/', title: 'Hello', descr: 'Wowwowww sd' },
-  { url: '/adsf', title: 'Hello', descr: 'Wowwowww sd' },
-  { url: '/1234', title: 'Hello', descr: 'Wowwowww sd' },
+  {
+    url: '/',
+    title: 'Projects',
+    descr: 'Fun stuff',
+  },
+  {
+    url: '/about',
+    title: 'About Me',
+    descr: 'Know more about this metal-head',
+  },
+  {
+    url: '/blog',
+    title: 'My blog',
+    descr: 'I post about FP, react, etc',
+  },
+  {
+    url: '/skills',
+    title: 'Skills',
+    descr: 'I haz m@d 5ki11z br0',
+  },
+  {
+    url: '/contact',
+    title: 'Contact',
+    descr: 'Get in touch',
+  },
 ];
 
 const Menu = () => {
