@@ -45,7 +45,7 @@ const Menu = () => {
     <div>
       <div className={styles.topbar}>
         <div className={styles.topbarMenubtn}>
-          <a href='#menu' className='icon-menu' onClick={onMenuToggle(true)}>Click me</a>
+          <a href='#menu' className='icon-menu' onClick={onMenuToggle(true)} />
         </div>
       </div>
       <div className={cx(styles.menu, rootStyles.row, { [styles.menu_visible]: isOpen })} id='menu'>
