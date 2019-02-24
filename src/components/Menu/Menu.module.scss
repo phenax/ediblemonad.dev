@@ -128,3 +128,31 @@
 		color: #fff;
 	}
 }
+
+@media (max-width: 600px) {
+	.menu {
+		font-size: .9em;
+	}
+
+	.menuClosebtn {
+		font-size: 1.7em;
+	}
+
+	.menuList {
+		padding: 1em 2em;
+	}
+
+	.menuListLink {
+		font-size: .9em 1em;
+	}
+
+	.menuListLi {
+		width: 100%;
+		text-align: right;
+		// text-align: left;
+
+		.title {
+			font-size: 1.9em;
+		}
+	}
+}

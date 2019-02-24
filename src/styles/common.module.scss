@@ -17,7 +17,17 @@
 }
 
 @media (max-width: 600px) {
+	.hideOnSm {
+		display: none !important;
+	}
+
 	.row:not(.no-collapse) {
 		display: block;
+	}
+}
+
+@media (max-width: 1000px) {
+	.hideOnMd {
+		display: none !important;
 	}
 }

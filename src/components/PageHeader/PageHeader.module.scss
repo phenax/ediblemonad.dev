@@ -23,3 +23,25 @@
   font-size: 1.3em;
 	font-weight: 100;
 }
+
+@media (max-width: 1000px) {
+  .wrapper {
+    font-size: .8em;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    font-size: .7em;
+    padding: 5em 1em;
+    text-align: center;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 3.5em;
+  }
+}

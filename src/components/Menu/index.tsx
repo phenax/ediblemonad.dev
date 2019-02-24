@@ -26,7 +26,7 @@ const Menu = () => {
         </div>
       </div>
       <div className={cx(styles.menu, rootStyles.row, { [styles.menu_visible]: isOpen })} id='menu'>
-        <div className={cx(styles.menuSection, styles.menuSide, 'hide-2', rootStyles.col)}>
+        <div className={cx(styles.menuSection, styles.menuSide, rootStyles.hideOnSm, rootStyles.col)}>
           <div className={styles.logo}>
             <img className={styles.logoImg} src="/logo/logo.png" alt={'Akshay Nair\'s logo'} />
             <div className={styles.logoText}>Hey There</div>
