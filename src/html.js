@@ -22,7 +22,6 @@ const HTML = props => (
       <div key="body" id="___gatsby" dangerouslySetInnerHTML={{ __html: props.body }} />
       {props.postBodyComponents}
       <link rel="stylesheet" href="/fontello/css/fontello.css" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,400|Oswald:300,400" />
     </body>
   </html>
 );

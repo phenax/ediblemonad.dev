@@ -57,6 +57,33 @@ module.exports = {
         name: 'jsondata',
       },
     },
+
+    // {
+    //   resolve: 'gatsby-plugin-web-font-loader',
+    //   options: {
+    //     custom: {
+    //       families: ['fontello'],
+    //       urls: ['/fontello/css/fontello.css']
+    //     }
+    //   }
+    // },
+    {
+      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      options: {
+        fonts: [
+          {
+            family: 'Oswald',
+            variants: ['300', '400'],
+            subsets: ['latin'],
+          },
+          {
+            family: 'Raleway',
+            variants: ['100', '400'],
+            subsets: ['latin'],
+          },
+        ],
+      },
+    },
   ],
 };
 /*
