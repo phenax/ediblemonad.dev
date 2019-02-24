@@ -1,9 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import Menu from './components/Menu';
+import PageHeader from './components/PageHeader';
+
 import { FrontMatter } from './types/blog';
 import { toBlogFormat } from './helpers/datetime';
 
+import s from './styles/blogpost.module.scss';
 import 'prismjs/themes/prism-tomorrow.css';
 
 interface Props {
@@ -16,15 +20,13 @@ interface Props {
 export default ({ children, pageContext: { frontmatter }, ...props }: Props) => (
   <>
     <Helmet>
-      <title>{frontmatter.title}</title>
+      <title>{frontmatter.title} - Akshay Nair's blog</title>
       <meta name="description" content={frontmatter.description} />
       <meta name="keywords" content={frontmatter.tags} />
     </Helmet>
-    <div>
-      <h1>{frontmatter.title}</h1>
-      <small>
-        <div>{toBlogFormat(frontmatter.publishDate)}</div>
-      </small>
+    <Menu />
+    <PageHeader title={frontmatter.title} subtitle={`${frontmatter.description} - ${toBlogFormat(frontmatter.publishDate)}`} />
+    <div className={s.content}>
       <pre>{JSON.stringify(props, null, 2)}</pre>
       {children}
     </div>

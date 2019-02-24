@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
+import { Link } from 'gatsby';
 
 import styles from './Menu.module.scss';
 import rootStyles from '../../styles/common.module.scss';
@@ -61,10 +62,10 @@ const Menu = () => {
           {items.map(
             item => (
               <li className={cx(styles.menuListLi)} key={item.url}>
-                <a href={item.url} className={cx(styles.menuListLink)} data-route>
+                <Link to={item.url} className={cx(styles.menuListLink)}>
                   <div className={styles.title}>{item.title}</div>
                   <div className={styles.descr}>{item.descr}</div>
-                </a>
+                </Link>
               </li>
             )
           )}

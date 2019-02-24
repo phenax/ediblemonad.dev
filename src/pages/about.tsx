@@ -4,10 +4,7 @@ import { Helmet } from 'react-helmet';
 import PageLayout from '../page-layout';
 
 const AboutPage = () => (
-  <PageLayout headerProps={{ title: 'About Me', subtitle: '' }}>
-    <Helmet>
-      <title>About me | Akshay Nair</title>
-    </Helmet>
+  <PageLayout title="About me" headerProps={{ title: 'About Me', subtitle: '' }}>
     ABOUT MOI
   </PageLayout>
 );

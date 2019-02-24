@@ -1,6 +1,8 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
+import PageLayout from '../page-layout';
+
 import { FrontMatter } from '../types/blog';
 import { toBlogFormat } from '../helpers/datetime';
 
@@ -24,7 +26,7 @@ const BlogIndex = ({ data: { allMdx } = { allMdx: void 0 } }: BlogIndexProps) =>
   const { edges, totalCount } = allMdx || { edges: [], totalCount: 0 };
 
   return (
-    <div>
+    <PageLayout title="Akshay Nair's Blog" headerProps={{ title: 'Blog', subtitle: '' }}>
       <div>
         Posts <strong>{totalCount}</strong>
       </div>
@@ -40,7 +42,7 @@ const BlogIndex = ({ data: { allMdx } = { allMdx: void 0 } }: BlogIndexProps) =>
           </div>
         ))}
       </div>
-    </div>
+    </PageLayout>
   );
 };
 
