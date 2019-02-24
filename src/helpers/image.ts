@@ -12,6 +12,6 @@ let supportsWebp = false;
   } catch(e) { supportsWebp = false; }
 })();
 
-export const getImageProps = ({ src, srcWebp }: FixedImage) => ({
-  src: supportsWebp ? srcWebp : src,
-});
+export const getImageSrc = ({ src, srcWebp }: FixedImage): string => supportsWebp && srcWebp ? srcWebp : src;
+
+export const imageWrapper = (image: FixedImage): FixedImage => ({ ...image, src: getImageSrc(image) });

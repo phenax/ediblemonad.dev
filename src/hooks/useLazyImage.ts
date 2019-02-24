@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 
+import { imageWrapper } from '../helpers/image';
+
 import { FixedImage } from '../types/image';
 
 // TODO: Use intersection observer to trigger load
-const useLazyImage = ({ base64, src }: FixedImage) => {
+const useLazyImage = (image: FixedImage) => {
+  const { base64, src } = imageWrapper(image);
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState<string|Event|null>(null);
 
