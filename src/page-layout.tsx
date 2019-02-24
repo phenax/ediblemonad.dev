@@ -2,22 +2,25 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import Menu from './components/Menu';
+import PageHeader from './components/PageHeader';
 
 type Props = {
   children: any
   title?: string
   description?: string
   keywords?: string
+  headerProps?: any
 };
 
 const defaultProps = {
   title: 'Akshay Nair',
   description: 'Akshay Nair is a full stack web developer with a passion for writing performant, maintainable code.',
   keywords: 'akshay, nair, functional, programming, performant, javascript, react, developer, code, github',
+  headerProps: {},
 };
 
 const PageLayout = (passedProps: Props) => {
-  const { children, title, description, keywords, ...props } = { ...defaultProps, ...passedProps };
+  const { children, title, description, keywords, headerProps, ...props } = { ...defaultProps, ...passedProps };
 
   return (
     <>
@@ -29,6 +32,7 @@ const PageLayout = (passedProps: Props) => {
   
       <div {...props}>
         <Menu />
+        <PageHeader title={title} subtitle={description} {...headerProps} />
         <main>
           {children}
         </main>

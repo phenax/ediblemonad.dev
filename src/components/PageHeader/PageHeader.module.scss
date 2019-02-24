@@ -1,0 +1,25 @@
+@import '../../styles/colors';
+
+.wrapper {
+  background-color: $color_primary;
+	padding: 2em 1em;
+	font-size: .8em;
+	text-align: left;
+}
+
+.content {
+  width: 80%;
+  margin: 6em auto;
+  color: #fff;
+  padding: 1em;
+}
+
+.title {
+  font-size: 4em;
+	padding: .25em 0;
+}
+
+.subtitle {
+  font-size: 1.3em;
+	font-weight: 100;
+}

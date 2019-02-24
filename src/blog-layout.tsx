@@ -14,17 +14,19 @@ interface Props {
 };
 
 export default ({ children, pageContext: { frontmatter }, ...props }: Props) => (
-  <div>
+  <>
     <Helmet>
       <title>{frontmatter.title}</title>
       <meta name="description" content={frontmatter.description} />
       <meta name="keywords" content={frontmatter.tags} />
     </Helmet>
-    <h1>{frontmatter.title}</h1>
-    <small>
-      <div>{toBlogFormat(frontmatter.publishDate)}</div>
-    </small>
-    <pre>{JSON.stringify(props, null, 2)}</pre>
-    {children}
-  </div>
+    <div>
+      <h1>{frontmatter.title}</h1>
+      <small>
+        <div>{toBlogFormat(frontmatter.publishDate)}</div>
+      </small>
+      <pre>{JSON.stringify(props, null, 2)}</pre>
+      {children}
+    </div>
+  </>
 );
