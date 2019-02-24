@@ -19,12 +19,12 @@ const ProjectCard = ({ id, image, title, links, description, tags }: Project) =>
       <div className={cx(rootStyles.col, s.block, s.block_sm)}>
         <div className={s.blockTitle}>{title}</div>
         <div className={s.blockTags}>
-          {(tags || []).map(t => <span className={s.blockTagsTag}>{t}</span>)}
+          {(tags || []).map(t => <span key={t} className={s.blockTagsTag}>{t}</span>)}
         </div>
         <div className={s.blockContent}>{description}</div>
         <div className={s.blockLinks}>
-          {links.map((link, i) => 
-            <a key={i} target='_blank _parent' rel="noopener" href={link.link}>
+          {links.map(link =>
+            <a key={link.link} target='_blank _parent' rel="noopener" href={link.link}>
               <i className={cx(s.blockLinkIcon, getIcon(link))} />
               {link.gh ? 'Github' : link.text}
             </a>

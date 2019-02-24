@@ -6,11 +6,16 @@ type LinkType = {
 };
 
 export interface Project {
-  id: string,
+  id: string
   complete: boolean
   title: string
   description: string
   image: string
   tags: string[]
   links: LinkType[]
+};
+
+export interface Skill {
+  name: string
+  level: string
 };

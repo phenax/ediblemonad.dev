@@ -7,21 +7,19 @@ import ProjectCard from '../components/ProjectCard';
 import { Project } from '../types/project';
 
 type Edge = {
-  node: {
-    projects: Project[]
-  }
-};
+  node: Project
+}
 
 type Props = {
   data: {
-    allDataJson?: {
+    allProjectsJson: {
       edges: Edge[]
     }
   }
 };
 
-export default ({ data: { allDataJson } }: Props) => {
-  const { edges: [ { node: { projects = [] } = {} } = {} ] = [] } = allDataJson || {};
+export default ({ data: { allProjectsJson: { edges } } }: Props) => {
+  const projects = edges.map(e => e.node);
 
   return (
     <PageLayout headerProps={{ subtitle: 'Full Stack Web Developer' }}>
@@ -31,11 +29,10 @@ export default ({ data: { allDataJson } }: Props) => {
 };
 
 export const pageQeury = graphql`
-query Projects {
-  allDataJson {
-    edges {
-      node {
-        projects {
+  query Projects {
+    allProjectsJson {
+      edges {
+        node {
           id
           title
           description
@@ -50,5 +47,4 @@ query Projects {
       }
     }
   }
-}
 `;

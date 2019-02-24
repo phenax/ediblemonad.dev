@@ -1,0 +1,54 @@
+@import '../../styles/colors';
+@import '../../styles/fonts';
+
+.wrapper {
+  padding: 1.5em 1em;
+  line-height: 2em;
+}
+
+.selector {
+  font-size: 2em;
+	font-family: $font_alt;
+}
+
+.propList {
+  padding: 1em 0;
+  padding-left: 3em;
+  font-family: 'Lucida Console', 'Monaco', 'monospace', $font;
+  // font-weight: bold;
+}
+
+.propertyName {
+  color: $color_primary;
+
+  &::after {
+    content: ':';
+    padding: 0 .4em 0 .1em;
+  }
+}
+
+.propertyValue {
+  &::after {
+    content: ';';
+  }
+
+  &::before {
+    content: 'learning';
+    color: #888;
+  }
+
+  &.cool::before {
+    content: 'beginner';
+    color: $color_accent_dark;
+  }
+
+  &.awesome::before {
+    content: 'intermediate';
+    color: #A593E0;
+  }
+
+  &.stud::before {
+    content: 'confident';
+    color: #8e44ad;
+  }
+}
