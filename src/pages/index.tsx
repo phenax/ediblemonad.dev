@@ -2,13 +2,13 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import PageLayout from '../page-layout';
+import ProjectCard from '../components/ProjectCard';
 
 import { Project } from '../types/project';
 
 type Edge = {
   node: {
     projects: Project[]
-    totalCount: number
   }
 };
 
@@ -20,26 +20,19 @@ type Props = {
   }
 };
 
-export default ({ data: { allDataJson }, ...props }: Props) => {
-  const { edges: [ { node: { projects = [], totalCount = 0 } = {} } = {} ] = [] } = allDataJson || {};
+export default ({ data: { allDataJson } }: Props) => {
+  const { edges: [ { node: { projects = [] } = {} } = {} ] = [] } = allDataJson || {};
 
   return (
     <PageLayout headerProps={{ subtitle: 'Full Stack Web Developer' }}>
-      <div>Projects {totalCount}</div>
-      <div>
-        {projects.map(project => (
-          <div key={project.id}>
-            {project.title}
-          </div>
-        ))}
-      </div>
+      {projects.map(project => <ProjectCard key={project.id} {...project} />)}
     </PageLayout>
   );
 };
 
 export const pageQeury = graphql`
 query Projects {
-  allDataJson(filter: { projects: { elemMatch: { complete: { eq: true } } } }) {
+  allDataJson {
     edges {
       node {
         projects {
