@@ -13,23 +13,28 @@ const items = [
 const Menu = () => {
   const [isOpen, setMenuState] = useState(false);
 
+  const onMenuToggle = (nextState: boolean) => (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    setMenuState(nextState);
+  };
+
   return (
     <div>
       <div className="header">
         <div className='header__child header__menubtn'>
-          <a href='#menu' className='icon-menu' onClick={() => setMenuState(true)}>Click me</a>
+          <a href='#menu' className='icon-menu' onClick={onMenuToggle(true)}>Click me</a>
         </div>
       </div>
       <div className={cx(styles.menu, rootStyles.row, { [styles.menu_visible]: isOpen })} id='menu'>
         <div className={cx(styles.menuSection, styles.menuSide, 'hide-2', rootStyles.col)}>
           <div className={styles.logo}>
-            <img className={styles.logoImg} src='/src/dist/img/logo/logo.png' alt={'Akshay Nair\'s logo'} />
+            <img className={styles.logoImg} src="/logo/logo.png" alt={'Akshay Nair\'s logo'} />
             <div className={styles.logoText}>Hey There</div>
           </div>
         </div>
 
         <ul className={cx(styles.menuSection, styles.menuList, rootStyles.col)}>
-          <a href='#' className={cx(styles.menuClosebtn, 'icon-cancel')} onClick={() => setMenuState(false)}></a>
+          <a href='#' className={cx(styles.menuClosebtn, 'icon-cancel')} onClick={onMenuToggle(false)}></a>
 
           {items.map(
             item => (
