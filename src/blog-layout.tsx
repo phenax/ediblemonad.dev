@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet';
 import { FrontMatter } from './types/blog';
 import { toBlogFormat } from './helpers/datetime';
 
+import 'prismjs/themes/prism-tomorrow.css';
+
 interface Props {
   children: any,
   pageContext: {
@@ -15,7 +17,7 @@ export default ({ children, pageContext: { frontmatter }, ...props }: Props) => 
   <div>
     <Helmet>
       <title>{frontmatter.title}</title>
-      <meta name="content" content={frontmatter.description} />
+      <meta name="description" content={frontmatter.description} />
       <meta name="keywords" content={frontmatter.tags} />
     </Helmet>
     <h1>{frontmatter.title}</h1>

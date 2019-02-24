@@ -1,3 +1,9 @@
 import React from 'react';
 
-export default () => <div>Hello world!</div>;
+import PageLayout from '../page-layout';
+
+export default () => (
+  <PageLayout>
+    owowowfss
+  </PageLayout>
+);
