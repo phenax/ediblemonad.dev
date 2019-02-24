@@ -35,7 +35,6 @@ type Props = {
 export default ({ data: { allProjectsJson, allFile } }: Props) => {
   const images: { [key: string]: FixedImage } = allFile.edges
     .map(x => x.node.childImageSharp)
-    .map(x => { console.log(x); return x; })
     .reduce((acc, img) => ({ ...acc, [img.fixed.originalName]: img.fixed }), {});
 
   const projects: Project<FixedImage>[] = allProjectsJson.edges
@@ -44,8 +43,6 @@ export default ({ data: { allProjectsJson, allFile } }: Props) => {
       ...project,
       image: images[project.image]? images[project.image]: ({ src: project.image })
     }));
-
-  console.log(images);
 
   return (
     <PageLayout headerProps={{ subtitle: 'Full Stack Web Developer' }}>
