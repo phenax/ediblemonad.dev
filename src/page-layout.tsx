@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet';
 import Menu from './components/Menu';
 import PageHeader from './components/PageHeader';
 
+import s from './styles/page.module.scss';
+
 type Props = {
   children: any
   title?: string
@@ -33,7 +35,7 @@ const PageLayout = (passedProps: Props) => {
       <div {...props}>
         <Menu />
         <PageHeader title={title} subtitle={description} {...headerProps} />
-        <main>
+        <main className={s.content}>
           {children}
         </main>
       </div>
