@@ -35,6 +35,7 @@
     "gatsby-source-filesystem": "^2.0.22",
     "gatsby-transformer-json": "^2.1.8",
     "gatsby-transformer-sharp": "^2.1.14",
+    "intersection-observer": "^0.5.1",
     "node-sass": "^4.11.0",
     "prismjs": "^1.15.0",
     "prop-types": "^15.7.2",

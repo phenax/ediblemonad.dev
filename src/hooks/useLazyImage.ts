@@ -12,6 +12,7 @@ const useLazyImage = (image: FixedImage) => {
   const [error, setError] = useState<string|Event|null>(null);
 
   useEffect(() => {
+    if (isLoaded) return;
     const img = new Image();
     img.src = src;
     img.onload = () => setIsLoaded(true);

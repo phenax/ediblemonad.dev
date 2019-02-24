@@ -19,7 +19,7 @@ const ProjectCard = ({ id, image, title, links, description, tags }: Project<Fix
   const debouncedSrc = useDebounce(src, IMAGE_FADEIN_DURATION);
 
   return (
-    <div className={s.project} key={id}>
+    <div className={s.project} data-id={id} key={id}>
       <div className={cx('wrap', rootStyles.row)}>
         <div
           className={cx(rootStyles.col, s.block, s.block_bg)}
