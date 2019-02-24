@@ -43,8 +43,8 @@ const Menu = () => {
 
   return (
     <div>
-      <div className="header">
-        <div className='header__child header__menubtn'>
+      <div className={styles.topbar}>
+        <div className={styles.topbarMenubtn}>
           <a href='#menu' className='icon-menu' onClick={onMenuToggle(true)}>Click me</a>
         </div>
       </div>
