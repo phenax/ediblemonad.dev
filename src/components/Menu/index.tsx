@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 
 import styles from './Menu.module.scss';
+import rootStyles from '../../styles/common.module.scss';
 
 const items = [
   { url: '/', title: 'Hello', descr: 'Wowwowww sd' },
-  { url: '/', title: 'Hello', descr: 'Wowwowww sd' },
-  { url: '/', title: 'Hello', descr: 'Wowwowww sd' },
+  { url: '/adsf', title: 'Hello', descr: 'Wowwowww sd' },
+  { url: '/1234', title: 'Hello', descr: 'Wowwowww sd' },
 ];
 
 const Menu = () => {
@@ -19,17 +20,15 @@ const Menu = () => {
           <a href='#menu' className='icon-menu' onClick={() => setMenuState(true)}>Click me</a>
         </div>
       </div>
-      <div className={cx(styles.menu, 'row', { [styles.menu_visible]: isOpen })} id='menu'>
-
-        <div className={cx(styles.menuSection, styles.menuSide, 'hide-2', 'col')}>
+      <div className={cx(styles.menu, rootStyles.row, { [styles.menu_visible]: isOpen })} id='menu'>
+        <div className={cx(styles.menuSection, styles.menuSide, 'hide-2', rootStyles.col)}>
           <div className={styles.logo}>
             <img className={styles.logoImg} src='/src/dist/img/logo/logo.png' alt={'Akshay Nair\'s logo'} />
             <div className={styles.logoText}>Hey There</div>
           </div>
         </div>
 
-        <ul className={cx(styles.menuSection, styles.menuList, 'col')}>
-
+        <ul className={cx(styles.menuSection, styles.menuList, rootStyles.col)}>
           <a href='#' className={cx(styles.menuClosebtn, 'icon-cancel')} onClick={() => setMenuState(false)}></a>
 
           {items.map(

@@ -17,7 +17,7 @@
 	// The animation duration for the menu closing
 	$animationTime: .4s;
 	$transition: transform #{$animationTime} ease-in-out;
-	$numberOfMenuItems: 4;
+	$numberOfMenuItems: 5;
 	$itemDelayMultiplier: .05;
 
 
@@ -71,7 +71,7 @@
 
 			transform: translateX(300px);
 			will-change: transform;
-			contain: strict;
+			contain: content;
 
 			@for $i from 1 through ($numberOfMenuItems + 1) {
 				&:nth-child(#{$i}) {
