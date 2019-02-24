@@ -5,21 +5,47 @@ import PageLayout from '../page-layout';
 import ProjectCard from '../components/ProjectCard';
 
 import { Project } from '../types/project';
+import { FixedImage } from '../types/image';
 
-type Edge = {
-  node: Project
+type ProjectEdge = {
+  node: Project<string>
+}
+
+type ImageFileEdge = {
+  node: {
+    childImageSharp: {
+      fixed: {
+        originalName: string
+      }
+    }
+  }
 }
 
 type Props = {
   data: {
     allProjectsJson: {
-      edges: Edge[]
+      edges: ProjectEdge[]
+    }
+    allFile: {
+      edges: ImageFileEdge[]
     }
   }
 };
 
-export default ({ data: { allProjectsJson: { edges } } }: Props) => {
-  const projects = edges.map(e => e.node);
+export default ({ data: { allProjectsJson, allFile } }: Props) => {
+  const images: { [key: string]: FixedImage } = allFile.edges
+    .map(x => x.node.childImageSharp)
+    .map(x => { console.log(x); return x; })
+    .reduce((acc, img) => ({ ...acc, [img.fixed.originalName]: img.fixed }), {});
+
+  const projects: Project<FixedImage>[] = allProjectsJson.edges
+    .map(e => e.node)
+    .map(project => ({
+      ...project,
+      image: images[project.image]? images[project.image]: ({ src: project.image })
+    }));
+
+  console.log(images);
 
   return (
     <PageLayout headerProps={{ subtitle: 'Full Stack Web Developer' }}>
@@ -42,6 +68,24 @@ export const pageQeury = graphql`
             link
             gh
             text
+          }
+        }
+      }
+    }
+
+    allFile(filter: { relativePath: { regex: "/projects/.*\\.(png|jpg|gif|jpeg|webp)/" } }) {
+      edges {
+        node {
+          childImageSharp {
+            fixed(quality: 80, width: 500) {
+              base64
+              tracedSVG
+              src
+              srcWebp
+              srcSet
+              srcSetWebp
+              originalName
+            }
           }
         }
       }

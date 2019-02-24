@@ -18,6 +18,7 @@ $box_shadow: 0 .3em .7em .05em rgba(0,0,0,.1);
 }
 
 .project .block {
+  position: relative;
   min-height: $full_height;
   text-align: center;
 
@@ -101,6 +102,25 @@ $box_shadow: 0 .3em .7em .05em rgba(0,0,0,.1);
     repeat: no-repeat;
     position: top left;
   };
+}
+
+.blockFakeBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: {
+    color: $color_accent_light;
+    size: cover;
+    repeat: no-repeat;
+    position: top left;
+  };
+
+  opacity: 1;
+  transition: opacity 0.5s linear;
+  will-change: opacity;
 }
 
 .block.block_sm {

@@ -7,6 +7,23 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        stripMetadata: true,
+        defaultQuality: 60,
+      },
+    },
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/assets`,
+        name: 'assets',
+      },
+    },
+
     {
       resolve: 'gatsby-source-filesystem',
       options: {
