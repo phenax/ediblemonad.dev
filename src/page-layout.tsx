@@ -3,28 +3,38 @@ import { Helmet } from 'react-helmet';
 
 import Menu from './components/Menu';
 
-interface Props {
-  children: any,
-  title?: string,
-  description?: string,
-  keywords?: string,
+type Props = {
+  children: any
+  title?: string
+  description?: string
+  keywords?: string
 };
 
-const PageLayout = ({ children,title, description, keywords, ...props }: Props) => (
-  <>
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
-    </Helmet>
+const defaultProps = {
+  title: 'Akshay Nair',
+  description: 'Akshay Nair is a full stack web developer with a passion for writing performant, maintainable code.',
+  keywords: 'akshay, nair, functional, programming, performant, javascript, react, developer, code, github',
+};
 
-    <div {...props}>
-      <Menu />
-      <main>
-        {children}
-      </main>
-    </div>
-  </>
-);
+const PageLayout = (passedProps: Props) => {
+  const { children, title, description, keywords, ...props } = { ...defaultProps, ...passedProps };
+
+  return (
+    <>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+      </Helmet>
+  
+      <div {...props}>
+        <Menu />
+        <main>
+          {children}
+        </main>
+      </div>
+    </>
+  );
+};
 
 export default PageLayout;
