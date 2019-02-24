@@ -2,14 +2,15 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import PageLayout from '../page-layout';
+import BlogPostCard from '../components/BlogPostCard';
 
-import { FrontMatter } from '../types/blog';
-import { toBlogFormat } from '../helpers/datetime';
+import { FrontMatter, WordCount } from '../types/blog';
 
 interface BlogPost {
   node: {
     id: string,
     frontmatter: FrontMatter
+    wordCount: WordCount
   }
 };
 
@@ -33,12 +34,7 @@ const BlogIndex = ({ data: { allMdx } = { allMdx: void 0 } }: BlogIndexProps) =>
       <div>
         {edges.map(({ node: post }) => (
           <div key={post.id}>
-            <Link to={`/blog/${post.frontmatter.slug}`}>
-              <div>{post.frontmatter.title}</div>
-              <small>
-                <div>{post.frontmatter.description} - {toBlogFormat(post.frontmatter.publishDate)}</div>
-              </small>
-            </Link>
+            <BlogPostCard {...post} />
           </div>
         ))}
       </div>

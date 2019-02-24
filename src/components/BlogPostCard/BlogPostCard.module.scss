@@ -1,0 +1,27 @@
+@import '../../styles/colors';
+@import '../../styles/fonts';
+
+$box_shadow: 0 .3em .7em .05em rgba(0,0,0,.1);
+
+.card {
+  display: block;
+  padding: 1.2em;
+  margin-top: 1em;
+
+  background-color: #fff;
+  box-shadow: $box_shadow;
+
+  text-decoration: none;
+  color: $color_primary;
+}
+
+.cardTitle {
+  font-size: 1.5em;
+  padding-bottom: .2em;
+  font-family: $font_alt;
+}
+
+.date {
+  color: #999;
+  padding-right: 1em;
+}
