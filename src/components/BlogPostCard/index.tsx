@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import { toBlogFormat } from '../../helpers/datetime';
-
 import { FrontMatter, WordCount } from '../../types/blog';
 
 import s from './BlogPostCard.module.scss';
@@ -12,7 +11,7 @@ type Props = {
   wordCount: WordCount
 }
 
-const BlogPostCard = ({ frontmatter }: Props) => (
+const BlogPostCard = ({ frontmatter, wordCount }: Props) => (
   <Link to={`/blog/${frontmatter.slug}`} className={s.card}>
     <div className={s.cardTitle}>{frontmatter.title}</div>
     <small>
@@ -20,7 +19,10 @@ const BlogPostCard = ({ frontmatter }: Props) => (
         <span className={s.date}>
           {toBlogFormat(frontmatter.publishDate)}
         </span>
-        {frontmatter.description}
+        {`${frontmatter.description} - `}
+        <span>
+          {wordCount.words} words
+        </span>
       </div>
     </small>
   </Link>

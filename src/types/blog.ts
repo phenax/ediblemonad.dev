@@ -9,5 +9,7 @@ export interface FrontMatter {
 };
 
 export interface WordCount {
-
+  paragraphs: number
+  sentences: number
+  words: number
 }
