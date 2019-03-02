@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{155:function(e,n,t){"use strict";t.r(n);var l=t(0),a=t.n(l),u=t(165);n.default=function(){return a.a.createElement("div",null,a.a.createElement(u.Helmet,null,a.a.createElement("title",null,"Hello wow")),"ABOUT MOI")}}}]);
+//# sourceMappingURL=component---src-pages-about-tsx-a99bc68340e4bb5686ce.js.map

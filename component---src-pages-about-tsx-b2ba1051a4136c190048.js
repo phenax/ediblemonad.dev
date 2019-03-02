@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{153:function(n,e,t){"use strict";t.r(e);var u=t(0),a=t.n(u);e.default=function(){return a.a.createElement("div",null,"ABOUT MOI")}}}]);
+//# sourceMappingURL=component---src-pages-about-tsx-b2ba1051a4136c190048.js.map

@@ -1,26 +1,3 @@
-# My Portfolio
-
-My static portfolio website 
-
-[Visit](https://phenax.github.io)
-
-
-### Build
-
-* Building html files ```npm run build:html``` 
-* Building css files  ```npm run build:css``` 
-* Building js files   ```npm run build:js``` 
-
-
-### Directory structure
-
-* `/about, /contact, /skills, /index.html` - Dynamically built html files (because pushState routing is messy for github pages and some browsers dont support pushState)
-* `/src/components` - All the react components that get rendered into the static html pages
-* `/src/dist` - Static js, css and image files
-* `/src/js` - All js files(ES2015)
-* `/src/scss` - All SCSS files
-* `/src/builder.js` - A small implementation for building html files out of react layout templates
-
-
-
-
+# My portfolio/blog
+This blog was written using gatsby.
+You can check out the source code in the [`source`](https://github.com/phenax/phenax.github.io/tree/source) branch of this repo.
