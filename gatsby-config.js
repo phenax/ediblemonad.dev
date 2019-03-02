@@ -90,6 +90,12 @@ module.exports = {
         verbose: true,
         'README.md': 'public/README.md',
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-88549129-1`,
+      },
+    },
   ],
 };
