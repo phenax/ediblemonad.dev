@@ -27,7 +27,7 @@ export default ({ children, pageContext: { frontmatter }, ...props }: Props) => 
     <Menu />
     <PageHeader title={frontmatter.title} subtitle={`${frontmatter.description} - ${toBlogFormat(frontmatter.publishDate)}`} />
     <div className={s.content}>
-      <pre>{JSON.stringify(props, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
       {children}
     </div>
   </>
