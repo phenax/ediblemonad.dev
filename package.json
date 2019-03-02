@@ -9,7 +9,7 @@
     "develop": "gatsby develop",
     "lint": "eslint src",
     "start": "npm run develop",
-    "serve": "npm run build && gh-pages -d public -b master",
+    "publish-gh": "npm run build && gh-pages -d public -b master",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
@@ -60,6 +60,7 @@
     "eslint-config-prettier": "^4.0.0",
     "eslint-config-react-app": "^3.0.7",
     "eslint-plugin-prettier": "^3.0.1",
+    "gh-pages": "^2.0.1",
     "typescript": "^3.3.3333"
   }
 }
