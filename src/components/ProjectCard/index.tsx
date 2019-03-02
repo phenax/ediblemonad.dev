@@ -7,10 +7,10 @@ import useLazyImage from '../../hooks/useLazyImage';
 import s from './ProjectCard.module.scss';
 import rootStyles from '../../styles/common.module.scss';
 
-import { Project } from '../../types/project';
+import { Project, LinkType } from '../../types/project';
 import { FixedImage } from '../../types/image';
 
-const getIcon = ({}) => 'icon-someicon';
+const getIcon = ({ gh } : LinkType) => gh ? 'icon-github-circled' : 'icon-link';
 
 const IMAGE_FADEIN_DURATION = 500;
 

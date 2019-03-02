@@ -1,7 +1,5 @@
 
-import { FixedImage } from './image';
-
-type LinkType = {
+export type LinkType = {
   text: string
   link: string
   gh: boolean
