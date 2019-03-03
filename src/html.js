@@ -21,7 +21,12 @@ const HTML = props => (
       </noscript>
       <div key="body" id="___gatsby" dangerouslySetInnerHTML={{ __html: props.body }} />
       {props.postBodyComponents}
-      <link rel="stylesheet" href="/fontello/css/fontello.css" />
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossOrigin="anonymous"
+      />
     </body>
   </html>
 );

@@ -11,7 +11,7 @@ import rootStyles from '../../styles/common.module.scss';
 import { Project, LinkType } from '../../types/project';
 import { FixedImage } from '../../types/image';
 
-const getIcon = ({ gh } : LinkType) => gh ? 'icon-github-circled' : 'icon-link';
+const getIcon = ({ gh } : LinkType) => gh ? 'fab fa-github' : 'fas fa-link';
 
 const IMAGE_FADEIN_DURATION = 500;
 
@@ -48,7 +48,7 @@ const ProjectCard = ({ id, image, title, links, description, tags }: Project<Fix
           <div className={s.blockLinks}>
             {links.map(link =>
               <a key={link.link} target='_blank _parent' rel="noopener" href={link.link}>
-                <i className={cx(s.blockLinkIcon, getIcon(link))} />
+                <span className={s.blockLinkIcon}><i className={getIcon(link)} /></span>
                 {link.gh ? 'Github' : link.text}
               </a>
             )}

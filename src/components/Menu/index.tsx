@@ -48,7 +48,7 @@ const Menu = () => {
     <div>
       <div className={styles.topbar}>
         <div className={styles.topbarMenubtn}>
-          <a href='#menu' className='icon-menu' onClick={onMenuToggle(true)} />
+          <a href='#menu' className='fas fa-bars' onClick={onMenuToggle(true)} />
         </div>
       </div>
       <div className={cx(styles.menu, rootStyles.row, { [styles.menu_visible]: isOpen })} id='menu'>
@@ -60,7 +60,7 @@ const Menu = () => {
         </div>
 
         <ul className={cx(styles.menuSection, styles.menuList, rootStyles.col)}>
-          <a href='#' className={cx(styles.menuClosebtn, 'icon-cancel')} onClick={onMenuToggle(false)}></a>
+          <a href='#' className={cx(styles.menuClosebtn, 'fas fa-times')} onClick={onMenuToggle(false)}></a>
 
           {items.map(
             item => (
