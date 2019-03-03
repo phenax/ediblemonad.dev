@@ -1,6 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import './helpers/jsenv';
+
 import Menu from './components/Menu';
 import PageHeader from './components/PageHeader';
 
