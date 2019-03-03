@@ -8,12 +8,12 @@ type Options = {
 };
 
 const useIntersectionObserver = (target: React.RefObject<HTMLElement>, options: Options = { offset: 0 }) => {
-  const [entries, setEntries] = useState<IntersectionObserverEntry[]>([]);
+  const [isInView, setIsInView] = useState<boolean>(false);
 
   useEffect(() => {
     const onIntersection = (entries: IntersectionObserverEntry[]) => {
-      const filteredEntries = options.filter ? entries.filter(options.filter) : entries;
-      setEntries(filteredEntries);
+      const [ entry ] = options.filter ? entries.filter(options.filter) : entries;
+      setIsInView(entry.isIntersecting);
     };
 
     const observer = new IntersectionObserver(onIntersection, {
@@ -28,7 +28,7 @@ const useIntersectionObserver = (target: React.RefObject<HTMLElement>, options: 
     };
   }, [ target.current ]);
 
-  return entries[0];
+  return isInView;
 };
 
 export default useIntersectionObserver;

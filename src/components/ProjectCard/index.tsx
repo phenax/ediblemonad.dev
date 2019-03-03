@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import cx from 'classnames';
 import { useDebounce } from 'use-debounce';
 
 import useLazyImage from '../../hooks/useLazyImage';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 import s from './ProjectCard.module.scss';
 import rootStyles from '../../styles/common.module.scss';
@@ -15,11 +16,14 @@ const getIcon = ({ gh } : LinkType) => gh ? 'icon-github-circled' : 'icon-link';
 const IMAGE_FADEIN_DURATION = 500;
 
 const ProjectCard = ({ id, image, title, links, description, tags }: Project<FixedImage>) => {
-  const { src } = useLazyImage(image);
+  const cardRef = useRef(null);
+  const isInView = useIntersectionObserver(cardRef);
+
+  const { src } = useLazyImage(image, { isInView });
   const debouncedSrc = useDebounce(src, IMAGE_FADEIN_DURATION);
 
   return (
-    <div className={s.project} data-id={id} key={id}>
+    <div className={s.project} data-id={id} key={id} ref={cardRef}>
       <div className={cx('wrap', rootStyles.row)}>
         <div
           className={cx(rootStyles.col, s.block, s.block_bg)}
