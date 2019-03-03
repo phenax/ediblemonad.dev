@@ -20,7 +20,7 @@ const items = [
   },
   {
     url: '/blog',
-    title: 'My blog',
+    title: 'Blog',
     descr: 'I post about FP, react, etc',
   },
   {

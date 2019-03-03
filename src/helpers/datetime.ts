@@ -4,7 +4,7 @@ import { parse, format } from 'date-fns/fp';
 const getBaseDate = () => new Date();
 
 export const toBlogFormat = compose(
-  format('do MMM, yyyy'),
+  format('do MMMM, yyyy'),
   parse(getBaseDate(), 'yyyy/MM/dd'),
 );
 

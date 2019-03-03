@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'gatsby';
 
 import './helpers/jsenv';
 import './helpers/firebase';
@@ -22,6 +23,7 @@ interface Props {
   }
 };
 
+
 export default ({ children, pageContext: { frontmatter } }: Props) => (
   <>
     <Helmet>
@@ -30,9 +32,23 @@ export default ({ children, pageContext: { frontmatter } }: Props) => (
       <meta name="keywords" content={frontmatter.tags} />
     </Helmet>
     <Menu />
-    <PageHeader title={frontmatter.title} subtitle={`${frontmatter.description} - ${toBlogFormat(frontmatter.publishDate)}`} />
-    <div className={s.content}>
-      {children}
+    <PageHeader
+      title={frontmatter.title}
+      subtitle={frontmatter.description}
+      preTitle={
+        <Link to="/blog" className={s.gobackButton}>
+          <i className="fa fa-angle-left" />
+          <span style={{ paddingLeft: '0.5em' }}>View all articles</span>
+        </Link>
+      }
+    />
+    <div className={s.wrapper}>
+      <div>
+        <span className={s.date}>{toBlogFormat(frontmatter.publishDate)}</span>
+      </div>
+      <div className={s.content}>
+        {children}
+      </div>
       <Clapper postid={frontmatter.slug} />
     </div>
   </>

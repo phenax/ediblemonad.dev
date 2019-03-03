@@ -4,6 +4,8 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 
+const styles = ``;
+
 const HTML = props => (
   <html {...props.htmlAttributes}>
     <head>
@@ -12,6 +14,7 @@ const HTML = props => (
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <link rel="manifest" href="/manifest.json" />
       <link rel="author" href="https://plus.google.com/u/0/108089047891809102209" />
+      <style>{styles.replace(/\s+/g, ' ')}</style>
       {props.headComponents}
     </head>
     <body {...props.bodyAttributes}>

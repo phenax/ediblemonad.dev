@@ -1,13 +1,28 @@
 @import './colors.scss';
+@import './fonts.scss';
 
 .wrapper {
   position: relative;
   max-width: 1000px;
-  margin: 1em auto;
+  margin: 3em auto 1em;
   padding: 1em;
 }
 
 .content {
   padding: 2em 0;
   line-height: 1.5em;
+}
+
+.gobackButton {
+  color: $color_accent;
+  font-size: 1.2em;
+
+  &:hover {
+    color: $color_accent_dark;
+    text-decoration: underline;
+  }
+}
+
+.date {
+  font-family: $font_alt;
 }
