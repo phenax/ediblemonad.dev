@@ -1,4 +1,7 @@
 /* eslint-disable */
+
+require("dotenv").config({ path: '.env' });
+
 module.exports = {
   siteMetadata: {
     siteName: 'Portfolio/blog',

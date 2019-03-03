@@ -1,0 +1,78 @@
+@import '../../styles/colors';
+
+.topbar {
+  position: absolute;
+  top: -50px;
+  right: 20px;
+}
+
+.clapperBtn {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: none;
+  box-shadow: 0 2px 5px 1px rgba(0,0,0,.1);
+
+  cursor: pointer;
+  background-color: $color_accent;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1em;
+
+  &:hover {
+    background-color: $color_accent_dark;
+  }
+}
+
+.clapperBtnTop {
+  width: 70px;
+  height: 70px;
+}
+
+.overLimit {
+  background-color: #888;
+  cursor: default;
+
+  &:hover {
+    background-color: #777;
+  }
+}
+
+
+.userCount {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 2px solid $color_accent;
+  
+  font-weight: 400;
+  color: $color_accent;
+  background-color: $color_primary;
+  font-size: .8em;
+
+  transform: translate(-50%, 10px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+
+  &Show {
+    transform: translate(-50%, -10px);
+    opacity: 1;
+  }
+}
+
+
+.bottomBar {
+
+}

@@ -1,5 +1,7 @@
+@import './colors.scss';
 
 .content {
+  position: relative;
   max-width: 1000px;
   margin: 1em auto;
   padding: 1em;

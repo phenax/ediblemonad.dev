@@ -2,9 +2,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import './helpers/jsenv';
+import './helpers/firebase';
 
 import Menu from './components/Menu';
 import PageHeader from './components/PageHeader';
+import Clapper from './components/Clapper';
 
 import { FrontMatter } from './types/blog';
 import { toBlogFormat } from './helpers/datetime';
@@ -31,6 +33,7 @@ export default ({ children, pageContext: { frontmatter } }: Props) => (
     <PageHeader title={frontmatter.title} subtitle={`${frontmatter.description} - ${toBlogFormat(frontmatter.publishDate)}`} />
     <div className={s.content}>
       {children}
+      <Clapper postid={frontmatter.slug} />
     </div>
   </>
 );
