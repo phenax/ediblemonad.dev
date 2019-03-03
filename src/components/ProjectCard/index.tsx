@@ -17,7 +17,7 @@ const IMAGE_FADEIN_DURATION = 500;
 
 const ProjectCard = ({ id, image, title, links, description, tags }: Project<FixedImage>) => {
   const cardRef = useRef(null);
-  const isInView = useIntersectionObserver(cardRef);
+  const isInView = useIntersectionObserver(cardRef, { offset: 300 });
 
   const { src } = useLazyImage(image, { isInView });
   const debouncedSrc = useDebounce(src, IMAGE_FADEIN_DURATION);
