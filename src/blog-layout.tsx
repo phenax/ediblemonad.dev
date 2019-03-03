@@ -8,6 +8,7 @@ import { FrontMatter } from './types/blog';
 import { toBlogFormat } from './helpers/datetime';
 
 import s from './styles/blogpost.module.scss';
+
 import 'prismjs/themes/prism-tomorrow.css';
 
 interface Props {
@@ -17,7 +18,7 @@ interface Props {
   }
 };
 
-export default ({ children, pageContext: { frontmatter }, ...props }: Props) => (
+export default ({ children, pageContext: { frontmatter } }: Props) => (
   <>
     <Helmet>
       <title>{frontmatter.title} - Akshay Nair's blog</title>
@@ -27,7 +28,6 @@ export default ({ children, pageContext: { frontmatter }, ...props }: Props) => 
     <Menu />
     <PageHeader title={frontmatter.title} subtitle={`${frontmatter.description} - ${toBlogFormat(frontmatter.publishDate)}`} />
     <div className={s.content}>
-      {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
       {children}
     </div>
   </>
