@@ -1,66 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 
-import { getPost, clapper, CLAP_LIMIT } from '../../helpers/firebase';
+import usePostClaps from '../../hooks/usePostClaps';
 
 import s from './Clapper.module.scss';
 
 type Props = {
   postid: string
 };
-
-const useFirebasePostClaps = (postid: string) => {
-  const [clapCount, setClapCount] = useState(0);
-  const postRef = useRef<null|firebase.firestore.DocumentReference>(null);
-
-  useEffect(() => {
-    postRef.current = getPost(postid);
-
-    return postRef.current.onSnapshot(post => {
-      const { claps = 0 } = post.data() || {};
-      setClapCount(claps);
-    });
-  }, [postid]);
-
-  const clap = () => {
-    if (postRef.current) {
-      clapper.setTotalClaps(postRef.current, clapCount + 1);
-    }
-  };
-
-  return [ clapCount, clap ];
-};
-
-const usePostClaps = (postid: string) => {
-  const [totalClaps, setTotalClaps] = useFirebasePostClaps(postid);
-  const [userClapCount, setUserClapCount] = useState(0);
-
-  useEffect(() => {
-    setUserClapCount(clapper.userClaps(postid));
-  }, [postid]);
-
-  const clap = () => {
-    const userClaps = clapper.userClaps(postid);
-
-    if (userClaps !== userClapCount)
-      setUserClapCount(userClaps);
-
-    if (userClaps < CLAP_LIMIT) {
-      (setTotalClaps as Function)();
-      setUserClapCount(userClaps + 1);
-      clapper.setUserClaps(postid, userClaps + 1);
-    }
-  };
-
-  return {
-    myClaps: userClapCount,
-    totalClaps: +totalClaps,
-    clap,
-    isOverLimit: userClapCount >= CLAP_LIMIT,
-    isLoading: userClapCount > totalClaps && totalClaps === 0,
-  };
-};
-
 
 type ClapperButtonProps = {
   myClaps: number
@@ -99,7 +46,6 @@ const ClapperButton = React.memo(({ myClaps, totalClaps, clap, isOverLimit, isLo
 
 const Clapper = React.memo(({ postid }: Props) => {
   const postClapData = usePostClaps(postid);
-  const { isOverLimit } = postClapData;
 
   return (
     <div>
