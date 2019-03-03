@@ -46,7 +46,7 @@ export default BlogIndex;
 
 export const pageQuery = graphql`
   query BlogPosts {
-    allMdx(filter: { frontmatter: { published: { eq: true } } }) {
+    allMdx(filter: { frontmatter: { published: { eq: true } } }, sort: { fields: [frontmatter___publishDate], order: DESC }) {
       edges {
         node {
           id
