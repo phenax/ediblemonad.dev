@@ -7,7 +7,7 @@ import './helpers/firebase';
 
 import Menu from './components/Menu';
 import PageHeader from './components/PageHeader';
-import Clapper from './components/Clapper';
+import ArticleActions from './components/ArticleActions';
 
 import { FrontMatter } from './types/blog';
 import { toBlogFormat } from './helpers/datetime';
@@ -49,7 +49,7 @@ export default ({ children, pageContext: { frontmatter } }: Props) => (
       <div className={s.content}>
         {children}
       </div>
-      <Clapper postid={frontmatter.slug} />
+      <ArticleActions postid={frontmatter.slug} />
     </div>
   </>
 );
