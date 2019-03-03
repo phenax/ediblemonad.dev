@@ -12,8 +12,8 @@
   padding: 0;
   outline: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 4.6em;
+  height: 4.6em;
   border: none;
   box-shadow: 0 2px 5px 1px rgba(0,0,0,.1);
 
@@ -22,15 +22,18 @@
   font-weight: bold;
   color: #fff;
   font-size: 1em;
+  
+  &>span {
+    font-size: 1.3em;
+  }
 
   &:hover {
     background-color: $color_accent_dark;
   }
 }
 
-.clapperBtnTop {
-  width: 70px;
-  height: 70px;
+.clapperBtnBottomBar {
+  font-size: 0.7em;
 }
 
 .overLimit {
@@ -72,6 +75,44 @@
   }
 }
 
+.totalCount {
+  $bgColor: $color_primary;
+  $arrowSize: 0.4em;
+
+  position: absolute;
+  top: 100%;
+  left: 50%;
+
+  display: flex;
+  padding: .5em 1em;
+  
+  font-weight: 400;
+  color: #fff;
+  background-color: $bgColor;
+  font-size: .8em;
+
+  transform: translate(-50%, -10px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+
+    width: 0;
+    height: 0;
+    border: $arrowSize solid transparent;
+    border-bottom-color: $bgColor;
+    margin-left: -$arrowSize;
+  }
+}
+.clapperBtn:hover .totalCount {
+  transform: translate(-50%, 10px);
+  opacity: 1;
+}
 
 .bottomBar {
 

@@ -35,11 +35,13 @@ const ClapperButton = React.memo(({ myClaps, totalClaps, clap, isOverLimit, isLo
       disabled={isOverLimit}
       {...props}
     >
-      {isLoading ? '--' : totalClaps}
+      <span><i className="fas fa-star" /></span>
 
       <div className={cx(s.userCount, { [s.userCountShow]: isDiffVisible })}>
         +{myClaps}
       </div>
+
+      <div className={s.totalCount}>{isLoading ? '--' : totalClaps}</div>
     </button>
   );
 });
@@ -52,13 +54,13 @@ const Clapper = React.memo(({ postid }: Props) => {
       <div className={s.topbar}>
         <ClapperButton
           {...postClapData}
-          className={s.clapperBtnTop}
         />
       </div>
 
       <div className={s.bottomBar}>
         <ClapperButton
           {...postClapData}
+          className={s.clapperBtnBottomBar}
         />
       </div>
     </div>
