@@ -1,3 +1,4 @@
+@import "./colors.scss";
 
 .content {
   max-width: 1000px;
@@ -7,13 +8,22 @@
 }
 
 .title {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 100;
-  padding: .5em;
+  padding: .5em 0;
 }
 
 .para {
   line-height: 1.8em;
   text-indent: 1em;
   padding: .7em 0;
+}
+
+.link {
+  color: $color_accent_dark;
+
+  &:hover {
+    text-decoration: underline;
+    color: $color_accent;
+  }
 }

@@ -27,7 +27,7 @@ const BlogIndex = ({ data: { allMdx } = { allMdx: void 0 } }: BlogIndexProps) =>
   const { edges, totalCount } = allMdx || { edges: [], totalCount: 0 };
 
   return (
-    <PageLayout title="Akshay Nair's Blog" headerProps={{ title: 'Blog', subtitle: '' }}>
+    <PageLayout title="Akshay Nair's Blog" headerProps={{ title: 'Blog', subtitle: 'I post about javascript, functional programming, etc' }}>
       <div>
         Posts <strong>{totalCount}</strong>
       </div>
