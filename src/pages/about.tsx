@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import PageLayout from '../page-layout';
 
 import s from '../styles/page.module.scss';
 
 const AboutPage = () => (
-  <PageLayout title="About me" headerProps={{ title: 'About Me', subtitle: '' }}>
+  <PageLayout title="About me" headerProps={{ title: 'About Me', subtitle: 'type Akshay = Developer | Metalhead | Geek | Nerd;' }}>
     <h2 className={s.title}>
       print "Hello world";
     </h2>
@@ -26,7 +27,7 @@ const AboutPage = () => (
       Also, I love music. A lot!
 			Some of my favorite bands at the time of writing this are Amon Amarth, Avatar, Gojira, Trivium, Killswitch Engage, August Burns Red, etc.
       {' '}
-      <a href="/suggest-music" className={s.link}>Tell me about your favorites</a>
+      <Link to="/suggest-music" className={s.link}>Tell me about your favorites</Link>
     </p>
   </PageLayout>
 );
