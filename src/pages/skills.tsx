@@ -19,7 +19,7 @@ type Props = {
 };
 
 export default ({ data: { allSkillsJson: { edges } } }: Props) => (
-  <PageLayout headerProps={{ subtitle: 'Full Stack Web Developer' }}>
+  <PageLayout headerProps={{ title: 'Skill level 9999', subtitle: 'Not to brag but the list doesn\'t include everything. For example, my headbanding skills' }}>
     <SkillList skills={edges.map(e => e.node)} />
   </PageLayout>
 );
