@@ -1,9 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 
 import './helpers/jsenv';
 import './helpers/firebase';
+import { getLink } from './helpers/blog';
 
 import Menu from './components/Menu';
 import PageHeader from './components/PageHeader';
@@ -24,8 +25,18 @@ interface Props {
 };
 
 
-export default ({ children, pageContext: { frontmatter } }: Props) => {
+export default ({ children, pageContext: { frontmatter }, pageContext }: Props) => {
   const date = toBlogFormat(frontmatter.publishDate);
+
+  const { site: { siteMetadata: { siteUrl } } } = useStaticQuery(graphql`
+    query SiteUrl {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+    }
+  `);
 
   return (
     <>
@@ -57,7 +68,7 @@ export default ({ children, pageContext: { frontmatter } }: Props) => {
         <div className={s.content}>
           {children}
         </div>
-        <ArticleActions postid={frontmatter.slug} />
+        <ArticleActions postid={frontmatter.slug} summary={frontmatter.title} link={`${siteUrl}${getLink(frontmatter)}`} />
       </div>
     </>
   );

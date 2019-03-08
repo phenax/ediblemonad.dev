@@ -6,14 +6,17 @@ import StarButton from './StarButton';
 
 import s from './ArticleActions.module.scss';
 
-type Props = {
+interface Props {
   postid: string
+  summary: string
+  link: string
 };
 
-const ArticleActions = React.memo(({ postid }: Props) => {
+const ArticleActions = React.memo(({ postid, summary, link }: Props) => {
   const postClapData = usePostClaps(postid);
 
-  const twitterLink = 'https://twitter.com/intent/tweet?text=Writing%20cleaner%20and%20safer%20JavaScript%20with%20Sum%20Types%20by%20Akshay%20Nair%20https%3A%2F%2Flink.medium.com%2FyL2W9MMlTU';
+  const tweet = `${summary} by Akshay Nair ${link}`;
+  const twitterLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
 
   return (
     <div>
@@ -30,7 +33,7 @@ const ArticleActions = React.memo(({ postid }: Props) => {
           variation="mini"
           className={s.clapperBtnBottomBar}
         />
-        <a href={twitterLink} className={s.shareLink}>
+        <a href={twitterLink} className={s.shareLink} target="_blank _parent" rel="noopener">
           <i className="fab fa-twitter" />
           Share on twitter
         </a>
