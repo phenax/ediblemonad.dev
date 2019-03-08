@@ -4,7 +4,10 @@ require("dotenv").config({ path: '.env' });
 
 module.exports = {
   siteMetadata: {
-    siteName: 'Portfolio/blog',
+    siteName: 'Akshay\'s portfolio + blog',
+    title: `Akshay Nair`,
+    description: `Akshay\'s portfolio + blog`,
+    siteUrl: 'https://phenax.github.io',
   },
   plugins: [
     'gatsby-plugin-typescript',
@@ -101,5 +104,11 @@ module.exports = {
       },
     },
     `gatsby-plugin-webpack-size`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        // policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
   ],
 };
