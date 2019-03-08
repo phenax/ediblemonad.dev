@@ -35,6 +35,7 @@
     "gatsby-plugin-sharp": "^2.0.22",
     "gatsby-plugin-typescript": "^2.0.9",
     "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-plugin-webpack-size": "^0.0.3",
     "gatsby-remark-prismjs": "^3.2.4",
     "gatsby-source-filesystem": "^2.0.22",
     "gatsby-transformer-json": "^2.1.8",

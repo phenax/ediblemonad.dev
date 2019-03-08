@@ -100,5 +100,6 @@ module.exports = {
         trackingId: `UA-88549129-1`,
       },
     },
+    `gatsby-plugin-webpack-size`,
   ],
 };
