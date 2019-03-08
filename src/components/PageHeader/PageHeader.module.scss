@@ -1,5 +1,12 @@
 @import '../../styles/colors';
 
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+$slideInDuration: .13s;
+
 .wrapper {
   background-color: $color_primary;
 	padding: 2em 1em;
@@ -16,13 +23,15 @@
 
 .title {
   font-size: 4em;
-	padding: .25em 0;
+  padding: .25em 0;
+  animation: slideIn $slideInDuration ease-in-out forwards;
 }
 
 .subtitle {
   font-size: 1.3em;
   font-weight: 100;
   letter-spacing: 1px;
+  animation: slideIn $slideInDuration ease-in-out forwards;
 }
 
 @media (max-width: 1000px) {
