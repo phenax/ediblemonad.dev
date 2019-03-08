@@ -34,7 +34,7 @@ const StarButton = React.memo(({ myClaps, totalClaps, clap, isOverLimit, isLoadi
     <button
       className={cx(s.clapperBtn, { [s.overLimit]: isOverLimit }, getClass(variation), className)}
       onClick={clap}
-      disabled={isOverLimit}
+      disabled={isOverLimit || isLoading}
       {...props}
     >
       <span><i className="fas fa-star" /></span>
