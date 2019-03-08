@@ -2,6 +2,8 @@
 
 require("dotenv").config({ path: '.env' });
 
+const enableBundleAnalyzer = process.env.ANALYZE === '1';
+
 module.exports = {
   siteMetadata: {
     siteName: 'Akshay\'s portfolio + blog',
@@ -104,11 +106,18 @@ module.exports = {
       },
     },
     `gatsby-plugin-webpack-size`,
+    enableBundleAnalyzer && {
+      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+      options: {
+        analyzerPort: 3000,
+        production: true,
+      },
+    },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         // policy: [{ userAgent: '*', allow: '/' }]
       }
     },
-  ],
+  ].filter(Boolean),
 };
