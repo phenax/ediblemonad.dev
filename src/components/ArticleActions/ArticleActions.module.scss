@@ -13,7 +13,17 @@
 
 .shareLink {
   display: inline-block;
-  padding: 1em;
+  padding: .4em .6em;
+  margin: 0 .7em;
+  border: 1px solid $color_accent_dark;
+
+  line-height: 1em;
+  color: $color_accent_dark;
+
+  &:hover {
+    color: $color_accent;
+    border-color: $color_accent;
+  }
 
   i {
     padding-right: .5em;

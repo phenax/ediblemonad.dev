@@ -79,12 +79,16 @@
 }
 
 .variationMini {
-  padding: .5em 1em;
-  border-radius: 5px;
+  padding: .4em .6em;
 
-  font-size: .7em;
-  background-color: $color_accent;
+  font-size: 1em;
+  line-height: 1em;
+  background-color: $color_accent_dark;
   color: #fff;
+
+  &:hover {
+    background-color: $color_accent;
+  }
 
   &.overLimit {
     background-color: #888;
@@ -94,9 +98,13 @@
     }
   }
 
+  * {
+    font-size: .7em;
+  }
+
   .totalCount {
     display: inline-block;
-    font-size: 1.4em;
+    font-size: 1em;
     padding-left: .5em;
 
     &::after {
