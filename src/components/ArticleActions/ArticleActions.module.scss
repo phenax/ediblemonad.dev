@@ -1,4 +1,4 @@
-
+@import '../../styles/colors.scss';
 
 .topbar {
   position: absolute;
@@ -7,5 +7,15 @@
 }
 
 .bottomBar {
-  
+  border-top: 1px solid #ddd;
+  padding: 0.5em 0;
+}
+
+.shareLink {
+  display: inline-block;
+  padding: 1em;
+
+  i {
+    padding-right: .5em;
+  }
 }

@@ -3,6 +3,8 @@ import cx from 'classnames';
 
 import s from './StarButton.module.scss';
 
+type Variation = 'fab'|'mini';
+
 type StarButtonProps = {
   myClaps: number
   totalClaps: number
@@ -10,9 +12,15 @@ type StarButtonProps = {
   isOverLimit: boolean
   isLoading: boolean
   className?: string
+  variation: Variation
 };
 
-const StarButton = React.memo(({ myClaps, totalClaps, clap, isOverLimit, isLoading, className, ...props }: StarButtonProps) => {
+const getClass = (variation: Variation) => ({
+  mini: s.variationMini,
+  fab: s.variationFab,
+})[variation];
+
+const StarButton = React.memo(({ myClaps, totalClaps, clap, isOverLimit, isLoading, className, variation = 'mini', ...props }: StarButtonProps) => {
   const [ isDiffVisible, setDiffVisibility ] = useState(false);
 
   useEffect(() => {
@@ -24,7 +32,7 @@ const StarButton = React.memo(({ myClaps, totalClaps, clap, isOverLimit, isLoadi
 
   return (
     <button
-      className={cx(s.clapperBtn, className, { [s.overLimit]: isOverLimit })}
+      className={cx(s.clapperBtn, { [s.overLimit]: isOverLimit }, getClass(variation), className)}
       onClick={clap}
       disabled={isOverLimit}
       {...props}

@@ -24,32 +24,41 @@ interface Props {
 };
 
 
-export default ({ children, pageContext: { frontmatter } }: Props) => (
-  <>
-    <Helmet>
-      <title>{frontmatter.title} - Akshay Nair's blog</title>
-      <meta name="description" content={frontmatter.description} />
-      <meta name="keywords" content={frontmatter.tags} />
-    </Helmet>
-    <Menu />
-    <PageHeader
-      title={frontmatter.title}
-      subtitle={frontmatter.description}
-      preTitle={
-        <Link to="/blog" className={s.gobackButton}>
-          <i className="fa fa-angle-left" />
-          <span style={{ paddingLeft: '0.5em' }}>View all articles</span>
-        </Link>
-      }
-    />
-    <div className={s.wrapper}>
-      <div>
-        <span className={s.date}>{toBlogFormat(frontmatter.publishDate)}</span>
+export default ({ children, pageContext: { frontmatter } }: Props) => {
+  const date = toBlogFormat(frontmatter.publishDate);
+
+  return (
+    <>
+      <Helmet>
+        <title>{frontmatter.title} - Akshay Nair's blog</title>
+        <meta name="description" content={frontmatter.description} />
+        <meta name="keywords" content={frontmatter.tags} />
+        <style>{`
+          pre[class*="language-"], code {
+            background-color: #252C33;
+          }
+        `}</style>
+      </Helmet>
+      <Menu />
+      <PageHeader
+        title={frontmatter.title}
+        subtitle={frontmatter.description}
+        preTitle={
+          <Link to="/blog" className={s.gobackButton}>
+            <i className="fa fa-angle-left" />
+            <span style={{ paddingLeft: '0.5em' }}>View all articles</span>
+          </Link>
+        }
+      />
+      <div className={s.wrapper}>
+        <div>
+          <span className={s.date}>Posted on {date}</span>
+        </div>
+        <div className={s.content}>
+          {children}
+        </div>
+        <ArticleActions postid={frontmatter.slug} />
       </div>
-      <div className={s.content}>
-        {children}
-      </div>
-      <ArticleActions postid={frontmatter.slug} />
-    </div>
-  </>
-);
+    </>
+  );
+};
