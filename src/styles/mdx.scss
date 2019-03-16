@@ -5,21 +5,26 @@
   }
   pre[class*="language-"] {
     padding: 1.3em;
-    background-color: #252C33;
+    background: #252C33;
     border-radius: 0;
   }
 
   pre[class*="language-"] > code[class*="language-"] {
+    background: #252C33;
     font-size: .8em;
     line-height: 1.5em;
-    border-radius: 0;
     margin: .5em 0;
   }
 
   *:not(pre)>code {
     padding: 0 .3em;
-    background-color: #252C33;
+    background: #252C33;
     border-radius: 0;
+
+    &.language-text {
+      color: #444;
+      background: #eaeaef;
+    }
   }
   
   
