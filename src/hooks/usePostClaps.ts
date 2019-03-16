@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import useFirebasePostClaps from './useFirebasePostClaps';
 import { clapper, CLAP_LIMIT } from '../helpers/firebase';
+import { trackEoi } from '../helpers/tracking';
 
 const usePostClaps = (postid: string) => {
   const [totalClaps, setTotalClaps] = useFirebasePostClaps(postid);
@@ -12,6 +13,7 @@ const usePostClaps = (postid: string) => {
   }, [postid]);
 
   const clap = () => {
+    trackEoi(postid);
     const userClaps = clapper.userClaps(postid);
 
     if (userClaps !== userClapCount)
