@@ -9,6 +9,7 @@
     "develop": "gatsby develop",
     "lint": "eslint src",
     "start": "yarn develop",
+    "blog": "node ./scripts/new-blog-post.js",
     "publish-gh": "yarn build && gh-pages -d public -b master",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
@@ -21,7 +22,7 @@
     "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.2",
     "classnames": "^2.2.6",
-    "date-fns": "2.0.0-alpha.27",
+    "date-fns": "^1.30.1",
     "dayjs": "^1.8.6",
     "dotenv": "^6.2.0",
     "firebase": "^5.8.5",
@@ -58,6 +59,7 @@
     "url": "https://github.com/phenax/phenax.github.io"
   },
   "devDependencies": {
+    "@sindresorhus/slugify": "^0.9.0",
     "@types/react-helmet": "^5.0.8",
     "@typescript-eslint/eslint-plugin": "^1.4.0",
     "@typescript-eslint/parser": "^1.4.0",
@@ -67,6 +69,7 @@
     "eslint-config-react-app": "^3.0.7",
     "eslint-plugin-prettier": "^3.0.1",
     "gh-pages": "^2.0.1",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "yargs": "^13.2.2"
   }
 }
