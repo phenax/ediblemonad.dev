@@ -3,7 +3,7 @@
     "id": "algebraic-effects",
     "title": "Algebraic Effects",
     "description": "Define side-effects in a pure and composible way using algebraic effects",
-    "image": "plasma.png",
+    "image": "algebraic-effects.png",
     "tags": ["functional", "algebraic-effects", "javascript", "generators"],
     "links": [
       { "link": "https://phenax.github.io/algebraic-effects", "text": "Docs" },
@@ -14,7 +14,7 @@
     "id": "enum-fp",
     "title": "EnumFP",
     "description": "Functional Enum type / Sum type for javascript with simple pattern matching",
-    "image": "plasma.png",
+    "image": "enum-fp.png",
     "tags": ["functional", "sum-type", "javascript"],
     "links": [
       { "link": "enum-fp", "gh": true }
@@ -34,7 +34,7 @@
     "id": "pipey",
     "title": "Pipey",
     "description": "Create pipeline operator ready functions by converting instance methods's to context-free functions",
-    "image": "plasma.png",
+    "image": "pipey.png",
     "tags": ["functional", "pipe-operator", "javascript"],
     "links": [
       { "link": "pipey", "gh": true }

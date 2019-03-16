@@ -94,14 +94,18 @@ $box_shadow: 0 .3em .7em .05em rgba(0,0,0,.1);
   font-family: 'fontello', #{$font} !important;
 }
 
+@mixin bgBackground {
+  background: {
+    size: 100%;
+    repeat: no-repeat;
+    position: center;
+  };
+}
+
 .block.block_bg {
   flex: 3;
 
-  background: {
-    size: cover;
-    repeat: no-repeat;
-    position: top left;
-  };
+  @include bgBackground();
 }
 
 .blockFakeBackground {
@@ -111,12 +115,8 @@ $box_shadow: 0 .3em .7em .05em rgba(0,0,0,.1);
   width: 100%;
   height: 100%;
 
-  background: {
-    color: $color_accent_light;
-    size: cover;
-    repeat: no-repeat;
-    position: top left;
-  };
+  @include bgBackground();
+  background-color: $color_accent_light;
 
   opacity: 1;
   transition: opacity 0.5s linear;

@@ -74,7 +74,7 @@ export const pageQeury = graphql`
       edges {
         node {
           childImageSharp {
-            fixed(quality: 80, width: 500) {
+            fixed(quality: 100, width: 400) {
               base64
               tracedSVG
               src
