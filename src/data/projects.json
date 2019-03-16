@@ -1,15 +1,15 @@
 [
   {
-    "id": "plasmajs",
-    "title": "PlasmaJS",
-    "description": "Built an isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel",
+    "id": "algebraic-effects",
+    "title": "Algebraic Effects",
+    "description": "Define side-effects in a pure and composible way using algebraic effects",
     "image": "plasma.png",
-    "tags": ["react", "node", "isomorphic"],
+    "tags": ["functional", "algebraic-effects", "javascript", "generators"],
     "links": [
-      { "link": "plasmajs", "gh": true }
+      { "link": "https://phenax.github.io/algebraic-effects", "text": "Docs" },
+      { "link": "algebraic-effects", "gh": true }
     ]
   },
-
   {
     "id": "enum-fp",
     "title": "EnumFP",
@@ -20,6 +20,27 @@
       { "link": "enum-fp", "gh": true }
     ]
   },
+  {
+    "id": "plasmajs",
+    "title": "PlasmaJS",
+    "description": "An isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel",
+    "image": "plasma.png",
+    "tags": ["react", "node", "isomorphic"],
+    "links": [
+      { "link": "plasmajs", "gh": true }
+    ]
+  },
+  {
+    "id": "pipey",
+    "title": "Pipey",
+    "description": "Create pipeline operator ready functions by converting instance methods's to context-free functions",
+    "image": "plasma.png",
+    "tags": ["functional", "pipe-operator", "javascript"],
+    "links": [
+      { "link": "pipey", "gh": true }
+    ]
+  },
+
 
   {
     "id": "diary-pwa",
@@ -35,7 +56,7 @@
   {
     "id": "pattern-lock-js",
     "title": "Pattern Lock JS",
-    "description": "Built a customizable pattern lock JavaScript library for the web. It uses HTML5 canvas.",
+    "description": "A customizable pattern lock JavaScript library for the web. It uses HTML5 canvas.",
     "image": "pattern.png",
     "tags": ["canvas", "pattern"],
     "links": [
@@ -57,7 +78,7 @@
   {
     "id": "h",
     "title": "H Kotlin",
-    "description": "Built a simple, easy to use, library for HTML templating in kotlin. It allows you to write re-usable components in Kotlin.",
+    "description": "A simple, easy to use, library for HTML templating in kotlin. It allows you to write re-usable components in Kotlin.",
     "image": "h.png",
     "tags": ["kotlin", "html", "jvm"],
     "links": [
@@ -68,7 +89,7 @@
   {
     "id": "zomato-nearby-delicacy",
     "title": "Nearby Delicacies",
-    "description": "Built a simple web app that uses the zomato api to search restaurants in a 1KM radius.",
+    "description": "A web app that uses the zomato api to search restaurants in a 1KM radius.",
     "image": "zomato.png",
     "tags": ["knockout", "zomato"],
     "links": [
