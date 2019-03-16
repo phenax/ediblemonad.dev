@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://phenax.github.io/sitemap.xml
+Host: https://phenax.github.io
