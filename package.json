@@ -8,8 +8,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "lint": "eslint src",
-    "start": "npm run develop",
-    "publish-gh": "npm run build && gh-pages -d public -b master",
+    "start": "yarn develop",
+    "publish-gh": "yarn build && gh-pages -d public -b master",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
