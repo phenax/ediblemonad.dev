@@ -2,10 +2,110 @@
 slug: algebraic-effects
 title: PureFunctionalJS - Algebraic Effects in JS
 published: false
-description: Bringing the world of pure functional languages to javascript one concept at a time
+description: Algebraic effects is an alternative way to model your side-effects. Lets bring that to javascript.
 tags: algebraic,algebraic-effects,javascript,functional,js,fp,generator,effect
-publishDate: 2019/03/16
+publishDate: 2019/03/17
 ---
 
+It is a known fact in the developer community that pure functions are easier to test and reason about. But we can't just get rid of side-effects as real world projects don't work that way and we will end up shipping a blank page.
+JavaScript as a language doesn't really care about whether your operation is pure or impure. So it is left largely to the developers to find better and better ways to manage side-effects. We can look at pure functional programming languages to get some idea as to how we can work with effects. On the haskell side of things we will find monads and monad transformers for creating and managing side-effects. Monads are amazing but they are a strange concept to wrap your head around. Also, they do not compose that well.
+
+
+---
+
+## Algebraic Effects!
+This is the part of the story where the knight in shining armour comes and saves the princess. Algebraic Effects!
+
+The concept of algebraic effects and the ideas it promotes have been gaining a lot of popularity recently and pushing that to overdrive is the direction that the react community is taking. With React Fiber, Suspense, React hooks, everything is pointing to "algebraic effects is the future". They are doing this all without even mentioning algebraic effects, which is an amazing thing. I'm just here to ruin all that and shove the phrase "algebraic effects" in your face.
+
+Algebraic effects is an alternative way to model your side-effects. Having the operation signature independent of the operation behaviour makes for some powerful compositions.
+
+
+##  Why algebraic effects?
+AE allow you to design your computational side-effects in terms of program flow.
+Languages like Eff, Koka have effects as their first-class citizens which makes their design choices very interesting.
+
+
+## ES2015 generators
+With the blessing that was ES2015, arrived the amazing generators. [Generators are functions which can be exited and later re-entered](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*#Description). With generators, you have control over continuations and halts in your program.
+
+
+## Lets bring the magic to javascript.
+With total control over the flow of the program, we can use generators to bring some of the awesomeness of algebraic effects to javascript land.
+I've written something for that! It's a lightweight library called [algebraic-effects](https://github.com/phenax/algebraic-effects).
+Here's an example of defining your program using the state effect and creating custom effects like `Console` and `Dom`.
+
+```javascript
+import { createEffect, func } from '@algebraic-effects/core';
+import { State } from '@algebraic-effects/effects';
+import { call, sleep } from '@algebraic-effects/core/operations';
+
+const CountButton = createEffect('CountButton', {
+  updateCount: func(['count']),
+  takeClick: func()
+});
+
+const Console = createEffect('Console', {
+  log: func(['...args'])
+});
+
+function* clickCountdown() {
+  yield CountButton.takeClick(); // Continue on click
+
+  const count = yield State.get(); // Retrive count from State
+
+  yield Console.log(count); // Log count to console
+  yield CountButton.updateCount(count); // Update count in ui
+
+  if (count > 0) {
+    yield State.set(count - 1); // Decrement count
+    yield sleep(500); // Add a delay of 500 ms to avoid accidental multiclick
+    yield call(clickCountdown); // Recursively call the program again.
+  }
+}
+```
+
+And now we call our program and implement its behavior
+```js
+const $button = document.querySelector('.js-my-button');
+
+const countButtonHandler = CountButton.handler({
+  updateCount: ({ resume }) => count => {
+    $button.textContent = count === 0 ? 'ZERO' : `${count} (-1)`;
+    resume(); // Resume synchronously
+  },
+  takeClick: ({ resume }) => () =>
+    $button.addEventListener('click', resume, { once: true }) // Resume asynchronously
+});
+
+const logger = Console.handler({
+  log: ({ resume }) => (...a) => resume(console.log(...a))
+});
+
+State.of(10)
+  .with(countButtonHandler)
+  .with(logger)
+  .run(clickCountdown)
+  .then(() => {
+    console.log('Done');
+  });
+```
+
+Pay close attention to how the implementation of the operations `log` and `updateCount` do not come into play till the moment you actually call the program.
+
+
+## Letz learn da lingo
+<< From docs >>
+
+
+
+## algebraic-effects and redux-saga
+algebraic-effects and redux-saga come from the same hole in functional programming. One can say that algebraic effects is to redux-saga what a set of bricks are to a house. You can use algebraic effects to set up a framework that would allow you to manage side-effects in a clean way.
+
+
+## Modelling api calls and actions in terms of programs
+
+
+## Conclusion
 
 
