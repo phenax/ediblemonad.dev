@@ -1,0 +1,109 @@
+
+.blog-content {
+  pre, code {
+    font-family: "Fira Mono", 'Courier New', Courier, monospace;
+  }
+  pre[class*="language-"] {
+    padding: 1.3em;
+    background-color: #252C33;
+    border-radius: 0;
+  }
+
+  pre[class*="language-"] > code[class*="language-"] {
+    font-size: .8em;
+    line-height: 1.5em;
+    border-radius: 0;
+    margin: .5em 0;
+  }
+
+  *:not(pre)>code {
+    padding: 0 .3em;
+    background-color: #252C33;
+    border-radius: 0;
+  }
+  
+  
+  /* standard typography */
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1.5em 0 .5em;
+    font-weight: 600;
+    color: #444;
+    line-height: 1.2em;
+    font-family: Oswald, serif;
+  }
+  h1 { font-size: 2.625em; }
+  h2 { font-size: 2.125em; }
+  h3 { font-size: 1.5em; }
+  h4 { font-size: 1.7em; }
+  h5 { font-size: 1.3em; }
+  h6 { font-size: 1.2em; }
+  
+  p {
+    display: block;
+    margin: 1em 0;
+  }
+  
+  blockquote {
+    background-color: #f9f9f9;
+    color: #666;
+    padding: .5em 1em;
+    font-style: italic;
+  }
+  blockquote p {
+    padding: 0;
+    margin: 0;
+  }
+  /* End standard typography */
+  
+  
+  /* Line Seperator Style */
+  hr {
+    position: relative;
+    margin: 2.5em auto 1.6em;
+    overflow: visible;
+  }
+  hr, hr::before, hr::after {
+    display: block;
+    border: none;
+    background-color: #aaa;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+  hr::before, hr::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left:50%;
+    transform: translateY(-50%);
+  }
+  hr::before { margin-left: -50px; }
+  hr::after { margin-left: 50px; }
+  /* End Line Seperator Style */
+  
+  /* Action styles */
+  a {
+    color: #3498db;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  /* End action styles */
+  
+  ol { list-style: decimal; }
+  ul { list-style: disc; }
+  ul { margin-left: 1.3em; }
+  li { margin: 1em 0; }
+  
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
+

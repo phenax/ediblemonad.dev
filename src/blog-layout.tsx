@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { Helmet } from 'react-helmet';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 
@@ -16,6 +17,7 @@ import { toBlogFormat } from './helpers/datetime';
 import s from './styles/blogpost.module.scss';
 
 import 'prismjs/themes/prism-tomorrow.css';
+import './styles/mdx.scss';
 
 interface Props {
   children: any,
@@ -24,19 +26,20 @@ interface Props {
   }
 };
 
-
-export default ({ children, pageContext: { frontmatter }, pageContext }: Props) => {
-  const date = toBlogFormat(frontmatter.publishDate);
-
-  const { site: { siteMetadata: { siteUrl } } } = useStaticQuery(graphql`
-    query SiteUrl {
-      site {
-        siteMetadata {
-          siteUrl
-        }
+const siteMetaQuery = graphql`
+  query SiteUrl {
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
-  `);
+  }
+`;
+
+export default ({ children, pageContext: { frontmatter } }: Props) => {
+  const date = toBlogFormat(frontmatter.publishDate);
+
+  const { site: { siteMetadata: { siteUrl } } } = useStaticQuery(siteMetaQuery);
 
   return (
     <>
@@ -45,8 +48,8 @@ export default ({ children, pageContext: { frontmatter }, pageContext }: Props) 
         <meta name="description" content={frontmatter.description} />
         <meta name="keywords" content={frontmatter.tags} />
         <style>{`
-          pre[class*="language-"], code {
-            background-color: #252C33;
+          html, body {
+            background-color: #fff;
           }
         `}</style>
       </Helmet>
@@ -65,7 +68,7 @@ export default ({ children, pageContext: { frontmatter }, pageContext }: Props) 
         <div>
           <span className={s.date}>Posted on {date}</span>
         </div>
-        <div className={s.content}>
+        <div className={cx(s.content, 'blog-content')}>
           {children}
         </div>
         <ArticleActions postid={frontmatter.slug} summary={frontmatter.title} link={`${siteUrl}${getLink(frontmatter)}`} />
@@ -73,3 +76,4 @@ export default ({ children, pageContext: { frontmatter }, pageContext }: Props) 
     </>
   );
 };
+
