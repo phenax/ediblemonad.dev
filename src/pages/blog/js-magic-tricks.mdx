@@ -1,0 +1,89 @@
+---
+slug: js-magic-tricks
+title: JS Magic Tricks to impress your friends
+published: true
+description: A collection of cool JS Magic Tricks to impress your friends
+tags: js,magic,tricks,javascript
+publishDate: 2019/03/30
+---
+
+As we all know, javascript is, in the truest sense of the phrase, a magical language.
+
+
+## Schrodinger's number
+
+```js
+typeof NaN === 'number'
+```
+
+Something that's not a number, is a number.
+
+**Be Amazed!**
+
+
+
+## Schrodinger's function
+
+>>>>>>>>>>>>>>>>>>>>>>> Image of typeof myFunction <<<<<<<<<<<<<<<<<<<<<<<
+```js
+typeof myFunction === 'function';
+```
+
+For my next trick, I'm gonna make this function... dissappear!
+
+Abrakadabra!!
+
+```js
+myFunction();
+```
+
+**Be Amaaazed!!**
+
+
+Here's the function,
+
+```js
+const myFunction = ''.split.call;
+```
+
+`call` is a method on the class `Function` so when you call it without it, it won't know what function to execute.
+
+## Schrodinger's array
+
+```js
+document.all
+```
+
+Now let's make that array dissappear!
+
+```js
+typeof document.all
+```
+
+**BE AMAAAZZEEDDD!!!**
+
+`document.all` is a very old and deprecated api that allowed you to iterate over all the nodes rendered to the DOM. So the typeof expression returning `undefined` was by design as a part of the deprecation.
+
+
+## Check if list has length <= 1
+
+So a simpleton would solve the given problem by writing something simple and dumb like
+```js
+const hasAtLeastOneItem = list => list.length <= 1;
+```
+
+But us few elite JS developers are smart enough to do this
+
+```js
+const hasAtLeastOneItem = list => !isNaN(+list);
+```
+
+Boom! **Now you are amazed!**
+
+
+## Addition
+
+
+
+
+
