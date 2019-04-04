@@ -7,7 +7,8 @@ tags: algebraic,algebraic-effects,javascript,functional,js,fp,generator,effect
 publishDate: 2019/03/17
 ---
 
-It is a known fact in the developer community that pure functions are easier to test and reason about. But we can't just get rid of side-effects as real world projects don't work that way and we will end up shipping a blank page.
+It is a known fact in the developer community that pure functions are easier to test and reason about. But we can't just get rid of side-effects as real world projects don't work that way as stuff like rendering to the browser are not pure operations.
+
 JavaScript as a language doesn't really care about whether your operation is pure or impure. So it is left largely to the developers to find better and better ways to manage side-effects. We can look at pure functional programming languages to get some idea as to how we can work with effects. On the haskell side of things we will find monads and monad transformers for creating and managing side-effects. Monads are amazing but they are a strange concept to wrap your head around. Also, they do not compose that well.
 
 
@@ -16,94 +17,171 @@ JavaScript as a language doesn't really care about whether your operation is pur
 ## Algebraic Effects!
 This is the part of the story where the knight in shining armour comes and saves the princess. Algebraic Effects!
 
-The concept of algebraic effects and the ideas it promotes have been gaining a lot of popularity recently and pushing that to overdrive is the direction that the react community is taking. With React Fiber, Suspense, React hooks, everything is pointing to "algebraic effects is the future". They are doing this all without even mentioning algebraic effects, which is an amazing thing. I'm just here to ruin all that and shove the phrase "algebraic effects" in your face.
+Algebraic effects is an alternative way to model your side-effects.
 
-Algebraic effects is an alternative way to model your side-effects. Having the operation signature independent of the operation behaviour makes for some powerful compositions.
+At first algebraic effects may sound very foreign but we already have in javascript something similar. Exception handling.
+Algebraic effects are basically just exceptions that can be resumed.
+
+Imagine if javascript could do something like this...
+```js
+const someSafeOperation = input => {
+  try {
+    let result = someunsafeOperation(input);
+
+    if (!result) {
+      result = throw NoResult;
+    }
+
+    return normalize(result);
+  } catch(e, resume) {
+    switch(e) {
+      case NoResult: resume({ errorMessage: 'No result found' });
+      default: resume({ errorMessage: 'Something went wrong' })
+    }
+  }
+};
+
+words('Hello world') // > ['Hello', 'world']
+words(null) // >[]
+```
+
+If someunsafeOperation threw an error or it returned an empty value, the exceptions would allow the programmer to resume the rest of the program with ease.
+
+Obviously, JS can't do that.
+But the idea here is pretty powerful if you think of this in terms of isolating pure and impure behaviors.
+Imagine your application only threw exceptions like that and expected them to be continued. Technically, your application wouldn't include any effects but would be an instruction to the catch to handle the effect.
+
+```js
+function renderUserData(id) {
+  const user = throw FetchUserData(id);
+
+  throw ScrollToTop;
+
+  throw RenderUser(user);
+}
+
+function runRenderUserData(id) {
+  try {
+    renderUserData(id);
+  } catch(e, resume) {
+    match(e, { // Ignore the specifics of the `match` function. It is just an alternative to switch-case
+      FetchUserData: id => fetchUserData(id).then(resume),
+      ScrollToTop: () => {
+        window.scrollTo(0, 0);
+        resume();
+      },
+      RenderUser: user => renderUser(user), // Some function that renders ui
+    });
+  }
+};
+```
+
+Having the operation signature independent of the operation behaviour makes for some powerful compositions as you will see soon enough. Guess what, if you squint hard enough at the `renderUserData` function, you'll see the picture react is trying to paint with hooks.
+
+The concept of algebraic effects and the ideas it promotes have been gaining a lot of popularity recently and pushing that to overdrive is the direction that the react team is taking. With React Fiber, Suspense, React hooks(also TNG-hooks), everything is pointing to "algebraic effects is the future". React hooks was pretty successful in adapting the mental model of algebraic-effects to writing ui components. But algebraic effects are about a lot more than that. 
 
 
 ##  Why algebraic effects?
-AE allow you to design your computational side-effects in terms of program flow.
-Languages like Eff, Koka have effects as their first-class citizens which makes their design choices very interesting.
-
-
-## ES2015 generators
-With the blessing that was ES2015, arrived the amazing generators. [Generators are functions which can be exited and later re-entered](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*#Description). With generators, you have control over continuations and halts in your program.
+The concept of algebraic effects, allows you to design your computational effects in terms of program flow. You isolate the effect (operation behavior) from the call (operation signature) and this creates a clean, composable, testable code that you can model your applicaton with.
 
 
 ## Lets bring the magic to javascript.
+With the blessing that was ES2015, arrived the amazing generators. [more about es2015 generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*#Description)
 With total control over the flow of the program, we can use generators to bring some of the awesomeness of algebraic effects to javascript land.
-I've written something for that! It's a lightweight library called [algebraic-effects](https://github.com/phenax/algebraic-effects).
-Here's an example of defining your program using the state effect and creating custom effects like `Console` and `Dom`.
+I've written something for that! All of the magic you may need is packed inside a lightweight library [algebraic-effects](https://github.com/phenax/algebraic-effects).
 
-```javascript
-import { createEffect, func } from '@algebraic-effects/core';
-import { State } from '@algebraic-effects/effects';
-import { call, sleep } from '@algebraic-effects/core/operations';
+########################## Example here #################################
 
-const CountButton = createEffect('CountButton', {
-  updateCount: func(['count']),
-  takeClick: func()
+
+########################## DOM Example here #################################
+
+Pay close attention to how the implementation of the operations do not come into play till the moment you actually call the program.
+Obviously there are better ways to solve DOM problems like this. Also, this library is not targetted to be used with the DOM. We already have reactJS covering the problem with hooks by adapting the mental model of algebraic effects to js pretty gracefully. The reason this library strays away from hook-like api and goes with generators is because to explore the true power of algebraic effects, you need full power of continuations in your program. Stuff like...
+
+
+## Guess what? Multiple continuations!
+
+```js
+import { Random } from '@algebraic-effects/effects';
+
+function *flipCoins() {
+  const isHead1 = yield Random.flipCoin(2);
+  const isHead2 = yield Random.flipCoin(3);
+
+  return [isHead1, isHead2];
+}
+
+
+Random.seed(10)
+  .run(flipCoins)
+  .fork({
+    Resolved: results => {
+      // results is a list of 6 2-tuples of booleans
+      // [ [true, false], [true, false], [true, true], [false, false], [false, true], [false, false] ]
+    },
+  })
+```
+
+"What is this wizardry?"
+Heres how it works internally,
+
+############# Explain with diagram ###############
+
+
+
+## Modelling your js application with algebraic-effects
+
+effects/Resources/index.js
+```js
+const ResourceEffect = createEffect('Resource', {
+  list: func(['start', 'end'], 'Array a'),
+  forall: func(['start', 'end'], '[a]', { isMulti: true }),
+  get: func(['query'], 'a'),
+  set: func(['data']),
 });
 
-const Console = createEffect('Console', {
-  log: func(['...args'])
-});
+export default ResourceEffect;
+```
 
-function* clickCountdown() {
-  yield CountButton.takeClick(); // Continue on click
+effects/Resources/Profile.js
+```js
+const Profile = ResourceEffect.extendAs('Profile');
 
-  const count = yield State.get(); // Retrive count from State
+export const getProfileHandler = () => {
+  const 
+  return Profile.handler({
+    get: ({})
+  });
+};
 
-  yield Console.log(count); // Log count to console
-  yield CountButton.updateCount(count); // Update count in ui
+export default Profile;
+```
 
-  if (count > 0) {
-    yield State.set(count - 1); // Decrement count
-    yield sleep(500); // Add a delay of 500 ms to avoid accidental multiclick
-    yield call(clickCountdown); // Recursively call the program again.
-  }
+effects/Resources/GithubStars.js
+```js
+export default ResourceEffect.extendAs('GithubStars');
+```
+
+
+programs/starrer.js
+```js
+import Profile from '../effects/profile';
+import GithubStars from '../effects/githubStars';
+
+export function *starAllUserRepos() {
+  const profile = yield Profile.forall(0, 10);
+  yield GithubStars.set({ repoid: profile.repositories[0].id });
 }
 ```
 
-And now we call our program and implement its behavior
+handlers/prof
+
+actions/starAllProfiles.js
 ```js
-const $button = document.querySelector('.js-my-button');
+import { starAllUserRepos } from '../programs/starrer';
 
-const countButtonHandler = CountButton.handler({
-  updateCount: ({ resume }) => count => {
-    $button.textContent = count === 0 ? 'ZERO' : `${count} (-1)`;
-    resume(); // Resume synchronously
-  },
-  takeClick: ({ resume }) => () =>
-    $button.addEventListener('click', resume, { once: true }) // Resume asynchronously
-});
 
-const logger = Console.handler({
-  log: ({ resume }) => (...a) => resume(console.log(...a))
-});
-
-State.of(10)
-  .with(countButtonHandler)
-  .with(logger)
-  .run(clickCountdown)
-  .then(() => {
-    console.log('Done');
-  });
 ```
-
-Pay close attention to how the implementation of the operations `log` and `updateCount` do not come into play till the moment you actually call the program.
-
-
-## Letz learn da lingo
-<< From docs >>
-
-
-
-## algebraic-effects and redux-saga
-algebraic-effects and redux-saga come from the same hole in functional programming. One can say that algebraic effects is to redux-saga what a set of bricks are to a house. You can use algebraic effects to set up a framework that would allow you to manage side-effects in a clean way.
-
-
-## Modelling api calls and actions in terms of programs
 
 
 ## Conclusion
