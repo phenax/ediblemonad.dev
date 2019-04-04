@@ -13,7 +13,7 @@ title: ${title}
 published: ${published}
 description: ${description || title}
 tags: ${keywords || slug.split('-').join(',')}
-publishDate: ${format(new Date(), 'YYYY/MM/DD')}
+publishDate: ${format(new Date(), 'yyyy/MM/dd')}
 ---
 
 Work in progress
