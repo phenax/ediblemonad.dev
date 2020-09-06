@@ -45,6 +45,17 @@
   },
 
   {
+    "id": "owyn-launcher",
+    "title": "owyn-launcher",
+    "description": "Only What You Need launcher is a minimalist, text-only launcher written in flutter because you don't meed much more than that",
+    "image": "owyn.jpg",
+    "tags": ["flutter", "android", "launcher", "minimalist"],
+    "links": [
+      { "link": "bsp-layout", "gh": true }
+    ]
+  },
+
+  {
     "id": "plasmajs",
     "title": "PlasmaJS",
     "description": "An isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel",
