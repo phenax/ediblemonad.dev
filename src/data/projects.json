@@ -10,6 +10,7 @@
       { "link": "algebraic-effects", "gh": true }
     ]
   },
+
   {
     "id": "enum-fp",
     "title": "EnumFP",
@@ -20,6 +21,29 @@
       { "link": "enum-fp", "gh": true }
     ]
   },
+
+  {
+    "id": "shotkey",
+    "title": "Shotkey",
+    "description": "Hotkey daemon for X11 window managers",
+    "image": "shotkey.png",
+    "tags": ["linux", "suckless", "hotkey", "x11"],
+    "links": [
+      { "link": "shotkey", "gh": true }
+    ]
+  },
+
+  {
+    "id": "bsp-layout",
+    "title": "bsp-layout",
+    "description": "Dynamic layout manager for bspwm",
+    "image": "bsp-layout.jpg",
+    "tags": ["linux", "bspwm", "dynamic", "layout", "tiling"],
+    "links": [
+      { "link": "bsp-layout", "gh": true }
+    ]
+  },
+
   {
     "id": "plasmajs",
     "title": "PlasmaJS",
@@ -30,6 +54,7 @@
       { "link": "plasmajs", "gh": true }
     ]
   },
+
   {
     "id": "pipey",
     "title": "Pipey",
@@ -40,7 +65,6 @@
       { "link": "pipey", "gh": true }
     ]
   },
-
 
   {
     "id": "diary-pwa",
@@ -65,17 +89,6 @@
   },
 
   {
-    "id": "f-inator-3000",
-    "title": "Fuckinator 3000",
-    "description": "It\"s a.... it can be used for..... nothing. It basically converts your sentence into a better sentence.",
-    "image": "",
-    "tags": ["node", "preact", "nlp"],
-    "links": [
-      { "link": "f-inator-3000", "gh": true }
-    ]
-  },
-
-  {
     "id": "h",
     "title": "H Kotlin",
     "description": "A simple, easy to use, library for HTML templating in kotlin. It allows you to write re-usable components in Kotlin.",
@@ -83,18 +96,6 @@
     "tags": ["kotlin", "html", "jvm"],
     "links": [
       { "link": "h", "gh": true }
-    ]
-  },
-
-  {
-    "id": "zomato-nearby-delicacy",
-    "title": "Nearby Delicacies",
-    "description": "A web app that uses the zomato api to search restaurants in a 1KM radius.",
-    "image": "zomato.png",
-    "tags": ["knockout", "zomato"],
-    "links": [
-      { "link": "https://phenax.github.io/zomato-nearby-delicacy/static/", "text": "Demo" },
-      { "link": "zomato-nearby-delicacy", "gh": true }
     ]
   }
 ]
