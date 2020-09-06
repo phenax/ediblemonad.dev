@@ -93,6 +93,8 @@
 
 		transform: translateX(102%);
 
+    $list: &;
+
 		&Li {
 			width: 45%;
 			transition: transform #{$animationTime} ease-in-out;
@@ -107,6 +109,11 @@
 				}
 			}
 		}
+
+    &Li_selected &Link {
+      color: $color_accent_dark;
+    }
+
 		
 		&Link {
 			color: #fff;
