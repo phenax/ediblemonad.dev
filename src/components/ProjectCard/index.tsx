@@ -12,7 +12,7 @@ import { Project, LinkType } from '../../types/project';
 import { FixedImage } from '../../types/image';
 
 const getLink = ({ link, gh }: LinkType) => `${gh ? 'https://github.com/phenax/' : ''}${link}`;
-const getIcon = ({ gh } : LinkType) => gh ? 'fab fa-github' : 'fas fa-link';
+const getIcon = ({ gh }: LinkType) => (gh ? 'fab fa-github' : 'fas fa-link');
 
 const IMAGE_FADEIN_DURATION = 500;
 
@@ -26,10 +26,7 @@ const ProjectCard = ({ id, image, title, links, description, tags }: Project<Fix
   return (
     <div className={s.project} data-id={id} key={id} ref={cardRef}>
       <div className={cx('wrap', rootStyles.row)}>
-        <div
-          className={cx(rootStyles.col, s.block, s.block_bg)}
-          style={{ backgroundImage: src && `url(${src})` }}
-        >
+        <div className={cx(rootStyles.col, s.block, s.block_bg)} style={{ backgroundImage: src && `url(${src})` }}>
           <div
             className={s.blockFakeBackground}
             style={{
@@ -43,21 +40,27 @@ const ProjectCard = ({ id, image, title, links, description, tags }: Project<Fix
         <div className={cx(rootStyles.col, s.block, s.block_sm)}>
           <div className={s.blockTitle}>{title}</div>
           <div className={s.blockTags}>
-            {(tags || []).map(t => <span key={t} className={s.blockTagsTag}>{t}</span>)}
+            {(tags || []).map(t => (
+              <span key={t} className={s.blockTagsTag}>
+                {t}
+              </span>
+            ))}
           </div>
           <div className={s.blockContent}>{description}</div>
           <div className={s.blockLinks}>
-            {links.map(link =>
-              <a key={link.link} target='_blank _parent' rel="noopener" href={getLink(link)}>
-                <span className={s.blockLinkIcon}><i className={getIcon(link)} /></span>
+            {links.map(link => (
+              <a key={link.link} target="_blank _parent" rel="noopener" href={getLink(link)}>
+                <span className={s.blockLinkIcon}>
+                  <i className={getIcon(link)} />
+                </span>
                 {link.gh ? 'Github' : link.text}
               </a>
-            )}
+            ))}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default ProjectCard;

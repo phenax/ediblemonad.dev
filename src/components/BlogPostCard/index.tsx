@@ -7,9 +7,9 @@ import { FrontMatter, WordCount } from '../../types/blog';
 
 import s from './BlogPostCard.module.scss';
 
-type Props = {
-  frontmatter: FrontMatter
-  wordCount: WordCount
+interface Props {
+  frontmatter: FrontMatter;
+  wordCount: WordCount;
 }
 
 const BlogPostCard = ({ frontmatter, wordCount }: Props) => (
@@ -17,13 +17,9 @@ const BlogPostCard = ({ frontmatter, wordCount }: Props) => (
     <div className={s.cardTitle}>{frontmatter.title}</div>
     <small>
       <div>
-        <span className={s.date}>
-          {toBlogFormat(frontmatter.publishDate)}
-        </span>
+        <span className={s.date}>{toBlogFormat(frontmatter.publishDate)}</span>
         {`${frontmatter.description} - `}
-        <span>
-          {wordCount.words} words
-        </span>
+        <span>{wordCount.words} words</span>
       </div>
     </small>
   </Link>
