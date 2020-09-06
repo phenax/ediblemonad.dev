@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Akshay Nair's blog]]></title><description><![CDATA[Akshay's portfolio + blog]]></description><link>https://phenax.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 06 Sep 2020 18:47:01 GMT</lastBuildDate><item><title><![CDATA[JS Magic Tricks to impress your friends]]></title><description><![CDATA[A collection of cool JS Magic Tricks to impress your friends]]></description><link>https://phenax.github.io/blog/js-magic-tricks</link><guid isPermaLink="false">https://phenax.github.io/blog/js-magic-tricks</guid><pubDate>Fri, 29 Mar 2019 18:30:00 GMT</pubDate><content:encoded>---
+slug: js-magic-tricks
+title: JS Magic Tricks to impress your friends
+published: true
+description: A collection of cool JS Magic Tricks to impress your friends
+tags: js,magic,tricks,javascript
+publishDate: 2019/03/30
+---
+
+As we all know, javascript is, in the truest sense of the phrase, a magical language.
+
+
+## Schrodinger&apos;s number
+
+```js
+typeof NaN === &apos;number&apos;
+```
+
+Something that&apos;s not a number, is a number.
+
+**Be Amazed!**
+
+
+
+## Schrodinger&apos;s function
+
+```js
+typeof myFunction === &apos;function&apos;;
+```
+
+For my next trick, I&apos;m gonna make this function... dissappear!
+
+Abrakadabra!!
+
+```js
+myFunction();
+```
+
+**Be Amaaazed!!**
+
+
+Here&apos;s the function,
+
+```js
+const myFunction = &apos;&apos;.split.call;
+```
+
+`call` is a method on the class `Function` so when you call it without it, it won&apos;t know what function to execute.
+
+## Schrodinger&apos;s array
+
+```js
+document.all
+```
+
+Now let&apos;s make that array dissappear!
+
+```js
+typeof document.all
+```
+
+**BE AMAAAZZEEDDD!!!**
+
+`document.all` is a very old and deprecated api that allowed you to iterate over all the nodes rendered to the DOM. So the typeof expression returning `undefined` was by design as a part of the deprecation.
+
+
+## Check if list has length &lt;= 1
+
+So a simpleton would solve the given problem by writing something simple and dumb like
+```js
+const hasAtLeastOneItem = list =&gt; list.length &lt;= 1;
+```
+
+But us few elite JS developers are smart enough to do this
+
+```js
+const hasAtLeastOneItem = list =&gt; !isNaN(+list);
+```
+
+Boom! **Now you are amazed!**
+
+
+## Addition
+
+
+
+
+
+</content:encoded></item><item><title><![CDATA[Grandma's recipes for cooking redux]]></title><description><![CDATA[Your redux sucks. Try mine]]></description><link>https://phenax.github.io/blog/grandmas-recipes-for-cooking-redux</link><guid isPermaLink="false">https://phenax.github.io/blog/grandmas-recipes-for-cooking-redux</guid><pubDate>Fri, 15 Mar 2019 18:30:00 GMT</pubDate><content:encoded>---
+slug: grandmas-recipes-for-cooking-redux
+title: Grandma&apos;s recipes for cooking redux
+published: true
+description: Your redux sucks. Try mine
+tags: redux,saga,ramda,crocks,async,fp,functional,javascript
+publishDate: 2019/03/16
+---
+
+Welcome to my Grandma’s Kitchen. I’m your host, the grandson. Let’s start cooking, shall we?
+
+Disclaimer: Stuff referenced in this post are not my opinions, they are straight up facts. If you disagree, go ahead and give this post 50 slaps (It’s the same button as the clap one. Just click on it more aggressively and it gets marked as a slap). Reader discretion is advised.
+
+For far too long have we suffered the torture of writing boilerplate code and messy actions. Not anymore. Here are some recipes to cook redux the way my grandma wants you to.
+
+We are going to be cooking with the following ingredients today -
+
+* [Redux Saga](https://github.com/redux-saga/redux-saga)
+* [Redux Utils](https://github.com/phenax/redux-utils)
+* [Crocks](https://github.com/evilsoft/crocks)
+* [Reselect](https://github.com/reduxjs/reselect)
+* [Ramda](https://github.com/ramda/ramda) (optional. Add according to taste)
+
+---
+
+## Spicy hot action names/types
+You wouldn’t expect there to be any changes in the way you create action names/types but why not? Go check your action types file. You will find that there is a recurring pattern of the three states. `ACTION_PENDING`, `ACTION_SUCCESS` and `ACTION_FAILURE` (not FAIL because `PENDING`, `SUCCESS` and `FAILURE` have the same number of characters and my grandma likes consistency). And while we are at it we can also learn something from the REST architecture from my grandma’s time and bring the resource/action pattern in here.
+
+`actionTypes` function uses the `@resource/ACTION/STATE` convention.
+
+```js
+import { actionTypes } from &apos;@phenax/redux-utils&apos;;
+
+const types = actionTypes({
+  DISHES: {
+    LIST: [&apos;PENDING&apos;, &apos;SUCCESS&apos;, &apos;FAILURE&apos;],
+    ADD: [&apos;PENDING&apos;, &apos;SUCCESS&apos;, &apos;FAILURE&apos;],
+  },
+  SESSION: {
+    INIT: [&apos;PENDING&apos;, &apos;SUCCESS&apos;, &apos;FAILURE&apos;],
+  },
+});
+
+types.DISHES.ADD.SUCCESS === &apos;@dishes/ADD/SUCCESS&apos;; // true
+
+// Your actions will then look something like
+dispatch({
+  type: types.DISHES.ADD._,
+  payload: {
+    name: &apos;Chicken that tastes like paneer’,
+    ingredients: {
+      chicken: { count: 1, unit: &apos;bird&apos; },
+      salt: { toTaste: true },
+      pepper: { count: 2, unit: &apos;shakes&apos; },
+      milk: { count: 3, unit: &apos;seconds of pouring&apos; },
+    },
+  },
+});
+
+// The underescore (`._`) is the dispatch that gets picked up by the sagas. Its a default dispatch i.e. stateless dispatch.
+```
+
+---
+
+## Reducer salad
+The three state pattern is also seen repeated a lot inside reducers. My grandma keeps telling me “My back hurts when I scroll through long switch-case statements”. So if you haven’t guessed already, we are going to change that too now. We have to care for the elderly.
+
+```js
+import { createPartialReducer, mergeReducers } from &apos;@phenax/redux-utils&apos;;
+
+const initialState = { loading: false, readyForServing: true, dishes: [], error: &apos;&apos; };
+
+const getLoadingState = state =&gt; ({ readyForServing }) =&gt; ({
+  ...state,
+  readyForServing,
+  loading: true,
+});
+
+const addDishReducer = createPartialReducer(types.DISHES.ADD, (state = initialState, action) =&gt; ({
+  PENDING: getLoadingState(state),
+  SUCCESS: newDish =&gt; ({
+    ...state,
+    readyForServing: true,
+    loading: true,
+    dishes: [...state.dishes, newDish],
+  }),
+  FAILURE: e =&gt; ({
+    ...state,
+    readyForServing: false,
+    loading: true,
+    error: e.message,
+  }),
+}));
+
+// Your regular reducer can be merged with partials
+const regularOldReducer = (state = initialState, action) =&gt; {
+  switch(action.type) {
+    case types.SOMEOTHER.ACTION.PENDING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.SOMEOTHER.ACTION.SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        dishes: [],
+      };
+    case types.SOMEOTHER.ACTION.FAILURE:
+      return {
+        ...state,
+        loading: false,
+        dishes: [],
+        error: e.message,
+      };
+  }
+};
+
+export default mergeReducers(addDishReducer, regularOldReducer);
+```
+
+The partial reducers allow you to split the reducer into smaller functions based on the resource/action/state convention. You can also use this to show off your rad point-free trick shots.
+
+
+---
+
+
+## Duck promises
+There are 3 different ways to interpret name of this dish. Clue, it’s not a typo (even though it fits perfectly). Another clue, we’re not cooking a duck here. You are correct. Just duck those promises and go with `Async` from crocks. (Not to be confused with `async/await` which is just a prank that the C# community is playing on us disguised as w3c draft authors). Here&apos;s how to use fetch (or any other promise based api) and turn it into a composible, cancellable, lazy Async task. Grandma does not approve laziness but we will use it anyway because GOD DAMMIT, IT&apos;S MY FREAKING COOKING SHOW! GET OUT OF MY ROOM, GRANDMA!
+
+For you, a simple made-up example of fetching with network timeout. fetchJson is just an Async wrapper for fetch api.
+
+```js
+import Async from &apos;crocks/Async&apos;;
+import { prop, filter, map, either, complement } from &apos;ramda&apos;;
+import { fetchJson } from &apos;@phenax/redux-utils/async&apos;;
+
+// Some other api call that happens after we get the data from the user
+// fetchChefInfo :: a -&gt; Async a
+const fetchChefInfo = data =&gt; Async((rej, res) =&gt; setTimeout(() =&gt; res(data), 700));
+
+// fetchServableDishes :: Object * -&gt; Async [User]
+const fetchServableDishes = params =&gt; fetchJson(&apos;/dishes&apos;, params)
+  .race(Async.rejectAfter(2000, new Error(&apos;Request Timeout&apos;)))
+  .map(prop(&apos;dishes&apos;))
+  .map(compose(
+    filter,
+    complement,
+    either(
+      prop(&apos;isReady&apos;),
+      prop(&apos;isBurnt&apos;),
+    ),
+  ));
+
+let task = fetchServableDishes();
+
+// The request has not been sent yet (it&apos;s lazy like crazy! Thank you. Thank you.). You can keep composing and chaining stuff
+task = task
+  .map(map(decorateDish))
+  .chain(fetchChefInfo);
+
+// And when you finally decide that you want to make the api call, you can fork it.
+// Nothing is executed till you call .fork
+task.fork(
+  e =&gt; console.error(e),
+  activeUsers =&gt; {
+    // Do stuff
+  },
+);
+```
+
+---
+
+## Barbecue sagas
+Redux saga is the best way to write actions. That is a fact, not an opinion. No need to look it up. Not going to change anything with that but we can add a few ingredients to enhance its flavor. We are also going to use `Async` instead of `Promise` because my grandma believes you shouldn&apos;t make promises you can&apos;t keep/manage.
+
+
+```js
+import { put } from &apos;redux-saga/effects&apos;;
+import { callAsync, putResponse } from &apos;@phenax/redux-utils/saga&apos;;
+
+export function* add({ payload }) {
+  yield put({ type: types.DISHES.ADD.PENDING, payload: {} });
+  const response = yield callAsync(saveNewDish, payload);
+  yield putResponse(types.DISHES.ADD, response);
+};
+
+export function* list({ payload }) {
+  yield put({ type: types.DISHES.LIST.PENDING, payload: {} });
+  const response = yield callAsync(fetchServableDishes);
+  yield putResponse(types.DISHES.LIST, response);
+};
+
+export default function* root() {
+  yield all([ takeLatest(types.DISHES.ADD._, add) ]);
+  yield all([ takeLatest(types.DISHES.LIST._, list) ]);
+};
+```
+
+Here,
+```js
+yield putResponse(types.DISHES.LIST, response);
+// is just a shorthand for
+yield put(response.cata({
+  Success: data =&gt; ({ type: types.DISHES.LIST.SUCCESS, payload: data }),
+  Failure: error =&gt; ({ type: types.DISHES.LIST.FAILURE, payload: error }),
+}));
+```
+
+---
+
+## Selector noodles
+Selectors allow you to derive your data from the state and memoize the operation. We are going to use reselect for this and we’re also gonna sprinkle some ramda in there according to taste. You can use lodash too but why would you do something like that? Ramda is to lodash what a smart watch is to a tin-can telephone.
+
+Grandma: “Back in my day, underscore was pretty popular. It was like…”.
+
+Yeah grandma, we get it, you’re old. Now shut up and let me show these people some selector action.
+
+```js
+import { createSelector } from &quot;reselect&quot;;
+import { pathOr, prop, __, map } from &apos;ramda&apos;;
+
+// selectBurntDishes :: { dishes :: { dishIds :: [String], items :: Object Profile } } -&gt; [String]
+export const selectBurntDishes = createSelector(
+  pathOr({}, [&apos;dishes&apos;, &apos;items&apos;]),
+  pathOr([], [&apos;dishes&apos;, &apos;dishIds&apos;]),
+  (items, dishIds) =&gt; dishIds.filter(compose(
+    prop(&apos;isBurnt&apos;),
+    map(prop(__, items)),
+  )),
+);
+```
+
+Now you can use it anywhere…
+
+In you component’s mapStateToProps,
+
+```js
+const mapStateToProps = state =&gt; ({
+  burntDishes: selectBurntDishes(state),
+});
+
+export default connect(mapStateToProps)(ListBurntDishes);
+```
+
+In your sagas,
+
+```js
+function* mySaga() {
+  const burntDishes = yield select(selectBurntDishes);
+  // Do stuff with those ids
+}
+```
+
+Doesn’t that look pretty? If you’re new to the point-free way, you may feel like you just watched a french movie without subtitles but trust me, this is worth the confusing first few days.
+
+---
+
+## Conclusion
+Old ideas and opinions are what new ones are born from. Grandma’s recipes were great and they’ve come out of experience that doesn’t mean we have to keep making the same thing a billion times. Small (and sometimes large) migrations are a good thing.
+
+So let’s summarise. What did we learn today?
+
+* Use grandma’s favorite convention of `@resource/ACTION/STATE` for your action types
+* The elderly hate long switch case statements
+* Duck promises because `Async` rocks!
+* Sagas are the freakin best!!
+* Memoize those selectors for a better tomorrow
+
+These are all solutions to the small yet annoying inconveniences that I ran into while working on a personal project of mine. I’m collecting all of the tiny helpers over at [@phenax/redux-utils](https://github.com/phenax/redux-utils). The project is not done yet so the library will be getting more updates. PRs are welcome!!
+
+Hope these ideas help you write some tasty code.
+</content:encoded></item><item><title><![CDATA[PureFunctionalJS - Sum Types In JavaScript]]></title><description><![CDATA[Bringing the world of pure functional languages to javascript one concept at a time]]></description><link>https://phenax.github.io/blog/sum-types-in-js</link><guid isPermaLink="false">https://phenax.github.io/blog/sum-types-in-js</guid><pubDate>Thu, 14 Mar 2019 18:30:00 GMT</pubDate><content:encoded>---
+slug: sum-types-in-js
+title: PureFunctionalJS - Sum Types In JavaScript
+published: true
+description: Bringing the world of pure functional languages to javascript one concept at a time
+tags: enum,enum-fp,javascript,functional,js,fp,sum-types,sum,union,tagged
+publishDate: 2019/03/15
+---
+
+JavaScript has a very bad reputation in most developer communities. So much so that, “Writing cleaner and safer JavaScript…” in the title may already seem a bit redundant to most readers. A lot of that has to do with loose typing, invalid values and the horrible chain of ternary expressions or heaven forbid, if statements to handle them. With JavaScript, all functions run on the concept of “pretend what you are getting is what you asked for”. If the value is not valid for the kind of operation you are running on it, well, too bad. To save yourself from this, you can write run-time validations, add type-checks, etc but the core of the problem is till left largely unsolved.
+
+---
+
+## Let’s learn from Haskell
+Functional programming languages like Haskell have a clear solution for this. Sum Types! Sum Type (or Tagged Union) is an Algebraic Data Type which describes values that can take on several different types. Popular examples in haskell are the Maybe monad (for handling the validity of values) and the Either monad (for error handling).
+
+![lost your monads?](/img/blog/enum-fp/haskell.jpeg)
+
+Don’t worry. Maybe, I don’t know anything about monads Either (see what I did there?). All we need to know is that a Sum Type is a has multiple named constructors.
+
+In Haskell, a Sum type looks something like this -
+
+```haskell
+data MetalGenre = ProgMetal | DeathCore
+
+scream :: MetalGenre -&gt; IO ()
+scream genre = putStrLn $ case genre of
+  ProgMetal -&gt; &quot;Oh!&quot;
+  DeathCore -&gt; &quot;BleaAaAHHH!!&quot;
+
+main :: IO()
+main = scream ProgMetal
+```
+
+Here, MetalGenre is the type and ProgMetal, DeathCore are constructors of that type.
+
+A really popular and useful example of a Sum type in the functional world is the Maybe type. In Haskell, Maybe is a monad that wraps a value and helps you make sure that invalid values are not acted upon, thus allowing you to write safer functions.
+
+This is what Maybe’s definition looks like in Haskell -
+
+```haskell
+data Maybe = Just a | Nothing
+```
+
+Now here, all valid values will be wrapped in a Just and all invalid values will be wrapped in a Nothing. This way, we can handle invalid values in a clean and elegant way and be sure of the fact that the function is only called for the valid values.
+
+You might be thinking, “But isn’t this only possible because Haskell is a statically typed beauty and JavaScript is the spawn of satan?”. Maybe it isn’t. (The joke’s getting old now)
+
+---
+
+## EnumFP
+Shameless self-plug alert!
+
+I have a library to help with that! (Said every JavaScript developer ever).
+
+[EnumFP](https://github.com/phenax/enum-fp) (PRs welcome)
+
+EnumFP is a simple and light-weight way to create Sum types in JavaScript. Inspired by the awesomeness of Haskell, the library is written with safety in mind.
+
+This is what the metal genre example would look like with EnumFP.
+
+```js
+const MetalGenre = Enum([ &apos;ProgMetal&apos;, &apos;DeathCore&apos; ])
+
+const scream = compose(console.log, MetalGenre.cata({
+  ProgMetal: () =&gt; &quot;Oh!&quot;,
+  DeathCore: () =&gt; &quot;BleaAaAHHH!!&quot;,
+}));
+
+scream(MetalGenre.ProgMetal());
+```
+
+---
+
+## Maybe, maybe?
+
+The concept of what a Maybe does is more important than the implementation itself. Containing a value in a way that allows you to perform a set of operations on the container and not worry about the validity of the input is what Maybe is about.
+
+You can implement a simple Maybe and a couple of utility functions using EnumFP. EnumFP also allows you to add argument descriptions. This example uses the caseOf function which is like match but for partial application).
+
+```js
+const Maybe = Enum({ Just: [&apos;value&apos;], Nothing: [] });
+
+// fmap :: (a -&gt; b) -&gt; Maybe a -&gt; Maybe b
+const fmap = fn =&gt; Maybe.cata({
+  Just: compose(Maybe.Just, fn),
+  Nothing: Maybe.Nothing,
+});
+
+// mjoin :: Maybe Maybe a -&gt; Maybe a
+const mjoin = Maybe.cata({
+  Just: x =&gt; x,
+  Nothing: Maybe.Nothing,
+});
+
+// chain :: (a -&gt; Maybe b) -&gt; Maybe a -&gt; Maybe b
+const chain = fn =&gt; compose(mjoin, fmap(fn));
+```
+
+Here,
+
+**fmap** returns a new Maybe and runs the function over the value inside, in case of Just and ignores a Nothing. (Like Array.prototype.map)
+
+**mjoin** unwraps a given nested Maybe. Because many monads like Maybe, are agnostic about the value inside, you can put the monad inside another monad (That’s what she 
+said) (Like Array.prototype.flatten)
+
+**chain** maps over the Maybe and then flattens the resulting nested Maybe. (Like Array.prototype.flatMap).
+
+Let’s use this and write a function that accepts a User instance and gives you the first name without throwing an error for invalid user or invalid name.
+
+
+```js
+// head :: [a] -&gt; Maybe a
+const head = arr =&gt; (arr.length ? Maybe.Just(arr[0]) : Maybe.Nothing());
+
+// prop :: String -&gt; Object a -&gt; Maybe a
+const prop = key =&gt; obj =&gt; key in obj ? Maybe.Just(obj[key]) : Maybe.Nothing();
+
+// trim :: String -&gt; String
+const trim = str =&gt; str.trim();
+
+// split :: String -&gt; String -&gt; [String]
+const split = seperator =&gt; str =&gt; str.split(seperator);
+
+// safeUser :: User -&gt; Maybe User
+const safeUser = user =&gt; isUserValid(user) ? Maybe.Just(user) : Maybe.Nothing();
+
+// getFirstName :: User -&gt; Maybe String
+const getFirstName = compose(
+    chain(head),             // Maybe [String] -&gt; Maybe String
+    fmap(split(&apos; &apos;)),        // Maybe String -&gt; Maybe [String]
+    fmap(trim),              // Maybe String -&gt; Maybe String
+    chain(prop(&apos;name&apos;)),     // Maybe User -&gt; Maybe String
+    safeUser,                // User -&gt; Maybe User
+);
+
+Maybe.match(getFirstName(user), {
+    Just: name =&gt; console.log(&apos;My name is&apos;, name),
+    Nothing: () =&gt; console.log(&apos;Whats in a name?&apos;),
+});
+```
+
+In the example above, we first convert the user to a safe user by wrapping it in a Maybe. Then we get the user’s name using the prop function. The prop and head functions here, instead of returning the value, wraps the value in a Maybe. This is why to map it and then unwrap it, we use chain instead of fmap.
+
+---
+
+## Working with React
+Yes, EnumFP works well with react! (Jumping from one over-populated community to the next).
+
+With the new react hooks being introduced in 16.8, it would be a sin not to mention it here. EnumFP ships with a useReducer hook which is a simple wrapper around react’s useReducer.
+
+Don’t want to upgrade to 16.8? Do you still watch reruns of Seinfeld? Want to wait for your grand-children to help you with the upgrade… and… walking?
+
+No worries. There’s an HOC available as well.
+
+You can find out more about integrations with react here.
+
+And this is not limited to just component state tho. You can use Sum Types to work with any kind of enumerable state values. From handling Success, Pending and Failure states for any action to containing values based on it’s type or validity. Sum Types are here to clean up all of that.
+
+---
+
+## Conclusion
+This is just the tip of the iceberg. There are a lot more of these amazing ideas hidden in the world of functional programming, waiting to move to other languages. Being a part of the JavaScript community for a while has made me realise that it’s not all bad. What we lack in language features and standard library, we make up for in the variety of libraries just an npm install away, and the strong community constantly working towards “Making JS great again”. So let’s build a wall together between us and bad code. Covfefe.
+
+![Covfefe](/img/blog/enum-fp/trump.jpg)
+
+</content:encoded></item></channel></rss>
