@@ -52,7 +52,7 @@ export const query = graphql`
 
 const Menu = () => {
   const [isOpen, setMenuState] = useState(false);
-  const { pathname } = window.location;
+  const { pathname } = window.location || { pathname: '/' };
   const { file: { childImageSharp: { fixed: logoImg = { src: '' } } = {} } = {} } = useStaticQuery(query);
 
   const onMenuToggle = (nextState: boolean) => (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
