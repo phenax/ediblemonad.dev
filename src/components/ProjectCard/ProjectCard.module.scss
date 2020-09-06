@@ -1,7 +1,7 @@
 @import '../../styles/colors';
 @import '../../styles/fonts';
 
-$full_height: 23em;
+$full_height: 18em;
 $box_shadow: 0 .3em .7em .05em rgba(0,0,0,.1);
 
 .project {
@@ -44,6 +44,7 @@ $box_shadow: 0 .3em .7em .05em rgba(0,0,0,.1);
       line-height: 1em;
       background-color: $color_accent_light;
       color: #fff;
+      font-weight: bold;
       border-radius: 3px;
       margin: .1em;
     }
@@ -124,7 +125,7 @@ $box_shadow: 0 .3em .7em .05em rgba(0,0,0,.1);
 }
 
 .block.block_sm {
-  flex: 2;
+  flex: 4;
 
   padding: 1em;
 
