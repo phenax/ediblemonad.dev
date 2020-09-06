@@ -2,7 +2,7 @@
 
 .contact {
 	a {
-		color: $color_accent;
+		color: $color_accent_dark;
   }
 }
 
@@ -48,6 +48,32 @@
       &::after {
         opacity: 1;
         transform: translate(-50%, 0);
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    text-align: left;
+    padding: .5em 1em;
+
+    a {
+      opacity: 0.8;
+      margin-bottom: .5em;
+      transition: opacity .1s ease-in-out;
+
+      &::after {
+        font-size: .5em;
+        left: 2.3em;
+        top: 0;
+        opacity: 1;
+        transform: translate(0);
+        background: transparent;
+      }
+
+      &:hover {
+        &::after {
+          transform: none;
+        }
       }
     }
   }

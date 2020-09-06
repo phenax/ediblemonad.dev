@@ -5,13 +5,12 @@ import s from './SkillList.module.scss';
 
 import { Skill } from '../../types/project';
 
-type Props = {
-  skills: Skill[]
-};
+interface Props {
+  skills: Skill[];
+}
 
 const SkillList = ({ skills }: Props) => (
   <div className={s.wrapper}>
-
     <div className={s.selector}>.skills {'{'}</div>
 
     <div className={s.propList}>
