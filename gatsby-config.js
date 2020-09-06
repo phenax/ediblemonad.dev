@@ -120,5 +120,48 @@ module.exports = {
         exclude: ['/suggest-music'],
       }
     },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        feeds: [
+          {
+            serialize: ({ query: { allMdx } }) => {
+              // edge.node.html
+              return allMdx.edges.map(edge => {
+                const { title, description, publishDate, slug } = edge.node.frontmatter;
+                const url = `https://phenax.github.io/blog/${slug}`;
+                return {
+                  title,
+                  description,
+                  date: publishDate,
+                  url,
+                  guid: url,
+                  custom_elements: [{ "content:encoded": edge.node.rawBody }],
+                };
+              })
+            },
+            query: `
+              {
+                allMdx(sort: {order: DESC, fields: [frontmatter___publishDate]}, filter: {frontmatter: {published: {eq: true}}}) {
+                  edges {
+                    node {
+                      rawBody
+                      frontmatter {
+                        title
+                        description
+                        slug
+                        publishDate
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/blog-rss.xml',
+            title: `Akshay Nair's blog`,
+          },
+        ],
+      },
+    }
   ].filter(Boolean),
 };
