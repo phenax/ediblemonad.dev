@@ -23,13 +23,13 @@ interface BlogIndexProps {
   };
 }
 
-const BlogIndex = ({ data: { allMdx } = { allMdx: void 0 } }: BlogIndexProps) => {
+const BlogIndex = ({ data: { allMdx } = { allMdx: undefined } }: BlogIndexProps) => {
   const { edges, totalCount } = allMdx || { edges: [], totalCount: 0 };
 
   return (
     <PageLayout
       title="Akshay Nair's Blog"
-      headerProps={{ title: 'My Articles', subtitle: 'I post about javascript, functional programming, etc' }}
+      headerProps={{ title: 'My Blog Posts', subtitle: 'I post about javascript, linux, functional programming, etc' }}
     >
       <div>
         Posts <strong>{totalCount}</strong>
