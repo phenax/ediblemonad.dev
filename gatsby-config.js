@@ -66,25 +66,31 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: 'gatsby-plugin-google-fonts',
       options: {
+        display: 'swap',
         fonts: [
-          {
-            family: 'Oswald',
-            variants: ['300', '400'],
-            subsets: ['latin'],
-          },
-          {
-            family: 'Raleway',
-            variants: ['100', '400'],
-            subsets: ['latin'],
-          },
-          {
-            family: 'Fira Mono',
-            variants: ['400'],
-            subsets: ['latin'],
-          }
+          'Oswald\:300,400',
+          'Raleway\:100,400',
+          'Fira Mono\:400',
         ],
+        //fonts: [
+          //{
+            //family: 'Oswald',
+            //variants: ['300', '400'],
+            //subsets: ['latin'],
+          //},
+          //{
+            //family: 'Raleway',
+            //variants: ['100', '400'],
+            //subsets: ['latin'],
+          //},
+          //{
+            //family: 'Fira Mono',
+            //variants: ['400'],
+            //subsets: ['latin'],
+          //}
+        //],
       },
     },
     {
