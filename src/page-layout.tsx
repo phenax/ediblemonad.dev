@@ -8,13 +8,13 @@ import PageHeader from './components/PageHeader';
 
 import s from './styles/page.module.scss';
 
-type Props = {
-  children: any
-  title?: string
-  description?: string
-  keywords?: string
-  headerProps?: any
-};
+interface Props {
+  children: React.ReactNode;
+  title?: string;
+  description?: string;
+  keywords?: string;
+  headerProps?: any;
+}
 
 const defaultProps = {
   title: 'Akshay Nair',
@@ -33,13 +33,11 @@ const PageLayout = (passedProps: Props) => {
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
       </Helmet>
-  
+
       <div {...props}>
         <Menu />
         <PageHeader title={title} subtitle={description} {...headerProps} />
-        <main className={s.content}>
-          {children}
-        </main>
+        <main className={s.content}>{children}</main>
       </div>
     </>
   );

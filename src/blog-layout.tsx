@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 
 import './helpers/jsenv';
-import './helpers/firebase';
 import { getLink } from './helpers/blog';
 
 import Menu from './components/Menu';
@@ -20,31 +19,21 @@ import 'prismjs/themes/prism-tomorrow.css';
 import './styles/mdx.scss';
 
 interface Props {
-  children: any,
+  children: React.ReactNode;
   pageContext: {
-    frontmatter: FrontMatter
-  }
-};
-
-const siteMetaQuery = graphql`
-  query SiteUrl {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-  }
-`;
+    frontmatter: FrontMatter;
+  };
+}
 
 export default ({ children, pageContext: { frontmatter } }: Props) => {
   const date = toBlogFormat(frontmatter.publishDate);
 
-  const { site: { siteMetadata: { siteUrl } } } = useStaticQuery(siteMetaQuery);
-
   return (
     <>
       <Helmet>
-        <title>{frontmatter.title} - Akshay Nair's blog</title>
+        <title>
+          {frontmatter.title} - {`Akshay Nair's blog`}
+        </title>
         <meta name="description" content={frontmatter.description} />
         <meta name="keywords" content={frontmatter.tags} />
         <style>{`
@@ -68,12 +57,8 @@ export default ({ children, pageContext: { frontmatter } }: Props) => {
         <div>
           <span className={s.date}>Posted on {date}</span>
         </div>
-        <div className={cx(s.content, 'blog-content')}>
-          {children}
-        </div>
-        <ArticleActions postid={frontmatter.slug} summary={frontmatter.title} link={`${siteUrl}${getLink(frontmatter)}`} />
+        <div className={cx(s.content, 'blog-content')}>{children}</div>
       </div>
     </>
   );
 };
-

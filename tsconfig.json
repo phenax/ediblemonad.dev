@@ -4,6 +4,8 @@
     "target": "esnext",
     "module": "commonjs",
     "lib": ["dom", "es2017"],
+    "noImplicitReturns": false,
+    "noImplicitAny": false,
     "allowJs": true,
     "checkJs": true,
     "jsx": "react",

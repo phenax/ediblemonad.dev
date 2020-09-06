@@ -13,7 +13,6 @@ const HTML = props => (
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <link rel="manifest" href="/manifest.json" />
-      <link rel="author" href="https://plus.google.com/u/0/108089047891809102209" />
       <style>{styles.replace(/\s+/g, ' ')}</style>
       {props.headComponents}
     </head>

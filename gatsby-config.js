@@ -65,16 +65,6 @@ module.exports = {
         name: 'jsondata',
       },
     },
-
-    // {
-    //   resolve: 'gatsby-plugin-web-font-loader',
-    //   options: {
-    //     custom: {
-    //       families: ['fontello'],
-    //       urls: ['/fontello/css/fontello.css']
-    //     }
-    //   }
-    // },
     {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
       options: {
@@ -102,12 +92,6 @@ module.exports = {
       options: {
         verbose: true,
         'README.md': 'public/README.md',
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-88549129-1`,
       },
     },
     `gatsby-plugin-webpack-size`,

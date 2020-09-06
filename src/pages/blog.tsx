@@ -8,26 +8,29 @@ import { FrontMatter, WordCount } from '../types/blog';
 
 interface BlogPost {
   node: {
-    id: string,
-    frontmatter: FrontMatter
-    wordCount: WordCount
-  }
-};
+    id: string;
+    frontmatter: FrontMatter;
+    wordCount: WordCount;
+  };
+}
 
 interface BlogIndexProps {
   data: {
     allMdx?: {
-      edges: BlogPost[],
-      totalCount: number,
-    }
-  }
-};
+      edges: BlogPost[];
+      totalCount: number;
+    };
+  };
+}
 
 const BlogIndex = ({ data: { allMdx } = { allMdx: void 0 } }: BlogIndexProps) => {
   const { edges, totalCount } = allMdx || { edges: [], totalCount: 0 };
 
   return (
-    <PageLayout title="Akshay Nair's Blog" headerProps={{ title: 'My Articles', subtitle: 'I post about javascript, functional programming, etc' }}>
+    <PageLayout
+      title="Akshay Nair's Blog"
+      headerProps={{ title: 'My Articles', subtitle: 'I post about javascript, functional programming, etc' }}
+    >
       <div>
         Posts <strong>{totalCount}</strong>
       </div>
@@ -67,3 +70,4 @@ export const pageQuery = graphql`
     }
   }
 `;
+
