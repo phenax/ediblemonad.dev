@@ -27,3 +27,22 @@
     color: $color_accent;
   }
 }
+
+.spread {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.lightbutton {
+  display: inline-block;
+  padding: 0 .8em;
+  background-color: $color_accent_dark;
+  color: $color_fg;
+
+  &:hover {
+    background-color: $color_accent_light;
+  }
+}
+

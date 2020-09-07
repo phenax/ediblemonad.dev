@@ -6,6 +6,8 @@ import BlogPostCard from '../components/BlogPostCard';
 
 import { FrontMatter, WordCount } from '../types/blog';
 
+import styles from '../styles/page.module.scss';
+
 interface BlogPost {
   node: {
     id: string;
@@ -31,8 +33,15 @@ const BlogIndex = ({ data: { allMdx } = { allMdx: undefined } }: BlogIndexProps)
       title="Akshay Nair's Blog"
       headerProps={{ title: 'My Blog Posts', subtitle: 'I post about javascript, linux, functional programming, etc' }}
     >
-      <div>
-        Posts <strong>{totalCount}</strong>
+      <div className={styles.spread}>
+        <div style={{ textAlign: 'left', width: '100%' }}>
+          Posts <strong>{totalCount}</strong>
+        </div>
+        <div style={{ textAlign: 'right', width: '100%' }}>
+          <a href="/blog-rss.xml" className={styles.lightbutton} target="_blank _parent" rel="noopener">
+            <i className="fas fa-rss" /> RSS
+          </a>
+        </div>
       </div>
       <div>
         {edges.map(({ node: post }) => (
@@ -70,4 +79,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
