@@ -147,7 +147,7 @@ module.exports = {
                 allMdx(sort: {order: DESC, fields: [frontmatter___publishDate]}, filter: {frontmatter: {published: {eq: true}}}) {
                   edges {
                     node {
-                      rawBody
+                      html
                       frontmatter {
                         title
                         description
