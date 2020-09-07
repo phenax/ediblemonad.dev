@@ -1,8 +1,11 @@
 /* eslint-disable */
 
-require("dotenv").config({ path: '.env' });
+// require("dotenv").config({ path: '.env' });
 
 const enableBundleAnalyzer = process.env.ANALYZE === '1';
+
+const BASE_URL = 'https://phenax.github.io';
+const BLOG_BASE_URL = `${BASE_URL}/blog`;
 
 module.exports = {
   siteMetadata: {
@@ -126,17 +129,16 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { allMdx } }) => {
-              // edge.node.html
               return allMdx.edges.map(edge => {
                 const { title, description, publishDate, slug } = edge.node.frontmatter;
-                const url = `https://phenax.github.io/blog/${slug}`;
+                const url = `${BLOG_BASE_URL}/${slug}`;
                 return {
                   title,
                   description,
                   date: publishDate,
                   url,
                   guid: url,
-                  custom_elements: [{ "content:encoded": edge.node.rawBody }],
+                  custom_elements: [{ "content:encoded": edge.node.html }], // rawBody | html
                 };
               })
             },
