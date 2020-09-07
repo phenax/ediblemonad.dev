@@ -2,7 +2,7 @@
 
 // require("dotenv").config({ path: '.env' });
 
-const enableBundleAnalyzer = process.env.ANALYZE === '1';
+// const enableBundleAnalyzer = process.env.ANALYZE === '1';
 
 const BASE_URL = 'https://phenax.github.io';
 const BLOG_BASE_URL = `${BASE_URL}/blog`;
@@ -77,23 +77,6 @@ module.exports = {
           'Raleway\:100,400',
           'Fira Mono\:400',
         ],
-        //fonts: [
-          //{
-            //family: 'Oswald',
-            //variants: ['300', '400'],
-            //subsets: ['latin'],
-          //},
-          //{
-            //family: 'Raleway',
-            //variants: ['100', '400'],
-            //subsets: ['latin'],
-          //},
-          //{
-            //family: 'Fira Mono',
-            //variants: ['400'],
-            //subsets: ['latin'],
-          //}
-        //],
       },
     },
     {
@@ -103,14 +86,14 @@ module.exports = {
         'README.md': 'public/README.md',
       },
     },
-    `gatsby-plugin-webpack-size`,
-    enableBundleAnalyzer && {
-      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-      options: {
-        analyzerPort: 3000,
-        production: true,
-      },
-    },
+    //`gatsby-plugin-webpack-size`,
+    //enableBundleAnalyzer && {
+      //resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+      //options: {
+        //analyzerPort: 3000,
+        //production: true,
+      //},
+    //},
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
