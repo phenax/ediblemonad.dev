@@ -107,6 +107,10 @@ $box_shadow: 0 .3em .7em .05em rgba(0,0,0,.1);
   flex: 3;
 
   @include bgBackground();
+
+  @media (max-width: 800px) {
+    min-height: 15em;
+  }
 }
 
 .blockFakeBackground {
