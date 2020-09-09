@@ -18,8 +18,8 @@ interface Props {
 
 const defaultProps = {
   title: 'Akshay Nair',
-  description: 'Akshay Nair is a full stack web developer with a passion for writing performant, maintainable code.',
-  keywords: 'akshay, nair, functional, programming, performant, javascript, react, developer, code, github',
+  description: 'Akshay Nair aka phenax is a full stack web developer with a passion for writing performant, maintainable code.',
+  keywords: 'akshay, phenax, nair, functional, programming, performant, javascript, react, developer, code, github',
   headerProps: {},
 };
 

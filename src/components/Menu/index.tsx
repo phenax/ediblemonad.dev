@@ -11,7 +11,7 @@ const items = [
   {
     url: '/',
     title: 'Projects',
-    descr: 'Fun stuff',
+    descr: 'The shit I make and break',
   },
   {
     url: '/about',
@@ -61,7 +61,7 @@ const Menu = () => {
   };
 
   return (
-    <div>
+    <>
       <div className={styles.topbar}>
         <div className={styles.topbarMenubtn}>
           <a href="#menu" className="fas fa-bars" onClick={onMenuToggle(true)} />
@@ -88,7 +88,7 @@ const Menu = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 
