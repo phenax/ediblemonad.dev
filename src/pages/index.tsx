@@ -7,46 +7,47 @@ import ProjectCard from '../components/ProjectCard';
 import { Project } from '../types/project';
 import { FixedImage } from '../types/image';
 
-type ProjectEdge = {
-  node: Project<string>
+interface ProjectEdge {
+  node: Project<string>;
 }
 
-type ImageFileEdge = {
+interface ImageFileEdge {
   node: {
     childImageSharp: {
       fixed: {
-        originalName: string
-      }
-    }
-  }
+        originalName: string;
+      };
+    };
+  };
 }
 
-type Props = {
+interface Props {
   data: {
     allProjectsJson: {
-      edges: ProjectEdge[]
-    }
+      edges: ProjectEdge[];
+    };
     allFile: {
-      edges: ImageFileEdge[]
-    }
-  }
-};
+      edges: ImageFileEdge[];
+    };
+  };
+}
 
 export default ({ data: { allProjectsJson, allFile } }: Props) => {
-  const images: { [key: string]: FixedImage } = allFile.edges
-    .map(x => x.node.childImageSharp)
-    .reduce((acc, img) => ({ ...acc, [img.fixed.originalName]: img.fixed }), {});
+  const images: { [key: string]: FixedImage } = allFile.edges.reduce(
+    (acc, e) => ({ ...acc, [e.node.childImageSharp.fixed.originalName]: e.node.childImageSharp.fixed }),
+    {},
+  );
 
-  const projects: Project<FixedImage>[] = allProjectsJson.edges
-    .map(e => e.node)
-    .map(project => ({
-      ...project,
-      image: images[project.image]? images[project.image]: ({ src: project.image })
-    }));
+  const projects: Project<FixedImage>[] = allProjectsJson.edges.map(e => ({
+    ...e.node,
+    image: images[e.node.image] ? images[e.node.image] : { src: e.node.image },
+  }));
 
   return (
     <PageLayout headerProps={{ subtitle: 'Full Stack Web Developer' }}>
-      {projects.map(project => <ProjectCard key={project.id} {...project} />)}
+      {projects.map(project => (
+        <ProjectCard key={project.id} {...project} />
+      ))}
     </PageLayout>
   );
 };
