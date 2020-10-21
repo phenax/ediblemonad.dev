@@ -11,7 +11,7 @@ import rootStyles from '../../styles/common.module.scss';
 import { Project, LinkType } from '../../types/project';
 import { FixedImage } from '../../types/image';
 
-const getLink = ({ link, gh }: LinkType) => `${gh ? 'https://github.com/phenax/' : ''}${link}`;
+const getLink = ({ link, gh, ghUser }: LinkType) => `${gh ? `https://github.com/${ghUser || 'phenax'}/` : ''}${link}`;
 const getIcon = ({ gh }: LinkType) => (gh ? 'fab fa-github' : 'fas fa-link');
 
 const IMAGE_FADEIN_DURATION = 500;

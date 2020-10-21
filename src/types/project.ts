@@ -2,6 +2,7 @@ export interface LinkType {
   text: string;
   link: string;
   gh: boolean;
+  ghUser?: string;
 }
 
 export interface Project<T> {

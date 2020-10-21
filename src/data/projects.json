@@ -12,6 +12,17 @@
   },
 
   {
+    "id": "is-a-dev",
+    "title": ".is-a.dev",
+    "description": "Free and open source service for developers to register a .is-a.dev subdomain for their personal websites",
+    "image": "is-a-dev.png",
+    "tags": [".is-a.dev", "dns", "cicd", "javascript"],
+    "links": [
+      { "ghUser": "is-a-dev", "link": "register", "gh": true }
+    ]
+  },
+
+  {
     "id": "enum-fp",
     "title": "EnumFP",
     "description": "Functional Enum type / Sum type for javascript with simple pattern matching",
