@@ -84,6 +84,7 @@ module.exports = {
       options: {
         verbose: true,
         'README.md': 'public/README.md',
+        'CNAME': 'public/CNAME',
       },
     },
     //`gatsby-plugin-webpack-size`,
