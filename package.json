@@ -45,7 +45,7 @@
     "gatsby-transformer-json": "^2.1.8",
     "gatsby-transformer-sharp": "^2.1.14",
     "intersection-observer": "^0.5.1",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "prismjs": "^1.15.0",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
