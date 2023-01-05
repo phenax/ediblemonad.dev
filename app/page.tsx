@@ -9,7 +9,14 @@ const projectIds: Array<keyof (typeof projectData)> = [
   'is-a-dev',
   'diary-pwa',
   'pattern-lock-js',
-  'esbuild-plugin-elm'
+  'elxr',
+  'esbuild-plugin-elm',
+  'cmp-graphql',
+  'owyn-launcher',
+  'bsp-layout',
+  'shotkey',
+  'pipey',
+  'enum-fp',
 ]
 
 interface Project {

@@ -5,10 +5,18 @@
     "tags": [
       "javascript",
       "elm",
-      "esbuild",
       "build-tools"
     ],
     "link": "https://github.com/phenax/esbuild-plugin-elm"
+  },
+
+  "edible-monad": {
+    "title": "Live-coding on twitch",
+    "description": "I've started live-streaming most of my personal projects on twitch",
+    "tags": [
+      "live-coding"
+    ],
+    "link": "https://twitch.tv/EdibleMonad"
   },
 
   "cmp-graphql": {
@@ -27,7 +35,9 @@
     "description": "Built a parser+evaluator for a regex-like syntax for generalizing list operations",
     "tags": [
       "typescript",
+      "javascript",
       "regex",
+      "functional-programming",
       "parser"
     ],
     "link": "https://github.com/phenax/elxr"
@@ -39,6 +49,8 @@
     "tags": [
       "typescript",
       "regex",
+      "parser",
+      "functional-programming",
       "dev-ex"
     ],
     "link": "https://github.com/phenax/typed-regex"
@@ -49,7 +61,7 @@
     "description": "Built a library for managing side-effects in a pure and composable way using algebraic effects",
     "tags": [
       "functional-programming",
-      "side-effects",
+      "javascript",
       "typescript"
     ],
     "link": "https://github.com/phenax/algebraic-effects"
@@ -81,8 +93,7 @@
     "description": "Hotkey daemon for X11 window managers",
     "tags": [
       "linux",
-      "c",
-      "x11"
+      "c"
     ],
     "link": "https://github.com/phenax/shotkey"
   },
@@ -92,7 +103,6 @@
     "description": "Built a script for managing dynamic layout in bspwm",
     "tags": [
       "linux",
-      "bspwm",
       "bash"
     ],
     "link": "https://github.com/phenax/bsp-layout"
@@ -102,8 +112,7 @@
     "title": "OWYN Launcher",
     "description": "Built a minimalist, text-only launcher written in flutter which I use every day",
     "tags": [
-      "flutter",
-      "android"
+      "flutter"
     ],
     "link": "https://github.com/phenax/owyn-launcher"
   },
@@ -112,6 +121,7 @@
     "title": "PlasmaJS",
     "description": "Built an isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel",
     "tags": [
+      "javascript",
       "react",
       "node",
       "isomorphic"
@@ -124,7 +134,6 @@
     "description": "Built a library for creating pipeline operator ready functions by converting instance methods's to context-free functions",
     "tags": [
       "functional-programming",
-      "pipe-operator",
       "javascript"
     ],
     "link": "https://github.com/phenax/pipey"
@@ -136,8 +145,7 @@
     "tags": [
       "go-lang",
       "graphql",
-      "preact",
-      "pwa"
+      "react"
     ],
     "link": "https://github.com/phenax/diary-pwa"
   },
@@ -156,9 +164,7 @@
     "title": "H Kotlin",
     "description": "Built a simple, easy to use, library for HTML templating in kotlin",
     "tags": [
-      "kotlin",
-      "html",
-      "jvm"
+      "kotlin"
     ],
     "link": "https://github.com/phenax/h"
   }

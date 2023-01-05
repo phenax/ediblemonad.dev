@@ -1,5 +1,5 @@
 .main {
-  padding: 1rem;
+  padding: 1rem 2rem;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -9,16 +9,9 @@
   font-family: var(--font-mono);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(33%, auto));
-  width: var(--max-width);
-  max-width: 100%;
-}
-
 .header {
   position: relative;
-  padding: 4rem 4rem;
+  padding: 5rem 0;
   text-align: center;
 }
 
@@ -31,6 +24,7 @@
   font-size: 5rem;
   font-weight: bold;
   letter-spacing: 3px;
+  line-height: 1.4em;
 }
 
 .headerTitle::before {
@@ -39,6 +33,7 @@
   display: block;
   color: rgb(var(--accent-rgb));
   font-size: 0.9rem;
+  line-height: 1em;
 }
 
 .headerSubtitle {
@@ -52,7 +47,7 @@
   font-size: 0.9rem;
   padding: 0 0.35em;
   margin-right: 0.1rem;
-  /* border-radius: 2px; */
+  user-select: none;
   color: rgb(var(--accent-rgb));
 }
 
