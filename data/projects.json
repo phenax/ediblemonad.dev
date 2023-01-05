@@ -1,0 +1,165 @@
+{
+  "esbuild-plugin-elm": {
+    "title": "Esbuild plugin for elm",
+    "description": "Built and maintained an esbuild plugin for building elm projects",
+    "tags": [
+      "javascript",
+      "elm",
+      "esbuild",
+      "build-tools"
+    ],
+    "link": "https://github.com/phenax/esbuild-plugin-elm"
+  },
+
+  "cmp-graphql": {
+    "title": "cmp-graphql for neovim",
+    "description": "Built a graphql plugin for schema-based completions for graphql in neovim (nvim-cmp)",
+    "tags": [
+      "neovim",
+      "graphql",
+      "dev-ex"
+    ],
+    "link": "https://github.com/phenax/esbuild-plugin-elm"
+  },
+
+  "elxr": {
+    "title": "Elxr (list expressions)",
+    "description": "Built a parser+evaluator for a regex-like syntax for generalizing list operations",
+    "tags": [
+      "typescript",
+      "regex",
+      "parser"
+    ],
+    "link": "https://github.com/phenax/elxr"
+  },
+
+  "typed-regex": {
+    "title": "Typed RegEx",
+    "description": "Built a typescript library for automatic type inference on regular expressions using named capture groups",
+    "tags": [
+      "typescript",
+      "regex",
+      "dev-ex"
+    ],
+    "link": "https://github.com/phenax/typed-regex"
+  },
+
+  "algebraic-effects": {
+    "title": "Algebraic Effects",
+    "description": "Built a library for managing side-effects in a pure and composable way using algebraic effects",
+    "tags": [
+      "functional-programming",
+      "side-effects",
+      "typescript"
+    ],
+    "link": "https://github.com/phenax/algebraic-effects"
+  },
+
+  "is-a-dev": {
+    "title": "is-a.dev",
+    "description": "Built a free and open source service for developers to register a .is-a.dev subdomain for their personal websites. Currently I lead a team of 5 collaborators to maintain the project",
+    "tags": [
+      "javascript",
+      "dns",
+      "cicd"
+    ],
+    "link": "https://github.com/is-a-dev/register"
+  },
+
+  "enum-fp": {
+    "title": "EnumFP",
+    "description": "Built a library for defining functional Enum type / Sum type for javascript with simple pattern matching",
+    "tags": [
+      "functional-programming",
+      "javascript"
+    ],
+    "link": "https://github.com/phenax/enum-fp"
+  },
+
+  "shotkey": {
+    "title": "Shotkey",
+    "description": "Hotkey daemon for X11 window managers",
+    "tags": [
+      "linux",
+      "c",
+      "x11"
+    ],
+    "link": "https://github.com/phenax/shotkey"
+  },
+
+  "bsp-layout": {
+    "title": "bsp-layout",
+    "description": "Built a script for managing dynamic layout in bspwm",
+    "tags": [
+      "linux",
+      "bspwm",
+      "bash"
+    ],
+    "link": "https://github.com/phenax/bsp-layout"
+  },
+
+  "owyn-launcher": {
+    "title": "OWYN Launcher",
+    "description": "Built a minimalist, text-only launcher written in flutter which I use every day",
+    "tags": [
+      "flutter",
+      "android"
+    ],
+    "link": "https://github.com/phenax/owyn-launcher"
+  },
+
+  "plasmajs": {
+    "title": "PlasmaJS",
+    "description": "Built an isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel",
+    "tags": [
+      "react",
+      "node",
+      "isomorphic"
+    ],
+    "link": "https://github.com/phenax/plasmajs"
+  },
+
+  "pipey": {
+    "title": "Pipey",
+    "description": "Built a library for creating pipeline operator ready functions by converting instance methods's to context-free functions",
+    "tags": [
+      "functional-programming",
+      "pipe-operator",
+      "javascript"
+    ],
+    "link": "https://github.com/phenax/pipey"
+  },
+
+  "diary-pwa": {
+    "title": "Diary PWA",
+    "description": "Built a progressive web app in go-lang that lets you carry a personalized secure diary in your pocket. Integrated pattern-lock-js library to allow for privacy",
+    "tags": [
+      "go-lang",
+      "graphql",
+      "preact",
+      "pwa"
+    ],
+    "link": "https://github.com/phenax/diary-pwa"
+  },
+
+  "pattern-lock-js": {
+    "title": "Pattern Lock",
+    "description": "Built a library for creating customizable pattern lock for the web and PWAs",
+    "tags": [
+      "canvas",
+      "javascript"
+    ],
+    "link": "https://github.com/phenax/pattern-lock-js"
+  },
+
+  "h": {
+    "title": "H Kotlin",
+    "description": "Built a simple, easy to use, library for HTML templating in kotlin",
+    "tags": [
+      "kotlin",
+      "html",
+      "jvm"
+    ],
+    "link": "https://github.com/phenax/h"
+  }
+}
