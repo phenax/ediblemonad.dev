@@ -29,7 +29,7 @@
 
 .headerTitle::before {
   letter-spacing: 0;
-  content: "Hi! My name is";
+  content: 'Hi! My name is';
   display: block;
   color: rgb(var(--accent-rgb));
   font-size: 0.9rem;
@@ -68,8 +68,9 @@
   --border-color: rgb(var(--accent-rgb));
 }
 
-.project::before, .project::after {
-  content: "";
+.project::before,
+.project::after {
+  content: '';
   position: absolute;
   width: 120px;
   height: 80px;
@@ -95,5 +96,5 @@
 }
 
 /* Mobile and Tablet */
-@media (max-width: 1023px) { }
-
+@media (max-width: 1023px) {
+}
