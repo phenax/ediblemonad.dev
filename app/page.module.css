@@ -1,5 +1,7 @@
 .main {
   padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .code {
@@ -27,17 +29,74 @@
 
 .headerTitle {
   font-size: 5rem;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 
 .headerTitle::before {
-  content: "Hi, My name is";
+  letter-spacing: 0;
+  content: "Hi! My name is";
   display: block;
+  color: rgb(var(--accent-rgb));
   font-size: 0.9rem;
 }
 
 .headerSubtitle {
   font-size: 0.9rem;
   text-align: right;
+}
+
+.tag {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  padding: 0 0.35em;
+  margin-right: 0.1rem;
+  /* border-radius: 2px; */
+  color: rgb(var(--accent-rgb));
+}
+
+.tagSelected {
+  color: rgb(var(--accent-foreground-rgb));
+  background-color: rgb(var(--accent-rgb));
+}
+
+.link {
+  color: rgb(var(--accent-rgb));
+}
+
+.project {
+  padding: 2rem;
+  margin-top: 2rem;
+  position: relative;
+  --border-size: 3px;
+  --border-color: rgb(var(--accent-rgb));
+}
+
+.project::before, .project::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 80px;
+  border: none;
+  opacity: 0.2;
+}
+
+.project::before {
+  left: 0;
+  top: 0;
+  border-left: var(--border-size) solid var(--border-color);
+  border-top: var(--border-size) solid var(--border-color);
+}
+.project::after {
+  right: 0;
+  bottom: 0;
+  border-right: var(--border-size) solid var(--border-color);
+  border-bottom: var(--border-size) solid var(--border-color);
+}
+
+.projectTitle {
+  font-size: 1.8rem;
 }
 
 /* Mobile and Tablet */
