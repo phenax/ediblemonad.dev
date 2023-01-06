@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 import projectData from '../data/projects.json'
 import styles from './page.module.css'
 
@@ -44,6 +45,13 @@ const ProjectCard = ({ project }: { project: Project }) => (
   </div>
 )
 
+const navLinks = [
+  { name: 'Projects', link: { pathname: '/' } },
+  { name: 'About', link: { pathname: '/about' } },
+  { name: 'Blog', link: { pathname: '/blog' } },
+  { name: 'Contact', link: { pathname: '/contact' } },
+]
+
 export default function Home() {
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set())
 
@@ -53,6 +61,18 @@ export default function Home() {
         <div className={styles.headerName}>
           <h1 className={styles.headerTitle}>Akshay Nair</h1>
           <div className={styles.headerSubtitle}>a full-stack human</div>
+        </div>
+        <div className="inline-block text-right align-top" style={{ margin: '0.8rem 0 0 4rem' }}>
+          {navLinks.map(({ name, link }) => (
+            <div key={name} className="pt-1">
+              <Link
+                href={link}
+                className={`${styles.link} ${styles.navLink}`}
+              >
+                {name}
+              </Link>
+            </div>
+          ))}
         </div>
       </header>
 
