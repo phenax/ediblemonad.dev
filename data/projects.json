@@ -1,4 +1,17 @@
 {
+  "ts-typeslang": {
+    "title": "A runtime for TS type system",
+    "description": "Built a runtime and library for typescript's types that turns the type system into a general purpose, purely functional programming language!",
+    "tags": [
+      "typescript",
+      "javascript",
+      "node",
+      "functional-programming",
+      "build-tools"
+    ],
+    "link": "https://github.com/phenax/ts-types-runtime"
+  },
+
   "esbuild-plugin-elm": {
     "title": "Esbuild plugin for elm",
     "description": "Built and maintained an esbuild plugin for building elm projects",
@@ -32,7 +45,7 @@
 
   "elxr": {
     "title": "Elxr (list expressions)",
-    "description": "Built a parser+evaluator for a regex-like syntax for generalizing list operations",
+    "description": "Built an implementation of a regex-like syntax that generalizes regex operations for any sequential data structure",
     "tags": [
       "typescript",
       "javascript",
@@ -58,7 +71,7 @@
 
   "algebraic-effects": {
     "title": "Algebraic Effects",
-    "description": "Built a library for managing side-effects in a pure and composable way using algebraic effects",
+    "description": "Built an implementation of algebraic effects in javascript as a library for managing side-effects in a pure and composable way",
     "tags": [
       "functional-programming",
       "javascript",

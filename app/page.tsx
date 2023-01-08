@@ -5,12 +5,13 @@ import styles from './page.module.css'
 import commonStyles from './common.module.css'
 
 const projectIds: Array<keyof typeof projectData> = [
+  'ts-typeslang',
   'algebraic-effects',
+  'elxr',
   'typed-regex',
   'is-a-dev',
   'diary-pwa',
   'pattern-lock-js',
-  'elxr',
   'esbuild-plugin-elm',
   'cmp-graphql',
   'owyn-launcher',
@@ -52,18 +53,16 @@ export default function Home() {
     <main className={styles.main}>
       <div className="mb-5">
         <span
-          className={`font-bold ${styles.tag} ${
-            selectedTags.size === 0 ? styles.tagSelected : ''
-          }`}
+          className={`font-bold ${styles.tag} ${selectedTags.size === 0 ? styles.tagSelected : ''
+            }`}
           onClick={() => setSelectedTags(new Set())}
         >
           all
         </span>
         {tags.map((t) => (
           <span
-            className={`${styles.tag} ${
-              selectedTags.has(t) ? styles.tagSelected : ''
-            }`}
+            className={`${styles.tag} ${selectedTags.has(t) ? styles.tagSelected : ''
+              }`}
             key={t}
             onClick={() =>
               setSelectedTags((s) => {
