@@ -11,7 +11,7 @@ const font = Raleway({
 const navLinks = [
   { name: 'Projects', link: { pathname: '/' } },
   { name: 'About', link: { pathname: '/about' } },
-  { name: 'Blog', link: { pathname: '/blog' } },
+  // { name: 'Blog', link: { pathname: '/blog' } },
   { name: 'Contact', link: { pathname: '/contact' } },
 ]
 
