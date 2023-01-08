@@ -1,8 +1,8 @@
 'use client'
 import { useState } from 'react'
-import Link from 'next/link'
 import projectData from '../data/projects.json'
 import styles from './page.module.css'
+import commonStyles from './common.module.css'
 
 const projectIds: Array<keyof typeof projectData> = [
   'algebraic-effects',
@@ -37,7 +37,7 @@ const tags = Array.from(new Set(projectList.flatMap((p) => p.tags)).values())
 const ProjectCard = ({ project }: { project: Project }) => (
   <div className={styles.project}>
     <h2 className={`mb-4 ${styles.projectTitle}`}>
-      <a className={styles.link} href={project.link} target="_blank _parent">
+      <a className={commonStyles.link} href={project.link} target="_blank _parent">
         {project.title}
       </a>
     </h2>
@@ -45,75 +45,47 @@ const ProjectCard = ({ project }: { project: Project }) => (
   </div>
 )
 
-const navLinks = [
-  { name: 'Projects', link: { pathname: '/' } },
-  { name: 'About', link: { pathname: '/about' } },
-  { name: 'Blog', link: { pathname: '/blog' } },
-  { name: 'Contact', link: { pathname: '/contact' } },
-]
-
 export default function Home() {
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set())
 
   return (
-    <div>
-      <header className={styles.header}>
-        <div className={styles.headerName}>
-          <h1 className={styles.headerTitle}>Akshay Nair</h1>
-          <div className={styles.headerSubtitle}>a full-stack human</div>
-        </div>
-        <div className="inline-block text-right align-top" style={{ margin: '0.8rem 0 0 4rem' }}>
-          {navLinks.map(({ name, link }) => (
-            <div key={name} className="pt-1">
-              <Link
-                href={link}
-                className={`${styles.link} ${styles.navLink}`}
-              >
-                {name}
-              </Link>
-            </div>
-          ))}
-        </div>
-      </header>
-
-      <main className={styles.main}>
-        <div className="mb-5">
+    <main className={styles.main}>
+      <div className="mb-5">
+        <span
+          className={`font-bold ${styles.tag} ${
+            selectedTags.size === 0 ? styles.tagSelected : ''
+          }`}
+          onClick={() => setSelectedTags(new Set())}
+        >
+          all
+        </span>
+        {tags.map((t) => (
           <span
-            className={`font-bold ${styles.tag} ${
-              selectedTags.size === 0 ? styles.tagSelected : ''
+            className={`${styles.tag} ${
+              selectedTags.has(t) ? styles.tagSelected : ''
             }`}
-            onClick={() => setSelectedTags(new Set())}
+            key={t}
+            onClick={() =>
+              setSelectedTags((s) => {
+                s = new Set(s.values())
+                s.has(t) ? s.delete(t) : s.add(t)
+                return s
+              })
+            }
           >
-            all
+            {t}
           </span>
-          {tags.map((t) => (
-            <span
-              className={`${styles.tag} ${
-                selectedTags.has(t) ? styles.tagSelected : ''
-              }`}
-              key={t}
-              onClick={() =>
-                setSelectedTags((s) => {
-                  s = new Set(s.values())
-                  s.has(t) ? s.delete(t) : s.add(t)
-                  return s
-                })
-              }
-            >
-              {t}
-            </span>
-          ))}
-        </div>
+        ))}
+      </div>
 
-        <div>
-          {(selectedTags.size === 0
-            ? projectList
-            : projectList.filter((p) => p.tags.some((t) => selectedTags.has(t)))
-          ).map((project) => (
-            <ProjectCard key={project.key} project={project} />
-          ))}
-        </div>
-      </main>
-    </div>
+      <div>
+        {(selectedTags.size === 0
+          ? projectList
+          : projectList.filter((p) => p.tags.some((t) => selectedTags.has(t)))
+        ).map((project) => (
+          <ProjectCard key={project.key} project={project} />
+        ))}
+      </div>
+    </main>
   )
 }

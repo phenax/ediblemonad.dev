@@ -4,62 +4,14 @@
   margin: 0 auto;
 }
 
-.navLink {
-  position: relative;
-}
-.navLink::after {
-  content: '';
-  position: absolute;
-  right: -4px;
-  bottom: -2px;
-  width: 40px;
-  height: 12px;
-  border-right: 1px solid rgb(var(--accent-rgb));
-  border-bottom: 1px solid rgb(var(--accent-rgb));
-
-
-  opacity: 0;
-  transition: opacity 0.1s ease-in-out;
-}
-.navLink:hover::after {
-  opacity: 1;
+.paraWrap p {
+  padding-bottom: 1rem;
+  font-size: 1.1rem;
 }
 
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
-}
-
-.header {
-  position: relative;
-  padding: 5rem 0;
-  text-align: center;
-}
-
-.headerName {
-  text-align: left;
-  display: inline-block;
-}
-
-.headerTitle {
-  font-size: 5rem;
-  font-weight: bold;
-  letter-spacing: 3px;
-  line-height: 1.4em;
-}
-
-.headerTitle::before {
-  letter-spacing: 0;
-  content: 'Hi! My name is';
-  display: block;
-  color: rgb(var(--accent-rgb));
-  font-size: 0.9rem;
-  line-height: 1em;
-}
-
-.headerSubtitle {
-  font-size: 0.9rem;
-  text-align: right;
+.paraWrap p b {
+  color: white;
+  opacity: 0.8;
 }
 
 .tag {
@@ -75,10 +27,6 @@
 .tagSelected {
   color: rgb(var(--accent-foreground-rgb));
   background-color: rgb(var(--accent-rgb));
-}
-
-.link {
-  color: rgb(var(--accent-rgb));
 }
 
 .project {
@@ -114,8 +62,4 @@
 
 .projectTitle {
   font-size: 1.8rem;
-}
-
-/* Mobile and Tablet */
-@media (max-width: 1023px) {
 }
