@@ -1,6 +1,6 @@
 {
   "ts-typeslang": {
-    "title": "A runtime for TS type system",
+    "title": "ts-typeslang",
     "description": "Built a runtime and library for typescript's types that turns the type system into a general purpose, purely functional programming language!",
     "tags": [
       "typescript",
@@ -13,8 +13,8 @@
   },
 
   "esbuild-plugin-elm": {
-    "title": "Esbuild plugin for elm",
-    "description": "Built and maintained an esbuild plugin for building elm projects",
+    "title": "esbuild-plugin-elm",
+    "description": "An esbuild plugin for building elm projects",
     "tags": [
       "javascript",
       "elm",
@@ -34,18 +34,19 @@
 
   "cmp-graphql": {
     "title": "cmp-graphql for neovim",
-    "description": "Built a graphql plugin for schema-based completions for graphql in neovim (nvim-cmp)",
+    "description": "A neovim completions (nvim-cmp) plugin for schema-based completions for graphql syntax (works inside gql tagged template literals)",
     "tags": [
       "neovim",
       "graphql",
+      "javascript",
       "dev-ex"
     ],
-    "link": "https://github.com/phenax/esbuild-plugin-elm"
+    "link": "https://github.com/phenax/cmp-graphql"
   },
 
   "elxr": {
     "title": "Elxr (list expressions)",
-    "description": "Built an implementation of a regex-like syntax that generalizes regex operations for any sequential data structure",
+    "description": "An implementation of a regex-like syntax that generalizes regex operations for any sequential data structure",
     "tags": [
       "typescript",
       "javascript",
@@ -58,7 +59,7 @@
 
   "typed-regex": {
     "title": "Typed RegEx",
-    "description": "Built a typescript library for automatic type inference on regular expressions using named capture groups",
+    "description": "A typescript library for automatic type inference on regular expressions using named capture groups",
     "tags": [
       "typescript",
       "regex",
@@ -71,7 +72,7 @@
 
   "algebraic-effects": {
     "title": "Algebraic Effects",
-    "description": "Built an implementation of algebraic effects in javascript as a library for managing side-effects in a pure and composable way",
+    "description": "An implementation of algebraic effects in javascript as a library for managing side-effects in a pure and composable way",
     "tags": [
       "functional-programming",
       "javascript",
@@ -82,7 +83,7 @@
 
   "is-a-dev": {
     "title": "is-a.dev",
-    "description": "Built a free and open source service for developers to register a .is-a.dev subdomain for their personal websites. Currently I lead a team of 5 collaborators to maintain the project",
+    "description": "A free and open source service for developers to register a .is-a.dev subdomain for their personal websites",
     "tags": [
       "javascript",
       "dns",
@@ -93,7 +94,7 @@
 
   "enum-fp": {
     "title": "EnumFP",
-    "description": "Built a library for defining functional Enum type / Sum type for javascript with simple pattern matching",
+    "description": "A js library for defining functional Enum type / Sum type for javascript with simple pattern matching",
     "tags": [
       "functional-programming",
       "javascript"
@@ -113,7 +114,7 @@
 
   "bsp-layout": {
     "title": "bsp-layout",
-    "description": "Built a script for managing dynamic layout in bspwm",
+    "description": "A dynamic layout management script for bspwm",
     "tags": [
       "linux",
       "bash"
@@ -123,7 +124,7 @@
 
   "owyn-launcher": {
     "title": "OWYN Launcher",
-    "description": "Built a minimalist, text-only launcher written in flutter which I use every day",
+    "description": "A minimalist, text-only launcher written in flutter which I use every day",
     "tags": [
       "flutter"
     ],
@@ -132,7 +133,7 @@
 
   "plasmajs": {
     "title": "PlasmaJS",
-    "description": "Built an isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel",
+    "description": "An isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel",
     "tags": [
       "javascript",
       "react",
@@ -144,7 +145,7 @@
 
   "pipey": {
     "title": "Pipey",
-    "description": "Built a library for creating pipeline operator ready functions by converting instance methods's to context-free functions",
+    "description": "A js library for creating pipeline operator ready functions by converting instance methods's to context-free functions",
     "tags": [
       "functional-programming",
       "javascript"
@@ -154,7 +155,7 @@
 
   "diary-pwa": {
     "title": "Diary PWA",
-    "description": "Built a progressive web app in go-lang that lets you carry a personalized secure diary in your pocket. Integrated pattern-lock-js library to allow for privacy",
+    "description": "A progressive web app in go-lang that lets you carry a personalized secure diary in your pocket. Integrated pattern-lock-js library to allow for privacy",
     "tags": [
       "go-lang",
       "graphql",
@@ -165,7 +166,7 @@
 
   "pattern-lock-js": {
     "title": "Pattern Lock",
-    "description": "Built a library for creating customizable pattern lock for the web and PWAs",
+    "description": "A js library for creating customizable pattern lock for the web and PWAs",
     "tags": [
       "canvas",
       "javascript"
@@ -175,7 +176,7 @@
 
   "h": {
     "title": "H Kotlin",
-    "description": "Built a simple, easy to use, library for HTML templating in kotlin",
+    "description": "A simple, easy to use, library for HTML templating in kotlin",
     "tags": [
       "kotlin"
     ],
