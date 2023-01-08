@@ -1,6 +1,6 @@
 {
   "ts-typeslang": {
-    "title": "ts-typeslang",
+    "title": "Runtime for TS types",
     "description": "Built a runtime and library for typescript's types that turns the type system into a general purpose, purely functional programming language!",
     "tags": [
       "typescript",
