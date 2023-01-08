@@ -63,3 +63,28 @@
 .projectTitle {
   font-size: 1.8rem;
 }
+
+
+
+.contactLink {
+  position: relative;
+}
+
+.contactLink:hover .contactLinkIcon {
+  opacity: 0;
+}
+
+.contactLinkBrandIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+.contactLinkIcon {
+  transition: opacity 0.2s ease-in-out;
+}
+.contactLink:hover .contactLinkBrandIcon {
+  opacity: 1;
+}
+

@@ -2,6 +2,10 @@
   color: rgb(var(--accent-rgb));
 }
 
+.link:hover {
+  opacity: 0.8;
+}
+
 .code {
   font-weight: 700;
   font-family: var(--font-mono);
