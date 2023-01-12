@@ -30,6 +30,16 @@
   display: inline-block;
 }
 
+.spacing {
+  padding: 1rem 5rem 0;
+}
+
+@media all and (min-width: 768px) {
+  .spacing {
+    padding: 0.4rem 0 0 5rem;
+  }
+}
+
 .headerTitle {
   font-weight: bold;
   letter-spacing: 3px;

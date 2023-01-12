@@ -16,7 +16,8 @@ export const Header = () => (
       <h1 className={`${styles.headerTitle} text-4xl md:text-6xl`}>Akshay Nair</h1>
       <div className={styles.headerSubtitle}>full-stack developer</div>
     </div>
-    <div className="text-right flex px-6 justify-around md:pl-6 md:pr-0 md:align-top md:inline-block" style={{ marginTop: '0.8rem' }}>
+
+    <div className={`${styles.spacing} text-right flex px-6 justify-around md:align-top md:inline-block`} style={{ marginTop: '0.8rem' }}>
       {navLinks.map(({ name, link }) => (
         <div key={name} className="pt-1">
           <Link
