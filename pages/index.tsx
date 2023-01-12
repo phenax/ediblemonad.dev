@@ -1,9 +1,9 @@
-'use client'
 import { useState } from 'react'
 import projectData from '../data/projects.json'
-import styles from './page.module.css'
-import commonStyles from './common.module.css'
+import styles from '../styles/page.module.css'
+import commonStyles from '../styles/common.module.css'
 
+// TODO: get props on build
 const projectIds: Array<keyof typeof projectData> = [
   'ts-typeslang',
   'algebraic-effects',

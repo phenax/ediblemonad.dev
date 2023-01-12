@@ -2,8 +2,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faTwitch, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import styles from '../page.module.css'
-import commonStyles from '../common.module.css'
+import styles from '../../styles/page.module.css'
+import commonStyles from '../../styles/common.module.css'
 
 config.autoAddCss = false;
 

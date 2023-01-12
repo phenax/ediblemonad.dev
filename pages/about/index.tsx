@@ -1,5 +1,5 @@
-import styles from '../page.module.css'
-import commonStyles from '../common.module.css'
+import styles from '../../styles/page.module.css'
+import commonStyles from '../../styles/common.module.css'
 
 export default function About() {
   return (
