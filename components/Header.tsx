@@ -13,10 +13,10 @@ const navLinks = [
 export const Header = () => (
   <header className={styles.header}>
     <div className={styles.headerName}>
-      <h1 className={styles.headerTitle}>Akshay Nair</h1>
+      <h1 className={`${styles.headerTitle} text-4xl md:text-6xl`}>Akshay Nair</h1>
       <div className={styles.headerSubtitle}>full-stack developer</div>
     </div>
-    <div className="inline-block text-right align-top" style={{ margin: '0.8rem 0 0 4rem' }}>
+    <div className="text-right flex px-6 justify-around md:pl-6 md:pr-0 md:align-top md:inline-block" style={{ marginTop: '0.8rem' }}>
       {navLinks.map(({ name, link }) => (
         <div key={name} className="pt-1">
           <Link
