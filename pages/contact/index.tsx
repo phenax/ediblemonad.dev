@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faTwitch, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styles from '../../styles/page.module.css'
 import commonStyles from '../../styles/common.module.css'
+import Head from "next/head";
 
 config.autoAddCss = false;
 
@@ -39,6 +40,11 @@ const email = 'akshay.n0@protonmail.com'
 export default function Contact() {
   return (
     <main className={styles.main}>
+      <Head>
+        <title>Links - Akshay Nair</title>
+        <meta name="description" content="Contact information for Akshay Nair, who is a full-stack web developer based in India" />
+      </Head>
+
       <h2 className="text-2xl text-bold mt-3 pb-6 text-center">
         <a href={`mailto:${email}`} className={commonStyles.link} target="_blank _parent">{email}</a>
       </h2>
