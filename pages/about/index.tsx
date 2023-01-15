@@ -10,7 +10,7 @@ export default function About() {
         <meta name="description" content="Akshay Nair, who is a full-stack web developer based in India" />
       </Head>
 
-      <h2 className="text-2xl text-bold pb-6" style={{ color: 'rgb(var(--accent-rgb))' }}>
+      <h2 className="text-3xl text-bold pb-6" style={{ color: 'var(--accent-rgb)' }}>
         {`> console.log("Hello, there!")`}
       </h2>
 

@@ -5,6 +5,9 @@ import { Header } from '../components/Header'
 
 const font = Raleway({
   preload: true,
+  display: 'swap',
+  variable: '--primary-font',
+  fallback: ['Helvetica', 'Arial', 'sans-serif'],
 })
 
 export default function AppLayout({ Component, pageProps }: any) {

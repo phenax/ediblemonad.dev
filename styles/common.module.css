@@ -1,5 +1,5 @@
 .link {
-  color: rgb(var(--accent-rgb));
+  color: var(--accent-rgb);
 }
 
 .link:hover {

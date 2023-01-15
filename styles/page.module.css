@@ -21,12 +21,12 @@
   padding: 0 0.35em;
   margin-right: 0.1rem;
   user-select: none;
-  color: rgb(var(--accent-rgb));
+  color: var(--accent-rgb);
 }
 
 .tagSelected {
-  color: rgb(var(--accent-foreground-rgb));
-  background-color: rgb(var(--accent-rgb));
+  color: var(--accent-foreground-rgb);
+  background-color: var(--accent-rgb);
 }
 
 .project {
@@ -34,7 +34,7 @@
   margin-top: 2rem;
   position: relative;
   --border-size: 3px;
-  --border-color: rgb(var(--accent-rgb));
+  --border-color: var(--accent-rgb);
 }
 
 .project::before,

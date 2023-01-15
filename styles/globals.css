@@ -8,16 +8,16 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-  --content-foreground-rgb: 0, 0, 0;
-  --content-background-rgb: 255, 255, 255;
+  --content-foreground-rgb: #000;
+  --content-background-rgb: #fff;
 
-  --dark-foreground-rgb: 255, 255, 255;
-  --dark-background-rgb: 9, 8, 10;
+  --dark-foreground-rgb: #fff;
+  --dark-background-rgb: #09080a;
 
-  --accent-rgb: 178, 155, 62;
-  --accent-foreground-rgb: 9, 8, 10;
+  --accent-rgb: #b29b3e;
+  --accent-foreground-rgb: #09080a;
 
-  --accent-complement: 62, 85, 178;
+  --accent-complement: #3e55b2;
 }
 
 * {
@@ -33,8 +33,8 @@ body {
 }
 
 body {
-  color: rgb(var(--dark-foreground-rgb));
-  background-color: rgb(var(--dark-background-rgb));
+  color: var(--dark-foreground-rgb);
+  background-color: var(--dark-background-rgb);
 }
 
 a {
