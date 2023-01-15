@@ -11,16 +11,20 @@ export default function About() {
       </Head>
 
       <h2 className="text-3xl text-bold pb-6" style={{ color: 'var(--accent-rgb)' }}>
-        {`> console.log("Hello, there!")`}
+        <pre style={{ fontFamily: 'var(--font-mono)' }}>{`$ whoami`}</pre>
       </h2>
 
       <div className={`indent-6 text-slate-400 ${styles.paraWrap}`}>
-        <p>My name is <b>Akshay Nair</b> (as the giant header above might have given away). I am a <b>full-stack web developer</b> from Mumbai, India (+5:30 GMT).</p>
-
-        <p>I have 6+ years of professional experience working full-stack on a variety of projects from a <b>matrimonial website</b> to a <b>video editor</b> on the web to a <b>realtime electronic lab notebook</b>. In addition to that, I also have a lot more experience working on <b>personal projects</b> and contributing to <b>open source</b>.</p>
+        <p>
+          I am a <b>full-stack web developer</b> from Mumbai, India <b>(+5:30 GMT)</b> with <b>6 years</b> of professional experience building great products. I have a passion for <b>functional programming</b>, linux and <b>open source</b> software. I am also dedicated to constantly <b>improving my skills</b> and staying <b>up to date</b> with the latest developments in the industry.
+        </p>
 
         <p>
-          I also like to dabble in some <b>esoteric</b> coding ideas, <b>creative coding</b>, etc in my free time.
+          Also, being an advocate for strong <b>automated testing</b> practices, I prioritize it thoroughly in my projects, ensuring that the software can be deployed with confidence.
+        </p>
+
+        <p>
+          Other than that, in my <b>free time</b>, I also like to dabble in some <b>esoteric</b> coding ideas, <b>creative coding</b>, etc.
           {` I've`} also taken up live-coding my personal projects on <b>twitch</b> (<a href="https://twitch.tv/EdibleMonad" target="_blank _parent" className={commonStyles.link}>@EdibleMonad</a>)
         </p>
       </div>
