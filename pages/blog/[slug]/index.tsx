@@ -4,6 +4,8 @@ import { MDXProvider } from '@mdx-js/react'
 import { useRouter } from 'next/router'
 // import 'highlight.js/styles/atom-one-dark-reasonable.css'
 
+import styles from '../../../styles/page.module.css'
+
 export default function Post() {
   const router = useRouter()
   const { slug } = router.query
@@ -12,8 +14,8 @@ export default function Post() {
 
   const Post = dynamic(import(`../posts/${slug}.mdx`))
   return (
-    <main>
-      <article className="prose mx-auto p-6">
+    <main className={styles.main}>
+      <article className="prose">
         <MDXProvider disableParentContext={true}>
           <Post />
         </MDXProvider>
