@@ -1,12 +1,17 @@
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import { config } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin, faTwitch, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faGithub,
+  faLinkedin,
+  faTwitch,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons'
 import styles from '../../styles/page.module.css'
 import commonStyles from '../../styles/common.module.css'
-import Head from "next/head";
+import Head from 'next/head'
 
-config.autoAddCss = false;
+config.autoAddCss = false
 
 const contacts = [
   {
@@ -42,16 +47,30 @@ export default function Contact() {
     <main className={styles.main}>
       <Head>
         <title>Links - Akshay Nair</title>
-        <meta name="description" content="Contact information for Akshay Nair, who is a full-stack web developer based in India" />
+        <meta
+          name="description"
+          content="Contact information for Akshay Nair, who is a full-stack web developer based in India"
+        />
       </Head>
 
       <h2 className="text-2xl text-bold mt-3 pb-6 text-center">
-        <a href={`mailto:${email}`} className={commonStyles.link} target="_blank _parent">{email}</a>
+        <a
+          href={`mailto:${email}`}
+          className={commonStyles.link}
+          target="_blank _parent"
+        >
+          {email}
+        </a>
       </h2>
 
       <div className="flex w-full justify-around mt-6">
-        {contacts.map(c => (
-          <a href={c.link} target="_blank _parent" className={`block ${styles.contactLink} ${commonStyles.link}`} key={c.link}>
+        {contacts.map((c) => (
+          <a
+            href={c.link}
+            target="_blank _parent"
+            className={`block ${styles.contactLink} ${commonStyles.link}`}
+            key={c.link}
+          >
             <div className="px-4 py-6 text-center">
               <span className="inline-block relative">
                 <FontAwesomeIcon
