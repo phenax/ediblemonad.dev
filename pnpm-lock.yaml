@@ -19,6 +19,7 @@ specifiers:
   mdx-embed: ^1.1.2
   next: 13.1.1
   postcss: ^8.4.20
+  postcss-selector-parser: ^6.0.11
   prettier: 2.8.1
   react: 18.2.0
   react-dom: 18.2.0
@@ -54,6 +55,7 @@ devDependencies:
   autoprefixer: 10.4.13_postcss@8.4.20
   eslint-config-prettier: 8.6.0_eslint@8.31.0
   postcss: 8.4.20
+  postcss-selector-parser: 6.0.11
   prettier: 2.8.1
   rehype-autolink-headings: 6.1.1
   rehype-code-titles: 1.1.0
