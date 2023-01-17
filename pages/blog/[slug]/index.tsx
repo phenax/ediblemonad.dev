@@ -12,7 +12,7 @@ export default function Post() {
 
   if (!slug) return ''
 
-  const Post = dynamic(import(`../posts/${slug}.mdx`))
+  const Post = dynamic(import(`../../../posts/${slug}.mdx`))
   return (
     <main className={styles.main}>
       <article className="prose prose-invert">
