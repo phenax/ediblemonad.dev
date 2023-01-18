@@ -31,8 +31,6 @@ export async function getStaticProps() {
 }
 
 export default function Post({ posts }: any) {
-  console.log(posts)
-
   return (
     <main className={styles.main}>
       {posts.map((post: any) => (

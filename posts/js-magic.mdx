@@ -1,0 +1,227 @@
+export const meta = {
+  title: "JS Magic Tricks to impress your friends",
+  description: "JavaScript is a magical language in all the wrong ways. Here's some magic tricks with the js language you can use to impress your friends",
+  published: true,
+  date: '2019-03-29',
+}
+
+My name is Houdini J.S. Magnifico. What I'm about to perform here are a set of illusions and magic tricks that are sure to blow your mind! So prepare to be amazed!
+
+> The tricks shown here are performed by trained professionals. Do not attempt these stunts at home. Do it in production. Viewer discretion is advised.
+
+Let the show begin!
+
+* * *
+
+# For my first trick, I will make this function… DISAPPEAR!
+
+This is my totally normal function. Nothing weird about it. A function you'd find in the wild.
+
+```javascript
+typeof innocentTotallyNormalFunction === "function" // > true
+```
+
+Let me just wave Brendan Eich's mouse pad over it for a bit… and… BOOM!
+
+```javascript
+innocentTotallyNormalFunction()
+// > Uncaught TypeError: innocentTotallyNormalFunction is not a function
+```
+
+GONE! The function is not a function anymore. Schrodinger's function has dissappeared!
+
+**_audience applauds_**
+
+Thank you! Thank you!
+
+#### Here's how it works
+
+```javascript
+const innocentTotallyNormalFunction = (() => {}).apply.bind();
+// Works with any method's bind();
+```
+
+Weird right? It's called JavaScript and a lot of people use this in production. The reason this doesn't work is because .apply method expects the context of a function but .bind gives it undefined as the context. this.means that the apply method doesn't know which function it is trying to apply. Then the apply method has an identity crisis and everything goes to shit.
+
+* * *
+
+# Magic list
+
+Here I have a function that clones an array. Perfectly normal, production ready code.
+
+```javascript
+const clone = list => list.reduce((newList, item) => [...newList, item], []);
+
+// Another clone implementation you can use is,
+const clone = Object.values;
+
+// Or if you wanna go old school...
+const clone = list => {
+  const newList = [];
+
+  for(let index in list) {
+    newList.push(list[index]);
+  }
+
+  return newList;
+};
+```
+
+Here's an ordinary list with nothing fishy going on inside
+
+```javascript
+array.length // > 23
+```
+
+I'm just gonna casually use the clone function to copy the list and check the length of the newly created list…
+
+```javascript
+clone(array).length // > 1
+```
+
+**Magic!!**
+
+The list is no longer 23 items long. 23 to 1! Next-gen compression algorithm, question mark? Or is it just magic?
+
+#### Well, here's how it all went down
+
+The concept behind this is one that not many developers are familiar with. Array holes, also called empty slots are points in an array that are empty. No, I'm not talking about undefined or null or 0. Just empty.
+
+Ref: [Array holes/empty slots](https://2ality.com/2015/09/holes-arrays-es6.html), [Sparse arrays](https://2ality.com/2012/06/dense-arrays.html)
+
+```javascript
+Array(5) // > [<empty x 5>]
+// OR
+[,,,,,] // > [<empty x 5>]
+```
+
+This creates an array of 5 items but without any values. But javascript doesn't use undefined as the default values tho. It instead creates empty slots (holes) in the arrays but keeps given the length. So when you copy it using the reduce method, it doesn't iterate over the empty slots. So the newly generated array is shorter.
+
+* * *
+
+# Schrodinger's magic list
+
+The list we are gonna be working on is document.all which is a list of all nodes in a document.
+
+```javascript
+document.all // > HTMLAllCollection {...}
+```
+
+Council of W3C, give me the strength to make this list disappear!!! Boom! Shaa! Waka-Waka Boom!
+
+```javascript
+typeof document.all // > undefined
+```
+
+**_Be Amazed!!_**
+
+Go get an MRI scan because your tiny little brain just exploded!
+
+#### Here's the big reveal!
+
+`document.all` is a very old and deprecated api that allowed you to iterate over all the nodes rendered to the DOM. The typeof expression returning `undefined` was by design as a part of deprecation of that non-standard feature. Weird, I know. But that's just how javascript rolls.
+
+* * *
+
+
+# Are we Infinity yet?
+
+Let's take a number, `let x: number`.
+
+```javascript
+x + 1 === x; // >> true
+x + 2 === x; // >> false
+```
+
+“What just happened?”
+
+I added 1 to x and the value didn't change! Then I added 2 to it and… the universe… it changed.
+
+#### Check out how this works
+
+```javascript
+const x = 1e16; // OR 1 * Math.pow(10, 16) OR 10000000000000000
+```
+
+This is by design. It's documented in IEEE 754-2008. When the number is as large as this, it rounds it up to the nearest even number.
+
+Ref: [Rounding rules section in IEEE 754](https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules)
+
+* * *
+
+
+# Is a “not a number” a number or not a number? Well, it's NaN of your business
+
+```javascript
+typeof NaN === 'number' // >> true
+NaN !== NaN // >> true
+```
+
+Wut? ‘Not a number' is a number and ‘Not a number' is not equal to ‘Not a number'
+
+Javascript is a magical language
+
+#### Know the trick
+
+NaN is a numeric data type but it behaves as an identity when any mathematical operation is applied to it.
+
+_“But why is NaN === NaN returning false?”_
+
+Because the Gods of Javascript wished so. If either side of === operator is NaN, the operation returns false. Thats just how it works. Don't question it.
+
+
+* * *
+
+# Check if your list has more than 1 items
+
+A very complicated problem in programming.
+
+A normie dev would go ahead and write something like
+
+```javascript
+const hasAtleast2Elements = x => x.length >= 2;
+```
+
+That solution is 13 characters long. In the modern world of javascript, 13 characters is way too many characters. It is a performance bottleneck.
+
+Let's write something more optimized in size
+
+```javascript
+const hasAtleast2Elements = x => !isNaN(+x);
+```
+
+There. 10 characters. Much better. We removed **23%** of our JavaScript! Good job. Less JavaScript is good JavaScript
+
+#### The genius behind this action
+
+We improved our load time by 23% but at what cost?! How does that function even work? Magic? Not magic, JavaScript!
+
+The + operator applied to a list returns NaN if the number of items in the list is more than 1.
+
+Why does it do that? Well, type casting. +[] is equal to +[].toString().
+
+So,
+
+```javascript
+[].toString() === '' // >> +'' === 0
+[1].toString() === '1' // >> +'1' === 1
+[1, 2].toString() === '1,2' // >> +'1,2' === NaN (Cannot typecast as it is not a number)
+```
+
+* * *
+
+* * *
+
+That's all for today! Tune in next time to watch Magnifico use magic in production and get fired immediately.
+
+Now I'm gonna make myself disappear.
+
+…
+
+…
+
+…
+
+Why is this… Just a second folks… Some technical difficul…
+
+**_magic man magically disappears_**

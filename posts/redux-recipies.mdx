@@ -1,0 +1,274 @@
+export const meta = {
+  title: "Grandma's recipes for cooking redux",
+  description: "Grandma teaches some interesting recipies to try in redux rooted in her very strong opinions on functional programming",
+  published: true,
+  date: '2019-03-15',
+}
+
+Welcome to my Grandma's Kitchen. I'm your host, the grandson. Let's start cooking, shall we?
+
+Disclaimer: Stuff referenced in this post are not my opinions, they are straight up facts. If you disagree, you're probably right but don't tell anyone. Reader discretion is advised.
+
+For far too long have we suffered the torture of writing boilerplate code and messy actions. Not anymore. Here are some recipes to cook redux the way my grandma wants you to.
+
+We are going to be cooking with the following ingredients today -
+
+- [Redux Saga](https://github.com/redux-saga/redux-saga)
+- [Redux Utils](https://github.com/phenax/redux-utils)
+- [Crocks](https://github.com/evilsoft/crocks)
+- [Reselect](https://github.com/reduxjs/reselect)
+- [Ramda](https://github.com/ramda/ramda) (optional. Add according to taste)
+
+* * *
+
+## Spicy hot action names/types
+
+You wouldn't expect there to be any changes in the way you create action names/types but why not? Go check your action types file. You will find that there is a recurring pattern of the three states. `ACTION_PENDING`, `ACTION_SUCCESS` and `ACTION_FAILURE` (not FAIL because `PENDING`, `SUCCESS` and `FAILURE` have the same number of characters and my grandma likes consistency). And while we are at it we can also learn something from the REST architecture from my grandma's time and bring the resource/action pattern in here.
+
+`actionTypes` function uses the `@resource/ACTION/STATE` convention.
+
+```javascript
+import { actionTypes } from '@phenax/redux-utils';
+
+const types = actionTypes({
+  DISHES: {
+    LIST: ['PENDING', 'SUCCESS', 'FAILURE'],
+    ADD: ['PENDING', 'SUCCESS', 'FAILURE'],
+  },
+  SESSION: {
+    INIT: ['PENDING', 'SUCCESS', 'FAILURE'],
+  },
+});
+
+types.DISHES.ADD.SUCCESS === '@dishes/ADD/SUCCESS'; // true
+
+// Your actions will then look something like
+dispatch({
+  type: types.DISHES.ADD._,
+  payload: {
+    name: 'Chicken that tastes like paneer',
+    ingredients: {
+      chicken: { count: 1, unit: 'bird' },
+      salt: { toTaste: true },
+      pepper: { count: 2, unit: 'shakes' },
+      milk: { count: 3, unit: 'seconds of pouring' },
+    },
+  },
+});
+
+// The underescore (`._`) is the dispatch that gets picked up by the sagas. Its a default dispatch i.e. stateless dispatch.
+```
+
+* * *
+
+## Reducer salad
+
+The three state pattern is also seen repeated a lot inside reducers. My grandma keeps telling me “My back hurts when I scroll through long switch-case statements”. So if you haven't guessed already, we are going to change that too now. We have to care for the elderly.
+
+```javascript
+import { createPartialReducer, mergeReducers } from '@phenax/redux-utils';
+
+const initialState = { loading: false, readyForServing: true, dishes: [], error: '' };
+
+const getLoadingState = state => ({ readyForServing }) => ({
+  ...state,
+  readyForServing,
+  loading: true,
+});
+
+const addDishReducer = createPartialReducer(types.DISHES.ADD, (state = initialState, action) => ({
+  PENDING: getLoadingState(state),
+  SUCCESS: newDish => ({
+    ...state,
+    readyForServing: true,
+    loading: true,
+    dishes: [...state.dishes, newDish],
+  }),
+  FAILURE: e => ({
+    ...state,
+    readyForServing: false,
+    loading: true,
+    error: e.message,
+  }),
+}));
+
+// Your regular reducer can be merged with partials
+const regularOldReducer = (state = initialState, action) => {
+  switch(action.type) {
+    case types.SOMEOTHER.ACTION.PENDING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.SOMEOTHER.ACTION.SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        dishes: [],
+      };
+    case types.SOMEOTHER.ACTION.FAILURE:
+      return {
+        ...state,
+        loading: false,
+        dishes: [],
+        error: e.message,
+      };
+  }
+};
+
+export default mergeReducers(addDishReducer, regularOldReducer);
+```
+
+The partial reducers allow you to split the reducer into smaller functions based on the resource/action/state convention. You can also use this to show off your rad point-free trick shots.
+
+* * *
+
+## Duck promises
+
+There are 3 different ways to interpret name of this dish. Clue, it's not a typo (even though it fits perfectly). Another clue, we're not cooking a duck here. You are correct. Just duck those promises and go with `Async` from crocks. (Not to be confused with `async/await` which is just a prank that the C# community is playing on us disguised as w3c draft authors). Here's how to use fetch (or any other promise based api) and turn it into a composible, cancellable, lazy Async task. Grandma does not approve laziness but we will use it anyway because GOD DAMMIT, IT'S MY FREAKING COOKING SHOW! GET OUT OF MY ROOM, GRANDMA!
+
+For you, a simple made-up example of fetching with network timeout. fetchJson is just an Async wrapper for fetch api.
+
+```javascript
+import Async from 'crocks/Async';
+import { prop, filter, map, either, complement } from 'ramda';
+import { fetchJson } from '@phenax/redux-utils/async';
+
+// Some other api call that happens after we get the data from the user
+// fetchChefInfo :: a -> Async a
+const fetchChefInfo = data => Async((rej, res) => setTimeout(() => res(data), 700));
+
+// fetchServableDishes :: Object * -> Async [User]
+const fetchServableDishes = params => fetchJson('/dishes', params)
+  .race(Async.rejectAfter(2000, new Error('Request Timeout')))
+  .map(prop('dishes'))
+  .map(compose(
+    filter,
+    complement,
+    either(
+      prop('isReady'),
+      prop('isBurnt'),
+    ),
+  ));
+
+let task = fetchServableDishes();
+
+// The request has not been sent yet (it's lazy like crazy! Thank you. Thank you.). You can keep composing and chaining stuff
+task = task
+  .map(map(decorateDish))
+  .chain(fetchChefInfo);
+
+// And when you finally decide that you want to make the api call, you can fork it.
+// Nothing is executed till you call .fork
+task.fork(
+  e => console.error(e),
+  activeUsers => {
+    // Do stuff
+  },
+);
+```
+
+* * *
+
+## Barbecue sagas
+
+Redux saga is the best way to write actions. That is a fact, not an opinion. No need to look it up. Not going to change anything with that but we can add a few ingredients to enhance its flavor. We are also going to use `Async` instead of `Promise` because my grandma believes you shouldn't make promises you can't keep/manage.
+
+```javascript
+import { put } from 'redux-saga/effects';
+import { callAsync, putResponse } from '@phenax/redux-utils/saga';
+
+export function* add({ payload }) {
+  yield put({ type: types.DISHES.ADD.PENDING, payload: {} });
+  const response = yield callAsync(saveNewDish, payload);
+  yield putResponse(types.DISHES.ADD, response);
+};
+
+export function* list({ payload }) {
+  yield put({ type: types.DISHES.LIST.PENDING, payload: {} });
+  const response = yield callAsync(fetchServableDishes);
+  yield putResponse(types.DISHES.LIST, response);
+};
+
+export default function* root() {
+  yield all([takeLatest(types.DISHES.ADD._, add)]);
+  yield all([takeLatest(types.DISHES.LIST._, list)]);
+};
+```
+
+Here,
+
+```javascript
+yield putResponse(types.DISHES.LIST, response);
+// is just a shorthand for
+yield put(response.cata({
+  Success: data => ({ type: types.DISHES.LIST.SUCCESS, payload: data }),
+  Failure: error => ({ type: types.DISHES.LIST.FAILURE, payload: error }),
+}));
+```
+
+* * *
+
+## Selector noodles
+
+Selectors allow you to derive your data from the state and memoize the operation. We are going to use reselect for this and we're also gonna sprinkle some ramda in there according to taste. You can use lodash too but why would you do something like that? Ramda is to lodash what a smart watch is to a tin-can telephone.
+
+Grandma: “Back in my day, underscore was pretty popular. It was like…”.
+
+Yeah grandma, we get it, you're old. Now shut up and let me show these people some selector action.
+
+```javascript
+import { createSelector } from "reselect";
+import { pathOr, prop, __, map } from 'ramda';
+
+// selectBurntDishes :: { dishes :: { dishIds :: [String], items :: Object Profile } } -> [String]
+export const selectBurntDishes = createSelector(
+  pathOr({}, ['dishes', 'items']),
+  pathOr([], ['dishes', 'dishIds']),
+  (items, dishIds) => dishIds.filter(compose(
+    prop('isBurnt'),
+    map(prop(__, items)),
+  )),
+);
+```
+
+Now you can use it anywhere…
+
+In you component's mapStateToProps,
+
+```javascript
+const mapStateToProps = state => ({
+  burntDishes: selectBurntDishes(state),
+});
+
+export default connect(mapStateToProps)(ListBurntDishes);
+```
+
+In your sagas,
+
+```javascript
+function* mySaga() {
+  const burntDishes = yield select(selectBurntDishes);
+  // Do stuff with those ids
+}
+```
+
+Doesn't that look pretty? If you're new to the point-free way, you may feel like you just watched a french movie without subtitles but trust me, this is worth the confusing first few days.
+
+* * *
+
+## Conclusion
+
+Old ideas and opinions are what new ones are born from. Grandma's recipes were great and they've come out of experience that doesn't mean we have to keep making the same thing a billion times. Small (and sometimes large) migrations are a good thing.
+
+So let's summarise. What did we learn today?
+
+- Use grandma's favorite convention of `@resource/ACTION/STATE` for your action types
+- The elderly hate long switch case statements
+- Duck promises because `Async` rocks!
+- Sagas are the freakin best!!
+- Memoize those selectors for a better tomorrow
+
+These are all solutions to the small yet annoying inconveniences that I ran into while working on a personal project of mine. I'm collecting all of the tiny helpers over at [@phenax/redux-utils](https://github.com/phenax/redux-utils). The project is not done yet so the library will be getting more updates. PRs are welcome!!
+
+Hope these ideas help you write some tasty code.
