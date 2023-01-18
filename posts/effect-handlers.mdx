@@ -1,0 +1,504 @@
+export const meta = {
+  title: "Designing effects as data structures",
+  description: "Dipping our feet into the world of effect handlers to design composition of our effects as a data-structure with free monads",
+  published: true,
+  date: '2021-03-01',
+}
+
+
+You gotta teach your effects some manners.
+
+We work with effects everyday, but those rascals have a habit of running around loose in our programs.
+I'm not saying it's just bad parenting but we have to draw the line at some point.
+
+Look at pure functions, they are so disciplined and obedient. They never get into any trouble.
+You ask them a question, they give you an answer. That's what you expect from good code.
+If you find out that your function, while giving you the answer, also went ahead and made 5 api calls, thats a good sign that your code needs some disciplining.
+
+---
+
+## Let's implement a linked list
+
+I swear this is relevant and not a plot to make you learn DSA again.
+
+```reasonml
+type rec myList<'a> = Nil | Cons('a, myList<'a>)
+
+let ls = Cons(5, Cons(20, Cons(-28, Nil)))
+```
+
+That is a simple **linked list** implemented in [rescript](https://rescript-lang.org/).
+`Nil` marks the end of the list and every element before it contains an item of that list and the rest of the list.
+They know how to stand in a straight line like good students.
+
+But, this is an **eager list** since all items of the list already exist on the time of its creation. For what we're working on today, eager lists won't be enough. We need our list to be *lazy*.
+We can turn that into a **lazy linked list** by replacing the rest of the list with a function returning the rest of the list like so -
+
+```reasonml
+type rec lazyList<'a> = Nil | Cons('a, unit => lazyList<'a>)
+
+let ls = Cons(5, () =>
+  Cons(20, () =>
+    Cons(512, () =>
+      Nil)))
+```
+
+This makes it so the rest of the linked list doesn't exist till the function is called.
+This is helpful if you wanted to create an **infinite list**.
+
+```reasonml
+let rec fibonacci = (a, b) => Cons(b, () => fibonacci(b, a + b))
+
+let rec take = (ls, n) => switch (n, ls) {
+  | (_, Nil) | (0, _) => Nil
+  | (n, Cons(value, next)) => Cons(value, () => next()->take(n - 1))
+}
+
+let rec forEach = (ls, fn) => switch ls {
+  | Nil => ()
+  | Cons(value, next) => {
+    fn(value)
+    next()->forEach(fn)
+  }
+}
+
+fibonacci(0, 1)->take(20)->forEach(Js.log)
+```
+
+`fibonacci` returns a lazy list of all the numbers in Fibonacci series starting with `a` and `b`. We then use the `take` function to ignore the list after the first `20` items. `forEach`, then goes through the new list till the 20 items and logs each one out.
+
+This is very helpful for **modeling continuous sequences** of data without consuming all the space it may need.
+
+Everything we've played with so far has been *simple* and *pure*. Unlike those disobedient effects passing notes to each other, non-deterministically. Oh I hate them so much.
+
+---
+
+## Can effects be more like that?
+
+Close your eyes. No, seriously, close them. This is important.
+Now, imagine a world where all your effectful code could just be designed as *data structures*!
+Are your eyes still closed? Good.
+Something as simple as a linked list that describes all the effectful logic in your code.
+Writing tests will become fun!
+Everything would be so much simpler. All of our life's problems would just disappear.
+
+Well, today's yo... Oh you can open your eyes now. Sorry.
+Well, today's your lucky day!
+
+We will turn your ill-mannered effects into well behaved pure data structures.
+
+---
+
+## Impure effect? More like code neglect, amirite? Please clap
+
+Kids, please turn in your assignment from last week. I hope you all implemented `appendStringToFile: string => string => string` that appends a string to a file and returns the new contents, given the imaginary synchronous functions `readFile: string => string` and `writeFile: string => string => ()` for doing file IO.
+
+```reasonml
+let appendStringToFile = (fileName, logLine) => {
+  let contents = readFile(fileName)
+  writeFile(contents ++ logLine)
+  readFile(fileName)
+}
+
+let newLogContents = appendStringToFile(fileName, "\nSome text")
+```
+
+Oh my god, Timmy! Is that imperative and impure function calls in your notebook? That's it. To the principals office! Now!
+
+Now let's try to think of a way to do this that's not an absolute nightmare to test.
+What if we just made a data structure out of it?
+
+Let's try turning each of those statements into variants that can be linked together lazily.
+
+```reasonml
+type rec fileEff<'a> =
+  | ReadFile(string, string => fileEff<'a>)
+  | WriteFile(string, string, unit => fileEff<'a>)
+  | Return(string)
+
+let appendStringToFile = (fileName, logLine) =>
+  ReadFile(fileName, contents =>
+    WriteFile(fileName, contents ++ logLine, _ =>
+      ReadFile(fileName, newContents =>
+        Return(newContents))))
+```
+
+You can read `Something(a, b, c => fileEff<'a>)` as an operation `Something` that takes `a` and `b` and returns a `c`.
+
+If you squint hard enough, you'll find that this is very similar to the **lazy list** data structure we implemented earlier.
+You have the last item `Return`, and each item before it is a description of an effect.
+
+This is similar to how programming languages have **Abstract Syntax Trees (AST)** that describe the syntax of the language which then goes through the **interpreter** to be executed.
+Just like ASTs, to get our code working, we need to write an interpreter to evaluate our data structure and produce effects.
+
+```reasonml
+let rec interpreter = eff => switch eff {
+  | Return(contents) => contents
+  | ReadFile(fileName, getNext) =>
+    readFile(fileName)->getNext->interpreter
+  | WriteFile(fileName, contents, getNext) => {
+    writeFile(fileName, contents);
+    ()->getNext->interpreter;
+  }
+}
+
+let result = interpreter(appendStringToFile("./file", "hello world"));
+```
+
+The interpreter walks through the list-like structure and calls itself recursively on each of the nodes till it hits `Return`.
+
+Kevin: "Why is this better than writing it imperatively?"
+
+\*takes a deep breath\*
+Kevin... STFU!
+
+This is better because it **decouples** your **business logic** from the **effects**!
+This is better because you can just create a **mock interpreter** and **write tests for your business logic** without actually generating effects!
+This is better because you get **dependency injection** for free!
+
+---
+
+## Are we composable yet?
+
+Now we have a new problem though. It seems like `Return` will have to be defined for every kind of effect we may have.
+This will also make it difficult to **compose** it with other effects.
+So let's abstract that out.
+
+We can create a module function for creating effects and handling the recursion in the interpreter.
+
+```reasonml
+module type EFFECT = {
+  type t<'a>
+}
+
+module MakeEffect = (Eff: EFFECT) => {
+  type rec t<'a, 'ret> = 
+    | Return('ret)
+    | Operation(Eff.t<t<'a, 'ret>>)
+
+  let rec interpreter = (eff, handler) => switch eff {
+    | Return(x) => x
+    | Operation(m) => handler(m)->interpreter(handler)
+  }
+}
+```
+
+
+Then we can rewrite our file effect in peace.
+
+```reasonml
+module FileOperations = {
+  type t<'a> =
+    | ReadFile(string, string => 'a)
+    | WriteFile(string, string, unit => 'a)
+}
+
+module FileEffect = MakeEffect(FileOperations)
+
+let appendStringToFile = (fileName, logLine) => {
+  open FileOperations;
+  open FileEffect;
+
+  Operation(ReadFile(fileName, contents =>
+    Operation(WriteFile(fileName, contents ++ logLine, _ =>
+      Operation(ReadFile(fileName, contents =>
+        Return(contents)
+      ))
+    ))
+  ))
+}
+
+let handler = eff => switch eff {
+  | ReadFile(fileName, resume) => readFile(fileName)->resume;
+  | WriteFile(fileName, contents, resume) => {
+    writeFile(fileName, contents);
+    resume(());
+  }
+}
+
+let result = appendStringToFile->FileEffect.interpreter(handler)
+```
+
+> **"Effects as a data structure is cool and all but I don't want to write code that looks like a ladder"**
+>     - Former student who died under suspicious circumstances shortly after making this statement
+
+I get it. It looks ugly. All new-born babies do. We just need some *SYNTAX SUGAR* to make things better.
+Don't worry tho. I got you. But before we go there, we need to implement a `flatMap` operation for our effect.
+
+You may know `flatMap` from it's critically acclaimed role in `Belt.Option` and `Belt.Result` modules. Also, the horrible `Js.Promise.then_`, is also a `flatMap` on promises.
+In general, `flatMap: t<'a> => ('a => t<'b>) => t<'b> ` allows us to chain `t<'a>` to `t<'b>` using the result of `t<'a>`.
+
+```reasonml
+// This is a map operation over our file operation
+let fileOpsMap = (eff, fn) => switch eff {
+  | ReadFile(f, next) => ReadFile(f, e => e->next->fn)
+  | WriteFile(f, c, next) => WriteFile(f, c, e => e->next->fn)
+}
+
+// This function allows us to chain our effects together
+let rec flatMap = (eff, fn) => switch eff {
+  | Return(a) => fn(a)
+  | Eff(m) => Eff(m->fileOpsMap(flatMap(_, fn)))
+}
+```
+
+While we're at it, we'll also need another function called `liftEff`.
+This function **lifts** any given operation into an `Effect` and makes it terminate with its result.
+`x => next effect?` becomes `Eff(x => Return(x))`
+
+```reasonml
+let liftEff = fa => Eff(fa->fileOpsMap(e => Return(e)));
+```
+
+
+Now putting it all together, our effects helper and file effect will look something like this
+
+```reasonml
+module type EFFECT = {
+  type rec t<'a>;
+  let map : t<'a> => ('a => 'b) => t<'b>;
+};
+
+module MakeEffect = (Eff: EFFECT) => {
+  type rec t<'a> = 
+    | Return('a)
+    | Eff(Eff.t<t<'a>>);
+
+  let liftEff = fa => Eff(fa->Eff.map(e => Return(e)));
+
+  let rec flatMap = (eff, fn) => switch eff {
+    | Return(a) => fn(a)
+    | Eff(m) => Eff(m->Eff.map(flatMap(_, fn)))
+  };
+
+  let rec interpreter = (eff, handler) => switch eff {
+    | Return(x) => x
+    | Eff(m) => handler(m)->interpreter(handler)
+  };
+};
+
+module FileOperations = {
+  type rec t<'a> =
+    | ReadFile(string, string => 'a)
+    | WriteFile(string, string, unit => 'a);
+
+  let map = (eff, fn) => switch eff {
+    | ReadFile(f, next) => ReadFile(f, e => e->next->fn)
+    | WriteFile(f, c, next) => WriteFile(f, c, e => e->next->fn)
+  };
+};
+
+module FileEffect = MakeEffect(FileOperations);
+
+// Lifted helper functions
+let readFileOp = file =>
+  FileEffect.liftEff(FileOperations.ReadFile(file, x => x));
+
+let writeFileOp = (file, contents) =>
+  FileEffect.liftEff(FileOperations.WriteFile(file, contents, x => x));
+```
+
+
+Now for the *SYNTAX SUGAR* I promised!
+
+```reasonml
+let appendStringToFile = (fileName, logLine) => {
+  open FileEffect;
+
+  readFileOp(fileName)
+  ->flatMap(contents => writeFileOp(fileName, contents ++ logLine))
+  ->flatMap(_ => readFileOp(fileName))
+};
+```
+
+We have turned our `FileOperations` into a functor
+
+
+---
+
+## No, not that functor, the other functor.
+
+Functors in ocaml ([module functions](https://rescript-lang.org/docs/manual/latest/module#module-functions-functors)) are very different from functors in category theory.
+
+What we have made here is a combination of both kinds of functors.
+The `FileOperations` **functor** (category theory) goes into the `MakeEffect` **functor** (module function) and returns `FileEffect` **monad** (category theory).
+
+> Fun fact: Functor comes from the contraction of, fun which is Russian for vodka, ca which of course is the sound a crow makes and tor which is a modern tin foil hat that actually works.
+
+> Fun fact: Monad comes from the mind of a mathematician who forgot about the essay that was due, so at the last minute, started making up words to fill up the 800 words.
+
+Don't quote me on that but it's probably true. We'll never know.
+
+We don't have to get into the specifics of functors and monads to make sense of this class but it is worth the learning curve.
+
+---
+
+## Ugh.. Unit tests
+
+Writing tests for it is as simple as creating **a mock handler**.
+
+```reasonml
+let mockFile = ref("init:");
+let mockHandler = eff => switch eff {
+  | FileOperations.ReadFile(fileName, resume) => resume(mockFile.contents);
+  | FileOperations.WriteFile(fileName, contents, resume) => {
+    mockFile.contents = contents;
+    resume(());
+  };
+};
+
+let result = appendStringToFile("./file", "text to append")
+  ->FileEffect.interpreter(mockHandler);
+
+expect.string(result).toEqual("init:text to append");
+expect.string(mockFile.contents).toEqual("init:text to append");
+```
+
+And now for the best part... *drum rolls*
+
+**SNAPSHOT/GOLDEN TESTING**
+
+Yes! As all our business logic is now just a data structure, you can create a snapshot of it to test against!
+
+You can perform snapshot testing of your effect by **accumulating the effects** called on your handler as an array.
+
+```reasonml
+let nodes = ref([]->Obj.magic);
+let addNode = node => nodes.contents = nodes.contents->Belt.Array.concat([node]);
+
+let mockHandler = eff => {
+  addNode(eff);
+  switch eff {
+    | FileOperations.ReadFile(_f, resume) => resume("mock file contents")
+    | FileOperations.WriteFile(_f, _c, resume) => resume(())
+  };
+};
+
+appendStringToFile("./file", "text to append")->FileEffect.interpreter(mockHandler)->ignore;
+
+expect.value(nodes).toMatchSnapshot();
+```
+
+And just like that, all of our business logic is now 100% safe against all kinds of refactor.
+- You change the order of effects?... Tests break!
+- You add another effect in between?... Tests break!
+- You accidentally delete everything?... Tests explodes!
+- You got scammed by a Nigerian prince?... This won't help with that!
+- You change something that doesn't impact your program?... Tests pass!
+
+
+---
+
+## Effect composition
+
+File IO is great but your code will involve other effects too.
+Maybe you want to implement **logging**? Or maybe some **caching** mechanism? Or maybe you just want to maintain a piece of **mutable state** in your code?
+Just having one effect called `FileEffect` is not gonna cut it.
+
+To be able to compose multiple effects into one big effect, we can use the almighty [STRUCTURAL/POLYMORPHIC VARIANTS](https://rescript-lang.org/docs/manual/latest/polymorphic-variant)!
+
+```reasonml
+// File IO effect
+module FileOperations = {
+  type rec t<'a> = [ #ReadFile(string, string => 'a) | #WriteFile(string, string, unit => 'a) ];
+
+  let map = (eff, fn) => switch eff {
+    | #ReadFile(f, next) => #ReadFile(f, e => e->next->fn)
+    | #WriteFile(f, c, next) => #WriteFile(f, c, e => e->next->fn)
+  };
+};
+
+// Logger effect
+module LoggerOperations = {
+  type rec t<'a> = [ #LogMessage(string, string, string => 'a) ];
+
+  let map = (eff, fn) => switch eff {
+    | #LogMessage(m, d, next) => #LogMessage(m, d, e => e->next->fn)
+  };
+};
+
+// Composition of FileOperations and LoggerOperations
+module MyCustomOperations = {
+  type rec t<'a> = [ LoggerOperations.t<'a> | FileOperations.t<'a> ];
+
+  let map = eff => switch eff {
+    | #...FileOperations.t as e => FileOperations.map(e)
+    | #...LoggerOperations.t as e => LoggerOperations.map(e)
+  };
+};
+
+module MyCustomEff = MakeEffect(MyCustomOperations);
+
+let logMessageOp = (message, data) => MyCustomEff.liftEff(#LogMessage(message, data, x => x));
+let readFileOp = file => MyCustomEff.liftEff(#ReadFile(file, x => x));
+let writeFileOp = (file, contents) => MyCustomEff.liftEff(#WriteFile(file, contents, x => x));
+
+// Our program
+let appendStringToFile = (fileName, logLine) => {
+  open MyCustomEff;
+
+  readFileOp(fileName)
+  ->flatMap(logMessageOp(":: Logging file contents before update -"))
+  ->flatMap(contents => writeFileOp(fileName, contents ++ logLine))
+  ->flatMap(_ => readFileOp(fileName))
+  ->flatMap(logMessageOp(":: Logging file contents after update -"))
+};
+```
+
+You can **compose any number of effects** together into one for your programs!
+
+And of course, nothing would work without the handler so...
+
+```reasonml
+let handler = eff => switch eff {
+  | #LogMessage(message, data, resume) => {
+    Js.log2(message, data);
+    resume(data);
+  }
+  | #ReadFile(fileName, resume) => readFile(fileName)->resume;
+  | #WriteFile(fileName, contents, resume) => {
+    writeFile(fileName, contents);
+    resume(());
+  };
+};
+
+let result = appendStringToFile->MyCustomEff.interpreter(handler);
+```
+
+---
+
+## Does all of this have a name?
+
+What we just learned is a construct in functional programming called [free algebraic structures](https://wiki.haskell.org/Free_structure). More specifically, `FileEffect` and `MyCustomEff` are Free Monads.
+
+In general, a free monad on a Functor `f` is a structure where each node represents `f`. If you understood what I just said, please explain it to me after class so I don't look like an idiot in front of my other students.
+
+In this class, we used it to **fold** (interpret) a data structure to generate effects.
+It allowed us to decouple the composition of our effects with the effect's behavior by creating a pure representation of our computations.
+
+Free monad implementation for dealing with effects in such a way is also referred to as [algebraic effects](https://overreacted.io/algebraic-effects-for-the-rest-of-us/).
+
+To learn more about this, you could walk through the following links -
+* [What the fuck are module functions/functors?](https://rescript-lang.org/docs/manual/latest/module#module-functions-functors)
+* [What the fuck is a Functor in category theory?](https://medium.com/@dtinth/what-is-a-functor-dcf510b098b6)
+* [What the fuck is a Monad?](https://wiki.haskell.org/All_About_Monads)
+* [What the fuck are Free Algebraic Structures?](https://wiki.haskell.org/Free_structure)
+* [What the fuck are algebraic effects?](https://overreacted.io/algebraic-effects-for-the-rest-of-us/)
+
+---
+
+## Report card
+
+Our jobs as programmers is to create as many **guarantees** in our code as possible.
+To achieve this, we should always try to design things in a way that pushes everything we can't guarantee to the edges.
+
+This not only reduces the **surface area for bugs**, but also reduces the **mental overhead** to the person reading the code.
+
+This is why we should always try to minimize the surface area of impurity in our code.
+
+With free monads, we create a guarantee that our business logic is sound and we push the effects to the edge in the form of our interpreter since we may not be able to guarantee the correctness of effectful behavior.
+
+Anyways, impure programs get a C for "Can do better". Almost-pure programs with Free monads, get an A for "Aahaaa, functional programming wins again".
+
+Alright kids, get a signature on the report card from your parents. No fake signatures, John. Those squiggly lines aren't fooling anyone.
+
