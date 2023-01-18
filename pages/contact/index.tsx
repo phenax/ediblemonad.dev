@@ -1,5 +1,3 @@
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { config } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faGithub,
@@ -7,11 +5,10 @@ import {
   faTwitch,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons'
-import styles from '../../styles/page.module.css'
-import commonStyles from '../../styles/common.module.css'
 import Head from 'next/head'
 
-config.autoAddCss = false
+import styles from '../../styles/page.module.css'
+import commonStyles from '../../styles/common.module.css'
 
 const contacts = [
   {

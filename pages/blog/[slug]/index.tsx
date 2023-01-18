@@ -15,7 +15,7 @@ export default function Post() {
   const Post = dynamic(import(`../../../posts/${slug}.mdx`))
   return (
     <main className={styles.main}>
-      <article className="prose prose-invert">
+      <article className="prose prose-invert max-w-full">
         <MDXProvider disableParentContext={true}>
           <Post />
         </MDXProvider>
