@@ -1,0 +1,122 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><title>Projects - Akshay Nair</title><meta name="description" content="List of projects made by Akshay Nair, who is a full-stack web developer based in India"/><meta name="next-head-count" content="5"/><link rel="preconnect" href="/" crossorigin="anonymous"/><link rel="preload" href="/_next/static/css/454c17212554eeae.css" as="style"/><link rel="stylesheet" href="/_next/static/css/454c17212554eeae.css" data-n-g=""/><link rel="preload" href="/_next/static/css/d24e344f42ea8d15.css" as="style"/><link rel="stylesheet" href="/_next/static/css/d24e344f42ea8d15.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/_next/static/chunks/webpack-3a9d92f277049ee4.js" defer=""></script><script src="/_next/static/chunks/framework-581f102fc68ef277.js" defer=""></script><script src="/_next/static/chunks/main-71220c1e4946f592.js" defer=""></script><script src="/_next/static/chunks/pages/_app-7c044eeba9fa6584.js" defer=""></script><script src="/_next/static/chunks/pages/blog/%5Bslug%5D-6bdf40e6d6515727.js" defer=""></script><script src="/_next/static/l_7QPgwJbnKNrXGCJzHjv/_buildManifest.js" defer=""></script><script src="/_next/static/l_7QPgwJbnKNrXGCJzHjv/_ssgManifest.js" defer=""></script></head><body><div id="__next"><div class="__className_937baf"><header class="layout_header__H1FPN"><span class="layout_headerFade__rU50k"></span><div class="layout_headerName__W0_xP"><h1 class="layout_headerTitle__nK79N text-4xl md:text-6xl"><div class="relative"><span>Akshay Nair</span></div></h1><div class="layout_headerSubtitle__nOOEu">a full-stack developer</div></div><div class="relative layout_spacing__0sT42 text-right flex px-6 justify-around md:align-top md:inline-block" style="margin-top:0.8rem"><div class="pt-1"><a class="layout_navLink__eokNB " href="/">Projects</a></div><div class="pt-1"><a class="layout_navLink__eokNB " href="/about">About</a></div><div class="pt-1"><a class="layout_navLink__eokNB " href="/blog">Blog</a><span class="absolute text-slate-600 ml-2 mt-0.5 w-full text-left max-md:hidden"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" class="svg-inline--fa fa-arrow-right fa-xs " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="circle-dot" class="svg-inline--fa fa-circle-dot fa-xs ml-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M160 256C160 202.1 202.1 160 256 160C309 160 352 202.1 352 256C352 309 309 352 256 352C202.1 352 160 309 160 256zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"></path></svg></span></div><div class="pt-1"><a class="layout_navLink__eokNB " href="/contact">Links</a></div></div></header><main class="page_main__LgpvM"><article class="prose prose-invert max-w-full"><h1 class="text-accent-1">JS Magic Tricks to impress your friends</h1><!--$?--><template id="B:0"></template><!--/$--></article></main></div></div><div hidden id="S:0"><p>My name is Houdini J.S. Magnifico. What I&#x27;m about to perform here are a set of illusions and magic tricks that are sure to blow your mind! So prepare to be amazed!</p>
+<blockquote>
+<p>The tricks shown here are performed by trained professionals. Do not attempt these stunts at home. Do it in production. Viewer discretion is advised.</p>
+</blockquote>
+<p>Let the show begin!</p>
+<hr/>
+<h1>For my first trick, I will make this function… DISAPPEAR!</h1>
+<p>This is my totally normal function. Nothing weird about it. A function you&#x27;d find in the wild.</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> innocentTotallyNormalFunction === <span class="hljs-string">&quot;function&quot;</span> <span class="hljs-comment">// &gt; true</span>
+</code></pre>
+<p>Let me just wave Brendan Eich&#x27;s mouse pad over it for a bit… and… BOOM!</p>
+<pre><code class="hljs language-javascript"><span class="hljs-title function_">innocentTotallyNormalFunction</span>()
+<span class="hljs-comment">// &gt; Uncaught TypeError: innocentTotallyNormalFunction is not a function</span>
+</code></pre>
+<p>GONE! The function is not a function anymore. Schrodinger&#x27;s function has dissappeared!</p>
+<p><strong><em>audience applauds</em></strong></p>
+<p>Thank you! Thank you!</p>
+<h4>Here&#x27;s how it works</h4>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> innocentTotallyNormalFunction = (<span class="hljs-function">() =&gt;</span> {}).<span class="hljs-property">apply</span>.<span class="hljs-title function_">bind</span>();
+<span class="hljs-comment">// Works with any method&#x27;s bind();</span>
+</code></pre>
+<p>Weird right? It&#x27;s called JavaScript and a lot of people use this in production. The reason this doesn&#x27;t work is because .apply method expects the context of a function but .bind gives it undefined as the context. this.means that the apply method doesn&#x27;t know which function it is trying to apply. Then the apply method has an identity crisis and everything goes to shit.</p>
+<hr/>
+<h1>Magic list</h1>
+<p>Here I have a function that clones an array. Perfectly normal, production ready code.</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">clone</span> = list =&gt; list.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">newList, item</span>) =&gt;</span> [...newList, item], []);
+
+<span class="hljs-comment">// Another clone implementation you can use is,</span>
+<span class="hljs-keyword">const</span> clone = <span class="hljs-title class_">Object</span>.<span class="hljs-property">values</span>;
+
+<span class="hljs-comment">// Or if you wanna go old school...</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">clone</span> = list =&gt; {
+  <span class="hljs-keyword">const</span> newList = [];
+
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> index <span class="hljs-keyword">in</span> list) {
+    newList.<span class="hljs-title function_">push</span>(list[index]);
+  }
+
+  <span class="hljs-keyword">return</span> newList;
+};
+</code></pre>
+<p>Here&#x27;s an ordinary list with nothing fishy going on inside</p>
+<pre><code class="hljs language-javascript">array.<span class="hljs-property">length</span> <span class="hljs-comment">// &gt; 23</span>
+</code></pre>
+<p>I&#x27;m just gonna casually use the clone function to copy the list and check the length of the newly created list…</p>
+<pre><code class="hljs language-javascript"><span class="hljs-title function_">clone</span>(array).<span class="hljs-property">length</span> <span class="hljs-comment">// &gt; 1</span>
+</code></pre>
+<p><strong>Magic!!</strong></p>
+<p>The list is no longer 23 items long. 23 to 1! Next-gen compression algorithm, question mark? Or is it just magic?</p>
+<h4>Well, here&#x27;s how it all went down</h4>
+<p>The concept behind this is one that not many developers are familiar with. Array holes, also called empty slots are points in an array that are empty. No, I&#x27;m not talking about undefined or null or 0. Just empty.</p>
+<p>Ref: <a href="https://2ality.com/2015/09/holes-arrays-es6.html">Array holes/empty slots</a>, <a href="https://2ality.com/2012/06/dense-arrays.html">Sparse arrays</a></p>
+<pre><code class="hljs language-javascript"><span class="hljs-title class_">Array</span>(<span class="hljs-number">5</span>) <span class="hljs-comment">// &gt; [&lt;empty x 5&gt;]</span>
+<span class="hljs-comment">// OR</span>
+[,,,,,] <span class="hljs-comment">// &gt; [&lt;empty x 5&gt;]</span>
+</code></pre>
+<p>This creates an array of 5 items but without any values. But javascript doesn&#x27;t use undefined as the default values tho. It instead creates empty slots (holes) in the arrays but keeps given the length. So when you copy it using the reduce method, it doesn&#x27;t iterate over the empty slots. So the newly generated array is shorter.</p>
+<hr/>
+<h1>Schrodinger&#x27;s magic list</h1>
+<p>The list we are gonna be working on is document.all which is a list of all nodes in a document.</p>
+<pre><code class="hljs language-javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-property">all</span> <span class="hljs-comment">// &gt; HTMLAllCollection {...}</span>
+</code></pre>
+<p>Council of W3C, give me the strength to make this list disappear!!! Boom! Shaa! Waka-Waka Boom!</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-variable language_">document</span>.<span class="hljs-property">all</span> <span class="hljs-comment">// &gt; undefined</span>
+</code></pre>
+<p><strong><em>Be Amazed!!</em></strong></p>
+<p>Go get an MRI scan because your tiny little brain just exploded!</p>
+<h4>Here&#x27;s the big reveal!</h4>
+<p><code>document.all</code> is a very old and deprecated api that allowed you to iterate over all the nodes rendered to the DOM. The typeof expression returning <code>undefined</code> was by design as a part of deprecation of that non-standard feature. Weird, I know. But that&#x27;s just how javascript rolls.</p>
+<hr/>
+<h1>Are we Infinity yet?</h1>
+<p>Let&#x27;s take a number, <code>let x: number</code>.</p>
+<pre><code class="hljs language-javascript">x + <span class="hljs-number">1</span> === x; <span class="hljs-comment">// &gt;&gt; true</span>
+x + <span class="hljs-number">2</span> === x; <span class="hljs-comment">// &gt;&gt; false</span>
+</code></pre>
+<p>“What just happened?”</p>
+<p>I added 1 to x and the value didn&#x27;t change! Then I added 2 to it and… the universe… it changed.</p>
+<h4>Check out how this works</h4>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> x = <span class="hljs-number">1e16</span>; <span class="hljs-comment">// OR 1 * Math.pow(10, 16) OR 10000000000000000</span>
+</code></pre>
+<p>This is by design. It&#x27;s documented in IEEE 754-2008. When the number is as large as this, it rounds it up to the nearest even number.</p>
+<p>Ref: <a href="https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules">Rounding rules section in IEEE 754</a></p>
+<hr/>
+<h1>Is a “not a number” a number or not a number? Well, it&#x27;s NaN of your business</h1>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-title class_">NaN</span> === <span class="hljs-string">&#x27;number&#x27;</span> <span class="hljs-comment">// &gt;&gt; true</span>
+<span class="hljs-title class_">NaN</span> !== <span class="hljs-title class_">NaN</span> <span class="hljs-comment">// &gt;&gt; true</span>
+</code></pre>
+<p>Wut? ‘Not a number&#x27; is a number and ‘Not a number&#x27; is not equal to ‘Not a number&#x27;</p>
+<p>Javascript is a magical language</p>
+<h4>Know the trick</h4>
+<p>NaN is a numeric data type but it behaves as an identity when any mathematical operation is applied to it.</p>
+<p><em>“But why is NaN === NaN returning false?”</em></p>
+<p>Because the Gods of Javascript wished so. If either side of === operator is NaN, the operation returns false. Thats just how it works. Don&#x27;t question it.</p>
+<hr/>
+<h1>Check if your list has more than 1 items</h1>
+<p>A very complicated problem in programming.</p>
+<p>A normie dev would go ahead and write something like</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">hasAtleast2Elements</span> = x =&gt; x.<span class="hljs-property">length</span> &gt;= <span class="hljs-number">2</span>;
+</code></pre>
+<p>That solution is 13 characters long. In the modern world of javascript, 13 characters is way too many characters. It is a performance bottleneck.</p>
+<p>Let&#x27;s write something more optimized in size</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">hasAtleast2Elements</span> = x =&gt; !<span class="hljs-built_in">isNaN</span>(+x);
+</code></pre>
+<p>There. 10 characters. Much better. We removed <strong>23%</strong> of our JavaScript! Good job. Less JavaScript is good JavaScript</p>
+<h4>The genius behind this action</h4>
+<p>We improved our load time by 23% but at what cost?! How does that function even work? Magic? Not magic, JavaScript!</p>
+<p>The + operator applied to a list returns NaN if the number of items in the list is more than 1.</p>
+<p>Why does it do that? Well, type casting. +[] is equal to +[].toString().</p>
+<p>So,</p>
+<pre><code class="hljs language-javascript">[].<span class="hljs-title function_">toString</span>() === <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-comment">// &gt;&gt; +&#x27;&#x27; === 0</span>
+[<span class="hljs-number">1</span>].<span class="hljs-title function_">toString</span>() === <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-comment">// &gt;&gt; +&#x27;1&#x27; === 1</span>
+[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>].<span class="hljs-title function_">toString</span>() === <span class="hljs-string">&#x27;1,2&#x27;</span> <span class="hljs-comment">// &gt;&gt; +&#x27;1,2&#x27; === NaN (Cannot typecast as it is not a number)</span>
+</code></pre>
+<hr/>
+<hr/>
+<p>That&#x27;s all for today! Tune in next time to watch Magnifico use magic in production and get fired immediately.</p>
+<p>Now I&#x27;m gonna make myself disappear.</p>
+<p>…</p>
+<p>…</p>
+<p>…</p>
+<p>Why is this… Just a second folks… Some technical difficul…</p>
+<p><strong><em>magic man magically disappears</em></strong></p></div><script>function $RC(a,b){a=document.getElementById(a);b=document.getElementById(b);b.parentNode.removeChild(b);if(a){a=a.previousSibling;var f=a.parentNode,c=a.nextSibling,e=0;do{if(c&&8===c.nodeType){var d=c.data;if("/$"===d)if(0===e)break;else e--;else"$"!==d&&"$?"!==d&&"$!"!==d||e++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;b.firstChild;)f.insertBefore(b.firstChild,c);a.data="$";a._reactRetry&&a._reactRetry()}};$RC("B:0","S:0")</script><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"meta":{"title":"JS Magic Tricks to impress your friends","description":"JavaScript is a magical language in all the wrong ways. Here's some magic tricks with the js language you can use to impress your friends","published":true,"date":"2019-03-29"}},"__N_SSG":true},"page":"/blog/[slug]","query":{"slug":"js-magic"},"buildId":"l_7QPgwJbnKNrXGCJzHjv","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
