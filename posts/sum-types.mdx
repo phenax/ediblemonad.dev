@@ -1,0 +1,162 @@
+export const meta = {
+  title: 'Functional JS - Sum Types In JavaScript',
+  description: 'Implementing sum-types/discriminated unions in javascript with some basic pattern matching',
+  date: '2019-03-14',
+  published: true,
+}
+
+
+JavaScript has a very bad reputation in most developer communities. So much so that, “Writing cleaner and safer JavaScript…” in the title may already seem a bit redundant to most readers. A lot of that has to do with loose typing, invalid values and the horrible chain of ternary expressions or heaven forbid, if statements to handle them. With JavaScript, all functions run on the concept of “pretend what you are getting is what you asked for”. If the value is not valid for the kind of operation you are running on it, well, too bad. To save yourself from this, you can write run-time validations, add type-checks, etc but the core of the problem is till left largely unsolved.
+
+* * *
+
+## Let’s learn from Haskell
+
+Functional programming languages like Haskell have a clear solution for this. Sum Types! Sum Type (or Tagged Union) is an Algebraic Data Type which describes values that can take on several different types. Popular examples in haskell are the Maybe monad (for handling the validity of values) and the Either monad (for error handling).
+
+Don’t worry. Maybe, I don’t know anything about monads Either (see what I did there?). All we need to know is that a Sum Type is a has multiple named constructors.
+
+In Haskell, a Sum type looks something like this -
+
+```
+data MetalGenre = ProgMetal | DeathCore
+
+scream :: MetalGenre -> IO ()
+scream genre = putStrLn $ case genre of
+  ProgMetal -> "Oh!"
+  DeathCore -> "BleaAaAHHH!!"
+
+main :: IO()
+main = scream ProgMetal
+```
+
+Here, MetalGenre is the type and ProgMetal, DeathCore are constructors of that type.
+
+A really popular and useful example of a Sum type in the functional world is the Maybe type. In Haskell, Maybe is a monad that wraps a value and helps you make sure that invalid values are not acted upon, thus allowing you to write safer functions.
+
+This is what Maybe’s definition looks like in Haskell -
+
+```
+data Maybe = Just a | Nothing
+```
+
+Now here, all valid values will be wrapped in a Just and all invalid values will be wrapped in a Nothing. This way, we can handle invalid values in a clean and elegant way and be sure of the fact that the function is only called for the valid values.
+
+You might be thinking, “But isn’t this only possible because Haskell is a statically typed beauty and JavaScript is the spawn of satan?”. Maybe it isn’t. (The joke’s getting old now)
+
+* * *
+
+## EnumFP
+
+Shameless self-plug alert!
+
+I have a library to help with that! (Said every JavaScript developer ever).
+
+[EnumFP](https://github.com/phenax/enum-fp) (PRs welcome)
+
+EnumFP is a simple and light-weight way to create Sum types in JavaScript. Inspired by the awesomeness of Haskell, the library is written with safety in mind.
+
+This is what the metal genre example would look like with EnumFP.
+
+```
+const MetalGenre = Enum(['ProgMetal', 'DeathCore'])
+
+const scream = compose(console.log, MetalGenre.cata({
+  ProgMetal: () => "Oh!",
+  DeathCore: () => "BleaAaAHHH!!",
+}));
+
+scream(MetalGenre.ProgMetal());
+```
+
+* * *
+
+## Maybe, maybe?
+
+The concept of what a Maybe does is more important than the implementation itself. Containing a value in a way that allows you to perform a set of operations on the container and not worry about the validity of the input is what Maybe is about.
+
+You can implement a simple Maybe and a couple of utility functions using EnumFP. EnumFP also allows you to add argument descriptions. This example uses the caseOf function which is like match but for partial application).
+
+```
+const Maybe = Enum({ Just: ['value'], Nothing: [] });
+
+// fmap :: (a -> b) -> Maybe a -> Maybe b
+const fmap = fn => Maybe.cata({
+  Just: compose(Maybe.Just, fn),
+  Nothing: Maybe.Nothing,
+});
+
+// mjoin :: Maybe Maybe a -> Maybe a
+const mjoin = Maybe.cata({
+  Just: x => x,
+  Nothing: Maybe.Nothing,
+});
+
+// chain :: (a -> Maybe b) -> Maybe a -> Maybe b
+const chain = fn => compose(mjoin, fmap(fn));
+```
+
+Here,
+
+**fmap** returns a new Maybe and runs the function over the value inside, in case of Just and ignores a Nothing. (Like Array.prototype.map)
+
+**mjoin** unwraps a given nested Maybe. Because many monads like Maybe, are agnostic about the value inside, you can put the monad inside another monad (That’s what shesaid) (Like Array.prototype.flatten)
+
+**chain** maps over the Maybe and then flattens the resulting nested Maybe. (Like Array.prototype.flatMap).
+
+Let’s use this and write a function that accepts a User instance and gives you the first name without throwing an error for invalid user or invalid name.
+
+```
+// head :: [a] -> Maybe a
+const head = arr => (arr.length ? Maybe.Just(arr[0]) : Maybe.Nothing());
+
+// prop :: String -> Object a -> Maybe a
+const prop = key => obj => key in obj ? Maybe.Just(obj[key]) : Maybe.Nothing();
+
+// trim :: String -> String
+const trim = str => str.trim();
+
+// split :: String -> String -> [String]
+const split = seperator => str => str.split(seperator);
+
+// safeUser :: User -> Maybe User
+const safeUser = user => isUserValid(user) ? Maybe.Just(user) : Maybe.Nothing();
+
+// getFirstName :: User -> Maybe String
+const getFirstName = compose(
+    chain(head), // Maybe [String] -> Maybe String
+    fmap(split(' ')), // Maybe String -> Maybe [String]
+    fmap(trim), // Maybe String -> Maybe String
+    chain(prop('name')), // Maybe User -> Maybe String
+    safeUser, // User -> Maybe User
+);
+
+Maybe.match(getFirstName(user), {
+    Just: name => console.log('My name is', name),
+    Nothing: () => console.log('Whats in a name?'),
+});
+```
+
+In the example above, we first convert the user to a safe user by wrapping it in a Maybe. Then we get the user’s name using the prop function. The prop and head functions here, instead of returning the value, wraps the value in a Maybe. This is why to map it and then unwrap it, we use chain instead of fmap.
+
+* * *
+
+## Working with React
+
+Yes, EnumFP works well with react! (Jumping from one over-populated community to the next).
+
+With the new react hooks being introduced in 16.8, it would be a sin not to mention it here. EnumFP ships with a useReducer hook which is a simple wrapper around react’s useReducer.
+
+Don’t want to upgrade to 16.8? Do you still watch reruns of Seinfeld? Want to wait for your grand-children to help you with the upgrade… and… walking?
+
+No worries. There’s an HOC available as well.
+
+You can find out more about integrations with react here.
+
+And this is not limited to just component state tho. You can use Sum Types to work with any kind of enumerable state values. From handling Success, Pending and Failure states for any action to containing values based on it’s type or validity. Sum Types are here to clean up all of that.
+
+* * *
+
+## Conclusion
+
+This is just the tip of the iceberg. There are a lot more of these amazing ideas hidden in the world of functional programming, waiting to move to other languages. Being a part of the JavaScript community for a while has made me realise that it’s not all bad. What we lack in language features and standard library, we make up for in the variety of libraries just an npm install away, and the strong community constantly working towards “Making JS great again”. So let’s build a wall together between us and bad code. Covfefe.
