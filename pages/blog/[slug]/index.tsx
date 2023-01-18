@@ -6,8 +6,24 @@ import { useRouter } from 'next/router'
 import 'highlight.js/styles/atom-one-dark.css'
 
 import styles from '../../../styles/page.module.css'
+import { getBlogPosts } from '../../../components/utils/blog'
 
-export default function Post() {
+export async function getStaticPaths() {
+  const posts = await getBlogPosts()
+  return {
+    paths: posts.map(p => p.url),
+    fallback: true,
+  }
+}
+
+export async function getStaticProps({ params: { slug } }: any) {
+  const { meta } = await import(`../../../posts/${slug}.mdx`)
+  return {
+    props: { meta }
+  }
+}
+
+export default function Post({ meta }: any) {
   const router = useRouter()
   const { slug } = router.query
 
@@ -19,6 +35,7 @@ export default function Post() {
     <main className={styles.main}>
       <article className="prose prose-invert max-w-full">
         <MDXProvider disableParentContext={true}>
+          <h1 className="text-accent-1">{meta.title}</h1>
           <Post />
         </MDXProvider>
       </article>
