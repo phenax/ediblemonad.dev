@@ -13,6 +13,7 @@
 
   --dark-foreground-rgb: #fff;
   --dark-background-rgb: #09080a;
+  --code-background-rgb: #000;
 
   --accent-rgb: #b29b3e;
   --accent-foreground-rgb: #09080a;
@@ -30,6 +31,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  color-scheme: dark;
 }
 
 body {
@@ -42,8 +44,10 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.hljs {
+  background: var(--code-background-rgb) !important;
 }
+pre {
+  --tw-prose-pre-bg: var(--code-background-rgb);
+}
+

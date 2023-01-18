@@ -18,7 +18,7 @@ Don’t worry. Maybe, I don’t know anything about monads Either (see what I di
 
 In Haskell, a Sum type looks something like this -
 
-```
+```haskell
 data MetalGenre = ProgMetal | DeathCore
 
 scream :: MetalGenre -> IO ()
@@ -36,7 +36,7 @@ A really popular and useful example of a Sum type in the functional world is the
 
 This is what Maybe’s definition looks like in Haskell -
 
-```
+```haskell
 data Maybe = Just a | Nothing
 ```
 
@@ -58,7 +58,7 @@ EnumFP is a simple and light-weight way to create Sum types in JavaScript. Inspi
 
 This is what the metal genre example would look like with EnumFP.
 
-```
+```javascript
 const MetalGenre = Enum(['ProgMetal', 'DeathCore'])
 
 const scream = compose(console.log, MetalGenre.cata({
@@ -77,7 +77,7 @@ The concept of what a Maybe does is more important than the implementation itsel
 
 You can implement a simple Maybe and a couple of utility functions using EnumFP. EnumFP also allows you to add argument descriptions. This example uses the caseOf function which is like match but for partial application).
 
-```
+```javascript
 const Maybe = Enum({ Just: ['value'], Nothing: [] });
 
 // fmap :: (a -> b) -> Maybe a -> Maybe b
@@ -106,7 +106,7 @@ Here,
 
 Let’s use this and write a function that accepts a User instance and gives you the first name without throwing an error for invalid user or invalid name.
 
-```
+```javascript
 // head :: [a] -> Maybe a
 const head = arr => (arr.length ? Maybe.Just(arr[0]) : Maybe.Nothing());
 

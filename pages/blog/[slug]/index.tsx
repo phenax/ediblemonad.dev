@@ -1,8 +1,9 @@
 import dynamic from 'next/dynamic'
-// import { getSlugs, getMeta } from 'utils/posts.js'
 import { MDXProvider } from '@mdx-js/react'
 import { useRouter } from 'next/router'
-// import 'highlight.js/styles/atom-one-dark-reasonable.css'
+// import 'highlight.js/styles/base16/material-palenight.css'
+// import 'highlight.js/styles/base16/gruvbox-dark-hard.css'
+import 'highlight.js/styles/atom-one-dark.css'
 
 import styles from '../../../styles/page.module.css'
 
