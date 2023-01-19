@@ -9,7 +9,7 @@ import styles from '../../../styles/page.module.css'
 import { getBlogPosts } from '../../../components/utils/blog'
 
 export async function getStaticPaths() {
-  const posts = await getBlogPosts()
+  const posts = await getBlogPosts({ onlyPublished: false, sortByDate: false })
   return {
     paths: posts.map(p => p.url),
     fallback: true,

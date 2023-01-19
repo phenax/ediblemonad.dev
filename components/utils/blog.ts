@@ -3,11 +3,16 @@ import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import path from 'path'
 
-export const getBlogPosts = async () => {
+interface Filters {
+  onlyPublished?: boolean,
+  sortByDate?: boolean
+}
+
+export const getBlogPosts = async ({ onlyPublished = true, sortByDate = true }: Filters = {}) => {
   const postsPath = path.resolve('posts')
   const posts = await fs.readdir(postsPath)
 
-  const postProps = await Promise.all(
+  let postProps = await Promise.all(
     posts.map(async (p) => {
       const { default: _, meta, ...rest } = await import(`../../posts/${p}`)
       const slug = p.replace(/\.mdx?$/, '')
@@ -18,7 +23,13 @@ export const getBlogPosts = async () => {
     })
   )
 
+  if (onlyPublished) {
+    postProps = postProps.filter((p: any) => p.published !== false)
+  }
+
+  if (sortByDate) {
+    postProps.sort((a: any, b: any) => (new Date(a.date) < new Date(b.date) ? 1 : -1))
+  }
+
   return postProps
-    .filter((p: any) => p.published !== false)
-    .sort((a: any, b: any) => (new Date(a.date) < new Date(b.date) ? 1 : -1))
 }
