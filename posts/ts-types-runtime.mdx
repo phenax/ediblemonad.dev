@@ -1,0 +1,128 @@
+export const meta = {
+  title: "TypeScript's type-system as a runtime",
+  description: "Interrogation of the guy who allegedly turned typescripts type-system into it's own purely functional programming language",
+  published: true,
+  date: '2023-02-13',
+}
+
+> Disclaimer: The following content is not very informative
+
+Where were you on the night of 20th January? ANSWER ME, YOU FUCK!
+Not a talker, yeah? No problem. You'll talk eventually. They all do.
+
+We have an overwhelming amount of evidence that suggests that you were the one responsible for turning typescript's type system into it's own purely functional programming language.
+What kind of a sick, twisted man, does that?
+You're gonna be spending a lot of time behind bars for this.
+
+The reports suggest that you can even read/write files, perform basic io and even interop with js from it?
+
+Take a look at some of the crime scene photos.
+
+```typescript
+export type main = [
+  PutStringLn<'Greetotron 6000 initializing...'>,
+
+  PutString<'Your name? '>,
+  Bind<ReadLine, <name extends string>() => PutStringLn<`Hello, ${name}`>>,
+
+  PutString<'Your purpose in life? '>,
+  Bind<ReadLine, HandleResponse>,
+
+  PutStringLn<'Bye bye'>,
+]
+
+// Equivalent to `HandleResponse :: string -> Effect ()`
+interface HandleResponse extends Kind1<string, Effect> {
+  return: Do<[
+    PutStringLn<`Interesting that you believe "${this['input']}" is your purpose. Hmmmm...`>,
+    PutStringLn<'Judging harshly...'>,
+    PutStringLn<'Saving response...'>,
+    WriteFile<'./response.txt', this['input']>,
+  ]>
+}
+```
+
+Do you feel any remorse for the victims you've affected? I hope you get the chair for this.
+
+
+We also found the murder weapon on the crime scene - `npx tsr run ./somefile.ts`.
+Not just that, it says here you built the weapon yourself using `ts-morph` as a wrapper around the typescript compiler.
+Did you use the source file as your runtime representation of memory, you piece of shit?! I guess, we're getting a bit ahead of ourselves here.
+
+Let's get to the motive which is the only piece of the puzzle we're missing here.
+Why would a mediocre software developer suddenly go postal and make something like this?
+I think I know why. And it's as simple as it gets.
+You're a sick man who enjoys watching people cringe and suffer. Is that what this post is about? More cringe?
+
+
+We've even figured out how you smuggled all the results of the io back into the program.
+It was a result node, wasn't it? A stray object that you injected properties into, you sick fuck.
+Was that your runtime representation of memory? You just used the randomly generated property name to access the result in your effects.
+
+```typescript
+type __$result = {
+  '90sd9...': { output: 'Result of computation' }
+}
+```
+
+
+
+
+Another thing that's been bugging me is,
+
+## Why is the effects api monadic?
+
+Was it because you wanted all operations on the results represented in the type tree so you could manipulate it?
+
+You disgust me. In my 20 years on the force, I've never met a man as sick as you.
+
+
+
+## Remember your hacky attempts at first class functions?
+
+We have it in our custody and it's talking like a parrot.
+Telling us everything we need to know about your sick experiments!
+
+```typescript
+interface Greet extends Kind1<string, string> {
+  return: `Hello, ${this['input']}!`
+}
+
+type msg = Apply<Greet, 'EdibleMonad'> // : 'Hello, EdibleMonad!'
+```
+
+Yeah, we got you now, you bastard!
+
+You weren't satisfied with this tho, were you?
+You wanted your first-class functions to be inline. You needed it.
+So you made your runtime recognize lambda functions as first-class functions.
+
+```typescript
+type main = Bind<
+  ReadFile<'./file.txt'>,
+  <T extends string>() => PutStringLn<T>
+>
+```
+
+But this is where you fucked up. You couldn't generalize this as a pattern because typescript doesn't work like that.
+So you settled for only allowing this pattern inside `Bind` and `Try`.
+You flew too close to the sun, Icarus and it lead us straight to you.
+
+
+
+You're done, buddy. This case is as good as closed so you might as well confess.
+
+## Alright! Alright! I confess!
+
+It was me who did it. I made the runtime that turns typescript types into a purely functional programming language!
+I did it because I fucking wanted to! And I enjoyed every second of it!
+
+I saw people making things that defied all logic like an [assembly interpreter](https://github.com/judehunter/ts-asm) within the typescript type-system.
+I knew if I wanted to make it do something more, I'll need a runtime! That's when I came up with my master plan.
+
+I don't regret a thing! I've made my mark on the world even if that mark is a piss stain on the side of the street.
+
+---
+
+*Akshay was charged with cringe and sentenced to death by lethal injection. It was later discovered that this wasn't all that big of a deal*
+
