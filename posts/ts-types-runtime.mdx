@@ -1,7 +1,7 @@
 export const meta = {
   title: "TypeScript's type-system as a runtime",
   description: "Interrogation of the guy who allegedly turned typescripts type-system into it's own purely functional programming language",
-  published: false,
+  published: true,
   date: '2023-02-13',
 }
 
@@ -47,13 +47,15 @@ Do you feel any remorse for the victims you've affected? I hope you get the chai
 
 We also found the murder weapon on the crime scene - `npx tsr run ./somefile.ts`.
 Not just that, it says here you built the weapon yourself using `ts-morph` as a wrapper around the typescript compiler.
-Did you use the source file as your runtime representation of memory, you piece of shit?! I guess, we're getting a bit ahead of ourselves here.
+Did you use the source file as your runtime representation of memory, you piece of shit?!
+But, we're getting a bit ahead of ourselves here.
 
-Let's get to the motive which is the only piece of the puzzle we're missing here.
+Let's get to the motive which is the only piece of the puzzle we're missing.
 Why would a mediocre software developer suddenly go postal and make something like this?
-I think I know why. And it's as simple as it gets.
-You're a sick man who enjoys watching people cringe and suffer. Is that what this post is about? More cringe?
-
+Did someone pay you to do this? Is that what this is about? Money?
+Naah. This was a little more personal than that.
+I have a theory for why you did it. And it's as simple as it gets.
+You're a sick man who enjoys watching people cringe and suffer. Is that what this blog post is about? More cringe?
 
 We've even figured out how you smuggled all the results of the io back into the program.
 It was a result node, wasn't it? A stray object that you injected properties into, you sick fuck.
@@ -74,8 +76,8 @@ Another thing that's been bugging me is,
 
 Was it because you wanted all operations on the results represented in the type tree so you could manipulate it?
 
-You disgust me. In my 20 years on the force, I've never met a man as sick as you.
-
+You disgust me. In my 20 years on the force, I've never met a man as disturbed as you.
+Don't bother pleading insanity here though. This was calculated. No one is going to buy it.
 
 
 ## Remember your hacky attempts at first class functions?
@@ -105,6 +107,7 @@ type main = Bind<
 ```
 
 But this is where you fucked up. You couldn't generalize this as a pattern because typescript doesn't work like that.
+Typescript doesn't support higher kinded types, dumbass!
 So you settled for only allowing this pattern inside `Bind` and `Try`.
 You flew too close to the sun, Icarus and it lead us straight to you.
 
@@ -117,12 +120,12 @@ You're done, buddy. This case is as good as closed so you might as well confess.
 It was me who did it. I made the runtime that turns typescript types into a purely functional programming language!
 I did it because I fucking wanted to! And I enjoyed every second of it!
 
-I saw people making things that defied all logic like an [assembly interpreter](https://github.com/judehunter/ts-asm) within the typescript type-system.
+I saw people making things that defied all logic, like an [assembly interpreter](https://github.com/judehunter/ts-asm) within the typescript type-system.
 I knew if I wanted to make it do something more, I'll need a runtime! That's when I came up with my master plan.
 
 I don't regret a thing! I've made my mark on the world even if that mark is a piss stain on the side of the street.
 
 ---
 
-*Akshay was charged with cringe and sentenced to death by lethal injection. It was later discovered that this wasn't all that big of a deal*
+> Akshay was charged with cringe and sentenced to death by lethal injection. It was later discovered that this wasn't all that big of a deal and completely blown out of proportion
 

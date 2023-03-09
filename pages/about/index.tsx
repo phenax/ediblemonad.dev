@@ -1,5 +1,4 @@
 import styles from '../../styles/page.module.css'
-import commonStyles from '../../styles/common.module.css'
 import Head from 'next/head'
 
 export default function About() {
@@ -40,7 +39,7 @@ export default function About() {
         <p>
           Other than that, in my <b>free time</b>, I also like to dabble in some{' '}
           <b>esoteric</b> coding ideas, <b>creative coding</b>, etc.
-          {` I've`} also taken up live-coding my personal projects on{' '}
+          {/* {` I've`} also taken up live-coding my personal projects on{' '}
           <b>twitch</b> (
           <a
             href="https://twitch.tv/EdibleMonad"
@@ -49,7 +48,7 @@ export default function About() {
           >
             @EdibleMonad
           </a>
-          )
+          ) */}
         </p>
       </div>
     </main>
