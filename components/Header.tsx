@@ -10,6 +10,7 @@ const navLinks = [
   { name: 'Projects', link: { pathname: '/' } },
   { name: 'About', link: { pathname: '/about' } },
   { name: 'Blog', link: { pathname: '/blog' } },
+  { name: 'Desmos', link: { pathname: 'https://desmos.ediblemonad.dev' } },
   { name: 'Links', link: { pathname: '/contact' } },
 ]
 
