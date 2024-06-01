@@ -36,6 +36,7 @@ const config = {
   experimental: {
     mdxRs: false,
   },
+  transpilePackages: ['@css-everything/render'],
 }
 
 export default withMDX(config)

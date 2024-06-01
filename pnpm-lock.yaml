@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@css-everything/render':
+    specifier: ^0.1.1
+    version: 0.1.1
   '@fortawesome/fontawesome-svg-core':
     specifier: ^6.2.1
     version: 6.2.1
@@ -125,6 +128,10 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: false
+
+  /@css-everything/render@0.1.1:
+    resolution: {integrity: sha512-cZnroADs8qh83ANTvBRAPpuuXIosfucoBfZkGFa2r2Dg4JL25wXkbw3EngZr0qQEaF7jO8cNaLnAgkOtOG33JA==}
     dev: false
 
   /@eslint/eslintrc@1.4.1:

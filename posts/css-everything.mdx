@@ -1,0 +1,120 @@
+export const meta = {
+  title: "Why don't we all just write everything in CSS?",
+  description: "Here's a wild idea. Let's just write CSS",
+  published: false,
+  date: '2024-06-01',
+}
+
+import CssEverything from '../components/CssEverything'
+
+> The following events are based on a true story that I made up in my head.
+
+It all started when I was a child and a shady looking stranger wearing a hooded jacket walked up to me and started a conversation with me.
+We were talking about the weather and how hot it was and then he said "speaking of hot, you know what the hottest thing is right now. CSS".
+
+Completely disoriented by the segue, the only sentence my brain was able to muster was "what?".
+
+He said "Oh yeah. You heard of CSS? It's this incredible new thing on the streets. All the cool kids are doing it. Creating really fancy websites with seizure inducing color flashes". Being the year 2014, the statement itself wasn't wrong. Tailwind didn't exist and bootstrap was only used by backend asshats who didn't care what their websites looked like.
+
+Intrigued, I asked "what is it like?".
+
+With a smile on his face he couldn't control, he said "Oh it is incredible! Everything is full of colors! You can make things move without the marquee element!". I was sold. "No marquee?! That's amazing.", I exclaimed. "Yes! Here, take this", he said handing me a piece of paper with some css written on it. "First one's free".
+
+I looked at the snippet of CSS and that's when it hit me. This was the future! At that moment, I was sure that by the year 2020, flying cars will be running on CSS.
+
+
+Unfortunately, that hasn't happened yet and instead we got a microscopic being that shut down the world. I believe the reason we never got flying cars and also why the pandemic happened is that they didn't make CSS a turing complete programming language.
+
+So to fix that, I created [css-everything](https://github.com/phenax/css-everything). It's a library that allows you to write turing-complete CSS to build fully interactive websites.
+
+Here's an example of a counter that increments and decrements on button click.
+
+<CssEverything key="counter" id="counter" css={`
+#counter {
+  --counter: '0';
+  --cssx-children: button#decr div#count button#incr;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#count {
+  min-width: 100px;
+  text-align: center;
+}
+#count::after {
+  content: "Count: " var(--counter);
+}
+
+#counter button {
+  padding: 0.5rem 1rem;
+  color: #b29b3e;
+}
+#incr {
+  --cssx-on-click: update('#counter', --counter, calc(get-var(--counter) + 1));
+  --cssx-text: "increment";
+}
+#decr {
+  --cssx-on-click: update('#counter', --counter, calc(get-var(--counter) - 1));
+  --cssx-text: "decrement";
+}
+`} />
+
+
+You might be thinking to yourself "That is the dumbest thing I've seen all day and I want more. What else can I do with it?". The answer is anything and everything.
+
+- Wanna do some math, just use `calc`
+- Want to manage state, just use css variables and `update` function
+- Want to create dom-elements, `--cssx-children` will do that for you
+- Wanna make an api call, just call `request`
+
+You can calculate the factorial of a number with it
+
+<CssEverything key="factorial" id="factorial" css={`
+#factorial { --cssx-children: #factorial-state; }
+
+#factorial-state {
+  --number: '';
+  --cssx-on-mount: update(--number, '5');
+  --cssx-on-update:
+    update(factorial-output, --result, call(--factorial, map(--n: get-var(--number))))
+  ;
+
+  --factorial:
+    if(lte(get-var(--n), 1),
+      1,
+      calc(
+        get-var(--n)
+        * call(--factorial, map(--n: calc(get-var(--n) - 1)))
+      ));
+
+  --cssx-children: form#factorial-form #factorial-output;
+}
+
+#factorial-form {
+  --cssx-children:
+    input#factorial-input[name="number"][type="number"][placeholder="Enter a number"]
+    button#factorial-submit[type="submit"];
+
+  --cssx-on-submit:
+    prevent-default()
+    update(factorial-state, --number, attr(factorial-input, value));
+}
+#factorial-input {
+  --cssx-on-mount: set-attr(value, get-var(--number));
+}
+#factorial-submit {
+  --cssx-text: "Calculate";
+  color: #b29b3e;
+  padding: 0 1rem;
+}
+
+#factorial-output { --result: ''; }
+#factorial-output::after {
+  content: var(--number) '! = ' var(--result);
+}
+`} />
+
+
+
