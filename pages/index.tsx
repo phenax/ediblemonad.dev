@@ -11,6 +11,7 @@ const projectIds: Array<keyof typeof projectData> = [
   'edible-desmos',
   'typed-regex',
   'ts-typeslang',
+  'yaml-transformer',
   'algebraic-effects',
   'diary-pwa',
   'pattern-lock-js',

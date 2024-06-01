@@ -1,4 +1,15 @@
 {
+  "yaml-transformer": {
+    "title": "Yaml transformer",
+    "description": "A cli to update yaml properties while preserving whitespace and comments in its original state",
+    "tags": [
+      "haskell",
+      "functional-programming",
+      "parser"
+    ],
+    "link": "https://desmos.ediblemonad.dev"
+  },
+
   "edible-desmos": {
     "title": "Desmos graph manager",
     "description": "A personal graph manager using desmos graphing calculator",
