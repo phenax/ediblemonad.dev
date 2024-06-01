@@ -5,18 +5,18 @@ import commonStyles from '../styles/common.module.css'
 
 // TODO: get props on build
 const projectIds: Array<keyof typeof projectData> = [
+  'css-everything',
+  'elxr',
+  'react-is-a-programming-language',
+  'edible-desmos',
+  'typed-regex',
   'ts-typeslang',
   'algebraic-effects',
-  'elxr',
-  'typed-regex',
-  'is-a-dev',
   'diary-pwa',
   'pattern-lock-js',
+  'is-a-dev',
   'esbuild-plugin-elm',
-  'cmp-graphql',
   'owyn-launcher',
-  'bsp-layout',
-  'shotkey',
   'pipey',
   'enum-fp',
 ]

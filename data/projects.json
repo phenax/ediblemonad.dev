@@ -1,7 +1,41 @@
 {
+  "edible-desmos": {
+    "title": "Desmos graph manager",
+    "description": "A personal graph manager using desmos graphing calculator",
+    "tags": [
+      "javascript",
+      "deno"
+    ],
+    "link": "https://desmos.ediblemonad.dev"
+  },
+
+  "react-is-a-programming-language": {
+    "title": "React is a programming language",
+    "description": "A PoC for using react to emulate turing complete behaviors and building a \"programming language\" from it",
+    "tags": [
+      "typescript",
+      "javascript",
+      "react"
+    ],
+    "link": "https://github.com/phenax/react-is-a-programming-language"
+  },
+
+  "css-everything": {
+    "title": "css-everything",
+    "description": "An experimental ui framework where you only write turing complete CSS. No HTML, no JS, no build system. Just CSS",
+    "tags": [
+      "css",
+      "typescript",
+      "javascript",
+      "parser",
+      "functional-programming"
+    ],
+    "link": "https://github.com/phenax/css-everything"
+  },
+
   "ts-typeslang": {
     "title": "Runtime for TS types",
-    "description": "Built a runtime and library for typescript's types that turns the type system into a general purpose, purely functional programming language!",
+    "description": "A runtime and library for typescript's types that turns the type system into a general purpose, purely functional programming language!",
     "tags": [
       "typescript",
       "javascript",
@@ -159,6 +193,7 @@
     "tags": [
       "go-lang",
       "graphql",
+      "css",
       "react"
     ],
     "link": "https://github.com/phenax/diary-pwa"
