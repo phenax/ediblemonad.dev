@@ -1,6 +1,6 @@
 export const meta = {
-  title: "Why don't we all just write everything in CSS?",
-  description: "Here's a wild idea. Let's just write CSS",
+  title: "Let's build everything in CSS",
+  description: "Using css-everything to build interactive websites with turing complete CSS",
   published: false,
   date: '2024-06-01',
 }
@@ -9,8 +9,8 @@ import CssEverything from '../components/CssEverything'
 
 > The following events are based on a true story that I made up in my head.
 
-It all started when I was a child and a shady looking stranger wearing a hooded jacket walked up to me and started a conversation with me.
-We were talking about the weather and how hot it was and then he said "speaking of hot, you know what the hottest thing is right now. CSS".
+It all started when I was a child and a shady looking stranger wearing a hooded jacket walked up to me and started a conversation.
+We were talking about the weather and how hot it was and then he said "speaking of hot, you know what the hottest thing is right now? CSS!".
 
 Completely disoriented by the segue, the only sentence my brain was able to muster was "what?".
 
@@ -18,16 +18,19 @@ He said "Oh yeah. You heard of CSS? It's this incredible new thing on the street
 
 Intrigued, I asked "what is it like?".
 
-With a smile on his face he couldn't control, he said "Oh it is incredible! Everything is full of colors! You can make things move without the marquee element!". I was sold. "No marquee?! That's amazing.", I exclaimed. "Yes! Here, take this", he said handing me a piece of paper with some css written on it. "First one's free".
+With a smile on his face he couldn't control, he replied "Oh it is incredible! Everything is full of colors! You can make things move without the marquee element!". I was sold. "No marquee?! That's amazing.", I exclaimed. "Yes! Here, take this", he said handing me a piece of paper with some css written on it. "First one's for free".
 
 I looked at the snippet of CSS and that's when it hit me. This was the future! At that moment, I was sure that by the year 2020, flying cars will be running on CSS.
 
+---
 
 Unfortunately, that hasn't happened yet and instead we got a microscopic being that shut down the world. I believe the reason we never got flying cars and also why the pandemic happened is that they didn't make CSS a turing complete programming language.
 
-So to fix that, I created [css-everything](https://github.com/phenax/css-everything). It's a library that allows you to write turing-complete CSS to build fully interactive websites.
+So to fix that, I created [css-everything](https://github.com/phenax/css-everything). It's a library that allows you to write turing-complete CSS to build fully interactive websites if you're brave enough.
 
-Here's an example of a counter that increments and decrements on button click.
+## What can it do?
+
+Here's an example of a counter in css-everything
 
 <CssEverything key="counter" id="counter" css={`
 #counter {
@@ -67,29 +70,34 @@ You might be thinking to yourself "That is the dumbest thing I've seen all day a
 - Wanna do some math, just use `calc`
 - Want to manage state, just use css variables and `update` function
 - Want to create dom-elements, `--cssx-children` will do that for you
+- Want to call custom functions, just use `call`
 - Wanna make an api call, just call `request`
+- ...
 
-You can calculate the factorial of a number with it
+
+Wanna build a factorial calculator with it? Here you go:
 
 <CssEverything key="factorial" id="factorial" css={`
-#factorial { --cssx-children: #factorial-state; }
+#factorial {
+  --cssx-children: #factorial-container;
 
-#factorial-state {
-  --number: '';
-  --cssx-on-mount: update(--number, '5');
-  --cssx-on-update:
-    update(factorial-output, --result, call(--factorial, map(--n: get-var(--number))))
-  ;
-
-  --factorial:
+  /* There are no types here. func is a noop function for documentation. So exactly like typescript */
+  --factorial: func(--n: number)
     if(lte(get-var(--n), 1),
       1,
       calc(
         get-var(--n)
         * call(--factorial, map(--n: calc(get-var(--n) - 1)))
       ));
+}
 
+#factorial-container {
   --cssx-children: form#factorial-form #factorial-output;
+
+  --number: '';
+  --cssx-on-mount: update(--number, '5');
+  --cssx-on-update:
+    update(factorial-output, --result, call(--factorial, map(--n: get-var(--number))));
 }
 
 #factorial-form {
@@ -99,13 +107,13 @@ You can calculate the factorial of a number with it
 
   --cssx-on-submit:
     prevent-default()
-    update(factorial-state, --number, attr(factorial-input, value));
+    update(factorial-container, --number, attr(factorial-input, value));
 }
 #factorial-input {
   --cssx-on-mount: set-attr(value, get-var(--number));
 }
 #factorial-submit {
-  --cssx-text: "Calculate";
+  --cssx-text: Calculate;
   color: #b29b3e;
   padding: 0 1rem;
 }
@@ -115,6 +123,154 @@ You can calculate the factorial of a number with it
   content: var(--number) '! = ' var(--result);
 }
 `} />
+
+Looking at that you might think, "oh that must be running js to calculate the factorial behind the
+scenes". Nope. I mean yeah, it does run js but the way custom function work is very different from
+how js does it. More on that later but spoiler alert, it uses dom nodes.
+
+
+## Wanna build components?
+
+"I want to build components" said the react developer. So here you go, we call them `instances`.
+
+<CssEverything key="cookies-component" id="cookie-clicker" css={`
+#cookie-clicker {
+  --cssx-children:
+    instance(#cookies-component, map(--count: 5))
+    instance(#cookies-component, map(--count: 8))
+    instance(#cookies-component, map(--count: 13))
+    instance(#cookies-component, map(--count: 21))
+    instance(#cookies-component, map(--count: 34));
+}
+#cookie-clicker > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* data-instance attribute selector is used instead of ids because ids have to
+be unique for instances. We can access this id using attr(data-element) */
+[data-instance=cookies-component] {
+  --count: '0';
+  --cssx-children: button#counter-increment;
+  --cssx-on-mount: update(--component-id, attr(data-element));
+
+  min-width: 120px;
+  padding: .5rem .5rem 0;
+  text-align: center;
+  border: 1px solid #b29b3e;
+}
+[data-instance=cookies-component]::before {
+  content: "Cookies: " var(--count);
+}
+
+[data-instance=cookies-component] #counter-increment {
+  --cssx-on-click: update(get-var(--component-id), --count, calc(get-var(--count) + 1));
+  --cssx-text: "click";
+
+  padding: 0.5rem;
+  color: #b29b3e;
+}
+`} />
+
+
+## Escape hatches?
+
+### Run javascript from CSS
+JS-in-CSS is the feature that's going to change the world. You can call `js-eval` from any css-everything expression to run javascript code.
+
+```css
+#js-in-css { --cssx-on-mount: js-eval("console.log('Hello from css!')"); }
+```
+
+<CssEverything key="clock" id="clock" css={`
+#clock { --cssx-children: #digital; }
+#digital {
+  --text: "";
+
+  --my-js-expression:
+    new Intl.DateTimeFormat('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    }).format(new Date());
+  --get-date: js-eval(get-var(--my-js-expression));
+
+  --cssx-on-mount: update(--text, call(--get-date));
+  --cssx-on-update: delay(1s) update(--text, call(--get-date));
+
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+#digital::after { content: var(--text); }
+`} />
+
+
+### Render html
+What? Eww. Why would you want to do that? Alright if you really want to, you can use `--cssx-disgustingly-set-innerhtml` to set innerHTML of an element.
+
+<CssEverything key="html" id="html" css={`
+#html {
+  --cssx-disgustingly-set-innerhtml: "<div>Some <b>disgusting</b> <span style='color:red;'>html</span></div>";
+}
+`} />
+
+
+
+## How does it work?
+
+#### CSS variables
+CSS variables are the backbone of css-everything. They maintain the state, listen to events, create
+dom trees and in general is the glue between js and css.
+
+#### calc
+You might already know `calc` but the calc you use inside css-everything expressions are a little
+different. They are evaluated in javascript 
+and have limited support for css things.
+
+#### Custom functions
+The way custom function calls work in `css-everything` is each call is represented as a dom node
+inside the caller. The arguments passed to the function call are css variables on this new dom node
+which represents our closure. The function is then executed within the context of our closure. In a
+recursive function like the one above, each function call results in a dom node inside the previous
+dom node resulting is a tree like this:
+
+```html
+<div id="factorial-state">
+  <div class="cssx-layer"></div> <!-- This is where the children would go... if you had any, you virgin -->
+
+  <div style="display: none; --n: 5;">
+    <div style="display: none; --n: 4;">
+      <div style="display: none; --n: 3;">
+        <div style="display: none; --n: 2;">
+          <div style="display: none; --n: 1;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+This is our call stack. When the call finally has a result, it collapses the stack and returns with the value.
+
+You might be thinking, "But what about the performance?". If so, its pretty cool that you thought that. Good job.
+
+
+## Performance
+
+Fuck you.
+
+
+
+## Conclusion
+
+This is the future of web development. Suck it! Flying cars, here we come!
+
+---
+
+On a serious note tho, if you're considering using this, please consult a psychiatrist.
+I made this because one day while working, I started picturing one of the circles of hell being
+having to write and debug css issues for an eternity.
 
 
 

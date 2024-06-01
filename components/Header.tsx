@@ -36,7 +36,7 @@ export const Header = () => {
             <span>Akshay Nair</span>
           </div>
         </h1>
-        <div className={styles.headerSubtitle}>a full-stack developer</div>
+        <div className={styles.headerSubtitle}>a professional nerd</div>
       </div>
 
       <div

@@ -14,7 +14,7 @@ export const CssEverything = React.memo(({ css, id }: { css: string, id: string 
   }, [])
 
   const cssHighlighted = useMemo(() => {
-    return hljs.highlight(css, { language: 'css' })
+    return hljs.highlight(css, { language: 'css' }).value.trim()
   }, [css])
 
   return <div>
@@ -25,7 +25,7 @@ export const CssEverything = React.memo(({ css, id }: { css: string, id: string 
       </div>
     </div>
     <pre>
-      <code className="hljs language-css" dangerouslySetInnerHTML={{ __html: cssHighlighted.value }}></code>
+      <code className="hljs language-css" dangerouslySetInnerHTML={{ __html: cssHighlighted }}></code>
     </pre>
 
     <style>
