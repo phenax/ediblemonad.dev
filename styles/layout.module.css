@@ -33,18 +33,35 @@
   text-align: center;
 }
 
-.headerFade {
-  --size: 300px;
+.bubble {
+  --size: min(400px, 70vw);
+  --pos-x: calc(50% - var(--size)/2);
+  --pos-y: 0;
+
   position: absolute;
-  top: 0;
-  left: calc(50% - var(--size)/2);
+  top: var(--pos-y);
+  left: var(--pos-x);
   z-index: -1;
   width: var(--size);
   height: var(--size);
   background-color: var(--accent-rgb);
   border-radius: 50%;
-  opacity: 0.2;
-  filter: blur(calc(var(--size) / 1.6));
+  opacity: 0.1;
+  filter: blur(calc(var(--size) / 3));
+  /* animation: hoverbubble 20s ease-in-out infinite; */
+}
+
+/* Hover animation to move the bubble up and down */
+@keyframes hoverbubble {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(30vh) scale(2);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 .headerName {

@@ -29,7 +29,7 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <span className={styles.headerFade}></span>
+      <span className={styles.bubble}></span>
       <div className={styles.headerName}>
         <h1 className={`${styles.headerTitle} text-4xl md:text-6xl`}>
           <div className="relative">
