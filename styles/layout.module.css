@@ -29,8 +29,9 @@
 
 .header {
   position: relative;
-  padding: 5rem 0;
   text-align: center;
+
+  @apply py-12;
 }
 
 .bubble {
@@ -80,6 +81,8 @@
 }
 
 .headerTitle {
+  @apply text-4xl md:text-5xl;
+
   font-weight: bold;
   letter-spacing: 3px;
   line-height: 1.4em;

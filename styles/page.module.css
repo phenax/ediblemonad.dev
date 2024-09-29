@@ -39,19 +39,20 @@
 .project {
   padding: 2rem;
   margin-top: 2rem;
-  position: relative;
   --border-size: 3px;
   --border-color: var(--accent-rgb);
+
+  @apply relative text-sm;
 }
 
 .project::before,
 .project::after {
   content: '';
   position: absolute;
-  width: 120px;
-  height: 80px;
+  width: 100px;
+  height: 40px;
   border: none;
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .project::before {
@@ -68,7 +69,7 @@
 }
 
 .projectTitle {
-  font-size: 1.8rem;
+  @apply text-2xl max-sm:text-xl;
 }
 
 

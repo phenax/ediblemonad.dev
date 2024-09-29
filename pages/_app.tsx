@@ -5,7 +5,6 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 
 import '../styles/globals.css'
-import { Header } from '../components/Header'
 
 config.autoAddCss = false
 
@@ -29,7 +28,6 @@ export default function AppLayout({ Component, pageProps }: any) {
         <meta name="description" content="List of projects made by Akshay Nair, who is a full-stack web developer based in India" />
       </Head>
 
-      <Header />
       <Component {...pageProps} />
     </div>
   )

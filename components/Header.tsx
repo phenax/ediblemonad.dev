@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 import styles from '../styles/layout.module.css'
 import { useRouter } from 'next/router'
 import { faCircleDot } from '@fortawesome/free-regular-svg-icons'
 
-const navLinks = [
+export const navLinks = [
   { name: 'Projects', link: { pathname: '/' } },
   { name: 'About', link: { pathname: '/about' } },
   { name: 'Blog', link: { pathname: '/blog' } },
@@ -14,7 +13,7 @@ const navLinks = [
   { name: 'Links', link: { pathname: '/contact' } },
 ]
 
-export const Header = () => {
+export const Header = ({ variant = 'default' }: { variant?: 'simple' | 'default' }) => {
   const router = useRouter()
   const isNested = (path: string) => {
     if (
@@ -27,20 +26,31 @@ export const Header = () => {
   }
   const routeMatches = (path: string) => router.pathname === path
 
+  const isSimpleVariant = variant === 'simple';
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isSimpleVariant && '!pt-4 !pb-8'}`}>
       <span className={styles.bubble}></span>
-      <div className={styles.headerName}>
-        <h1 className={`${styles.headerTitle} text-4xl md:text-6xl`}>
-          <div className="relative">
-            <span>Akshay Nair</span>
-          </div>
-        </h1>
-        <div className={styles.headerSubtitle}>a professional nerd</div>
-      </div>
+
+      {!isSimpleVariant && (
+        <div className={styles.headerName}>
+          <h1 className={`${styles.headerTitle}`}>
+            <div className="relative">
+              <span>Akshay Nair</span>
+            </div>
+          </h1>
+          <div className={styles.headerSubtitle}>a professional nerd</div>
+        </div>
+      )}
 
       <div
-        className={`relative ${styles.spacing} text-right flex px-6 justify-around md:align-top md:inline-block`}
+        className={[
+          styles.spacing,
+          `relative text-right flex px-6 justify-around gap-3 text-base`,
+          isSimpleVariant
+            ? 'align-top inline-block text-sm max-w-[800px] m-auto'
+            : 'md:align-top md:inline-block max-sm:text-sm',
+        ].join(' ')}
         style={{ marginTop: '0.8rem' }}
       >
         {navLinks.map(({ name, link }) => (
@@ -53,17 +63,16 @@ export const Header = () => {
             >
               {name}
             </Link>
-            {isNested(link.pathname) ? (
-              <span className="absolute text-slate-600 ml-2 mt-0.5 w-full text-left max-md:hidden">
-                <FontAwesomeIcon icon={faArrowRight} size="xs" />
+
+            {isNested(link.pathname) && (
+              <span className="absolute text-slate-600 ml-1 mt-0.5 w-full text-left max-md:hidden">
+                {'/'}
                 <FontAwesomeIcon
                   icon={faCircleDot}
                   size="xs"
-                  className="ml-2"
+                  className="ml-1"
                 />
               </span>
-            ) : (
-              ''
             )}
           </div>
         ))}
