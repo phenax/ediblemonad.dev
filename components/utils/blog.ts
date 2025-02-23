@@ -4,11 +4,14 @@ import readingTime from 'reading-time'
 import path from 'path'
 
 interface Filters {
-  onlyPublished?: boolean,
+  onlyPublished?: boolean
   sortByDate?: boolean
 }
 
-export const getBlogPosts = async ({ onlyPublished = true, sortByDate = true }: Filters = {}) => {
+export const getBlogPosts = async ({
+  onlyPublished = true,
+  sortByDate = true,
+}: Filters = {}) => {
   const postsPath = path.resolve('posts')
   const posts = await fs.readdir(postsPath)
 
@@ -28,7 +31,9 @@ export const getBlogPosts = async ({ onlyPublished = true, sortByDate = true }: 
   }
 
   if (sortByDate) {
-    postProps.sort((a: any, b: any) => (new Date(a.date) < new Date(b.date) ? 1 : -1))
+    postProps.sort((a: any, b: any) =>
+      new Date(a.date) < new Date(b.date) ? 1 : -1
+    )
   }
 
   return postProps

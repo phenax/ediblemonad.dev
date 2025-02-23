@@ -20,7 +20,9 @@ export default function Post({ posts }: any) {
       <Header />
 
       <main className={styles.main}>
-        <Head><title>Blog - Akshay Nair</title></Head>
+        <Head>
+          <title>Blog - Akshay Nair</title>
+        </Head>
 
         {posts.map((post: any) => (
           <div className={styles.project} key={post.slug}>
