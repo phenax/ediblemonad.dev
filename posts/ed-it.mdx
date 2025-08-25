@@ -1,0 +1,101 @@
+export const meta = {
+  title: "A case for ed",
+  description: "This post is an incoherent ramble about text editors (mostly about ed)",
+  published: true,
+  date: '2025-07-26',
+}
+
+export const years = new Date().getFullYear() + 1 - 2019
+
+Can you say that you **truly** understand the tools you use?
+
+Text editors like vscode (or any other web browser as a text editor things) or an IDE like intellij, are a russian doll for layers of abstractions that you're meant to accept as a whole and never think about. With something like vscode, there's the editor itself, all the integrations that it comes with, the browser behind the scenes that renders everything, some electron magic that connects that browser internals to your system, whatever nodejs does, etc.
+
+But as a programmer, that feeling is something that I've grown very uncomfortable with. Which is partly why I've always gravitated towards tools that are simple and let me break that abstraction and build around it. The cost of that choice is of course that you have to trade off some convinience to do this either as a one time investment to set it up or a continuous cost if it's not very easy to use.
+
+
+## Prompt-driven programming before AI
+Back in the day when people thought we'd have flying cars by the year 2025, the primary way to interact with a computer was through a teletype interface. Not a fancy terminal emulator that allows displaying images or one that asks you to sign-up with your email address to use your terminal, just a regular ol' teletype terminal.
+
+So an obvious choice to write code within this environment was an editor that took commands for editing text and applied those commands on the file. One such solution was a line-wise text editor called [ed](https://linux.die.net/man/1/ed).
+
+The way you edit text in ed is using commands in a repl interface that operate on lines. You can **d**elete/**i**nsert/**a**ppend/**c**hange/**m**ove/copy lines. If you want to change something inside a line you can use the **s**ubstitute command `s/pattern/replacement/`. There is also the **g**lobal command which applies one of the other commands over all lines that match the given pattern. People familiar with vim will already be familiar with a lot of these commands.
+
+
+## Influence
+Not going into details of the history because if you can read this, you can read wikipedia. But I can give you a lazy, poorly-researched summary which is all you'll remember from wikipedia anyway.
+
+- At first, there was `qed` which inspired `ed`
+- Then some dude said "want more" and went ahead and made `ex`
+- Then `ex` got a visual mode which became `vi`
+- Then came [stevie](https://en.wikipedia.org/wiki/Stevie_%28text_editor%29), a fork of vi for Atari ST
+- Then `vi` got **im**proved when stevie got forked as `vim`
+- Then finally we get the tool that I use everyday, neovim ([fork of vim](https://neovim.io/charter/))
+- Also a side-note, almost all text editors come with a vi-mode as a result of this chain of influence
+
+But that's not all
+- `sed` is essentially `ed`'s line-based editing operations on streaming data.
+- `grep`'s name comes from a specific ed **g**lobal command `g/re/p` which prints everything that matches a given **re**gular expression.
+- theres probably more things to add here but leaving this here because I felt uncomfortable making a list of 2 items
+
+
+## Modern UX
+
+Having developed a lot of different user interfaces in my career, I've come to the conclusion that modern user interfaces are designed for idiots.
+Not saying, those interfaces are only used by idiots but they're designed for the lowest common denominator of technologically inept.
+
+> This button called 'Move to trash' will move your file to trash.
+> If you hover over it, it'll also show you a tooltip saying that it will move your file to trash.
+> Clicking on it will show you a dialog box asking if you're absolutely sure that you want to move the file to trash.
+> If you click yes and then you realize that you want the file back, you can go to the trash folder and restore it.
+
+Just `rm -rf` it, you pussy.
+
+Not because, it's necessary but because the people behind the tool pictured you as the worst case scenario of a user.
+They imagined a user so technologically illiterate that they can't be trusted with something they own.
+This reasoning is what then branches into a justification for the lack of ownership with a lot of modern technology but I'll leave some of this rambling to your imagination.
+
+
+## Simplicity
+
+I've always found ed to be quite elegant. Not because it's a good tool to use but because of a very specific feeling associated with using tools like this.
+Tools that are so simple that you feel like you completely understand the underlying mechanics of it and not just as an abstraction.
+You don't need a hand-wavy explanation for how it works. It is obvious at first glance.
+There are a small set of primitives you learn (commands in case of ed) and you know everything about how to use the tool, how it works, and how to very accurately predict it's behavior. If it breaks, it must've been a bit flip because a tool that simple just can't break.
+
+It's a breath of fresh air from all the high-level nonsense that we've been fed all our lives that we learn to never question.
+
+Like using a hammer. You look at it and you understand it. You don't have to plug it into a wall. There's no installing updates to improve security of the hammer. There's no sending usage data to some server in the background to allow the hammer company to "improve" the tool. It's a hammer. You hit things with it.
+
+Most popular tools we use now are wrapped in so many layers of abstraction that we are completely disconnected from the tools we rely on.
+This trend is not acceptable to me.
+
+
+
+## Fun
+
+One of the biggest case I could make to try ed is that it's just fun.
+It's an editor that feels very technical to use and provides enough constraints to turn the experience of editing text into a turn-based strategy game.
+You execute a few commands one after another, without knowing if the edits are all correct and then you print the contents inside ed and you feel the rush of getting it right! Or the disappointment of forgetting to account for the added line in a previous command.
+
+
+
+## AI
+
+We've sort of come full circle now. Prompts to edit text is back but with the thickest layer of abstraction the world has every seen.
+- You prompt it to make some edits, and it does magically (among other things).
+- You review the code (or don't if you're vibing).
+- You add it to your version control system (or don't if you're vibing extra hard).
+- That's it
+
+I cannot put into words worthy of a prompt to chatgpt, how extremely unappealing this is to me.
+
+Writing code and interacting with a computer in general has never been a means to an end for me. That is the point.
+I write code because I like writing code. Outsourcing that would be extremely pointless.
+
+
+
+## Inconclushun
+
+Idk. Simple tools are fun. Bye.
+
