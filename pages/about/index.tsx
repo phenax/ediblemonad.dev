@@ -1,8 +1,12 @@
 import styles from '../../styles/page.module.css'
+import commonStyles from '../../styles/common.module.css'
 import Head from 'next/head'
 import { Header } from '../../components/Header'
+import Link from 'next/link'
 
 export default function About() {
+  const years = new Date().getFullYear() - 2017
+
   return (
     <>
       <Header />
@@ -25,22 +29,15 @@ export default function About() {
 
         <div className={`indent-6 text-slate-400 ${styles.paraWrap}`}>
           <p>
-            I am a <b>full-stack web developer</b> from Mumbai, India with{' '}
-            <b>7 years</b> of professional experience building great products. I
-            have a passion for <b>building software</b>, <b>FOSS</b>, and{' '}
-            <b>learning</b>. I am also dedicated to constantly{' '}
-            <b>improving my skills</b> and staying <b>up to date</b> with the
-            latest developments in the industry. Also, being an advocate for
-            strong <b>automated testing</b> practices, I prioritize it
-            thoroughly in my projects, ensuring that the software can be
-            deployed with confidence.
+            I am a <b>full-stack web developer</b> from India with{' '}
+            <b>~{years} years</b> of professional experience building great products.
+            I have a passion for <b>building software</b>, <b>FOSS</b>, <b>Linux</b>
+            , and <b>learning</b> new&nbsp;things.
           </p>
 
           <p>
-            And when I{`'`}m off the clock, I also like to dabble in some{' '}
-            <b>esoteric</b>/<b>creative</b> coding projects, whittling with
-            wood, creating small clay sculptures, building software tools for
-            myself, listening to music, playing video games, etc.
+            I also like to dabble in some <b>esoteric</b>/<b>creative</b> coding projects, building software tools for myself, whittling with wood, creating small clay sculptures, listening to music, playing video&nbsp;games,&nbsp;etc.
+            If you like those things too, <Link className={commonStyles.link} href="/contact">tell me about em</Link>!
           </p>
         </div>
       </main>

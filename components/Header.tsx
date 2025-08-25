@@ -45,7 +45,7 @@ export const Header = ({ variant = 'default' }: { variant?: 'simple' | 'default'
 
       <div
         className={[
-          styles.spacing,
+          isSimpleVariant ? '' : styles.spacing,
           `relative text-right flex px-6 justify-around gap-3 text-base`,
           isSimpleVariant
             ? 'align-top inline-block text-sm max-w-[800px] m-auto'

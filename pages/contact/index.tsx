@@ -19,10 +19,10 @@ const contacts = [
     brandColor: '#ffffff',
   },
   {
-    link: 'https://www.linkedin.com/in/akshay-nair5',
-    icon: faLinkedin,
-    text: 'LinkedIn',
-    brandColor: '#006192',
+    link: 'https://twitter.com/EdibleMonad',
+    icon: faTwitter,
+    text: 'Twitter',
+    brandColor: '#55ACEE',
   },
   {
     link: 'https://twitch.tv/EdibleMonad',
@@ -31,10 +31,10 @@ const contacts = [
     brandColor: '#6441A4',
   },
   {
-    link: 'https://twitter.com/EdibleMonad',
-    icon: faTwitter,
-    text: 'Twitter',
-    brandColor: '#55ACEE',
+    link: 'https://www.linkedin.com/in/akshay-nair5',
+    icon: faLinkedin,
+    text: 'LinkedIn',
+    brandColor: '#006192',
   },
 ]
 
