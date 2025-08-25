@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import projectData from '../data/projects.json'
 import styles from '../styles/page.module.css'
 import commonStyles from '../styles/common.module.css'

@@ -1,15 +1,13 @@
 import dynamic from 'next/dynamic'
 import { MDXProvider } from '@mdx-js/react'
 import { useRouter } from 'next/router'
-// import 'highlight.js/styles/base16/material-palenight.css'
-// import 'highlight.js/styles/base16/gruvbox-dark-hard.css'
 import 'highlight.js/styles/atom-one-dark.css'
-import { Comments } from 'components/Comments'
 
 import styles from '../../../styles/page.module.css'
 import { getBlogPosts } from '../../../components/utils/blog'
 import Head from 'next/head'
 import { Header } from '../../../components/Header'
+import { Comments } from '../../../components/Comments'
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts({ onlyPublished: false, sortByDate: false })
@@ -49,7 +47,10 @@ export default function Post({ meta }: any) {
             <h1 className="text-accent-1">{meta.title}</h1>
             <Post />
           </MDXProvider>
+          <hr />
         </article>
+
+        <Comments />
       </main>
     </>
   )
