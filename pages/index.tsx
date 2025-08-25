@@ -3,21 +3,24 @@ import styles from '../styles/page.module.css'
 import commonStyles from '../styles/common.module.css'
 import { Header } from '../components/Header'
 
-// TODO: get props on build
 const projectIds: Array<keyof typeof projectData> = [
   'css-everything',
+  'null-browser',
+  'chelleport',
   'elxr',
   'react-is-a-programming-language',
-  'edible-desmos',
   'typed-regex',
   'ts-typeslang',
-  'yaml-transformer',
   'algebraic-effects',
+  'ts-theorem-provinator',
   'diary-pwa',
   'pattern-lock-js',
+  'edible-desmos',
   'is-a-dev',
   'esbuild-plugin-elm',
-  'owyn-launcher',
+  'aether',
+  'daft-launcher',
+  'yaml-transformer',
   'pipey',
   'enum-fp',
 ]

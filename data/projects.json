@@ -1,45 +1,53 @@
 {
+  "null-browser": {
+    "title": "Null browser",
+    "description": "An infinitly extensible web browser built on top of qtwebengine",
+    "tags": [ "c++", "lua", "libuv" ],
+    "link": "https://github.com/phenax/null-browser"
+  },
+
+  "chelleport": {
+    "title": "Chelleport",
+    "description": "App for X11 linux to control your mouse pointer with your keyboard with hints and OCR",
+    "tags": [ "haskell", "x11", "linux" ],
+    "link": "https://github.com/phenax/chelleport"
+  },
+
+  "aether": {
+    "title": "Aether lang",
+    "description": "A lisp interpreter written in haskell",
+    "tags": [ "haskell", "lisp", "parser", "interpreter", "programming-language" ],
+    "link": "https://github.com/phenax/aether"
+  },
+
   "yaml-transformer": {
     "title": "Yaml transformer",
     "description": "A cli to update yaml properties while preserving whitespace and comments in its original state",
-    "tags": [
-      "haskell",
-      "functional-programming",
-      "parser"
-    ],
+    "tags": [ "haskell", "parser" ],
     "link": "https://desmos.ediblemonad.dev"
   },
 
   "edible-desmos": {
     "title": "Desmos graph manager",
     "description": "A personal graph manager using desmos graphing calculator",
-    "tags": [
-      "javascript",
-      "deno"
-    ],
+    "tags": [ "javascript", "deno", "desmos" ],
     "link": "https://desmos.ediblemonad.dev"
   },
 
   "react-is-a-programming-language": {
     "title": "React is a programming language",
     "description": "A PoC for using react to emulate turing complete behaviors and building a \"programming language\" from it",
-    "tags": [
-      "typescript",
-      "javascript",
-      "react"
-    ],
+    "tags": [ "typescript", "react" ],
     "link": "https://github.com/phenax/react-is-a-programming-language"
   },
 
   "css-everything": {
-    "title": "css-everything",
-    "description": "An experimental ui framework where you only write turing complete CSS. No HTML, no JS, no build system. Just CSS",
+    "title": "CSS everything framework",
+    "description": "An experimental/gag ui framework where you only write turing complete CSS. No HTML, no JS, no build system. Just CSS",
     "tags": [
       "css",
       "typescript",
-      "javascript",
-      "parser",
-      "functional-programming"
+      "parser"
     ],
     "link": "https://github.com/phenax/css-everything"
   },
@@ -47,34 +55,22 @@
   "ts-typeslang": {
     "title": "Runtime for TS types",
     "description": "A runtime and library for typescript's types that turns the type system into a general purpose, purely functional programming language!",
-    "tags": [
-      "typescript",
-      "javascript",
-      "node",
-      "functional-programming",
-      "build-tools"
-    ],
+    "tags": [ "typescript", "node", "programming-language" ],
     "link": "https://github.com/phenax/ts-types-runtime"
+  },
+
+  "ts-theorem-provinator": {
+    "title": "TS types theorem prover",
+    "description": "A simple (terrible) theorem proof embedding in typescript's type system",
+    "tags": [ "typescript" ],
+    "link": "https://github.com/phenax/ts-theorem-provinator"
   },
 
   "esbuild-plugin-elm": {
     "title": "esbuild-plugin-elm",
     "description": "An esbuild plugin for building elm projects",
-    "tags": [
-      "javascript",
-      "elm",
-      "build-tools"
-    ],
+    "tags": [ "javascript", "elm", "build-tool" ],
     "link": "https://github.com/phenax/esbuild-plugin-elm"
-  },
-
-  "edible-monad": {
-    "title": "Live-coding on twitch",
-    "description": "I've started live-streaming most of my personal projects on twitch",
-    "tags": [
-      "live-coding"
-    ],
-    "link": "https://twitch.tv/EdibleMonad"
   },
 
   "cmp-graphql": {
@@ -82,9 +78,9 @@
     "description": "A neovim completions (nvim-cmp) plugin for schema-based completions for graphql syntax (works inside gql tagged template literals)",
     "tags": [
       "neovim",
+      "lua",
       "graphql",
-      "javascript",
-      "dev-ex"
+      "javascript"
     ],
     "link": "https://github.com/phenax/cmp-graphql"
   },
@@ -94,9 +90,7 @@
     "description": "An implementation of a regex-like syntax that generalizes regex operations for any sequential data structure",
     "tags": [
       "typescript",
-      "javascript",
       "regex",
-      "functional-programming",
       "parser"
     ],
     "link": "https://github.com/phenax/elxr"
@@ -109,7 +103,6 @@
       "typescript",
       "regex",
       "parser",
-      "functional-programming",
       "dev-ex"
     ],
     "link": "https://github.com/phenax/typed-regex"
@@ -120,7 +113,7 @@
     "description": "An implementation of algebraic effects in javascript as a library for managing side-effects in a pure and composable way",
     "tags": [
       "functional-programming",
-      "javascript",
+      "effects-system",
       "typescript"
     ],
     "link": "https://github.com/phenax/algebraic-effects"
@@ -167,13 +160,20 @@
     "link": "https://github.com/phenax/bsp-layout"
   },
 
-  "owyn-launcher": {
-    "title": "OWYN Launcher",
+  "daft-launcher": {
+    "title": "Daft Launcher",
     "description": "A minimalist, text-only launcher written in flutter which I use every day",
     "tags": [
       "flutter"
     ],
-    "link": "https://github.com/phenax/owyn-launcher"
+    "link": "https://github.com/makedaft/daft-launcher"
+  },
+
+  "daft-jukebox": {
+    "title": "Daft Jukebox",
+    "description": "An esp32 microcontroller powered mp3 player",
+    "tags": [ "electronics", "c++" ],
+    "link": "https://github.com/makedaft/daft-jukebox"
   },
 
   "plasmajs": {
