@@ -1,7 +1,7 @@
 with (import <nixpkgs> { });
 mkShell {
   buildInputs = [
-    nodejs_23
+    nodejs_24
     nodePackages.pnpm
     nodePackages.typescript
     nodePackages.typescript-language-server
