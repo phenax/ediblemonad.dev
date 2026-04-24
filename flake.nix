@@ -15,9 +15,9 @@
           pkgs = import nixpkgs { inherit system; };
           build = import ./build-script.nix { inherit pkgs; };
           templates = {
-            "index.html" = ./pages/home.md;
-            "blogs/index.html" = ./pages/blogs.md;
-            "blogs/" = build.mdPages ./pages/blogs;
+            "index.html" = build.mdPage "home.md";
+            "blogs/index.html" = build.mdPage "blogs.md";
+            "blogs/" = build.mdPageDir "blogs";
           };
         in
         {

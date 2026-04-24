@@ -1,9 +1,53 @@
+:root {
+  --color-accent: #51e980;
+  --color-accent-1: #5180e9;
+  --color-background: #000;
+  font-size: 16px;
+  font-family: monospace;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--color-background);
+  color: #ddd;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+header {
+  padding: 1rem;
+}
+
+main {
+  padding: 0.4rem 1rem;
+}
+
+a {
+  color: var(--color-accent);
 }
 
 body * {
   box-sizing: border-box;
+}
+
+.card {
+  display: block;
+  border: 1px solid #333;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
 }
