@@ -1,5 +1,5 @@
 # Hey there
 
-Testing this stuff ${toString (foobar + 7)}
+Testing this stuff ${toString (56 + 7)}
 
 [Blogs](./blogs)
