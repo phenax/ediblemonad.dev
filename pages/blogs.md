@@ -3,7 +3,7 @@
 Just my personal, poorly researched thoughts and opinions.
 
 <ul>
-${mdPageDir "blogs"
+${(mdPageDir "blogs").files
     |> map (f: let cfg = getPageConfig f; in
       partials.card {
         link = getLink f;

@@ -61,6 +61,11 @@ html, body {
   background-color: var(--color-background);
 }
 
+hr {
+  border: none;
+  border-bottom: 1px solid #222;
+}
+
 p {
   padding-bottom: 1rem;
 }

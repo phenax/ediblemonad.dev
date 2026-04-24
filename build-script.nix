@@ -11,21 +11,29 @@ let
           description,
         }:
         ''
-          <div>
+          <li>
             <a href="${link}" class="card">
               <span class="card-title">${title}</span>
               ${if isNull description then "" else ''<span class="card-description">${description}</span>''}
             </a>
-          </div>
+          </li>
         ''
         |> replaceString "\n" "";
     };
   };
-  getPageConfig = path: path |> replaceString ".md" ".nix" |> import;
+  getPageConfig =
+    path:
+    let
+      nixFile = replaceString ".md" ".nix" path;
+    in
+    if pathExists nixFile then import nixFile else null;
   getLink = path: path |> replaceString "${./pages}" "" |> replaceString ".md" "";
-  evalNixExpr = injections: expr: toFile "eval.nix" expr |> scopedImport injections;
-  mdPageDir =
-    dir: filesystem.listFilesRecursive "${./pages}/${dir}" |> filter (strings.hasSuffix ".md");
+  mdPageDir = dir: rec {
+    path = "${./pages}/${dir}";
+    files = filesystem.listFilesRecursive path |> filter (strings.hasSuffix ".md");
+    after = if pathExists "${path}/+after.html" then "${path}/+after.html" else null;
+    before = if pathExists "${path}/+before.html" then "${path}/+before.html" else null;
+  };
   mdPage = path: "${./pages}/${path}";
 in
 {
@@ -41,34 +49,51 @@ in
       stylesheet,
     }:
     let
+      evalNixExpr = injections: expr: toFile "eval.nix" expr |> scopedImport injections;
       evaluateTemplate =
-        file: "''${readFile file}''" |> evalNixExpr templateInjections |> pkgs.writeText "${file}";
-      buildPage = file: outfile: ''
-        pandoc \
-          --shift-heading-level-by=-1 --standalone --from=gfm \
-          -c /style.css --template ${template} \
-          --title-prefix="${titlePrefix}" \
-          --include-before-body "${header}" \
-          --include-after-body "${footer}" \
-          ${evaluateTemplate file} \
-          -o "${outfile}";
-      '';
-      buildPageFiles = files: outdir: ''
+        inject: contents: "''${contents}''" |> evalNixExpr (templateInjections // inject);
+      evaluateTemplateFile =
+        inject: file: readFile file |> evaluateTemplate inject |> pkgs.writeText "${file}";
+
+      buildPage =
+        file: outfile: parent:
+        let
+          config = getPageConfig file;
+          renderedFile = evaluateTemplateFile { } file;
+          hasBefore = parent ? before && !(isNull parent.before);
+          hasAfter = parent ? after && !(isNull parent.after);
+        in
+        ''
+          pandoc \
+            --shift-heading-level-by=-1 --standalone --from=gfm \
+            -c /style.css --template '${template}' \
+            --title-prefix='${titlePrefix}' \
+            ${if hasBefore then "--include-before-body '${parent.before}'" else ""} \
+            ${if hasAfter then "--include-after-body '${parent.after}'" else ""} \
+            --include-before-body '${header}' \
+            --include-after-body '${footer}' \
+            ${if config ? meta then "--include-in-header '${pkgs.writeText "" config.meta}'" else ""} \
+            ${renderedFile} \
+            -o "${outfile}";
+        '';
+
+      buildPageFiles = dir: outdir: ''
         mkdir -p ${outdir};
         ${
-          files
+          dir.files
           |> map (
             file:
-            buildPage file "${outdir}/${baseNameOf file |> replaceString ".md" ".html" |> removePrefix "/"}"
+            buildPage file "${outdir}/${baseNameOf file |> replaceString ".md" ".html" |> removePrefix "/"}" dir
           )
           |> concatStringsSep ""
         }
       '';
+
       getBuildScript =
         pages:
         mapAttrs (
-          name: files:
-          if isList files then buildPageFiles files "output/${name}" else buildPage files "output/${name}"
+          name: file:
+          if isString file then buildPage file "output/${name}" null else buildPageFiles file "output/${name}"
         ) pages
         |> attrValues
         |> concatStringsSep "\n";
