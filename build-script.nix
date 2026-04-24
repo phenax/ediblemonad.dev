@@ -23,7 +23,7 @@ let
   };
   getPageConfig = path: path |> replaceString ".md" ".nix" |> import;
   getLink = path: path |> replaceString "${./pages}" "" |> replaceString ".md" "";
-  evalNixExpr = expr: toFile "eval.nix" expr |> scopedImport templateInjections;
+  evalNixExpr = injections: expr: toFile "eval.nix" expr |> scopedImport injections;
   mdPageDir =
     dir: filesystem.listFilesRecursive "${./pages}/${dir}" |> filter (strings.hasSuffix ".md");
   mdPage = path: "${./pages}/${path}";
@@ -38,17 +38,18 @@ in
       template,
       header,
       footer,
+      stylesheet,
     }:
     let
-      evaluateTemplate = file: "''${readFile file}''" |> evalNixExpr |> pkgs.writeText "${file}";
+      evaluateTemplate =
+        file: "''${readFile file}''" |> evalNixExpr templateInjections |> pkgs.writeText "${file}";
       buildPage = file: outfile: ''
         pandoc \
           --shift-heading-level-by=-1 --standalone --from=gfm \
           -c /style.css --template ${template} \
           --title-prefix="${titlePrefix}" \
-          --include-before-body ${header} \
-          --include-after-body ${footer} \
-          --from markdown --to html \
+          --include-before-body "${header}" \
+          --include-after-body "${footer}" \
           ${evaluateTemplate file} \
           -o "${outfile}";
       '';
@@ -56,7 +57,10 @@ in
         mkdir -p ${outdir};
         ${
           files
-          |> map (file: buildPage file "${outdir}${baseNameOf file |> replaceString ".md" ".html"}")
+          |> map (
+            file:
+            buildPage file "${outdir}/${baseNameOf file |> replaceString ".md" ".html" |> removePrefix "/"}"
+          )
           |> concatStringsSep ""
         }
       '';
@@ -76,7 +80,7 @@ in
       buildInputs = [ pkgs.pandoc ];
       buildPhase = ''
         mkdir -p output
-        cp ./style.css output/
+        cp ${stylesheet} output/style.css
         ${getBuildScript pages}
       '';
       installPhase = ''

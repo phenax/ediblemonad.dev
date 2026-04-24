@@ -1,8 +1,10 @@
 <style>
   .header {
-    padding: 1rem;
+    padding: 1rem 1.7rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 6px;
   }
 
   .header-link {
@@ -11,15 +13,28 @@
 
   .header-nav {
     display: flex;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     gap: 8px;
+  }
+
+  .header-title {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none !important;
+    color: #fff !important;
+  }
+
+  @media (max-width: 480px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 </style>
 
 <header class="header">
   <div>
-    <h1>ediblemonad.dev</h1>
-    <span class="">professional nerd</span>
+    <a class="header-title" href="/">ediblemonad</a>
   </div>
   <div class="header-nav">
     <a class="header-link" href="/">home</a>

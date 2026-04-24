@@ -21,10 +21,14 @@
             header = ./header.html;
             footer = ./footer.html;
             template = ./template.html;
+            stylesheet = ./style.css;
             pages = {
               "index.html" = build.mdPage "home.md";
               "blogs/index.html" = build.mdPage "blogs.md";
-              "blogs/" = build.mdPageDir "blogs";
+              "blogs" = build.mdPageDir "blogs";
+              "obsessions" = build.mdPage "obsessions.md";
+              "hardware/index.html" = build.mdPage "hardware.md";
+              "hardware" = build.mdPageDir "hardware";
             };
           };
         }
