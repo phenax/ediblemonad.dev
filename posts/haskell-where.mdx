@@ -1,0 +1,75 @@
+export const meta = {
+  title: "Abstraction first",
+  description: "What do you want to your code to say first?",
+  published: true,
+  date: '2025-07-29',
+}
+
+
+Which one do you find easier to read?
+
+```js
+const count = () => {
+  let numberOfApples = 1
+  let numberOfOranges = 2
+  return numberOfApples + numberOfOranges
+}
+```
+
+```js
+const count = () => {
+  return numberOrApples + numberOfOranges
+  let numberOrApples = 1
+  let numberOfOranges = 2
+};
+```
+
+Obviously, that doesn't work and makes no sense to anyone familiar with javascript or similar languages.
+But when it comes to the efficiency of reading code, I've got some worthless opinions on this.
+
+In the first example, to learn what that function really does, I have to scan through 2 extra lines to get to the meat of it.
+
+In the second example, I immediately learn "what" it does in the first line and then I can keep scanning for details of each part IF I'm interested.
+
+This of course isn't valid javascript and probably never will be. But haskell (and a few other languages), the `where` syntax which looks as follows:
+
+```hs
+count = numberOfApples + numberOfOranges
+  where
+    numberOfApples = 1
+    numberOfOranges = 2
+```
+
+This isn't something fundamentally new. A lot of programming languages that have classes or deferred name resolution, have the ability to use this style.
+
+```rb
+class MyClass
+  def count
+    numberOfApples + numberOrOranges
+  end
+
+  private
+  def numberOfApples = 1
+  def numberOrOranges = 2
+end
+```
+
+This approach for abstraction-first packs a lot of useful information in the "first glance". Rather than having to swim through implementation details, you gain a high level understanding of the implementation and then get to choose what detail to look at next.
+
+
+## Reading code vs writing code
+
+Of course sometimes whats easy to read might feel unnatural to write.
+More generally, writing procedural code feels more natural. Which makes sense since you're writing **while** solving the problem.
+But when it comes to reading code, that ends up being a hurdle to jump over to comprehend what it is that the code trying to achieve.
+You don't need to know every details and every step of the solution while reading the code.
+
+This unfortunately leads to a lot of code reaching production that are optimized for writing but since it's already written, the code optimizes for a problem thats already solved.
+
+I call the code that I initially write to solve a problem the "first draft". This is because no matter how much I'd like to start out with perfectly readable code, I naturally end up leaving bits that were easier to write but not as easy to read. Framing it as a "first draft" leaves room for re-visiting and rewriting parts to make it easier to read and comprehend. Avoid settling for the first draft.
+
+
+## Conclusion
+
+- Figure out what your code
+- I'm hungry
