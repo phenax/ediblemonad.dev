@@ -12,25 +12,18 @@
       packages = forAllSystems (
         system:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
-          evalNixExpr = expr: expr |> builtins.toFile "eval.nix" |> import;
-          buildTemplate =
-            file: "''${builtins.readFile file}''" |> evalNixExpr |> pkgs.writeText "template-output";
+          pkgs = import nixpkgs { inherit system; };
+          build = import ./build-script.nix { inherit pkgs; };
+          templates = {
+            "index.html" = ./pages/home.md;
+            "blogs/index.html" = ./pages/blogs.md;
+            "blogs/" = build.mdPages ./pages/blogs;
+          };
         in
         {
-          default = pkgs.stdenv.mkDerivation {
-            pname = "ediblemonad-dev-site";
-            version = "0.0.0";
-            src = ./.;
-            buildInputs = [ ];
-            buildPhase = "
-              mkdir -p output
-              cp ${buildTemplate ./home.md} ./output/index.html
-            ";
-            installPhase = "
-              mkdir -p $out
-              cp -r output/* $out
-            ";
+          default = build.createPkg {
+            name = "ediblemonad-dev-site";
+            inherit templates;
           };
         }
       );
