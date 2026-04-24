@@ -14,16 +14,18 @@
         let
           pkgs = import nixpkgs { inherit system; };
           build = import ./build-script.nix { inherit pkgs; };
-          templates = {
-            "index.html" = build.mdPage "home.md";
-            "blogs/index.html" = build.mdPage "blogs.md";
-            "blogs/" = build.mdPageDir "blogs";
-          };
         in
         {
           default = build.createPkg {
-            name = "ediblemonad-dev-site";
-            inherit templates;
+            titlePrefix = "ediblemonad";
+            header = ./header.html;
+            footer = ./footer.html;
+            template = ./template.html;
+            pages = {
+              "index.html" = build.mdPage "home.md";
+              "blogs/index.html" = build.mdPage "blogs.md";
+              "blogs/" = build.mdPageDir "blogs";
+            };
           };
         }
       );

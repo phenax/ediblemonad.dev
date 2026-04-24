@@ -27,49 +27,57 @@ let
   mdPageDir =
     dir: filesystem.listFilesRecursive "${./pages}/${dir}" |> filter (strings.hasSuffix ".md");
   mdPage = path: "${./pages}/${path}";
-
-  evaluateTemplate = file: "''${readFile file}''" |> evalNixExpr |> pkgs.writeText "${file}";
-  buildPage = file: outfile: ''
-    pandoc \
-      --shift-heading-level-by=-1 --standalone --from=gfm \
-      -c /style.css --template ${./template.html} \
-      --title-prefix="EdibleMonad" \
-      --include-after-body ./footer.html \
-      --from markdown --to html \
-      ${evaluateTemplate file} \
-      -o "${outfile}";
-  '';
-  buildPageFiles = files: outdir: ''
-    mkdir -p ${outdir};
-    ${
-      files
-      |> map (file: buildPage file "${outdir}${baseNameOf file |> replaceString ".md" ".html"}")
-      |> concatStringsSep ""
-    }
-  '';
-  getBuildScript =
-    templates:
-    mapAttrs (
-      name: files:
-      if isList files then buildPageFiles files "output/${name}" else buildPage files "output/${name}"
-    ) templates
-    |> attrValues
-    |> concatStringsSep "\n";
 in
 {
   inherit mdPageDir mdPage;
 
   createPkg =
-    { name, templates }:
+    {
+      titlePrefix,
+      pages,
+      template,
+      header,
+      footer,
+    }:
+    let
+      evaluateTemplate = file: "''${readFile file}''" |> evalNixExpr |> pkgs.writeText "${file}";
+      buildPage = file: outfile: ''
+        pandoc \
+          --shift-heading-level-by=-1 --standalone --from=gfm \
+          -c /style.css --template ${template} \
+          --title-prefix="${titlePrefix}" \
+          --include-before-body ${header} \
+          --include-after-body ${footer} \
+          --from markdown --to html \
+          ${evaluateTemplate file} \
+          -o "${outfile}";
+      '';
+      buildPageFiles = files: outdir: ''
+        mkdir -p ${outdir};
+        ${
+          files
+          |> map (file: buildPage file "${outdir}${baseNameOf file |> replaceString ".md" ".html"}")
+          |> concatStringsSep ""
+        }
+      '';
+      getBuildScript =
+        pages:
+        mapAttrs (
+          name: files:
+          if isList files then buildPageFiles files "output/${name}" else buildPage files "output/${name}"
+        ) pages
+        |> attrValues
+        |> concatStringsSep "\n";
+    in
     pkgs.stdenv.mkDerivation {
-      pname = name;
+      name = "ediblemonad-dev-site";
       version = "0.0.0";
       src = ./.;
       buildInputs = [ pkgs.pandoc ];
       buildPhase = ''
         mkdir -p output
         cp ./style.css output/
-        ${getBuildScript templates}
+        ${getBuildScript pages}
       '';
       installPhase = ''
         mkdir -p $out

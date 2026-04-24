@@ -49,6 +49,11 @@ main {
 
 a {
   color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 body * {
@@ -60,7 +65,7 @@ body * {
   border: 1px solid #333;
   padding: 0.6rem 1rem;
   margin-bottom: 1rem;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .card:hover .card-title {
