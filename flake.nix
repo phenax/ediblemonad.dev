@@ -18,6 +18,7 @@
         {
           default = ssg.createPkg {
             titlePrefix = "ediblemonad";
+            header = "header.html";
             pages = {
               "index.html" = ssg.mdPage "home.md";
               "projects.html" = ssg.mdPage "projects.md";

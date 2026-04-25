@@ -41,8 +41,8 @@ let
         html ''
           <li>
             <a href="${link}" class="card">
-              <span class="card-title">${title}</span>
-              ${if isNull description then "" else ''<span class="card-description">${description}</span>''}
+              <div class="card-title">${title}</div>
+              ${if isNull description then "" else ''<div class="card-description">${description}</div>''}
             </a>
           </li>
         '';
@@ -93,8 +93,8 @@ in
       titlePrefix,
       pages,
       template ? "template.html",
-      header ? "header.html",
-      footer ? "footer.html",
+      header ? null,
+      footer ? null,
       staticDir ? "static",
     }:
     let
@@ -111,10 +111,10 @@ in
             --shift-heading-level-by=-1 --standalone --from=gfm \
             -c /style.css --template '${./.}/${template}' \
             --title-prefix='${titlePrefix}' \
-            --include-before-body '${./.}/${header}' \
+            ${if isNull header then "" else "--include-before-body '${./.}/${header}'"} \
             ${if hasBefore then "--include-before-body '${parent.before}'" else ""} \
             ${if hasAfter then "--include-after-body '${parent.after}'" else ""} \
-            --include-after-body '${./.}/${footer}' \
+            ${if isNull footer then "" else "--include-after-body '${./.}/${footer}'"} \
             ${if config ? meta then "--include-in-header '${pkgs.writeText "" config.meta}'" else ""} \
             ${renderedFile} \
             -o "${outfile}";
