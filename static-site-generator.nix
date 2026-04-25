@@ -82,10 +82,10 @@ in
     {
       titlePrefix,
       pages,
-      template,
-      header,
-      footer,
-      stylesheet,
+      template ? "template.html",
+      header ? "header.html",
+      footer ? "footer.html",
+      staticDir ? "static",
     }:
     let
       buildPage =
@@ -99,12 +99,12 @@ in
         ''
           pandoc \
             --shift-heading-level-by=-1 --standalone --from=gfm \
-            -c /style.css --template '${template}' \
+            -c /style.css --template '${./.}/${template}' \
             --title-prefix='${titlePrefix}' \
-            --include-before-body '${header}' \
+            --include-before-body '${./.}/${header}' \
             ${if hasBefore then "--include-before-body '${parent.before}'" else ""} \
             ${if hasAfter then "--include-after-body '${parent.after}'" else ""} \
-            --include-after-body '${footer}' \
+            --include-after-body '${./.}/${footer}' \
             ${if config ? meta then "--include-in-header '${pkgs.writeText "" config.meta}'" else ""} \
             ${renderedFile} \
             -o "${outfile}";
@@ -138,7 +138,7 @@ in
       buildInputs = [ pkgs.pandoc ];
       buildPhase = ''
         mkdir -p output
-        cp ${stylesheet} output/style.css
+        cp ${staticDir}/* output/
         ${getBuildScript pages}
       '';
       installPhase = ''

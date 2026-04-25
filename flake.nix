@@ -13,22 +13,18 @@
         system:
         let
           pkgs = import nixpkgs { inherit system; };
-          build = import ./build-script.nix { inherit pkgs; };
+          ssg = import ./static-site-generator.nix { inherit pkgs; };
         in
         {
-          default = build.createPkg {
+          default = ssg.createPkg {
             titlePrefix = "ediblemonad";
-            header = ./header.html;
-            footer = ./footer.html;
-            template = ./template.html;
-            stylesheet = ./style.css;
             pages = {
-              "index.html" = build.mdPage "home.md";
-              "blog/index.html" = build.mdPage "blog.md";
-              "blog" = build.mdPageDir "blog";
-              "obsessions" = build.mdPage "obsessions.md";
-              "hardware/index.html" = build.mdPage "hardware.md";
-              "hardware" = build.mdPageDir "hardware";
+              "index.html" = ssg.mdPage "home.md";
+              "blog/index.html" = ssg.mdPage "blog.md";
+              "blog" = ssg.mdPageDir "blog";
+              "obsessions" = ssg.mdPage "obsessions.md";
+              "hardware/index.html" = ssg.mdPage "hardware.md";
+              "hardware" = ssg.mdPageDir "hardware";
             };
           };
         }
