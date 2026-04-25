@@ -24,8 +24,8 @@
             stylesheet = ./style.css;
             pages = {
               "index.html" = build.mdPage "home.md";
-              "blogs/index.html" = build.mdPage "blogs.md";
-              "blogs" = build.mdPageDir "blogs";
+              "blog/index.html" = build.mdPage "blog.md";
+              "blog" = build.mdPageDir "blog";
               "obsessions" = build.mdPage "obsessions.md";
               "hardware/index.html" = build.mdPage "hardware.md";
               "hardware" = build.mdPageDir "hardware";

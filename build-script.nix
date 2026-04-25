@@ -10,7 +10,18 @@ let
       getPageContents
       ;
     partials = {
-      inline-card = { contents }: html ''<li class="inline-card">${contents}</li>'';
+      inline-card =
+        { contents, link }:
+        html ''
+          <li class="inline-card">
+            ${contents}
+            <div class="inline-card-footer">
+              <a href="${link}">
+                Comment >>
+              </a>
+            </div>
+          </li>
+        '';
       card =
         {
           title,
@@ -58,6 +69,7 @@ let
   mdPage = path: "${./pages}/${path}";
 
   evalNixExpr = injections: expr: toFile "eval.nix" expr |> scopedImport injections;
+  # TODO: escape ''
   evaluateTemplate =
     inject: contents: "''${contents}''" |> evalNixExpr (templateInjections // inject);
   evaluateTemplateFile =
@@ -89,9 +101,9 @@ in
             --shift-heading-level-by=-1 --standalone --from=gfm \
             -c /style.css --template '${template}' \
             --title-prefix='${titlePrefix}' \
+            --include-before-body '${header}' \
             ${if hasBefore then "--include-before-body '${parent.before}'" else ""} \
             ${if hasAfter then "--include-after-body '${parent.after}'" else ""} \
-            --include-before-body '${header}' \
             --include-after-body '${footer}' \
             ${if config ? meta then "--include-in-header '${pkgs.writeText "" config.meta}'" else ""} \
             ${renderedFile} \
