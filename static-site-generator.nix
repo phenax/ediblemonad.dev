@@ -11,15 +11,25 @@ let
       ;
     partials = {
       inline-card =
-        { contents, link }:
+        {
+          contents,
+          link ? null,
+        }:
         html ''
           <li class="inline-card">
             ${contents}
-            <div class="inline-card-footer">
-              <a href="${link}">
-                Comment >>
-              </a>
-            </div>
+            ${
+              if isNull link then
+                ""
+              else
+                ''
+                  <div class="inline-card-footer">
+                    <a href="${link}">
+                      Comment >>
+                    </a>
+                  </div>
+                ''
+            }
           </li>
         '';
       card =
@@ -44,12 +54,8 @@ let
       config = getPageConfig file;
       renderedFile = evaluateTemplateFile { } file;
       outfile = "/tmp/page-partial-out.html";
-      html-out = pkgs.runCommand "build-html" { } ''
-        ${pkgs.pandoc}/bin/pandoc \
-          --from=gfm \
-          --template '${./post-template.html}' \
-          ${renderedFile} \
-          -o "$out";
+      html-out = pkgs.runCommandLocal "build-html" { } ''
+        ${pkgs.pandoc}/bin/pandoc --from=gfm ${renderedFile} -o "$out";
       '';
     in
     readFile html-out;
@@ -58,7 +64,11 @@ let
     let
       nixFile = replaceString ".md" ".nix" path;
     in
-    if pathExists nixFile then import nixFile else null;
+    {
+      inherit path;
+      link = getLink path;
+      config = if pathExists nixFile then import nixFile else null;
+    };
   getLink = path: path |> replaceString "${./pages}" "" |> replaceString ".md" "";
   mdPageDir = dir: rec {
     path = "${./pages}/${dir}";

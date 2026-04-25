@@ -7,8 +7,8 @@ ${(mdPageDir "blog").files
     |> map (f: let cfg = getPageConfig f; in
       partials.card {
         link = getLink f;
-        title = cfg.title;
-        description = if cfg ? description then cfg.description else null;
+        title = cfg.config.title;
+        description = if cfg.config ? description then cfg.config.description else null;
       }
     )
     |> builtins.concatStringsSep ""}

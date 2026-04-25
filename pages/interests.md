@@ -1,6 +1,6 @@
-# My obsessions
+# Things I find interesting
 
-I like some things. Putting all of it together here if anyone else finds them interesting:
+I like things. Putting all of it together here if anyone else also finds them interesting:
 - [Hardware](/hardware)
 - [Wood carving](/wood)
 - [Creative coding](/creative-coding)

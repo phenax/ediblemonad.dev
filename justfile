@@ -1,11 +1,13 @@
+default: build
+
 build:
   nix build -L;
-  rm -rf build/;
-  mkdir -p build/;
-  cp --no-preserve=mode,ownership -r result/* -t build/
+  rm -rf .build/;
+  mkdir -p .build/;
+  cp --no-preserve=mode,ownership -r result/* -t .build/
 
 serve:
-  npx serve -p 5000 ./build
+  npx serve -p 5000 .build/
 
 post dir='blog':
   #!/usr/bin/env sh

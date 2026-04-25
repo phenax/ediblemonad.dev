@@ -20,9 +20,10 @@
             titlePrefix = "ediblemonad";
             pages = {
               "index.html" = ssg.mdPage "home.md";
+              "projects.html" = ssg.mdPage "projects.md";
               "blog/index.html" = ssg.mdPage "blog.md";
               "blog" = ssg.mdPageDir "blog";
-              "obsessions" = ssg.mdPage "obsessions.md";
+              "interests" = ssg.mdPage "interests.md";
               "hardware/index.html" = ssg.mdPage "hardware.md";
               "hardware" = ssg.mdPageDir "hardware";
             };
