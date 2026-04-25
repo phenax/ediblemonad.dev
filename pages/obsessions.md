@@ -1,4 +1,4 @@
-## My obsessions
+# My obsessions
 
 I like some things. Putting all of it together here if anyone else finds them interesting:
 - [Hardware](/hardware)

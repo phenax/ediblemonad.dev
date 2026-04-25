@@ -1,4 +1,4 @@
-## Hey there
+# Hey there
 
 I'm Akshay. Software engineer, entrée-preneur, visionary (many decades of experience using eyes) and much more. This is my meaningless heap of things I thought would make sense together on a website.
 

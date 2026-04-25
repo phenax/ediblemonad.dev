@@ -1,26 +1,47 @@
 { pkgs, ... }:
 with pkgs.lib;
 let
+  html = contents: replaceString "\n" "" contents;
   templateInjections = {
-    inherit mdPageDir getLink getPageConfig;
+    inherit
+      mdPageDir
+      getLink
+      getPageConfig
+      getPageContents
+      ;
     partials = {
+      inline-card = { contents }: html ''<li class="inline-card">${contents}</li>'';
       card =
         {
           title,
           link,
           description,
         }:
-        ''
+        html ''
           <li>
             <a href="${link}" class="card">
               <span class="card-title">${title}</span>
               ${if isNull description then "" else ''<span class="card-description">${description}</span>''}
             </a>
           </li>
-        ''
-        |> replaceString "\n" "";
+        '';
     };
   };
+  getPageContents =
+    file:
+    let
+      config = getPageConfig file;
+      renderedFile = evaluateTemplateFile { } file;
+      outfile = "/tmp/page-partial-out.html";
+      html-out = pkgs.runCommand "build-html" { } ''
+        ${pkgs.pandoc}/bin/pandoc \
+          --from=gfm \
+          --template '${./post-template.html}' \
+          ${renderedFile} \
+          -o "$out";
+      '';
+    in
+    readFile html-out;
   getPageConfig =
     path:
     let
@@ -35,6 +56,12 @@ let
     before = if pathExists "${path}/+before.html" then "${path}/+before.html" else null;
   };
   mdPage = path: "${./pages}/${path}";
+
+  evalNixExpr = injections: expr: toFile "eval.nix" expr |> scopedImport injections;
+  evaluateTemplate =
+    inject: contents: "''${contents}''" |> evalNixExpr (templateInjections // inject);
+  evaluateTemplateFile =
+    inject: file: readFile file |> evaluateTemplate inject |> pkgs.writeText "${file}";
 in
 {
   inherit mdPageDir mdPage;
@@ -49,12 +76,6 @@ in
       stylesheet,
     }:
     let
-      evalNixExpr = injections: expr: toFile "eval.nix" expr |> scopedImport injections;
-      evaluateTemplate =
-        inject: contents: "''${contents}''" |> evalNixExpr (templateInjections // inject);
-      evaluateTemplateFile =
-        inject: file: readFile file |> evaluateTemplate inject |> pkgs.writeText "${file}";
-
       buildPage =
         file: outfile: parent:
         let

@@ -1,4 +1,4 @@
-## Blog
+# Blog
 
 Just my personal, poorly researched thoughts and opinions.
 
