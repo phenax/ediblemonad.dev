@@ -1,6 +1,6 @@
 <header class="header">
   <div>
-    <a class="header-title" href="/">ediblemonad</a>
+    <a class="header-title" href="/">akshay</a>
   </div>
   <div class="header-nav">
     <a class="header-link js-header-link" href="/">home</a>
@@ -11,14 +11,14 @@
 
 <style>
   .header {
-    padding: 1.3rem 1.7rem;
-    max-width: 1000px;
+    padding: var(--page-v-padding) var(--page-h-padding);
+    max-width: var(--page-max-width);
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 6px;
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid var(--color-gray-1);
   }
 
   .header-link {
@@ -35,7 +35,7 @@
     display: block;
     font-size: 1rem;
     text-decoration: none !important;
-    color: #fff !important;
+    color: var(--color-foreground-1) !important;
   }
 
   @media (max-width: 480px) {
