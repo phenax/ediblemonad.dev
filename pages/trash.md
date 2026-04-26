@@ -1,6 +1,6 @@
-# Things I find interesting
+# Stuff
 
-I like things. Putting all of it together here if anyone else also finds them interesting:
+My thoughts and things I find interesting:
 - [Hardware](/hardware)
 - [Wood carving](/wood)
 - [Creative coding](/creative-coding)

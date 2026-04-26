@@ -1,6 +1,5 @@
 :root {
   --color-accent: #51e9a0;
-  --color-background: #000;
   --page-h-padding: 1.7rem;
   --page-v-padding: 1.3rem;
   --page-max-width: 1000px;
@@ -8,27 +7,48 @@
   --color-gray-2: #222;
   --color-gray-3: #333;
   --color-gray-8: #888;
+  --color-background-1: #000;
+  --color-background-2: var(--color-gray-1);
+  --color-background-3: var(--color-gray-2);
   --color-foreground-1: #ddd;
   --color-foreground-2: #fff;
 
   font-size: 16px;
   font-family: monospace;
   color: var(--color-foreground-1);
-  line-height: 1.8rem;
 }
 
 html,
 body {
-  background-color: var(--color-background);
+  background-color: var(--color-background-1);
+  line-height: 1.5em;
 }
 
 hr {
   border: none;
   border-bottom: 1px solid var(--color-gray-2);
+  margin: 1rem 0 1.5rem;
 }
 
 p {
   padding-bottom: 1rem;
+}
+
+pre {
+  background-color: var(--color-background-2);
+  padding: 1rem;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+code {
+  background-color: var(--color-background-3);
+  padding: 0.1em 0.5em;
+  color: var(--color-foreground-2);
 }
 
 h1,
@@ -40,6 +60,8 @@ h5 {
   padding-bottom: 0.7em;
   font-weight: bolder;
   color: var(--color-foreground-2);
+  line-height: 1.3em;
+  padding-top: 0.3rem;
 }
 
 h1 {

@@ -1,7 +1,5 @@
 # Blog
 
-Just my personal, poorly researched thoughts and opinions.
-
 <ul>
 ${(mdPageDir "blog").files
     |> map (f: let cfg = getPageConfig f; in

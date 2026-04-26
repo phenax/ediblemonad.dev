@@ -72,7 +72,7 @@ let
   getLink = path: path |> replaceString "${./pages}" "" |> replaceString ".md" "";
   mdPageDir = dir: rec {
     path = "${./pages}/${dir}";
-    files = filesystem.listFilesRecursive path |> filter (strings.hasSuffix ".md");
+    files = filesystem.listFilesRecursive path |> filter (strings.hasSuffix ".md") |> reverseList;
     after = if pathExists "${path}/+after.html" then "${path}/+after.html" else null;
     before = if pathExists "${path}/+before.html" then "${path}/+before.html" else null;
   };
@@ -81,7 +81,9 @@ let
   evalNixExpr = injections: expr: toFile "eval.nix" expr |> scopedImport injections;
   # TODO: escape ''
   evaluateTemplate =
-    inject: contents: "''${contents}''" |> evalNixExpr (templateInjections // inject);
+    inject: contents:
+    "''${contents |> replaceStrings [ "''" "'''" ] [ "'''" "''''" ]}''"
+    |> evalNixExpr (templateInjections // inject);
   evaluateTemplateFile =
     inject: file: readFile file |> evaluateTemplate inject |> pkgs.writeText "${file}";
 in

@@ -24,7 +24,7 @@
               "projects.html" = ssg.mdPage "projects.md";
               "blog/index.html" = ssg.mdPage "blog.md";
               "blog" = ssg.mdPageDir "blog";
-              "interests" = ssg.mdPage "interests.md";
+              "trash" = ssg.mdPage "trash.md";
               "hardware/index.html" = ssg.mdPage "hardware.md";
               "hardware" = ssg.mdPageDir "hardware";
             };

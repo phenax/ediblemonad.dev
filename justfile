@@ -9,11 +9,21 @@ build:
 serve:
   npx serve -p 5000 .build/
 
-post dir='blog':
+post dir:
   #!/usr/bin/env sh
   set -eu
   title=$(bash -c 'read -e -p "title > " result; echo "$result"' | tail -n 1)
-  path="./pages/{{dir}}/$(date +'%F')-$(echo "$title" | sed 's/[^A-Za-z0-9]/-/g' | tr '[A-Z]' '[a-z]')"
+  path="./pages/{{dir}}/$(date +'%F')-$(echo "$title" | sed 's/[^A-Za-z0-9]/-/g' | tr '[A-Z]' '[a-z]').md"
+  if ! [ -f "$postfile" ]; then
+    echo "## $title" > "$postfile";
+  fi
+  "$EDITOR" "$postfile";
+
+blog:
+  #!/usr/bin/env sh
+  set -eu
+  title=$(bash -c 'read -e -p "title > " result; echo "$result"' | tail -n 1)
+  path="./pages/blog/$(date +'%F')-$(echo "$title" | sed 's/[^A-Za-z0-9]/-/g' | tr '[A-Z]' '[a-z]')"
   postfile="${path}.md"
   nixfile="${path}.nix"
   if ! [ -f "$postfile" ]; then
