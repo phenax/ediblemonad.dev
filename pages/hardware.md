@@ -7,6 +7,7 @@ I like electronics although the number of burned ICs during my first few years w
       |> map (f: partials.inline-card {
           contents = getPageContents f;
           link = getLink f;
+          linkText = "Comment >>";
         })
       |> builtins.concatStringsSep ""}
 </ul>

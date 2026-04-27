@@ -14,6 +14,7 @@ let
         {
           contents,
           link ? null,
+          linkText ? "see more",
         }:
         html ''
           <li class="inline-card">
@@ -25,7 +26,7 @@ let
                 ''
                   <div class="inline-card-footer">
                     <a href="${link}">
-                      Comment >>
+                      ${linkText}
                     </a>
                   </div>
                 ''
@@ -55,7 +56,7 @@ let
       renderedFile = evaluateTemplateFile { } file;
       outfile = "/tmp/page-partial-out.html";
       html-out = pkgs.runCommandLocal "build-html" { } ''
-        ${pkgs.pandoc}/bin/pandoc --from=gfm ${renderedFile} -o "$out";
+        ${pkgs.pandoc}/bin/pandoc --from=gfm --to=html ${renderedFile} -o "$out";
       '';
     in
     readFile html-out;
@@ -110,7 +111,7 @@ in
         in
         ''
           pandoc \
-            --shift-heading-level-by=-1 --standalone --from=gfm \
+            --shift-heading-level-by=-1 --standalone --from=gfm --to=html \
             -c /style.css --template '${./.}/${template}' \
             --title-prefix='${titlePrefix}' \
             ${if isNull header then "" else "--include-before-body '${./.}/${header}'"} \
