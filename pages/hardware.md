@@ -1,6 +1,4 @@
-# Hardware
-
-I like electronics although the number of burned ICs during my first few years with it would suggest otherwise.
+# Hardware & embedded
 
 <ul>
   ${(mdPageDir "hardware").files

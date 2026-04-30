@@ -20,7 +20,7 @@ let
           <li class="inline-card">
             ${contents}
             ${
-              if isNull link then
+              if link == null then
                 ""
               else
                 ''
@@ -43,21 +43,27 @@ let
           <li>
             <a href="${link}" class="card">
               <div class="card-title">${title}</div>
-              ${if isNull description then "" else ''<div class="card-description">${description}</div>''}
+              ${
+                if description == null || description == "" then
+                  ""
+                else
+                  ''<div class="card-description">${description}</div>''
+              }
             </a>
           </li>
         '';
-      linkExternal = link: text: html ''
-        <a href="${link}" target="_blank _parent" rel="noopener">${text}</a>
+      linkExternal =
+        link: text: html ''<a href="${link}" target="_blank _parent" rel="noopener">${text}</a>'';
+      commentEmbed = html ''
+        <script src="https://utteranc.es/client.js" repo="phenax/ediblemonad.dev" issue-term="pathname" label="comment" theme="github-dark" crossorigin="anonymous" async>
+        </script>
       '';
     };
   };
   getPageContents =
     file:
     let
-      config = getPageConfig file;
       renderedFile = evaluateTemplateFile { } file;
-      outfile = "/tmp/page-partial-out.html";
       html-out = pkgs.runCommandLocal "build-html" { } ''
         ${pkgs.pandoc}/bin/pandoc --from=gfm --to=html ${renderedFile} -o "$out";
       '';
@@ -109,18 +115,20 @@ in
         let
           config = getPageConfig file;
           renderedFile = evaluateTemplateFile { } file;
-          hasBefore = parent ? before && !(isNull parent.before);
-          hasAfter = parent ? after && !(isNull parent.after);
+          hasBefore = parent ? before && !(parent.before == null);
+          hasAfter = parent ? after && !(parent.after == null);
+          afterFile = evaluateTemplateFile { } parent.after;
+          beforeFile = evaluateTemplateFile { } parent.before;
         in
         ''
           pandoc \
             --shift-heading-level-by=-1 --standalone --from=gfm --to=html \
             -c /style.css --template '${./.}/${template}' \
             --title-prefix='${titlePrefix}' \
-            ${if isNull header then "" else "--include-before-body '${./.}/${header}'"} \
-            ${if hasBefore then "--include-before-body '${parent.before}'" else ""} \
-            ${if hasAfter then "--include-after-body '${parent.after}'" else ""} \
-            ${if isNull footer then "" else "--include-after-body '${./.}/${footer}'"} \
+            ${if header == null then "" else "--include-before-body '${./.}/${header}'"} \
+            ${if hasBefore then "--include-before-body '${beforeFile}'" else ""} \
+            ${if hasAfter then "--include-after-body '${afterFile}'" else ""} \
+            ${if footer == null then "" else "--include-after-body '${./.}/${footer}'"} \
             ${if config ? meta then "--include-in-header '${pkgs.writeText "" config.meta}'" else ""} \
             ${renderedFile} \
             -o "${outfile}";
@@ -154,7 +162,7 @@ in
       buildInputs = [ pkgs.pandoc ];
       buildPhase = ''
         mkdir -p output
-        cp ${staticDir}/* output/
+        cp -r ${staticDir}/* output/
         ${getBuildScript pages}
       '';
       installPhase = ''
