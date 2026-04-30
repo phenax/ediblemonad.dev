@@ -1,7 +1,7 @@
 { pkgs, ... }:
 with pkgs.lib;
 let
-  html = contents: replaceString "\n" "" contents;
+  html = contents: replaceString "\n" " " contents;
   templateInjections = {
     inherit
       mdPageDir
@@ -47,6 +47,9 @@ let
             </a>
           </li>
         '';
+      linkExternal = link: text: html ''
+        <a href="${link}" target="_blank _parent" rel="noopener">${text}</a>
+      '';
     };
   };
   getPageContents =

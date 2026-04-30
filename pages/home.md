@@ -1,6 +1,6 @@
 # Hey there
 
-I'm Akshay. Often described as a huge nerd. This is my meaningless heap of things I thought would make sense together on a website.
+I'm Akshay. This is my meaningless heap of things I thought would make sense together on a website.
 
 Heres some links of mine:
 - <a href="https://github.com/phenax" target="_blank _parent">Github</a>

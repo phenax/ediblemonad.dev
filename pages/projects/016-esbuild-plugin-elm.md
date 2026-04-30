@@ -2,4 +2,4 @@
 
 An esbuild plugin for building elm projects.
 
-<a href="https://github.com/phenax/esbuild-plugin-elm" target="_blank _parent" rel="noopener">Github</a>
+${partials.linkExternal "https://github.com/phenax/esbuild-plugin-elm" "Github"}

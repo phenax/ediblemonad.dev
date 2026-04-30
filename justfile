@@ -9,11 +9,23 @@ build:
 serve:
   npx serve -p 5000 .build/
 
+proj:
+  #!/usr/bin/env sh
+  set -eu
+  title=$(bash -c 'read -e -p "title > " result; echo "$result"' | tail -n 1)
+  lastnum="$(ls ./pages/projects/*.md | sed -E 's|.*/([0-9]+)-[^/]+.md$|\1|' | sort | tail -n1 | xargs -i echo "{} + 1" | bc | xargs -i printf "%03g" {})"
+  postfile="./pages/projects/${lastnum}-$(echo "$title" | sed 's/[^A-Za-z0-9]/-/g' | tr '[A-Z]' '[a-z]').md"
+  if ! [ -f "$postfile" ]; then
+    echo "## $title" > "$postfile";
+    echo -e '\n\n${partials.linkExternal "https://github.com/phenax/something" "Github"}' >> "$postfile";
+  fi
+  "$EDITOR" "$postfile";
+
 post dir:
   #!/usr/bin/env sh
   set -eu
   title=$(bash -c 'read -e -p "title > " result; echo "$result"' | tail -n 1)
-  path="./pages/{{dir}}/$(date +'%F')-$(echo "$title" | sed 's/[^A-Za-z0-9]/-/g' | tr '[A-Z]' '[a-z]').md"
+  postfile="./pages/{{dir}}/$(date +'%F')-$(echo "$title" | sed 's/[^A-Za-z0-9]/-/g' | tr '[A-Z]' '[a-z]').md"
   if ! [ -f "$postfile" ]; then
     echo "## $title" > "$postfile";
   fi
