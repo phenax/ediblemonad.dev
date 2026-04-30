@@ -1,9 +1,8 @@
-# Stuff
+# Interests
 
-My thoughts and things I find interesting:
-- [Hardware](/hardware)
-- [Wood carving](/wood)
+My thoughts on things I find interesting/whatever I'm into right now:
+
+- [Hardware & embedded](/hardware)
 - [Creative coding](/creative-coding)
-- [Desmos](/desmos)
-- [Music](/music)
+- [Older blog posts](/blog)
 

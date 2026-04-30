@@ -80,6 +80,37 @@ h4 {
   font-size: 1.1rem;
 }
 
+.math {
+  background-color: var(--color-background-2);
+}
+
+.display.math {
+  padding: 0.3em;
+}
+
+.inline.math {
+  display: inline-block;
+  padding: 0.1em 0.3em;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+strong {
+  font-weight: bolder;
+}
+
+em {
+  font-style: italic;
+}
+
 .root {
   padding: var(--page-v-padding) var(--page-h-padding);
   max-width: var(--page-max-width);
