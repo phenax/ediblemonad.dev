@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+          <title>ediblemonad – JS Magic Tricks to impress your friends</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+      min-width: 0;
+    }
+
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
+
+    body {
+      line-height: 1;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    blockquote,
+    q {
+      quotes: none;
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: '';
+      content: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+  </style>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+    <link rel="stylesheet" href="/style.css" />
+      </head>
+
+<body>
+
+    <header class="header">
+      <div>
+        <a class="header-title" href="/">akshay</a>
+      </div>
+      <div class="header-nav">
+        <a class="header-link" href="/">home</a>
+        <a class="header-link" href="/trash.html">trash</a>
+        <a class="header-link" href="/projects.html">projects</a>
+      </div>
+    </header>
+
+    <style>
+      .header {
+        padding: var(--page-v-padding) var(--page-h-padding);
+        max-width: var(--page-max-width);
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
+        border-bottom: 1px solid var(--color-gray-1);
+      }
+
+      .header-link {
+        display: block;
+      }
+
+      .header-nav {
+        display: flex;
+        font-size: 0.8rem;
+        gap: 8px;
+      }
+
+      .header-title {
+        display: block;
+        font-size: 1rem;
+        text-decoration: none !important;
+        color: var(--color-foreground-1) !important;
+      }
+
+      @media (max-width: 480px) {
+        .header {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+    <div class="header-secondary">
+      <a href="/blog">&lt; Back to blog</a>
+    </div>
+  
+  <div class="root">
+        <header id="title-block-header">
+      <h1 class="title">JS Magic Tricks to impress your friends</h1>
+                            </header>
+        
+    <main>
+      <p>My name is Houdini J.S. Magnifico. What I'm about to perform
+      here are a set of illusions and magic tricks that are sure to blow
+      your mind! So prepare to be amazed!</p>
+      <blockquote>
+      <p>The tricks shown here are performed by trained professionals.
+      Do not attempt these stunts at home. Do it in production. Viewer
+      discretion is advised.</p>
+      </blockquote>
+      <p>Let the show begin!</p>
+      <hr />
+      <h2
+      id="for-my-first-trick-i-will-make-this-function-disappear">For my
+      first trick, I will make this function… DISAPPEAR!</h2>
+      <p>This is my totally normal function. Nothing weird about it. A
+      function you'd find in the wild.</p>
+      <div class="sourceCode" id="cb1"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typeof</span> innocentTotallyNormalFunction <span class="op">===</span> <span class="st">&quot;function&quot;</span> <span class="co">// &gt; true</span></span></code></pre></div>
+      <p>Let me just wave Brendan Eich's mouse pad over it for a bit…
+      and… BOOM!</p>
+      <div class="sourceCode" id="cb2"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">innocentTotallyNormalFunction</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">// &gt; Uncaught TypeError: innocentTotallyNormalFunction is not a function</span></span></code></pre></div>
+      <p>GONE! The function is not a function anymore. Schrodinger's
+      function has dissappeared!</p>
+      <p><strong><em>audience applauds</em></strong></p>
+      <p>Thank you! Thank you!</p>
+      <h3 id="heres-how-it-works">Here's how it works</h3>
+      <div class="sourceCode" id="cb3"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> innocentTotallyNormalFunction <span class="op">=</span> (() <span class="kw">=&gt;</span> {})<span class="op">.</span><span class="at">apply</span><span class="op">.</span><span class="fu">bind</span>()<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Works with any method&#39;s bind();</span></span></code></pre></div>
+      <p>Weird right? It's called JavaScript and a lot of people use
+      this in production. The reason this doesn't work is because .apply
+      method expects the context of a function but .bind gives it
+      undefined as the context. this.means that the apply method doesn't
+      know which function it is trying to apply. Then the apply method
+      has an identity crisis and everything goes to shit.</p>
+      <hr />
+      <h2 id="magic-list">Magic list</h2>
+      <p>Here I have a function that clones an array. Perfectly normal,
+      production ready code.</p>
+      <div class="sourceCode" id="cb4"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> clone <span class="op">=</span> list <span class="kw">=&gt;</span> list<span class="op">.</span><span class="fu">reduce</span>((newList<span class="op">,</span> item) <span class="kw">=&gt;</span> [<span class="op">...</span>newList<span class="op">,</span> item]<span class="op">,</span> [])<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Another clone implementation you can use is,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> clone <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="at">values</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Or if you wanna go old school...</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> clone <span class="op">=</span> list <span class="kw">=&gt;</span> {</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> newList <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(<span class="kw">let</span> index <span class="kw">in</span> list) {</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    newList<span class="op">.</span><span class="fu">push</span>(list[index])<span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> newList<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+      <p>Here's an ordinary list with nothing fishy going on inside</p>
+      <div class="sourceCode" id="cb5"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>array<span class="op">.</span><span class="at">length</span> <span class="co">// &gt; 23</span></span></code></pre></div>
+      <p>I'm just gonna casually use the clone function to copy the list
+      and check the length of the newly created list…</p>
+      <div class="sourceCode" id="cb6"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clone</span>(array)<span class="op">.</span><span class="at">length</span> <span class="co">// &gt; 1</span></span></code></pre></div>
+      <p><strong>Magic!!</strong></p>
+      <p>The list is no longer 23 items long. 23 to 1! Next-gen
+      compression algorithm, question mark? Or is it just magic?</p>
+      <h3 id="well-heres-how-it-all-went-down">Well, here's how it all
+      went down</h3>
+      <p>The concept behind this is one that not many developers are
+      familiar with. Array holes, also called empty slots are points in
+      an array that are empty. No, I'm not talking about undefined or
+      null or 0. Just empty.</p>
+      <p>Ref: <a
+      href="https://2ality.com/2015/09/holes-arrays-es6.html">Array
+      holes/empty slots</a>, <a
+      href="https://2ality.com/2012/06/dense-arrays.html">Sparse
+      arrays</a></p>
+      <div class="sourceCode" id="cb7"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Array</span>(<span class="dv">5</span>) <span class="co">// &gt; [&lt;empty x 5&gt;]</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">// OR</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>[<span class="op">,,,,,</span>] <span class="co">// &gt; [&lt;empty x 5&gt;]</span></span></code></pre></div>
+      <p>This creates an array of 5 items but without any values. But
+      javascript doesn't use undefined as the default values tho. It
+      instead creates empty slots (holes) in the arrays but keeps given
+      the length. So when you copy it using the reduce method, it
+      doesn't iterate over the empty slots. So the newly generated array
+      is shorter.</p>
+      <hr />
+      <h2 id="schrodingers-magic-list">Schrodinger's magic list</h2>
+      <p>The list we are gonna be working on is document.all which is a
+      list of all nodes in a document.</p>
+      <div class="sourceCode" id="cb8"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="at">all</span> <span class="co">// &gt; HTMLAllCollection {...}</span></span></code></pre></div>
+      <p>Council of W3C, give me the strength to make this list
+      disappear!!! Boom! Shaa! Waka-Waka Boom!</p>
+      <div class="sourceCode" id="cb9"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typeof</span> <span class="bu">document</span><span class="op">.</span><span class="at">all</span> <span class="co">// &gt; undefined</span></span></code></pre></div>
+      <p><strong><em>Be Amazed!!</em></strong></p>
+      <p>Go get an MRI scan because your tiny little brain just
+      exploded!</p>
+      <h3 id="heres-the-big-reveal">Here's the big reveal!</h3>
+      <p><code>document.all</code> is a very old and deprecated api that
+      allowed you to iterate over all the nodes rendered to the DOM. The
+      typeof expression returning <code>undefined</code> was by design
+      as a part of deprecation of that non-standard feature. Weird, I
+      know. But that's just how javascript rolls.</p>
+      <hr />
+      <h2 id="are-we-infinity-yet">Are we Infinity yet?</h2>
+      <p>Let's take a number, <code>let x: number</code>.</p>
+      <div class="sourceCode" id="cb10"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> <span class="dv">1</span> <span class="op">===</span> x<span class="op">;</span> <span class="co">// &gt;&gt; true</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> <span class="dv">2</span> <span class="op">===</span> x<span class="op">;</span> <span class="co">// &gt;&gt; false</span></span></code></pre></div>
+      <p>“What just happened?”</p>
+      <p>I added 1 to x and the value didn't change! Then I added 2 to
+      it and… the universe… it changed.</p>
+      <h3 id="check-out-how-this-works">Check out how this works</h3>
+      <div class="sourceCode" id="cb11"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> x <span class="op">=</span> <span class="fl">1e16</span><span class="op">;</span> <span class="co">// OR 1 * Math.pow(10, 16) OR 10000000000000000</span></span></code></pre></div>
+      <p>This is by design. It's documented in IEEE 754-2008. When the
+      number is as large as this, it rounds it up to the nearest even
+      number.</p>
+      <p>Ref: <a
+      href="https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules">Rounding
+      rules section in IEEE 754</a></p>
+      <hr />
+      <h2
+      id="is-a-not-a-number-a-number-or-not-a-number-well-its-nan-of-your-business">Is
+      a “not a number” a number or not a number? Well, it's NaN of your
+      business</h2>
+      <div class="sourceCode" id="cb12"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typeof</span> <span class="kw">NaN</span> <span class="op">===</span> <span class="st">&#39;number&#39;</span> <span class="co">// &gt;&gt; true</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">NaN</span> <span class="op">!==</span> <span class="kw">NaN</span> <span class="co">// &gt;&gt; true</span></span></code></pre></div>
+      <p>Wut? ‘Not a number' is a number and ‘Not a number' is not equal
+      to ‘Not a number'</p>
+      <p>Javascript is a magical language</p>
+      <h3 id="know-the-trick">Know the trick</h3>
+      <p>NaN is a numeric data type but it behaves as an identity when
+      any mathematical operation is applied to it.</p>
+      <p><em>“But why is NaN === NaN returning false?”</em></p>
+      <p>Because the Gods of Javascript wished so. If either side of ===
+      operator is NaN, the operation returns false. Thats just how it
+      works. Don't question it.</p>
+      <hr />
+      <h2 id="check-if-your-list-has-more-than-1-items">Check if your
+      list has more than 1 items</h2>
+      <p>A very complicated problem in programming.</p>
+      <p>A normie dev would go ahead and write something like</p>
+      <div class="sourceCode" id="cb13"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> hasAtleast2Elements <span class="op">=</span> x <span class="kw">=&gt;</span> x<span class="op">.</span><span class="at">length</span> <span class="op">&gt;=</span> <span class="dv">2</span><span class="op">;</span></span></code></pre></div>
+      <p>That solution is 13 characters long. In the modern world of
+      javascript, 13 characters is way too many characters. It is a
+      performance bottleneck.</p>
+      <p>Let's write something more optimized in size</p>
+      <div class="sourceCode" id="cb14"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> hasAtleast2Elements <span class="op">=</span> x <span class="kw">=&gt;</span> <span class="op">!</span><span class="pp">isNaN</span>(<span class="op">+</span>x)<span class="op">;</span></span></code></pre></div>
+      <p>There. 10 characters. Much better. We removed
+      <strong>23%</strong> of our JavaScript! Good job. Less JavaScript
+      is good JavaScript</p>
+      <h3 id="the-genius-behind-this-action">The genius behind this
+      action</h3>
+      <p>We improved our load time by 23% but at what cost?! How does
+      that function even work? Magic? Not magic, JavaScript!</p>
+      <p>The + operator applied to a list returns NaN if the number of
+      items in the list is more than 1.</p>
+      <p>Why does it do that? Well, type casting. +[] is equal to
+      +[].toString().</p>
+      <p>So,</p>
+      <div class="sourceCode" id="cb15"><pre
+      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>[]<span class="op">.</span><span class="fu">toString</span>() <span class="op">===</span> <span class="st">&#39;&#39;</span> <span class="co">// &gt;&gt; +&#39;&#39; === 0</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>]<span class="op">.</span><span class="fu">toString</span>() <span class="op">===</span> <span class="st">&#39;1&#39;</span> <span class="co">// &gt;&gt; +&#39;1&#39; === 1</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">.</span><span class="fu">toString</span>() <span class="op">===</span> <span class="st">&#39;1,2&#39;</span> <span class="co">// &gt;&gt; +&#39;1,2&#39; === NaN (Cannot typecast as it is not a number)</span></span></code></pre></div>
+      <hr />
+      <hr />
+      <p>That's all for today! Tune in next time to watch Magnifico use
+      magic in production and get fired immediately.</p>
+      <p>Now I'm gonna make myself disappear.</p>
+      <p>…</p>
+      <p>…</p>
+      <p>…</p>
+      <p>Why is this… Just a second folks… Some technical difficul…</p>
+      <p><strong><em>magic man magically disappears</em></strong></p>
+    </main>
+
+  </div>
+
+    <hr />
+    <script src="https://utteranc.es/client.js" repo="phenax/ediblemonad.dev" issue-term="pathname" label="comment" theme="github-dark" crossorigin="anonymous" async></script> 
+  </body>
+
+</html>
