@@ -6,6 +6,7 @@ ${partials.linkRss "${baseUrl}/hardware.xml" "Akshay's hardware and embedded pos
   ${(mdPageDir "hardware").files
       |> map (f: partials.inline-card {
           contents = getPageContents {} f;
+          date = getDateFromFilename f;
           link = getLink f;
           linkText = "Comment >>";
         })

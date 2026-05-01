@@ -6,6 +6,7 @@
   --color-gray-1: #111;
   --color-gray-2: #222;
   --color-gray-3: #333;
+  --color-gray-5: #555;
   --color-gray-8: #888;
   --color-background-1: #000;
   --color-background-2: var(--color-gray-1);
@@ -116,6 +117,12 @@ em {
   margin: auto;
 }
 
+.centered-content {
+  padding: var(--page-v-padding) var(--page-h-padding);
+  max-width: var(--page-max-width);
+  margin: auto;
+}
+
 a {
   color: var(--color-accent);
   text-decoration: none;
@@ -170,9 +177,19 @@ li {
   padding-bottom: 0.7rem;
 }
 
+.post-date {
+  font-size: 0.8rem;
+  color: var(--color-gray-5);
+  font-style: italic;
+}
+
 .header-secondary {
   font-size: 0.85rem;
   padding: var(--page-v-padding) var(--page-h-padding) 0;
   max-width: var(--page-max-width);
   margin: auto;
+}
+
+.utterances-frame {
+  min-height: 300px;
 }

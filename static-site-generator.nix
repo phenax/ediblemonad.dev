@@ -8,17 +8,20 @@ let
       getLink
       getPageConfig
       getPageContents
+      getDateFromFilename
       ;
     partials = rec {
       inline-card =
         {
           contents,
+          date ? null,
           link ? null,
           linkText ? "see more",
         }:
         html ''
           <li class="inline-card">
             ${contents}
+            ${if date == null then "" else ''<div class="post-date">${date}</div>''}
             ${
               if link == null then
                 ""
@@ -55,7 +58,9 @@ let
       linkExternal =
         link: text: html ''<a href="${link}" target="_blank _parent" rel="noopener">${text}</a>'';
       commentEmbed = html ''
+        <div class="centered-content">
         <script src="https://utteranc.es/client.js" repo="phenax/ediblemonad.dev" issue-term="pathname" label="comment" theme="github-dark" crossorigin="anonymous" async></script>
+        </div>
       '';
       linkRss = link: text: ''
         <link rel="alternate" type="application/rss+xml" href="${link}" title="${text}" />
@@ -85,6 +90,12 @@ let
       config = if pathExists nixFile then import nixFile else null;
     };
   getLink = path: path |> replaceString "${./pages}" "" |> replaceString ".md" ".html";
+  getDateFromFilename =
+    file:
+    baseNameOf file
+    |> match ".*([[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2})-.*"
+    |> (match: if match != null then elemAt match 0 else null);
+
   mdPageDir = dir: rec {
     type = "page";
     path = "${./pages}/${dir}";
@@ -131,8 +142,8 @@ in
           renderedFile = evaluateTemplateFile pageInjections file;
           hasBefore = parent ? before && !(parent.before == null);
           hasAfter = parent ? after && !(parent.after == null);
-          afterFile = evaluateTemplateFile pageInjections parent.after;
-          beforeFile = evaluateTemplateFile pageInjections parent.before;
+          afterFile = evaluateTemplateFile (pageInjections // { inherit file; }) parent.after;
+          beforeFile = evaluateTemplateFile (pageInjections // { inherit file; }) parent.before;
         in
         ''
           pandoc \
@@ -154,21 +165,13 @@ in
           varJson = dir.options // {
             items =
               dir.files
-              |> map (
-                file:
-                let
-                  contents = getPageContents pageInjections file;
-                  heading = readFile file |> strings.splitString "\n" |> findFirst (hasPrefix "#") (baseNameOf file);
-                  date = baseNameOf file |> match ".*([[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2})-.*";
-                in
-                {
-                  id = getLink file;
-                  title = heading;
-                  link = "${baseUrl}${getLink file}";
-                  date = if date != null then elemAt date 0 else null;
-                  description = contents;
-                }
-              );
+              |> map (file: {
+                id = getLink file;
+                title = readFile file |> strings.splitString "\n" |> findFirst (hasPrefix "#") (baseNameOf file);
+                link = "${baseUrl}${getLink file}";
+                date = getDateFromFilename file;
+                description = getPageContents pageInjections file;
+              });
           };
           rssFileContents = pkgs.writeText "rss" ''
             <?xml version="1.0" encoding="utf-8" standalone="yes"?>

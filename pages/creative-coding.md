@@ -6,6 +6,7 @@ ${partials.linkRss "${baseUrl}/creative-coding.xml" "Akshay's creative-coding po
   ${(mdPageDir "creative-coding").files
       |> map (f: partials.inline-card {
           contents = getPageContents {} f;
+          date = getDateFromFilename f;
           link = getLink f;
           linkText = "Comment >>";
         })
