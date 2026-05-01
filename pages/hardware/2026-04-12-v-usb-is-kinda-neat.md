@@ -8,4 +8,6 @@ First challenge: realized the internal clock of attiny84a and attiny4313 (the on
 
 Second challenge: we need 3.3V for the usb data lines but the LEDs need 5V. I can either drive the attiny4313 with 3.3V and maybe add a mosfet for the LEDs or use 5V for the mcu and LED but shift D+/D- to 3.3V level. Went with the latter using a zener diode to maintain the 3.3V level on data lines since that seemed simpler.
 
-Third challenge: after writing the fuse bits to use the external crystal oscillator, couldn't program it again.
+Third challenge: after writing the fuse bits to use the external crystal oscillator, couldn't program it again. The crystal is connected with load caps and the program (an rgb version of blink) seems to run fine with or without the crystal. Makes no sense. Saw somewhere that you can set up a high voltage programmer (12v) to get the fuse bits to reset. So will try that next.
+
+To be continued...
