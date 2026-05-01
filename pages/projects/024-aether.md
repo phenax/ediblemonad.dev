@@ -1,4 +1,4 @@
-## Aether lang
+# Aether lang
 
 A lisp interpreter written in haskell.
 

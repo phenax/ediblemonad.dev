@@ -1,4 +1,4 @@
-## V-USB is kinda neat
+# V-USB is kinda neat
 
 I only ran into [v-usb](https://github.com/obdev/v-usb) while going through the [qmk docs](https://docs.qmk.fm/compatible_microcontrollers) where it mentions that mcus that don't have native usb will use v-usb instead.
 

@@ -66,7 +66,7 @@ let
     let
       renderedFile = evaluateTemplateFile inject file;
       html-out = pkgs.runCommandLocal "build-html" { } ''
-        ${pkgs.pandoc}/bin/pandoc --from=gfm --to=html ${renderedFile} -o "$out";
+        ${pkgs.pandoc}/bin/pandoc --from=gfm --to=html --shift-heading-level-by=1 ${renderedFile} -o "$out";
       '';
     in
     readFile html-out;

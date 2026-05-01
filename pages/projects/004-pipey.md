@@ -1,4 +1,4 @@
-## Pipey
+# Pipey
 
 A js library for creating pipeline operator ready functions by converting instance methods's to context-free functions.
 

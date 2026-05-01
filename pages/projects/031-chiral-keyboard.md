@@ -1,4 +1,4 @@
-## Chiral keyboard
+# Chiral keyboard
 
 My custom ortholinear split keyboard design running on an RP2040 zero.
 

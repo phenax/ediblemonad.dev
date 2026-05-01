@@ -1,4 +1,4 @@
-## Temperature sensor attiny84a
+# Temperature sensor attiny84a
 
 A simple temperature sensor and display running on an attiny84a meant for soldering iron.
 

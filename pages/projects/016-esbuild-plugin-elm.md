@@ -1,4 +1,4 @@
-## esbuild-plugin-elm
+# esbuild-plugin-elm
 
 An esbuild plugin for building elm projects.
 

@@ -1,4 +1,4 @@
-## bsp-layout
+# bsp-layout
 
 A dynamic layout management script for bspwm.
 

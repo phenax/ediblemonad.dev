@@ -1,4 +1,4 @@
-## TS types theorem prover
+# TS types theorem prover
 
 A simple (terrible) theorem proof embedding in typescript's type system.
 

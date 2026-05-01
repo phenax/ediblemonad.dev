@@ -1,4 +1,4 @@
-## The analog of the digital
+# The analog of the digital
 
 In digital electronics something that always catches me off guard is the analog suprise. A random part of your schematic that depends on a very specific analog behavior. I ran into one of those while working on [a clock using attiny84a microcontroller IC](https://github.com/makedaft/daft-watch). That project was my re-creation of [breadboard watch](https://ingep.net/breadboardwatch/) which taught me a very simple but cool trick.
 

@@ -1,4 +1,4 @@
-## Desmos graph manager
+# Desmos graph manager
 
 A personal graph manager using desmos graphing calculator.
 
