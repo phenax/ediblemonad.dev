@@ -9,7 +9,7 @@ let
       getPageConfig
       getPageContents
       ;
-    partials = {
+    partials = rec {
       inline-card =
         {
           contents,
@@ -57,8 +57,12 @@ let
       commentEmbed = html ''
         <script src="https://utteranc.es/client.js" repo="phenax/ediblemonad.dev" issue-term="pathname" label="comment" theme="github-dark" crossorigin="anonymous" async></script>
       '';
-      linkRss =
-        link: text: ''<link rel="alternate" type="application/rss+xml" href="${link}" title="${text}" />'';
+      linkRss = link: text: ''
+        <link rel="alternate" type="application/rss+xml" href="${link}" title="${text}" />
+        <div style="text-align: right;">
+          ${linkExternal link "RSS"}
+        </div>
+      '';
     };
   };
   getPageContents =
