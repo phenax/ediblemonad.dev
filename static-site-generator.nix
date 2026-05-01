@@ -55,15 +55,16 @@ let
       linkExternal =
         link: text: html ''<a href="${link}" target="_blank _parent" rel="noopener">${text}</a>'';
       commentEmbed = html ''
-        <script src="https://utteranc.es/client.js" repo="phenax/ediblemonad.dev" issue-term="pathname" label="comment" theme="github-dark" crossorigin="anonymous" async>
-        </script>
+        <script src="https://utteranc.es/client.js" repo="phenax/ediblemonad.dev" issue-term="pathname" label="comment" theme="github-dark" crossorigin="anonymous" async></script>
       '';
+      linkRss =
+        link: text: ''<link rel="alternate" type="application/rss+xml" href="${link}" title="${text}" />'';
     };
   };
   getPageContents =
-    file:
+    inject: file:
     let
-      renderedFile = evaluateTemplateFile { } file;
+      renderedFile = evaluateTemplateFile inject file;
       html-out = pkgs.runCommandLocal "build-html" { } ''
         ${pkgs.pandoc}/bin/pandoc --from=gfm --to=html ${renderedFile} -o "$out";
       '';
@@ -79,17 +80,23 @@ let
       link = getLink path;
       config = if pathExists nixFile then import nixFile else null;
     };
-  getLink = path: path |> replaceString "${./pages}" "" |> replaceString ".md" "";
+  getLink = path: path |> replaceString "${./pages}" "" |> replaceString ".md" ".html";
   mdPageDir = dir: rec {
+    type = "page";
     path = "${./pages}/${dir}";
     files = filesystem.listFilesRecursive path |> filter (strings.hasSuffix ".md") |> reverseList;
     after = if pathExists "${path}/+after.html" then "${path}/+after.html" else null;
     before = if pathExists "${path}/+before.html" then "${path}/+before.html" else null;
   };
+  rssDir = dir: options: rec {
+    type = "rss";
+    path = "${./pages}/${dir}";
+    files = filesystem.listFilesRecursive path |> filter (strings.hasSuffix ".md") |> reverseList;
+    inherit options;
+  };
   mdPage = path: "${./pages}/${path}";
 
   evalNixExpr = injections: expr: toFile "eval.nix" expr |> scopedImport injections;
-  # TODO: escape ''
   evaluateTemplate =
     inject: contents:
     "''${contents |> replaceStrings [ "''" "'''" ] [ "'''" "''''" ]}''"
@@ -98,27 +105,30 @@ let
     inject: file: readFile file |> evaluateTemplate inject |> pkgs.writeText "${file}";
 in
 {
-  inherit mdPageDir mdPage;
+  inherit mdPageDir mdPage rssDir;
 
   createPkg =
     {
       titlePrefix,
       pages,
+      baseUrl ? "",
       template ? "template.html",
       header ? null,
       footer ? null,
       staticDir ? "static",
     }:
     let
+      pageInjections = { inherit baseUrl; };
+
       buildPage =
         file: outfile: parent:
         let
           config = getPageConfig file;
-          renderedFile = evaluateTemplateFile { } file;
+          renderedFile = evaluateTemplateFile pageInjections file;
           hasBefore = parent ? before && !(parent.before == null);
           hasAfter = parent ? after && !(parent.after == null);
-          afterFile = evaluateTemplateFile { } parent.after;
-          beforeFile = evaluateTemplateFile { } parent.before;
+          afterFile = evaluateTemplateFile pageInjections parent.after;
+          beforeFile = evaluateTemplateFile pageInjections parent.before;
         in
         ''
           pandoc \
@@ -134,23 +144,73 @@ in
             -o "${outfile}";
         '';
 
+      buildRss =
+        dir: outfile:
+        let
+          varJson = dir.options // {
+            items =
+              dir.files
+              |> map (
+                file:
+                let
+                  contents = getPageContents pageInjections file;
+                  heading = readFile file |> strings.splitString "\n" |> findFirst (hasPrefix "#") (baseNameOf file);
+                  date = baseNameOf file |> match ".*([[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2})-.*";
+                in
+                {
+                  id = getLink file;
+                  title = heading;
+                  link = "${baseUrl}${getLink file}";
+                  date = if date != null then elemAt date 0 else null;
+                  description = contents;
+                }
+              );
+          };
+          rssFileContents = pkgs.writeText "rss" ''
+            <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+            <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+              <channel>
+                <title>${varJson.title}</title>
+                <link>${varJson.link}</link>
+                ${if varJson ? description then "<description>${varJson.description}</description>" else ""}
+                ${concatMapStrings (item: ''
+                  <item>
+                    <guid>${item.id}</guid>
+                    <title>${item.title}</title>
+                    <link>${item.link}</link>
+                    <comments>${item.link}</comments>
+                    ${if item ? date then "<pubDate>${item.date}</pubDate>" else ""}
+                    <description>
+                      <![CDATA[${item.description}]]>
+                    </description>
+                  </item>
+                '') varJson.items}
+              </channel>
+            </rss>
+          '';
+        in
+        ''
+          cp ${rssFileContents} ${outfile};
+        '';
+
       buildPageFiles = dir: outdir: ''
         mkdir -p ${outdir};
-        ${
-          dir.files
-          |> map (
-            file:
-            buildPage file "${outdir}/${baseNameOf file |> replaceString ".md" ".html" |> removePrefix "/"}" dir
-          )
-          |> concatStringsSep ""
-        }
+        ${concatMapStrings (
+          file:
+          buildPage file "${outdir}/${baseNameOf file |> replaceString ".md" ".html" |> removePrefix "/"}" dir
+        ) dir.files}
       '';
 
       getBuildScript =
         pages:
         mapAttrs (
           name: file:
-          if isString file then buildPage file "output/${name}" null else buildPageFiles file "output/${name}"
+          if isString file then
+            buildPage file "output/${name}" null
+          else if file ? type && file.type == "rss" then
+            buildRss file "output/${name}"
+          else
+            buildPageFiles file "output/${name}"
         ) pages
         |> attrValues
         |> concatStringsSep "\n";

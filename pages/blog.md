@@ -1,5 +1,7 @@
 # Blog
 
+${partials.linkRss "${baseUrl}/blog.xml" "Akshay's blog"}
+
 <ul>
 ${(mdPageDir "blog").files
     |> map (f: let cfg = getPageConfig f; in
