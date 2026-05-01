@@ -50,7 +50,12 @@ mosfet for the LEDs or use 5V for the mcu and LED but shift D+/D- to
 3.3V level. Went with the latter using a zener diode to maintain the
 3.3V level on data lines since that seemed simpler.</p>
 <p>Third challenge: after writing the fuse bits to use the external
-crystal oscillator, couldn't program it again.</p>
+crystal oscillator, couldn't program it again. The crystal is connected
+with load caps and the program (an rgb version of blink) seems to run
+fine with or without the crystal. Makes no sense. Saw somewhere that you
+can set up a high voltage programmer (12v) to get the fuse bits to
+reset. So will try that next.</p>
+<p>To be continued...</p>
 ]]>
   </description>
 </item>
