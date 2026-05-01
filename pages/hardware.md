@@ -1,14 +1,5 @@
 # Hardware & embedded
 
-${partials.linkRss "${baseUrl}/hardware.xml" "Akshay's hardware and embedded posts"}
+${partials.linkRss "${baseUrl}/hardware.xml" "Akshay likes hardware and embedded systems"}
 
-<ul>
-  ${(mdPageDir "hardware").files
-      |> map (f: partials.inline-card {
-          contents = getPageContents {} f;
-          date = getDateFromFilename f;
-          link = getLink f;
-          linkText = "Comment >>";
-        })
-      |> builtins.concatStringsSep ""}
-</ul>
+${partials.inline-card-list (mdPageDir "hardware").files}

@@ -1,14 +1,5 @@
 # Creative coding
 
-${partials.linkRss "${baseUrl}/creative-coding.xml" "Akshay's creative-coding posts"}
+${partials.linkRss "${baseUrl}/creative-coding.xml" "Akshay likes creative-coding"}
 
-<ul>
-  ${(mdPageDir "creative-coding").files
-      |> map (f: partials.inline-card {
-          contents = getPageContents {} f;
-          date = getDateFromFilename f;
-          link = getLink f;
-          linkText = "Comment >>";
-        })
-      |> builtins.concatStringsSep ""}
-</ul>
+${partials.inline-card-list (mdPageDir "creative-coding").files}

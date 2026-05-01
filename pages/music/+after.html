@@ -1,0 +1,5 @@
+${let date = getDateFromFilename file; in
+if date == null then ""
+else "<div class=\"post-date centered-content\">${date}</div>"}
+<hr />
+${partials.commentEmbed}

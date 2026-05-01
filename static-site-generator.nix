@@ -11,6 +11,24 @@ let
       getDateFromFilename
       ;
     partials = rec {
+      inline-card-list =
+        files:
+        if length files == 0 then
+          "<div>Nothing to see here yet</div>"
+        else
+          ''
+            <ul>
+              ${concatMapStrings (
+                file:
+                inline-card {
+                  contents = getPageContents { } file;
+                  date = getDateFromFilename file;
+                  link = getLink file;
+                  linkText = "Comment >>";
+                }
+              ) files}
+            </ul>
+          '';
       inline-card =
         {
           contents,
