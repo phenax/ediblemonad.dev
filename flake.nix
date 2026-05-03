@@ -39,14 +39,21 @@
               "hardware/index.html" = ssg.mdPage "hardware.md";
               "hardware" = ssg.mdPageDir "hardware";
               "hardware.xml" = ssg.rssDir "hardware" {
-                title = "Akshay's hardware and embedded posts";
+                title = "Akshay likes hardware and embedded systems";
                 link = "https://ediblemonad.dev/hardware";
+              };
+
+              "tools/index.html" = ssg.mdPage "tools.md";
+              "tools" = ssg.mdPageDir "tools";
+              "tools.xml" = ssg.rssDir "tools" {
+                title = "Akshay likes simple tools";
+                link = "https://ediblemonad.dev/tools";
               };
 
               "creative-coding/index.html" = ssg.mdPage "creative-coding.md";
               "creative-coding" = ssg.mdPageDir "creative-coding";
               "creative-coding.xml" = ssg.rssDir "creative-coding" {
-                title = "Akshay's creative-coding posts";
+                title = "Akshay likes creative-coding";
                 link = "https://ediblemonad.dev/creative-coding";
               };
 

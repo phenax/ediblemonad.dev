@@ -2,9 +2,10 @@
 
 Things I find interesting/whatever I'm into right now:
 
-- [Hardware & embedded](/hardware)
 - [Creative coding](/creative-coding)
-- [Music](/music)
-- [Video games](/games)
+- [Hardware & embedded](/hardware)
+- [Tools](/tools)
 - [Older blog posts](/blog)
 
+<!-- - [Music](/music) -->
+<!-- - [Video games](/games) -->
