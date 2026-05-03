@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Akshay likes simple tools</title>
+    <link>https://ediblemonad.dev/tools</link>
+    
+    <item>
+  <guid>/tools/2026-05-03-kakoune-supremacy.html</guid>
+  <title>## Kakoune supremacy</title>
+  <link>https://ediblemonad.dev/tools/2026-05-03-kakoune-supremacy.html</link>
+  <comments>https://ediblemonad.dev/tools/2026-05-03-kakoune-supremacy.html</comments>
+  <pubDate>2026-05-03</pubDate>
+  <description>
+    <![CDATA[<h3 id="kakoune-supremacy">Kakoune supremacy</h3>
+<p>I've tried a bunch of different code editors and IDEs over the years
+but nothing beats the control of a modal text editor. Even as "vi
+plugins" in normie editors and IDEs, the difference in user experience
+is massive. But I've come to crave more from my tools. By "more" I mean
+fewer features and better primitives to allow me to build my own
+experience on top of it. Because at the end of the day, I've spend a
+considerable amount of time using the tools that I use for work and as a
+hobby so I know better than the devs of these tools what I'd like my
+tool to do.</p>
+<p>For a while my answer to this was neovim (vim before that). Neovim is
+a really solid code editor and it comes with the simplest and a really
+powerful configuration framework for building on top of it (emacs guys
+suck it (jk, I love emacs too)). I dove so deep into the lua rabit-hole
+that I trimmed my setup down to a few essential plugins and every other
+feature was implemented by me in my config. But over time, I've felt
+like the foundations are a bit "off". The primitives that it provides
+felt a bit inconsistent and like carrying too much weight for my
+taste.</p>
+<p>So as any mentally ill person would, I decided to spend a shit-load
+of time setting up a kakoune configuration that I could use many moons
+ago. And it just made sense. Kakoune's shell based extension framework
+is exactly the kind of simplicity that I was looking for. It is in no
+way a perfect editor but it fits in my hands perfectly. No file
+explorer, no build system, no fancy built-in language server, no split
+windows, etc. Nothing other than a simple code editor with a good-enough
+configuration language that lets you integrate kakoune with any other
+tool you want. I have unix blood in my veins. This kind of workflow
+turns my terminal into an IDE with the editor just being a part of it
+(instead of the other way around. Looking at you, emacs). I still love
+neovim and might go back to it in the future but kakoune feels right for
+now.</p>
+<p>My crotch has never been wetter. Kthanxby.</p>
+]]>
+  </description>
+</item>
+
+  </channel>
+</rss>
