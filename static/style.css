@@ -190,6 +190,9 @@ li {
   margin: auto;
 }
 
-.utterances-frame {
-  min-height: 300px;
+.giscus {
+  padding: 0 var(--page-h-padding) 2rem;
+  min-height: 400px;
+  max-width: var(--page-max-width);
+  margin: auto;
 }
