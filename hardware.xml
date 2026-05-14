@@ -5,6 +5,38 @@
     <link>https://ediblemonad.dev/hardware</link>
     
     <item>
+  <guid>/hardware/2026-05-14-need-at-least-2-uarts.html</guid>
+  <title># Single UART? More like U-fart. JK haha lol</title>
+  <link>https://ediblemonad.dev/hardware/2026-05-14-need-at-least-2-uarts.html</link>
+  <comments>https://ediblemonad.dev/hardware/2026-05-14-need-at-least-2-uarts.html</comments>
+  <pubDate>2026-05-14</pubDate>
+  <description>
+    <![CDATA[<h2 id="single-uart-more-like-u-fart-jk-haha-lol">Single UART? More like
+U-fart. JK haha lol</h2>
+<p>I think people who make SBCs should add at least 2 UART ports. RPI
+zero just has 1 which hurts when you want to reserve the UART port for
+serial console and then all of a sudden you also need it to communicate
+with some other module. I'm in that situation right now.</p>
+<p>Options I have:</p>
+<ol type="1">
+<li>USB for console with dwc2 (depends on SBC). UART for module.</li>
+<li>UART for serial console. USB-to-serial adapter for module (or
+vice-versa but makes more sense if console's serial device can't be
+unplugged).</li>
+<li>UART for serial console. Bit-bang the module at a much lower baud
+rate (if that's supported).</li>
+<li>Board has wifi? Just ssh into it. Although, seems overkill for
+simpler use-cases. Not an option for my pi zero.</li>
+</ol>
+<p>Maybe theres another option that I'm not aware of?</p>
+<p>Going with 1 because it's less work on a pi zero. USB-to-serial if
+the board doesn't support dwc2. But for a serial console you have to 69
+2 USB-to-serial adapters to get a console. But all of this goes away if
+you just fucking add the 2nd UART port.</p>
+]]>
+  </description>
+</item>
+<item>
   <guid>/hardware/2026-04-29-fpga-dreams.html</guid>
   <title># FPGA dreams</title>
   <link>https://ediblemonad.dev/hardware/2026-04-29-fpga-dreams.html</link>

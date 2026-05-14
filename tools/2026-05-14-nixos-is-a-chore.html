@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-          <title>ediblemonad – V-USB is kinda neat</title>
+          <title>ediblemonad – NixOS is a chore</title>
   <style>
     *,
     *::before,
@@ -216,50 +216,34 @@
       }
     </style>
     <div class="header-secondary centered-content">
-      <a href="/hardware">&lt; Back to hardware</a>
+      <a href="/tools">&lt; Back to tools</a>
     </div>
   
   <div class="root">
         <header id="title-block-header">
-      <h1 class="title">V-USB is kinda neat</h1>
+      <h1 class="title">NixOS is a chore</h1>
                             </header>
         
     <main>
-      <p>I only ran into <a
-      href="https://github.com/obdev/v-usb">v-usb</a> while going
-      through the <a
-      href="https://docs.qmk.fm/compatible_microcontrollers">qmk
-      docs</a> where it mentions that mcus that don't have native usb
-      will use v-usb instead.</p>
-      <p>Curiosity killed the akshay. Couldn't resist so started
-      thinking of what I could use it for. Right now I'm in my 8-bit avr
-      arc so seemed like the perfect thing to mess around with. I
-      thought it would be fun to make a simple rgb light connected via
-      USB that changes color via commands over serial. Seems simple
-      enough, what could go wrong? Plenty as it turns out.</p>
-      <p>First challenge: realized the internal clock of attiny84a and
-      attiny4313 (the only 8-bit avr mcus I have) is 8MHz and v-usb only
-      supports 12/15/16/18/20 MHz clocks. No biggie, heres a 16MHz
-      crystal oscillator.</p>
-      <p>Second challenge: we need 3.3V for the usb data lines but the
-      LEDs need 5V. I can either drive the attiny4313 with 3.3V and
-      maybe add a mosfet for the LEDs or use 5V for the mcu and LED but
-      shift D+/D- to 3.3V level. Went with the latter using a zener
-      diode to maintain the 3.3V level on data lines since that seemed
-      simpler.</p>
-      <p>Third challenge: after writing the fuse bits to use the
-      external crystal oscillator, couldn't program it again. The
-      crystal is connected with load caps and the program (an rgb
-      version of blink) seems to run fine with or without the crystal.
-      Makes no sense. Saw somewhere that you can set up a high voltage
-      programmer (12v) to get the fuse bits to reset. So will try that
-      next.</p>
-      <p>To be continued...</p>
+      <p>Using nixos is a chore like brushing your teeth. Oh... I mean
+      "teeth being brushed" (declarative).</p>
+      <p>It takes work. A big investment up front in configuring it and
+      tiny investments for as long as you use it to maintain the
+      configuration. Sounds like a scam but I thank myself for this
+      investment every time there is a bad update or running a project
+      with a flake and having it work fine after many years of sitting
+      idle (which is suprising in the modern norm of having a web of
+      dependencies). This brings an insane amount of confidence in any
+      change I make to my system which lets me explore more things
+      without being afraid touching the wrong thing on MY computer.</p>
+      <p>I've had it running as a daily driver for about 6 years and on
+      my home server (just an old laptop) for more than a year. My
+      review: 10/10, do it.</p>
     </main>
 
   </div>
 
-    <div class="post-date centered-content">2026-04-12</div>
+    <div class="post-date centered-content">2026-05-14</div>
     <hr />
     <div id="comment">   <script src="https://giscus.app/client.js"           data-repo="phenax/ediblemonad.dev"           data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="           data-category="Announcements"           data-category-id="DIC_kwDOBILsg84C84jX"           data-mapping="pathname"           data-strict="0"           data-reactions-enabled="1"           data-emit-metadata="0"           data-input-position="bottom"           data-theme="dark"           data-lang="en"           crossorigin="anonymous"           async>   </script> </div> 
   </body>
