@@ -70,6 +70,13 @@
                 title = "Akshay likes music";
                 link = "https://ediblemonad.dev/music";
               };
+
+              "random/index.html" = ssg.mdPage "random.md";
+              "random" = ssg.mdPageDir "random";
+              "random.xml" = ssg.rssDir "random" {
+                title = "Not worth reading";
+                link = "https://ediblemonad.dev/random";
+              };
             };
           };
         }

@@ -2,7 +2,7 @@
 
 ${partials.linkRss "${baseUrl}/blog.xml" "Akshay's blog"}
 
-<ul>
+<ul class="card-container">
 ${(mdPageDir "blog").files
     |> map (f: let cfg = getPageConfig f; in
       partials.card {

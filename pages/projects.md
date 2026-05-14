@@ -2,7 +2,7 @@
 
 Some fun things I've made
 
-<ul>
+<ul class="card-container">
   ${(mdPageDir "projects").files
       |> map (f: partials.inline-card { contents = getPageContents {} f; })
       |> builtins.concatStringsSep ""}

@@ -17,13 +17,13 @@ let
           "<div>Nothing to see here yet</div>"
         else
           ''
-            <ul>
+            <ul class="card-container">
               ${concatMapStrings (
                 file:
                 inline-card {
                   contents = getPageContents { } file;
                   date = getDateFromFilename file;
-                  link = getLink file;
+                  link = "${getLink file}#comment";
                   linkText = "Comment >>";
                 }
               ) files}
@@ -76,21 +76,23 @@ let
       linkExternal =
         link: text: html ''<a href="${link}" target="_blank _parent" rel="noopener">${text}</a>'';
       commentEmbed = html ''
-        <script src="https://giscus.app/client.js"
-                data-repo="phenax/ediblemonad.dev"
-                data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
-                data-category="Announcements"
-                data-category-id="DIC_kwDOBILsg84C84jX"
-                data-mapping="pathname"
-                data-strict="0"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="bottom"
-                data-theme="dark"
-                data-lang="en"
-                crossorigin="anonymous"
-                async>
-        </script>
+        <div id="comment">
+          <script src="https://giscus.app/client.js"
+                  data-repo="phenax/ediblemonad.dev"
+                  data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+                  data-category="Announcements"
+                  data-category-id="DIC_kwDOBILsg84C84jX"
+                  data-mapping="pathname"
+                  data-strict="0"
+                  data-reactions-enabled="1"
+                  data-emit-metadata="0"
+                  data-input-position="bottom"
+                  data-theme="dark"
+                  data-lang="en"
+                  crossorigin="anonymous"
+                  async>
+          </script>
+        </div>
       '';
       linkRss = link: text: ''
         <link rel="alternate" type="application/rss+xml" href="${link}" title="${text}" />
