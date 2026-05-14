@@ -1,3 +1,3 @@
-## All consume, no produce
+# All consume, no produce
 
 Let's just stop creating. What has being creative actually got us, really? Let's just consume. Time to replace every outlet that humans have to produce any kind of output and turn that into an act of consumption as well. We've already succeeded in doing that to all forms of digital works - art, code, writing, videos, etc. but why stop there? I took a shit earlier today, why even that? Let's pass a law that some corporation owns all shit in the world and people are legally obligated to buy it from them for permission to drop it out of their assholes. Otherwise the corporation is well within their right to sue them for damage to their property. Add a toilet-seat + flush monthly subscription to that and boom, utopia!

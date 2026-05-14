@@ -1,4 +1,4 @@
-## Kakoune supremacy
+# Kakoune supremacy
 
 I've tried a bunch of different code editors and IDEs over the years but nothing beats the control of a modal text editor. Even as "vi plugins" in normie editors and IDEs, the difference in user experience is massive. But I've come to crave more from my tools. By "more" I mean fewer features and better primitives to allow me to build my own experience on top of it. Because at the end of the day, I've spend a considerable amount of time using the tools that I use for work and as a hobby so I know better than the devs of these tools what I'd like my tool to do.
 
