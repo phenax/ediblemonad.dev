@@ -17,7 +17,7 @@ an <a href="https://github.com/phenax/sinthinator">stm32 based toy music
 instrument</a> that used capacitive touch sensor traces on a PCB.
 Expected it to be a bit of a challenge because I've never dealt with
 most of the components involved and only have basic experience with SMD
-components. But on the other side now and it was a fun project.</p>
+components.</p>
 <p>Stuff I've learned:</p>
 <ul>
 <li>keep in mind ICs with identical i2c addresses when you have multiple
