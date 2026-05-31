@@ -77,6 +77,13 @@
                 title = "Not worth reading";
                 link = "https://ediblemonad.dev/random";
               };
+
+              "books/index.html" = ssg.mdPage "books.md";
+              "books" = ssg.mdPageDir "books";
+              "books.xml" = ssg.rssDir "books" {
+                title = "Akshay likes books";
+                link = "https://ediblemonad.dev/books";
+              };
             };
           };
         }

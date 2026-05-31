@@ -2,11 +2,12 @@
 
 Things I find interesting/whatever I'm into right now:
 
-- [Creative coding](/creative-coding)
+- [Coding for fun](/creative-coding)
 - [Hardware & embedded](/hardware)
 - [Tools](/tools)
+- [Games](/games)
+- [Music](/music)
 - [Random](/random)
-- [Older blog posts](/blog)
+- [Blog posts](/blog)
 
-<!-- - [Music](/music) -->
-<!-- - [Video games](/games) -->
+<!-- - [Books](/books) -->
