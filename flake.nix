@@ -50,11 +50,11 @@
                 link = "https://ediblemonad.dev/tools";
               };
 
-              "creative-coding/index.html" = ssg.mdPage "creative-coding.md";
-              "creative-coding" = ssg.mdPageDir "creative-coding";
-              "creative-coding.xml" = ssg.rssDir "creative-coding" {
-                title = "Akshay likes creative-coding";
-                link = "https://ediblemonad.dev/creative-coding";
+              "coding4fun/index.html" = ssg.mdPage "coding4fun.md";
+              "coding4fun" = ssg.mdPageDir "coding4fun";
+              "coding4fun.xml" = ssg.rssDir "coding4fun" {
+                title = "Akshay likes coding4fun";
+                link = "https://ediblemonad.dev/coding4fun";
               };
 
               "games/index.html" = ssg.mdPage "games.md";

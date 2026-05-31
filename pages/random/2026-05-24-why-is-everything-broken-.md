@@ -1,4 +1,4 @@
-## Why is everything broken?
+# Why is everything broken?
 
 I am the last person who would complain about bugs in tools I use. Being a dev responsible for many bugs over the years, makes me empathize with other devs so even the most frustrating buggy experiences I run into ends with me going "eh, shit happens".
 

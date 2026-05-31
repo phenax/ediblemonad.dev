@@ -2,7 +2,7 @@
 
 Things I find interesting/whatever I'm into right now:
 
-- [Coding for fun](/creative-coding)
+- [Coding for fun](/coding4fun)
 - [Hardware & embedded](/hardware)
 - [Tools](/tools)
 - [Games](/games)

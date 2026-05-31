@@ -1,6 +1,6 @@
 # V-USB is kinda neat
 
-I only ran into [v-usb](https://github.com/obdev/v-usb) while going through the [qmk docs](https://docs.qmk.fm/compatible_microcontrollers) where it mentions that mcus that don't have native usb will use v-usb instead.
+I only ran into ${partials.linkExternal "https://github.com/obdev/v-usb" "v-usb"} while going through the ${partials.linkExternal "https://docs.qmk.fm/compatible_microcontrollers" "qmk docs"} where it mentions that mcus that don't have native usb will use v-usb instead.
 
 Curiosity killed the akshay. Couldn't resist so started thinking of what I could use it for. Right now I'm in my 8-bit avr arc so seemed like the perfect thing to mess around with. I thought it would be fun to make a simple rgb light connected via USB that changes color via commands over serial. Seems simple enough, what could go wrong? Plenty as it turns out.
 

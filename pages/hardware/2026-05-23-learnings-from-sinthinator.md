@@ -1,6 +1,6 @@
-## Learnings from sinthinator
+# Learnings from sinthinator
 
-I recently tried decided to randomly pick up a pcb design project for an [stm32 based toy music instrument](https://github.com/phenax/sinthinator) that used capacitive touch sensor traces on a PCB. Expected it to be a bit of a challenge because I've never dealt with most of the components involved and only have basic experience with SMD components.
+I recently tried decided to randomly pick up a pcb design project for an ${partials.linkExternal "https://github.com/phenax/sinthinator" "stm32 based toy music instrument"} that used capacitive touch sensor traces on a PCB. Expected it to be a bit of a challenge because I've never dealt with most of the components involved and only have basic experience with SMD components.
 
 Stuff I've learned:
 - keep in mind ICs with identical i2c addresses when you have multiple devices on an i2c bus. Use separate busses if possible or i2c multiplexer if thats becoming a problem
@@ -11,7 +11,7 @@ Stuff I've learned:
 - use solder jumpers as "flags" if needed
 - ERC and DRC are your friend
 - add the mounting holes as soon as possible after board outline to reserve enough space for them
-- lock the mounting holes (on kicad). Mounting holes get removed when doing "Update PCB from schematic" (or uncheck the option that removes items not in the schematic but I prefer it on)
+- add mounting holes in schematic instead of just the pcb or lock the mounting holes in pcb. Mounting holes can get removed when doing "Update PCB from schematic"
 - for mcus, plan the firmware early on when drawing out the schematics
 - pay attention to res pullups values for i2c lines based on the frequency (from i2c spec). Used 4.7K on mine which seems alright
 - dont move the ic around in the pcb and leave the bypass capacitors behind (happened twice)

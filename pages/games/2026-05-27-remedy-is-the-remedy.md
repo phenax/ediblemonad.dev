@@ -1,4 +1,4 @@
-## Remedy is the remedy
+# Remedy is the remedy
 
 Going to fan boy this one because I love every single remedy game that has come out so far (except firebreak).
 They make truly original and creative... uh calling them games feels wrong. Tempted to call them "interactive cinematic experiences" at the cost of sounding like an asshole.
