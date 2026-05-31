@@ -6,18 +6,19 @@
     
     <item>
   <guid>/hardware/2026-05-23-learnings-from-sinthinator.html</guid>
-  <title>## Learnings from sinthinator</title>
+  <title># Learnings from sinthinator</title>
   <link>https://ediblemonad.dev/hardware/2026-05-23-learnings-from-sinthinator.html</link>
   <comments>https://ediblemonad.dev/hardware/2026-05-23-learnings-from-sinthinator.html</comments>
   <pubDate>2026-05-23</pubDate>
   <description>
-    <![CDATA[<h3 id="learnings-from-sinthinator">Learnings from sinthinator</h3>
+    <![CDATA[<h2 id="learnings-from-sinthinator">Learnings from sinthinator</h2>
 <p>I recently tried decided to randomly pick up a pcb design project for
-an <a href="https://github.com/phenax/sinthinator">stm32 based toy music
-instrument</a> that used capacitive touch sensor traces on a PCB.
-Expected it to be a bit of a challenge because I've never dealt with
-most of the components involved and only have basic experience with SMD
-components.</p>
+an
+<a href="https://github.com/phenax/sinthinator" target="_blank _parent" rel="noopener">stm32
+based toy music instrument</a> that used capacitive touch sensor traces
+on a PCB. Expected it to be a bit of a challenge because I've never
+dealt with most of the components involved and only have basic
+experience with SMD components.</p>
 <p>Stuff I've learned:</p>
 <ul>
 <li>keep in mind ICs with identical i2c addresses when you have multiple
@@ -110,11 +111,12 @@ out yet?</p>
   <pubDate>2026-04-12</pubDate>
   <description>
     <![CDATA[<h2 id="v-usb-is-kinda-neat">V-USB is kinda neat</h2>
-<p>I only ran into <a href="https://github.com/obdev/v-usb">v-usb</a>
-while going through the <a
-href="https://docs.qmk.fm/compatible_microcontrollers">qmk docs</a>
-where it mentions that mcus that don't have native usb will use v-usb
-instead.</p>
+<p>I only ran into
+<a href="https://github.com/obdev/v-usb" target="_blank _parent" rel="noopener">v-usb</a>
+while going through the
+<a href="https://docs.qmk.fm/compatible_microcontrollers" target="_blank _parent" rel="noopener">qmk
+docs</a> where it mentions that mcus that don't have native usb will use
+v-usb instead.</p>
 <p>Curiosity killed the akshay. Couldn't resist so started thinking of
 what I could use it for. Right now I'm in my 8-bit avr arc so seemed
 like the perfect thing to mess around with. I thought it would be fun to
@@ -152,10 +154,12 @@ reset. So will try that next.</p>
 the analog suprise. Don't get me started on signal integrity issues but
 what I'm talking about is when a random part of your schematic depends
 on a very specific analog behavior. I ran into one of those while
-working on <a href="https://github.com/makedaft/daft-watch">a clock
-using attiny84a microcontroller IC</a>. That project was my re-creation
-of <a href="https://ingep.net/breadboardwatch/">breadboard watch</a>
-which taught me a very simple but neat trick.</p>
+working on
+<a href="https://github.com/makedaft/daft-watch" target="_blank _parent" rel="noopener">a
+clock using attiny84a microcontroller IC</a>. That project was my
+re-creation of
+<a href="https://ingep.net/breadboardwatch/" target="_blank _parent" rel="noopener">breadboard
+watch</a> which taught me a very simple but neat trick.</p>
 <p>An rtc based on timer interrupts on a microcontroller, displayed on a
 4 digit, 7 segment display seems simple enough but theres a sneaky
 problem with attiny84a. The total number of pins in the IC is 14. 1 for
@@ -175,8 +179,8 @@ pull-up resistor if the value is 1, and leaves it floating if the value
 is 0.</p>
 <p>This is the magic that makes feel things in the crotch. The solution
 used here is to use diodes to create a sort-of OR circuit by deriving
-segment states based on the state of the control pins. Here's the <a
-href="https://raw.githubusercontent.com/makedaft/daft-watch/refs/heads/main/watch.svg">full
+segment states based on the state of the control pins. Here's the
+<a href="https://raw.githubusercontent.com/makedaft/daft-watch/refs/heads/main/watch.svg" target="_blank _parent" rel="noopener">full
 schematic for reference</a>.</p>
 <blockquote>
 <p>Note: in my case it's a common anode display so segment pin low and
