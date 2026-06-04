@@ -11,9 +11,9 @@ Stuff I've learned:
 - use solder jumpers as "flags" if needed
 - ERC and DRC are your friend
 - add the mounting holes as soon as possible after board outline to reserve enough space for them
-- add mounting holes in schematic instead of just the pcb or lock the mounting holes in pcb. Mounting holes can get removed when doing "Update PCB from schematic"
+- add mounting holes in schematic instead of just the pcb or lock the mounting holes in pcb. Fucked it up and mounting holes got removed when doing "Update PCB from schematic". Confused the shit out off me
 - for mcus, plan the firmware early on when drawing out the schematics
 - pay attention to res pullups values for i2c lines based on the frequency (from i2c spec). Used 4.7K on mine which seems alright
 - dont move the ic around in the pcb and leave the bypass capacitors behind (happened twice)
 
-project is wip so will add more here...
+project is wip so will add more here as a fuck more things up...
