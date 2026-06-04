@@ -175,7 +175,7 @@
 <body>
 
   $for(include-before)$
-  $include-before$
+$include-before$
   $endfor$
 
   <div class="root">
@@ -194,7 +194,7 @@
       $if(abstract)$
       <div class="abstract">
         <div class="abstract-title">$abstract-title$</div>
-        $abstract$
+$abstract$
       </div>
       $endif$
     </header>
@@ -204,18 +204,18 @@
       $if(toc-title)$
       <h2 id="$idprefix$toc-title">$toc-title$</h2>
       $endif$
-      $table-of-contents$
+$table-of-contents$
     </nav>
     $endif$
 
     <main>
-      $body$
+$body$
     </main>
 
   </div>
 
   $for(include-after)$
-  $include-after$
+$include-after$
   $endfor$
 </body>
 

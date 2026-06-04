@@ -1,7 +1,7 @@
 { pkgs, ... }:
 with pkgs.lib;
 let
-  html = contents: replaceString "\n" " " contents;
+  html = contents: contents;
   templateInjections = {
     inherit
       mdPageDir

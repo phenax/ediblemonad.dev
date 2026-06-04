@@ -212,3 +212,222 @@ li:has(.card) {
   max-width: var(--page-max-width);
   margin: auto;
 }
+
+
+/* ---- Builtin styles for pandoc inline content ---- */
+
+code {
+  white-space: pre-wrap;
+}
+
+span.smallcaps {
+  font-variant: small-caps;
+}
+
+div.columns {
+  display: flex;
+  gap: min(4vw, 1.5em);
+}
+
+div.column {
+  flex: auto;
+  overflow-x: auto;
+}
+
+/* CSS for syntax highlighting */
+pre>code.sourceCode {
+  white-space: pre;
+  position: relative;
+}
+
+pre>code.sourceCode>span {
+  display: inline-block;
+  line-height: 1.25;
+}
+
+pre>code.sourceCode>span:empty {
+  height: 1.2em;
+}
+
+.sourceCode {
+  overflow: visible;
+}
+
+code.sourceCode>span {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+div.sourceCode {
+  margin: 1em 0;
+  overflow: auto;
+}
+
+pre.sourceCode {
+  margin: 0;
+  overflow-x: auto;
+}
+
+pre>code.sourceCode>span>a:first-child::before {
+  text-decoration: underline;
+}
+
+main code span.al {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+/* Alert */
+main code span.an {
+  color: #60a0b0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Annotation */
+main code span.at {
+  color: #7d9029;
+}
+
+/* Attribute */
+main code span.bn {
+  color: #40a070;
+}
+
+/* BaseN */
+main code span.bu {
+  color: #009090;
+}
+
+/* BuiltIn */
+main code span.cf {
+  color: #007070;
+  font-weight: bold;
+}
+
+/* ControlFlow */
+main code span.ch {
+  color: #4070a0;
+}
+
+/* Char */
+main code span.cn {
+  color: #880000;
+}
+
+/* Constant */
+main code span.co {
+  color: #60a0b0;
+  font-style: italic;
+}
+
+/* Comment */
+main code span.cv {
+  color: #60a0b0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* CommentVar */
+main code span.do {
+  color: #ba2121;
+  font-style: italic;
+}
+
+/* Documentation */
+main code span.dt {
+  color: #902000;
+}
+
+/* DataType */
+main code span.dv {
+  color: #40a070;
+}
+
+/* DecVal */
+main code span.er {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+/* Error */
+main code span.ex {}
+
+/* Extension */
+main code span.fl {
+  color: #40a070;
+}
+
+/* Float */
+main code span.fu {
+  color: #0070a0;
+}
+
+/* Function */
+main code span.im {
+  color: #009090;
+  font-weight: bold;
+}
+
+/* Import */
+main code span.in {
+  color: #60a0b0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Information */
+main code span.kw {
+  color: #007070;
+  font-weight: bold;
+}
+
+/* Keyword */
+main code span.op {
+  color: #666666;
+}
+
+/* Operator */
+main code span.ot {
+  color: #007070;
+}
+
+/* Other */
+main code span.pp {
+  color: #bc7a00;
+}
+
+/* Preprocessor */
+main code span.sc {
+  color: #4070a0;
+}
+
+/* SpecialChar */
+main code span.ss {
+  color: #bb6688;
+}
+
+/* SpecialString */
+main code span.st {
+  color: #4070a0;
+}
+
+/* String */
+main code span.va {
+  color: #19177c;
+}
+
+/* Variable */
+main code span.vs {
+  color: #4070a0;
+}
+
+/* VerbatimString */
+main code span.wa {
+  color: #60a0b0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Warning */
+
