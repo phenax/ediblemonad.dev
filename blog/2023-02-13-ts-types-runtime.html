@@ -233,56 +233,56 @@
 
 <body>
 
-    <header class="header">
-      <div>
-        <a class="header-title" href="/">akshay</a>
-      </div>
-      <div class="header-nav">
-        <a class="header-link" href="/">home</a>
-        <a class="header-link" href="/trash">trash</a>
-        <a class="header-link" href="/projects">projects</a>
-      </div>
-    </header>
+  <header class="header">
+  <div>
+    <a class="header-title" href="/">akshay</a>
+  </div>
+  <div class="header-nav">
+    <a class="header-link" href="/">home</a>
+    <a class="header-link" href="/trash">trash</a>
+    <a class="header-link" href="/projects">projects</a>
+  </div>
+</header>
 
-    <style>
-      .header {
-        padding: var(--page-v-padding) var(--page-h-padding);
-        max-width: var(--page-max-width);
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 6px;
-        border-bottom: 1px solid var(--color-gray-1);
-      }
+<style>
+  .header {
+    padding: var(--page-v-padding) var(--page-h-padding);
+    max-width: var(--page-max-width);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--color-gray-1);
+  }
 
-      .header-link {
-        display: block;
-      }
+  .header-link {
+    display: block;
+  }
 
-      .header-nav {
-        display: flex;
-        font-size: 0.8rem;
-        gap: 8px;
-      }
+  .header-nav {
+    display: flex;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
 
-      .header-title {
-        display: block;
-        font-size: 1rem;
-        text-decoration: none !important;
-        color: var(--color-foreground-1) !important;
-      }
+  .header-title {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none !important;
+    color: var(--color-foreground-1) !important;
+  }
 
-      @media (max-width: 480px) {
-        .header {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
-    <div class="header-secondary">
-      <a href="/blog">&lt; Back to blog</a>
-    </div>
+  @media (max-width: 480px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+  <div class="header-secondary">
+  <a href="/blog">&lt; Back to blog</a>
+</div>
   
   <div class="root">
         <header id="title-block-header">
@@ -290,22 +290,21 @@
                             </header>
         
     <main>
-      <blockquote>
-      <p>Disclaimer: The following content is not very informative</p>
-      </blockquote>
-      <p>Where were you on the night of 20th January? ANSWER ME, YOU
-      FUCK! Not a talker, yeah? No problem. You'll talk eventually. They
-      all do.</p>
-      <p>We have an overwhelming amount of evidence that suggests that
-      you were the one responsible for turning typescript's type system
-      into it's own purely functional programming language. What kind of
-      a sick, twisted man, does that? You're gonna be spending a lot of
-      time behind bars for this.</p>
-      <p>The reports suggest that you can even read/write files, perform
-      basic io and even interop with js from it?</p>
-      <p>Take a look at some of the crime scene photos.</p>
-      <div class="sourceCode" id="cb1"><pre
-      class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">export type</span> main <span class="op">=</span> [</span>
+<blockquote>
+<p>Disclaimer: The following content is not very informative</p>
+</blockquote>
+<p>Where were you on the night of 20th January? ANSWER ME, YOU FUCK! Not
+a talker, yeah? No problem. You'll talk eventually. They all do.</p>
+<p>We have an overwhelming amount of evidence that suggests that you
+were the one responsible for turning typescript's type system into it's
+own purely functional programming language. What kind of a sick, twisted
+man, does that? You're gonna be spending a lot of time behind bars for
+this.</p>
+<p>The reports suggest that you can even read/write files, perform basic
+io and even interop with js from it?</p>
+<p>Take a look at some of the crime scene photos.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">export type</span> main <span class="op">=</span> [</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  PutStringLn<span class="op">&lt;</span><span class="st">&#39;Greetotron 6000 initializing...&#39;</span><span class="op">&gt;,</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  PutString<span class="op">&lt;</span><span class="st">&#39;Your name? &#39;</span><span class="op">&gt;,</span></span>
@@ -326,95 +325,106 @@
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    WriteFile<span class="op">&lt;</span><span class="st">&#39;./response.txt&#39;</span><span class="op">,</span> <span class="kw">this</span>[<span class="st">&#39;input&#39;</span>]<span class="op">&gt;,</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">&gt;</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-      <p>Do you feel any remorse for the victims you've affected? I hope
-      you get the chair for this.</p>
-      <p>We also found the murder weapon on the crime scene -
-      <code>npx tsr run ./somefile.ts</code>. Not just that, it says
-      here you built the weapon yourself using <code>ts-morph</code> as
-      a wrapper around the typescript compiler. Did you use the source
-      file as your runtime representation of memory, you piece of shit?!
-      But, we're getting a bit ahead of ourselves here.</p>
-      <p>Let's get to the motive which is the only piece of the puzzle
-      we're missing. Why would a mediocre software developer suddenly go
-      postal and make something like this? Did someone pay you to do
-      this? Is that what this is about? Money? Naah. This was a little
-      more personal than that. I have a theory for why you did it. And
-      it's as simple as it gets. You're a sick man who enjoys watching
-      people cringe and suffer. Is that what this blog post is about?
-      More cringe?</p>
-      <p>We've even figured out how you smuggled all the results of the
-      io back into the program. It was a result node, wasn't it? A stray
-      object that you injected properties into, you sick fuck. Was that
-      your runtime representation of memory? You just used the randomly
-      generated property name to access the result in your effects.</p>
-      <div class="sourceCode" id="cb2"><pre
-      class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> __$result <span class="op">=</span> {</span>
+<p>Do you feel any remorse for the victims you've affected? I hope you
+get the chair for this.</p>
+<p>We also found the murder weapon on the crime scene -
+<code>npx tsr run ./somefile.ts</code>. Not just that, it says here you
+built the weapon yourself using <code>ts-morph</code> as a wrapper
+around the typescript compiler. Did you use the source file as your
+runtime representation of memory, you piece of shit?! But, we're getting
+a bit ahead of ourselves here.</p>
+<p>Let's get to the motive which is the only piece of the puzzle we're
+missing. Why would a mediocre software developer suddenly go postal and
+make something like this? Did someone pay you to do this? Is that what
+this is about? Money? Naah. This was a little more personal than that. I
+have a theory for why you did it. And it's as simple as it gets. You're
+a sick man who enjoys watching people cringe and suffer. Is that what
+this blog post is about? More cringe?</p>
+<p>We've even figured out how you smuggled all the results of the io
+back into the program. It was a result node, wasn't it? A stray object
+that you injected properties into, you sick fuck. Was that your runtime
+representation of memory? You just used the randomly generated property
+name to access the result in your effects.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> __$result <span class="op">=</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;90sd9...&#39;</span><span class="op">:</span> { output<span class="op">:</span> <span class="st">&#39;Result of computation&#39;</span> }</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-      <p>Another thing that's been bugging me is,</p>
-      <h2 id="why-is-the-effects-api-monadic">Why is the effects api
-      monadic?</h2>
-      <p>Was it because you wanted all operations on the results
-      represented in the type tree so you could manipulate it?</p>
-      <p>You disgust me. In my 20 years on the force, I've never met a
-      man as disturbed as you. Don't bother pleading insanity here
-      though. This was calculated. No one is going to buy it.</p>
-      <h2
-      id="remember-your-hacky-attempts-at-first-class-functions">Remember
-      your hacky attempts at first class functions?</h2>
-      <p>We have it in our custody and it's talking like a parrot.
-      Telling us everything we need to know about your sick
-      experiments!</p>
-      <div class="sourceCode" id="cb3"><pre
-      class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Greet <span class="kw">extends</span> Kind1<span class="op">&lt;</span><span class="dt">string</span><span class="op">,</span> <span class="dt">string</span><span class="op">&gt;</span> {</span>
+<p>Another thing that's been bugging me is,</p>
+<h2 id="why-is-the-effects-api-monadic">Why is the effects api
+monadic?</h2>
+<p>Was it because you wanted all operations on the results represented
+in the type tree so you could manipulate it?</p>
+<p>You disgust me. In my 20 years on the force, I've never met a man as
+disturbed as you. Don't bother pleading insanity here though. This was
+calculated. No one is going to buy it.</p>
+<h2 id="remember-your-hacky-attempts-at-first-class-functions">Remember
+your hacky attempts at first class functions?</h2>
+<p>We have it in our custody and it's talking like a parrot. Telling us
+everything we need to know about your sick experiments!</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Greet <span class="kw">extends</span> Kind1<span class="op">&lt;</span><span class="dt">string</span><span class="op">,</span> <span class="dt">string</span><span class="op">&gt;</span> {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span><span class="op">:</span> <span class="vs">`Hello, </span><span class="sc">${</span><span class="kw">this</span>[<span class="st">&#39;input&#39;</span>]<span class="sc">}</span><span class="vs">!`</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> msg <span class="op">=</span> Apply<span class="op">&lt;</span>Greet<span class="op">,</span> <span class="st">&#39;EdibleMonad&#39;</span><span class="op">&gt;</span> <span class="co">// : &#39;Hello, EdibleMonad!&#39;</span></span></code></pre></div>
-      <p>Yeah, we got you now, you bastard!</p>
-      <p>You weren't satisfied with this tho, were you? You wanted your
-      first-class functions to be inline. You needed it. So you made
-      your runtime recognize lambda functions as first-class
-      functions.</p>
-      <div class="sourceCode" id="cb4"><pre
-      class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> main <span class="op">=</span> Bind<span class="op">&lt;</span></span>
+<p>Yeah, we got you now, you bastard!</p>
+<p>You weren't satisfied with this tho, were you? You wanted your
+first-class functions to be inline. You needed it. So you made your
+runtime recognize lambda functions as first-class functions.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> main <span class="op">=</span> Bind<span class="op">&lt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  ReadFile<span class="op">&lt;</span><span class="st">&#39;./file.txt&#39;</span><span class="op">&gt;,</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>T <span class="kw">extends</span> <span class="dt">string</span><span class="op">&gt;</span>() <span class="kw">=&gt;</span> PutStringLn<span class="op">&lt;</span>T<span class="op">&gt;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span></span></code></pre></div>
-      <p>But this is where you fucked up. You couldn't generalize this
-      as a pattern because typescript doesn't work like that. Typescript
-      doesn't support higher kinded types, dumbass! So you settled for
-      only allowing this pattern inside <code>Bind</code> and
-      <code>Try</code>. You flew too close to the sun, Icarus and it
-      lead us straight to you.</p>
-      <p>You're done, buddy. This case is as good as closed so you might
-      as well confess.</p>
-      <h2 id="alright-alright-i-confess">Alright! Alright! I
-      confess!</h2>
-      <p>It was me who did it. I made the runtime that turns typescript
-      types into a purely functional programming language! I did it
-      because I fucking wanted to! And I enjoyed every second of it!</p>
-      <p>I saw people making things that defied all logic, like an <a
-      href="https://github.com/judehunter/ts-asm">assembly
-      interpreter</a> within the typescript type-system. I knew if I
-      wanted to make it do something more, I'll need a runtime! That's
-      when I came up with my master plan.</p>
-      <p>I don't regret a thing! I've made my mark on the world even if
-      that mark is a piss stain on the side of the street.</p>
-      <hr />
-      <blockquote>
-      <p>Akshay was charged with cringe and sentenced to death by lethal
-      injection. It was later discovered that this wasn't all that big
-      of a deal and completely blown out of proportion.</p>
-      </blockquote>
-      <p>Ok bye</p>
+<p>But this is where you fucked up. You couldn't generalize this as a
+pattern because typescript doesn't work like that. Typescript doesn't
+support higher kinded types, dumbass! So you settled for only allowing
+this pattern inside <code>Bind</code> and <code>Try</code>. You flew too
+close to the sun, Icarus and it lead us straight to you.</p>
+<p>You're done, buddy. This case is as good as closed so you might as
+well confess.</p>
+<h2 id="alright-alright-i-confess">Alright! Alright! I confess!</h2>
+<p>It was me who did it. I made the runtime that turns typescript types
+into a purely functional programming language! I did it because I
+fucking wanted to! And I enjoyed every second of it!</p>
+<p>I saw people making things that defied all logic, like an <a
+href="https://github.com/judehunter/ts-asm">assembly interpreter</a>
+within the typescript type-system. I knew if I wanted to make it do
+something more, I'll need a runtime! That's when I came up with my
+master plan.</p>
+<p>I don't regret a thing! I've made my mark on the world even if that
+mark is a piss stain on the side of the street.</p>
+<hr />
+<blockquote>
+<p>Akshay was charged with cringe and sentenced to death by lethal
+injection. It was later discovered that this wasn't all that big of a
+deal and completely blown out of proportion.</p>
+</blockquote>
+<p>Ok bye</p>
     </main>
 
   </div>
 
-    <div class="post-date centered-content">2023-02-13</div>
-    <hr />
-    <div id="comment">   <script src="https://giscus.app/client.js"           data-repo="phenax/ediblemonad.dev"           data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="           data-category="Announcements"           data-category-id="DIC_kwDOBILsg84C84jX"           data-mapping="pathname"           data-strict="0"           data-reactions-enabled="1"           data-emit-metadata="0"           data-input-position="bottom"           data-theme="dark"           data-lang="en"           crossorigin="anonymous"           async>   </script> </div> 
+  <div class="post-date centered-content">2023-02-13</div>
+<hr />
+<div id="comment">
+  <script src="https://giscus.app/client.js"
+          data-repo="phenax/ediblemonad.dev"
+          data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOBILsg84C84jX"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
   </body>
 
 </html>

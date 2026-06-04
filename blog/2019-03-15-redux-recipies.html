@@ -233,56 +233,56 @@
 
 <body>
 
-    <header class="header">
-      <div>
-        <a class="header-title" href="/">akshay</a>
-      </div>
-      <div class="header-nav">
-        <a class="header-link" href="/">home</a>
-        <a class="header-link" href="/trash">trash</a>
-        <a class="header-link" href="/projects">projects</a>
-      </div>
-    </header>
+  <header class="header">
+  <div>
+    <a class="header-title" href="/">akshay</a>
+  </div>
+  <div class="header-nav">
+    <a class="header-link" href="/">home</a>
+    <a class="header-link" href="/trash">trash</a>
+    <a class="header-link" href="/projects">projects</a>
+  </div>
+</header>
 
-    <style>
-      .header {
-        padding: var(--page-v-padding) var(--page-h-padding);
-        max-width: var(--page-max-width);
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 6px;
-        border-bottom: 1px solid var(--color-gray-1);
-      }
+<style>
+  .header {
+    padding: var(--page-v-padding) var(--page-h-padding);
+    max-width: var(--page-max-width);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--color-gray-1);
+  }
 
-      .header-link {
-        display: block;
-      }
+  .header-link {
+    display: block;
+  }
 
-      .header-nav {
-        display: flex;
-        font-size: 0.8rem;
-        gap: 8px;
-      }
+  .header-nav {
+    display: flex;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
 
-      .header-title {
-        display: block;
-        font-size: 1rem;
-        text-decoration: none !important;
-        color: var(--color-foreground-1) !important;
-      }
+  .header-title {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none !important;
+    color: var(--color-foreground-1) !important;
+  }
 
-      @media (max-width: 480px) {
-        .header {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
-    <div class="header-secondary">
-      <a href="/blog">&lt; Back to blog</a>
-    </div>
+  @media (max-width: 480px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+  <div class="header-secondary">
+  <a href="/blog">&lt; Back to blog</a>
+</div>
   
   <div class="root">
         <header id="title-block-header">
@@ -290,44 +290,39 @@
                             </header>
         
     <main>
-      <p>Welcome to my Grandma's Kitchen. I'm your host, the grandson.
-      Let's start cooking, shall we?</p>
-      <p>Disclaimer: Stuff referenced in this post are not my opinions,
-      they are straight up facts. If you disagree, you're probably right
-      but don't tell anyone. Reader discretion is advised.</p>
-      <p>For far too long have we suffered the torture of writing
-      boilerplate code and messy actions. Not anymore. Here are some
-      recipes to cook redux the way my grandma wants you to.</p>
-      <p>We are going to be cooking with the following ingredients today
-      -</p>
-      <ul>
-      <li><a href="https://github.com/redux-saga/redux-saga">Redux
-      Saga</a></li>
-      <li><a href="https://github.com/phenax/redux-utils">Redux
-      Utils</a></li>
-      <li><a href="https://github.com/evilsoft/crocks">Crocks</a></li>
-      <li><a
-      href="https://github.com/reduxjs/reselect">Reselect</a></li>
-      <li><a href="https://github.com/ramda/ramda">Ramda</a> (optional.
-      Add according to taste)</li>
-      </ul>
-      <hr />
-      <h2 id="spicy-hot-action-namestypes">Spicy hot action
-      names/types</h2>
-      <p>You wouldn't expect there to be any changes in the way you
-      create action names/types but why not? Go check your action types
-      file. You will find that there is a recurring pattern of the three
-      states. <code>ACTION_PENDING</code>, <code>ACTION_SUCCESS</code>
-      and <code>ACTION_FAILURE</code> (not FAIL because
-      <code>PENDING</code>, <code>SUCCESS</code> and
-      <code>FAILURE</code> have the same number of characters and my
-      grandma likes consistency). And while we are at it we can also
-      learn something from the REST architecture from my grandma's time
-      and bring the resource/action pattern in here.</p>
-      <p><code>actionTypes</code> function uses the
-      <code>@resource/ACTION/STATE</code> convention.</p>
-      <div class="sourceCode" id="cb1"><pre
-      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { actionTypes } <span class="im">from</span> <span class="st">&#39;@phenax/redux-utils&#39;</span><span class="op">;</span></span>
+<p>Welcome to my Grandma's Kitchen. I'm your host, the grandson. Let's
+start cooking, shall we?</p>
+<p>Disclaimer: Stuff referenced in this post are not my opinions, they
+are straight up facts. If you disagree, you're probably right but don't
+tell anyone. Reader discretion is advised.</p>
+<p>For far too long have we suffered the torture of writing boilerplate
+code and messy actions. Not anymore. Here are some recipes to cook redux
+the way my grandma wants you to.</p>
+<p>We are going to be cooking with the following ingredients today -</p>
+<ul>
+<li><a href="https://github.com/redux-saga/redux-saga">Redux
+Saga</a></li>
+<li><a href="https://github.com/phenax/redux-utils">Redux Utils</a></li>
+<li><a href="https://github.com/evilsoft/crocks">Crocks</a></li>
+<li><a href="https://github.com/reduxjs/reselect">Reselect</a></li>
+<li><a href="https://github.com/ramda/ramda">Ramda</a> (optional. Add
+according to taste)</li>
+</ul>
+<hr />
+<h2 id="spicy-hot-action-namestypes">Spicy hot action names/types</h2>
+<p>You wouldn't expect there to be any changes in the way you create
+action names/types but why not? Go check your action types file. You
+will find that there is a recurring pattern of the three states.
+<code>ACTION_PENDING</code>, <code>ACTION_SUCCESS</code> and
+<code>ACTION_FAILURE</code> (not FAIL because <code>PENDING</code>,
+<code>SUCCESS</code> and <code>FAILURE</code> have the same number of
+characters and my grandma likes consistency). And while we are at it we
+can also learn something from the REST architecture from my grandma's
+time and bring the resource/action pattern in here.</p>
+<p><code>actionTypes</code> function uses the
+<code>@resource/ACTION/STATE</code> convention.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { actionTypes } <span class="im">from</span> <span class="st">&#39;@phenax/redux-utils&#39;</span><span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> types <span class="op">=</span> <span class="fu">actionTypes</span>({</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">DISHES</span><span class="op">:</span> {</span>
@@ -356,15 +351,14 @@
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">// The underescore (`._`) is the dispatch that gets picked up by the sagas. Its a default dispatch i.e. stateless dispatch.</span></span></code></pre></div>
-      <hr />
-      <h2 id="reducer-salad">Reducer salad</h2>
-      <p>The three state pattern is also seen repeated a lot inside
-      reducers. My grandma keeps telling me “My back hurts when I scroll
-      through long switch-case statements”. So if you haven't guessed
-      already, we are going to change that too now. We have to care for
-      the elderly.</p>
-      <div class="sourceCode" id="cb2"><pre
-      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { createPartialReducer<span class="op">,</span> mergeReducers } <span class="im">from</span> <span class="st">&#39;@phenax/redux-utils&#39;</span><span class="op">;</span></span>
+<hr />
+<h2 id="reducer-salad">Reducer salad</h2>
+<p>The three state pattern is also seen repeated a lot inside reducers.
+My grandma keeps telling me “My back hurts when I scroll through long
+switch-case statements”. So if you haven't guessed already, we are going
+to change that too now. We have to care for the elderly.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { createPartialReducer<span class="op">,</span> mergeReducers } <span class="im">from</span> <span class="st">&#39;@phenax/redux-utils&#39;</span><span class="op">;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> initialState <span class="op">=</span> { <span class="dt">loading</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">readyForServing</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">dishes</span><span class="op">:</span> []<span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;&quot;</span> }<span class="op">;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -415,27 +409,25 @@
 <span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
 <span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> <span class="fu">mergeReducers</span>(addDishReducer<span class="op">,</span> regularOldReducer)<span class="op">;</span></span></code></pre></div>
-      <p>The partial reducers allow you to split the reducer into
-      smaller functions based on the resource/action/state convention.
-      You can also use this to show off your rad point-free trick
-      shots.</p>
-      <hr />
-      <h2 id="duck-promises">Duck promises</h2>
-      <p>There are 3 different ways to interpret name of this dish.
-      Clue, it's not a typo (even though it fits perfectly). Another
-      clue, we're not cooking a duck here. You are correct. Just duck
-      those promises and go with <code>Async</code> from crocks. (Not to
-      be confused with <code>async/await</code> which is just a prank
-      that the C# community is playing on us disguised as w3c draft
-      authors). Here's how to use fetch (or any other promise based api)
-      and turn it into a composible, cancellable, lazy Async task.
-      Grandma does not approve laziness but we will use it anyway
-      because GOD DAMMIT, IT'S MY FREAKING COOKING SHOW! GET OUT OF MY
-      ROOM, GRANDMA!</p>
-      <p>For you, a simple made-up example of fetching with network
-      timeout. fetchJson is just an Async wrapper for fetch api.</p>
-      <div class="sourceCode" id="cb3"><pre
-      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> Async <span class="im">from</span> <span class="st">&#39;crocks/Async&#39;</span><span class="op">;</span></span>
+<p>The partial reducers allow you to split the reducer into smaller
+functions based on the resource/action/state convention. You can also
+use this to show off your rad point-free trick shots.</p>
+<hr />
+<h2 id="duck-promises">Duck promises</h2>
+<p>There are 3 different ways to interpret name of this dish. Clue, it's
+not a typo (even though it fits perfectly). Another clue, we're not
+cooking a duck here. You are correct. Just duck those promises and go
+with <code>Async</code> from crocks. (Not to be confused with
+<code>async/await</code> which is just a prank that the C# community is
+playing on us disguised as w3c draft authors). Here's how to use fetch
+(or any other promise based api) and turn it into a composible,
+cancellable, lazy Async task. Grandma does not approve laziness but we
+will use it anyway because GOD DAMMIT, IT'S MY FREAKING COOKING SHOW!
+GET OUT OF MY ROOM, GRANDMA!</p>
+<p>For you, a simple made-up example of fetching with network timeout.
+fetchJson is just an Async wrapper for fetch api.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> Async <span class="im">from</span> <span class="st">&#39;crocks/Async&#39;</span><span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { prop<span class="op">,</span> filter<span class="op">,</span> map<span class="op">,</span> either<span class="op">,</span> complement } <span class="im">from</span> <span class="st">&#39;ramda&#39;</span><span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { fetchJson } <span class="im">from</span> <span class="st">&#39;@phenax/redux-utils/async&#39;</span><span class="op">;</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -471,16 +463,16 @@
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Do stuff</span></span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
-      <hr />
-      <h2 id="barbecue-sagas">Barbecue sagas</h2>
-      <p>Redux saga is the best way to write actions. That is a fact,
-      not an opinion. No need to look it up. Not going to change
-      anything with that but we can add a few ingredients to enhance its
-      flavor. We are also going to use <code>Async</code> instead of
-      <code>Promise</code> because my grandma believes you shouldn't
-      make promises you can't keep/manage.</p>
-      <div class="sourceCode" id="cb4"><pre
-      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { put } <span class="im">from</span> <span class="st">&#39;redux-saga/effects&#39;</span><span class="op">;</span></span>
+<hr />
+<h2 id="barbecue-sagas">Barbecue sagas</h2>
+<p>Redux saga is the best way to write actions. That is a fact, not an
+opinion. No need to look it up. Not going to change anything with that
+but we can add a few ingredients to enhance its flavor. We are also
+going to use <code>Async</code> instead of <code>Promise</code> because
+my grandma believes you shouldn't make promises you can't
+keep/manage.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { put } <span class="im">from</span> <span class="st">&#39;redux-saga/effects&#39;</span><span class="op">;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { callAsync<span class="op">,</span> putResponse } <span class="im">from</span> <span class="st">&#39;@phenax/redux-utils/saga&#39;</span><span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">function</span><span class="op">*</span> <span class="fu">add</span>({ payload }) {</span>
@@ -499,28 +491,27 @@
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">yield</span> <span class="fu">all</span>([<span class="fu">takeLatest</span>(types<span class="op">.</span><span class="at">DISHES</span><span class="op">.</span><span class="at">ADD</span><span class="op">.</span><span class="at">_</span><span class="op">,</span> add)])<span class="op">;</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">yield</span> <span class="fu">all</span>([<span class="fu">takeLatest</span>(types<span class="op">.</span><span class="at">DISHES</span><span class="op">.</span><span class="at">LIST</span><span class="op">.</span><span class="at">_</span><span class="op">,</span> list)])<span class="op">;</span></span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
-      <p>Here,</p>
-      <div class="sourceCode" id="cb5"><pre
-      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">yield</span> <span class="fu">putResponse</span>(types<span class="op">.</span><span class="at">DISHES</span><span class="op">.</span><span class="at">LIST</span><span class="op">,</span> response)<span class="op">;</span></span>
+<p>Here,</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">yield</span> <span class="fu">putResponse</span>(types<span class="op">.</span><span class="at">DISHES</span><span class="op">.</span><span class="at">LIST</span><span class="op">,</span> response)<span class="op">;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">// is just a shorthand for</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">yield</span> <span class="fu">put</span>(response<span class="op">.</span><span class="fu">cata</span>({</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Success</span><span class="op">:</span> data <span class="kw">=&gt;</span> ({ <span class="dt">type</span><span class="op">:</span> types<span class="op">.</span><span class="at">DISHES</span><span class="op">.</span><span class="at">LIST</span><span class="op">.</span><span class="at">SUCCESS</span><span class="op">,</span> <span class="dt">payload</span><span class="op">:</span> data })<span class="op">,</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Failure</span><span class="op">:</span> error <span class="kw">=&gt;</span> ({ <span class="dt">type</span><span class="op">:</span> types<span class="op">.</span><span class="at">DISHES</span><span class="op">.</span><span class="at">LIST</span><span class="op">.</span><span class="at">FAILURE</span><span class="op">,</span> <span class="dt">payload</span><span class="op">:</span> error })<span class="op">,</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}))<span class="op">;</span></span></code></pre></div>
-      <hr />
-      <h2 id="selector-noodles">Selector noodles</h2>
-      <p>Selectors allow you to derive your data from the state and
-      memoize the operation. We are going to use reselect for this and
-      we're also gonna sprinkle some ramda in there according to taste.
-      You can use lodash too but why would you do something like that?
-      Ramda is to lodash what a smart watch is to a tin-can
-      telephone.</p>
-      <p>Grandma: “Back in my day, underscore was pretty popular. It was
-      like…”.</p>
-      <p>Yeah grandma, we get it, you're old. Now shut up and let me
-      show these people some selector action.</p>
-      <div class="sourceCode" id="cb6"><pre
-      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { createSelector } <span class="im">from</span> <span class="st">&quot;reselect&quot;</span><span class="op">;</span></span>
+<hr />
+<h2 id="selector-noodles">Selector noodles</h2>
+<p>Selectors allow you to derive your data from the state and memoize
+the operation. We are going to use reselect for this and we're also
+gonna sprinkle some ramda in there according to taste. You can use
+lodash too but why would you do something like that? Ramda is to lodash
+what a smart watch is to a tin-can telephone.</p>
+<p>Grandma: “Back in my day, underscore was pretty popular. It was
+like…”.</p>
+<p>Yeah grandma, we get it, you're old. Now shut up and let me show
+these people some selector action.</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { createSelector } <span class="im">from</span> <span class="st">&quot;reselect&quot;</span><span class="op">;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { pathOr<span class="op">,</span> prop<span class="op">,</span> __<span class="op">,</span> map } <span class="im">from</span> <span class="st">&#39;ramda&#39;</span><span class="op">;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">// selectBurntDishes :: { dishes :: { dishIds :: [String], items :: Object Profile } } -&gt; [String]</span></span>
@@ -532,54 +523,69 @@
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map</span>(<span class="fu">prop</span>(__<span class="op">,</span> items))<span class="op">,</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  ))<span class="op">,</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
-      <p>Now you can use it anywhere…</p>
-      <p>In you component's mapStateToProps,</p>
-      <div class="sourceCode" id="cb7"><pre
-      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mapStateToProps <span class="op">=</span> state <span class="kw">=&gt;</span> ({</span>
+<p>Now you can use it anywhere…</p>
+<p>In you component's mapStateToProps,</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mapStateToProps <span class="op">=</span> state <span class="kw">=&gt;</span> ({</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">burntDishes</span><span class="op">:</span> <span class="fu">selectBurntDishes</span>(state)<span class="op">,</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> <span class="fu">connect</span>(mapStateToProps)(ListBurntDishes)<span class="op">;</span></span></code></pre></div>
-      <p>In your sagas,</p>
-      <div class="sourceCode" id="cb8"><pre
-      class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="op">*</span> <span class="fu">mySaga</span>() {</span>
+<p>In your sagas,</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="op">*</span> <span class="fu">mySaga</span>() {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> burntDishes <span class="op">=</span> <span class="kw">yield</span> <span class="fu">select</span>(selectBurntDishes)<span class="op">;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Do stuff with those ids</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-      <p>Doesn't that look pretty? If you're new to the point-free way,
-      you may feel like you just watched a french movie without
-      subtitles but trust me, this is worth the confusing first few
-      days.</p>
-      <hr />
-      <h2 id="conclusion">Conclusion</h2>
-      <p>Old ideas and opinions are what new ones are born from.
-      Grandma's recipes were great and they've come out of experience
-      that doesn't mean we have to keep making the same thing a billion
-      times. Small (and sometimes large) migrations are a good
-      thing.</p>
-      <p>So let's summarise. What did we learn today?</p>
-      <ul>
-      <li>Use grandma's favorite convention of
-      <code>@resource/ACTION/STATE</code> for your action types</li>
-      <li>The elderly hate long switch case statements</li>
-      <li>Duck promises because <code>Async</code> rocks!</li>
-      <li>Sagas are the freakin best!!</li>
-      <li>Memoize those selectors for a better tomorrow</li>
-      </ul>
-      <p>These are all solutions to the small yet annoying
-      inconveniences that I ran into while working on a personal project
-      of mine. I'm collecting all of the tiny helpers over at <a
-      href="https://github.com/phenax/redux-utils">@phenax/redux-utils</a>.
-      The project is not done yet so the library will be getting more
-      updates. PRs are welcome!!</p>
-      <p>Hope these ideas help you write some tasty code.</p>
+<p>Doesn't that look pretty? If you're new to the point-free way, you
+may feel like you just watched a french movie without subtitles but
+trust me, this is worth the confusing first few days.</p>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>Old ideas and opinions are what new ones are born from. Grandma's
+recipes were great and they've come out of experience that doesn't mean
+we have to keep making the same thing a billion times. Small (and
+sometimes large) migrations are a good thing.</p>
+<p>So let's summarise. What did we learn today?</p>
+<ul>
+<li>Use grandma's favorite convention of
+<code>@resource/ACTION/STATE</code> for your action types</li>
+<li>The elderly hate long switch case statements</li>
+<li>Duck promises because <code>Async</code> rocks!</li>
+<li>Sagas are the freakin best!!</li>
+<li>Memoize those selectors for a better tomorrow</li>
+</ul>
+<p>These are all solutions to the small yet annoying inconveniences that
+I ran into while working on a personal project of mine. I'm collecting
+all of the tiny helpers over at <a
+href="https://github.com/phenax/redux-utils">@phenax/redux-utils</a>.
+The project is not done yet so the library will be getting more updates.
+PRs are welcome!!</p>
+<p>Hope these ideas help you write some tasty code.</p>
     </main>
 
   </div>
 
-    <div class="post-date centered-content">2019-03-15</div>
-    <hr />
-    <div id="comment">   <script src="https://giscus.app/client.js"           data-repo="phenax/ediblemonad.dev"           data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="           data-category="Announcements"           data-category-id="DIC_kwDOBILsg84C84jX"           data-mapping="pathname"           data-strict="0"           data-reactions-enabled="1"           data-emit-metadata="0"           data-input-position="bottom"           data-theme="dark"           data-lang="en"           crossorigin="anonymous"           async>   </script> </div> 
+  <div class="post-date centered-content">2019-03-15</div>
+<hr />
+<div id="comment">
+  <script src="https://giscus.app/client.js"
+          data-repo="phenax/ediblemonad.dev"
+          data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOBILsg84C84jX"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
   </body>
 
 </html>

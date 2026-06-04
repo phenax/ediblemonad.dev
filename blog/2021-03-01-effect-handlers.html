@@ -168,56 +168,56 @@
 
 <body>
 
-    <header class="header">
-      <div>
-        <a class="header-title" href="/">akshay</a>
-      </div>
-      <div class="header-nav">
-        <a class="header-link" href="/">home</a>
-        <a class="header-link" href="/trash">trash</a>
-        <a class="header-link" href="/projects">projects</a>
-      </div>
-    </header>
+  <header class="header">
+  <div>
+    <a class="header-title" href="/">akshay</a>
+  </div>
+  <div class="header-nav">
+    <a class="header-link" href="/">home</a>
+    <a class="header-link" href="/trash">trash</a>
+    <a class="header-link" href="/projects">projects</a>
+  </div>
+</header>
 
-    <style>
-      .header {
-        padding: var(--page-v-padding) var(--page-h-padding);
-        max-width: var(--page-max-width);
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 6px;
-        border-bottom: 1px solid var(--color-gray-1);
-      }
+<style>
+  .header {
+    padding: var(--page-v-padding) var(--page-h-padding);
+    max-width: var(--page-max-width);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--color-gray-1);
+  }
 
-      .header-link {
-        display: block;
-      }
+  .header-link {
+    display: block;
+  }
 
-      .header-nav {
-        display: flex;
-        font-size: 0.8rem;
-        gap: 8px;
-      }
+  .header-nav {
+    display: flex;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
 
-      .header-title {
-        display: block;
-        font-size: 1rem;
-        text-decoration: none !important;
-        color: var(--color-foreground-1) !important;
-      }
+  .header-title {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none !important;
+    color: var(--color-foreground-1) !important;
+  }
 
-      @media (max-width: 480px) {
-        .header {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
-    <div class="header-secondary">
-      <a href="/blog">&lt; Back to blog</a>
-    </div>
+  @media (max-width: 480px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+  <div class="header-secondary">
+  <a href="/blog">&lt; Back to blog</a>
+</div>
   
   <div class="root">
         <header id="title-block-header">
@@ -225,45 +225,43 @@
                             </header>
         
     <main>
-      <p>You gotta teach your effects some manners.</p>
-      <p>We work with effects everyday, but those rascals have a habit
-      of running around loose in our programs. I'm not saying it's just
-      bad parenting but we have to draw the line at some point.</p>
-      <p>Look at pure functions, they are so disciplined and obedient.
-      They never get into any trouble. You ask them a question, they
-      give you an answer. That's what you expect from good code. If you
-      find out that your function, while giving you the answer, also
-      went ahead and made 5 api calls, thats a good sign that your code
-      needs some disciplining.</p>
-      <hr />
-      <h2 id="lets-implement-a-linked-list">Let's implement a linked
-      list</h2>
-      <p>I swear this is relevant and not a plot to make you learn DSA
-      again.</p>
-      <pre class="reasonml"><code>type rec myList&lt;&#39;a&gt; = Nil | Cons(&#39;a, myList&lt;&#39;a&gt;)
+<p>You gotta teach your effects some manners.</p>
+<p>We work with effects everyday, but those rascals have a habit of
+running around loose in our programs. I'm not saying it's just bad
+parenting but we have to draw the line at some point.</p>
+<p>Look at pure functions, they are so disciplined and obedient. They
+never get into any trouble. You ask them a question, they give you an
+answer. That's what you expect from good code. If you find out that your
+function, while giving you the answer, also went ahead and made 5 api
+calls, thats a good sign that your code needs some disciplining.</p>
+<hr />
+<h2 id="lets-implement-a-linked-list">Let's implement a linked list</h2>
+<p>I swear this is relevant and not a plot to make you learn DSA
+again.</p>
+<pre class="reasonml"><code>type rec myList&lt;&#39;a&gt; = Nil | Cons(&#39;a, myList&lt;&#39;a&gt;)
 
 let ls = Cons(5, Cons(20, Cons(-28, Nil)))</code></pre>
-      <p>That is a simple <strong>linked list</strong> implemented in <a
-      href="https://rescript-lang.org/">rescript</a>. <code>Nil</code>
-      marks the end of the list and every element before it contains an
-      item of that list and the rest of the list. They know how to stand
-      in a straight line like good students.</p>
-      <p>But, this is an <strong>eager list</strong> since all items of
-      the list already exist on the time of its creation. For what we're
-      working on today, eager lists won't be enough. We need our list to
-      be <em>lazy</em>. We can turn that into a <strong>lazy linked
-      list</strong> by replacing the rest of the list with a function
-      returning the rest of the list like so -</p>
-      <pre class="reasonml"><code>type rec lazyList&lt;&#39;a&gt; = Nil | Cons(&#39;a, unit =&gt; lazyList&lt;&#39;a&gt;)
+<p>That is a simple <strong>linked list</strong> implemented in <a
+href="https://rescript-lang.org/">rescript</a>. <code>Nil</code> marks
+the end of the list and every element before it contains an item of that
+list and the rest of the list. They know how to stand in a straight line
+like good students.</p>
+<p>But, this is an <strong>eager list</strong> since all items of the
+list already exist on the time of its creation. For what we're working
+on today, eager lists won't be enough. We need our list to be
+<em>lazy</em>. We can turn that into a <strong>lazy linked list</strong>
+by replacing the rest of the list with a function returning the rest of
+the list like so -</p>
+<pre class="reasonml"><code>type rec lazyList&lt;&#39;a&gt; = Nil | Cons(&#39;a, unit =&gt; lazyList&lt;&#39;a&gt;)
 
 let ls = Cons(5, () =&gt;
   Cons(20, () =&gt;
     Cons(512, () =&gt;
       Nil)))</code></pre>
-      <p>This makes it so the rest of the linked list doesn't exist till
-      the function is called. This is helpful if you wanted to create an
-      <strong>infinite list</strong>.</p>
-      <pre class="reasonml"><code>let rec fibonacci = (a, b) =&gt; Cons(b, () =&gt; fibonacci(b, a + b))
+<p>This makes it so the rest of the linked list doesn't exist till the
+function is called. This is helpful if you wanted to create an
+<strong>infinite list</strong>.</p>
+<pre class="reasonml"><code>let rec fibonacci = (a, b) =&gt; Cons(b, () =&gt; fibonacci(b, a + b))
 
 let rec take = (ls, n) =&gt; switch (n, ls) {
   | (_, Nil) | (0, _) =&gt; Nil
@@ -279,59 +277,55 @@ let rec forEach = (ls, fn) =&gt; switch ls {
 }
 
 fibonacci(0, 1)-&gt;take(20)-&gt;forEach(Js.log)</code></pre>
-      <p><code>fibonacci</code> returns a lazy list of all the numbers
-      in Fibonacci series starting with <code>a</code> and
-      <code>b</code>. We then use the <code>take</code> function to
-      ignore the list after the first <code>20</code> items.
-      <code>forEach</code>, then goes through the new list till the 20
-      items and logs each one out.</p>
-      <p>This is very helpful for <strong>modeling continuous
-      sequences</strong> of data without consuming all the space it may
-      need.</p>
-      <p>Everything we've played with so far has been <em>simple</em>
-      and <em>pure</em>. Unlike those disobedient effects passing notes
-      to each other, non-deterministically. Oh I hate them so much.</p>
-      <hr />
-      <h2 id="can-effects-be-more-like-that">Can effects be more like
-      that?</h2>
-      <p>Close your eyes. No, seriously, close them. This is important.
-      Now, imagine a world where all your effectful code could just be
-      designed as <em>data structures</em>! Are your eyes still closed?
-      Good. Something as simple as a linked list that describes all the
-      effectful logic in your code. Writing tests will become fun!
-      Everything would be so much simpler. All of our life's problems
-      would just disappear.</p>
-      <p>Well, today's yo... Oh you can open your eyes now. Sorry. Well,
-      today's your lucky day!</p>
-      <p>We will turn your ill-mannered effects into well behaved pure
-      data structures.</p>
-      <hr />
-      <h2
-      id="impure-effect-more-like-code-neglect-amirite-please-clap">Impure
-      effect? More like code neglect, amirite? Please clap</h2>
-      <p>Kids, please turn in your assignment from last week. I hope you
-      all implemented
-      <code>appendStringToFile: string =&gt; string =&gt; string</code>
-      that appends a string to a file and returns the new contents,
-      given the imaginary synchronous functions
-      <code>readFile: string =&gt; string</code> and
-      <code>writeFile: string =&gt; string =&gt; ()</code> for doing
-      file IO.</p>
-      <pre class="reasonml"><code>let appendStringToFile = (fileName, logLine) =&gt; {
+<p><code>fibonacci</code> returns a lazy list of all the numbers in
+Fibonacci series starting with <code>a</code> and <code>b</code>. We
+then use the <code>take</code> function to ignore the list after the
+first <code>20</code> items. <code>forEach</code>, then goes through the
+new list till the 20 items and logs each one out.</p>
+<p>This is very helpful for <strong>modeling continuous
+sequences</strong> of data without consuming all the space it may
+need.</p>
+<p>Everything we've played with so far has been <em>simple</em> and
+<em>pure</em>. Unlike those disobedient effects passing notes to each
+other, non-deterministically. Oh I hate them so much.</p>
+<hr />
+<h2 id="can-effects-be-more-like-that">Can effects be more like
+that?</h2>
+<p>Close your eyes. No, seriously, close them. This is important. Now,
+imagine a world where all your effectful code could just be designed as
+<em>data structures</em>! Are your eyes still closed? Good. Something as
+simple as a linked list that describes all the effectful logic in your
+code. Writing tests will become fun! Everything would be so much
+simpler. All of our life's problems would just disappear.</p>
+<p>Well, today's yo... Oh you can open your eyes now. Sorry. Well,
+today's your lucky day!</p>
+<p>We will turn your ill-mannered effects into well behaved pure data
+structures.</p>
+<hr />
+<h2 id="impure-effect-more-like-code-neglect-amirite-please-clap">Impure
+effect? More like code neglect, amirite? Please clap</h2>
+<p>Kids, please turn in your assignment from last week. I hope you all
+implemented
+<code>appendStringToFile: string =&gt; string =&gt; string</code> that
+appends a string to a file and returns the new contents, given the
+imaginary synchronous functions
+<code>readFile: string =&gt; string</code> and
+<code>writeFile: string =&gt; string =&gt; ()</code> for doing file
+IO.</p>
+<pre class="reasonml"><code>let appendStringToFile = (fileName, logLine) =&gt; {
   let contents = readFile(fileName)
   writeFile(contents ++ logLine)
   readFile(fileName)
 }
 
 let newLogContents = appendStringToFile(fileName, &quot;\nSome text&quot;)</code></pre>
-      <p>Oh my god, Timmy! Is that imperative and impure function calls
-      in your notebook? That's it. To the principals office! Now!</p>
-      <p>Now let's try to think of a way to do this that's not an
-      absolute nightmare to test. What if we just made a data structure
-      out of it?</p>
-      <p>Let's try turning each of those statements into variants that
-      can be linked together lazily.</p>
-      <pre class="reasonml"><code>type rec fileEff&lt;&#39;a&gt; =
+<p>Oh my god, Timmy! Is that imperative and impure function calls in
+your notebook? That's it. To the principals office! Now!</p>
+<p>Now let's try to think of a way to do this that's not an absolute
+nightmare to test. What if we just made a data structure out of it?</p>
+<p>Let's try turning each of those statements into variants that can be
+linked together lazily.</p>
+<pre class="reasonml"><code>type rec fileEff&lt;&#39;a&gt; =
   | ReadFile(string, string =&gt; fileEff&lt;&#39;a&gt;)
   | WriteFile(string, string, unit =&gt; fileEff&lt;&#39;a&gt;)
   | Return(string)
@@ -341,21 +335,19 @@ let appendStringToFile = (fileName, logLine) =&gt;
     WriteFile(fileName, contents ++ logLine, _ =&gt;
       ReadFile(fileName, newContents =&gt;
         Return(newContents))))</code></pre>
-      <p>You can read
-      <code>Something(a, b, c =&gt; fileEff&lt;'a&gt;)</code> as an
-      operation <code>Something</code> that takes <code>a</code> and
-      <code>b</code> and returns a <code>c</code>.</p>
-      <p>If you squint hard enough, you'll find that this is very
-      similar to the <strong>lazy list</strong> data structure we
-      implemented earlier. You have the last item <code>Return</code>,
-      and each item before it is a description of an effect.</p>
-      <p>This is similar to how programming languages have
-      <strong>Abstract Syntax Trees (AST)</strong> that describe the
-      syntax of the language which then goes through the
-      <strong>interpreter</strong> to be executed. Just like ASTs, to
-      get our code working, we need to write an interpreter to evaluate
-      our data structure and produce effects.</p>
-      <pre class="reasonml"><code>let rec interpreter = eff =&gt; switch eff {
+<p>You can read <code>Something(a, b, c =&gt; fileEff&lt;'a&gt;)</code>
+as an operation <code>Something</code> that takes <code>a</code> and
+<code>b</code> and returns a <code>c</code>.</p>
+<p>If you squint hard enough, you'll find that this is very similar to
+the <strong>lazy list</strong> data structure we implemented earlier.
+You have the last item <code>Return</code>, and each item before it is a
+description of an effect.</p>
+<p>This is similar to how programming languages have <strong>Abstract
+Syntax Trees (AST)</strong> that describe the syntax of the language
+which then goes through the <strong>interpreter</strong> to be executed.
+Just like ASTs, to get our code working, we need to write an interpreter
+to evaluate our data structure and produce effects.</p>
+<pre class="reasonml"><code>let rec interpreter = eff =&gt; switch eff {
   | Return(contents) =&gt; contents
   | ReadFile(fileName, getNext) =&gt;
     readFile(fileName)-&gt;getNext-&gt;interpreter
@@ -366,28 +358,26 @@ let appendStringToFile = (fileName, logLine) =&gt;
 }
 
 let result = interpreter(appendStringToFile(&quot;./file&quot;, &quot;hello world&quot;));</code></pre>
-      <p>The interpreter walks through the list-like structure and calls
-      itself recursively on each of the nodes till it hits
-      <code>Return</code>.</p>
-      <p>Kevin: "Why is this better than writing it imperatively?"</p>
-      <p>*takes a deep breath* Kevin... STFU!</p>
-      <p>This is better because it <strong>decouples</strong> your
-      <strong>business logic</strong> from the <strong>effects</strong>!
-      This is better because you can just create a <strong>mock
-      interpreter</strong> and <strong>write tests for your business
-      logic</strong> without actually generating effects! This is better
-      because you get <strong>dependency injection</strong> for
-      free!</p>
-      <hr />
-      <h2 id="are-we-composable-yet">Are we composable yet?</h2>
-      <p>Now we have a new problem though. It seems like
-      <code>Return</code> will have to be defined for every kind of
-      effect we may have. This will also make it difficult to
-      <strong>compose</strong> it with other effects. So let's abstract
-      that out.</p>
-      <p>We can create a module function for creating effects and
-      handling the recursion in the interpreter.</p>
-      <pre class="reasonml"><code>module type EFFECT = {
+<p>The interpreter walks through the list-like structure and calls
+itself recursively on each of the nodes till it hits
+<code>Return</code>.</p>
+<p>Kevin: "Why is this better than writing it imperatively?"</p>
+<p>*takes a deep breath* Kevin... STFU!</p>
+<p>This is better because it <strong>decouples</strong> your
+<strong>business logic</strong> from the <strong>effects</strong>! This
+is better because you can just create a <strong>mock
+interpreter</strong> and <strong>write tests for your business
+logic</strong> without actually generating effects! This is better
+because you get <strong>dependency injection</strong> for free!</p>
+<hr />
+<h2 id="are-we-composable-yet">Are we composable yet?</h2>
+<p>Now we have a new problem though. It seems like <code>Return</code>
+will have to be defined for every kind of effect we may have. This will
+also make it difficult to <strong>compose</strong> it with other
+effects. So let's abstract that out.</p>
+<p>We can create a module function for creating effects and handling the
+recursion in the interpreter.</p>
+<pre class="reasonml"><code>module type EFFECT = {
   type t&lt;&#39;a&gt;
 }
 
@@ -401,8 +391,8 @@ module MakeEffect = (Eff: EFFECT) =&gt; {
     | Operation(m) =&gt; handler(m)-&gt;interpreter(handler)
   }
 }</code></pre>
-      <p>Then we can rewrite our file effect in peace.</p>
-      <pre class="reasonml"><code>module FileOperations = {
+<p>Then we can rewrite our file effect in peace.</p>
+<pre class="reasonml"><code>module FileOperations = {
   type t&lt;&#39;a&gt; =
     | ReadFile(string, string =&gt; &#39;a)
     | WriteFile(string, string, unit =&gt; &#39;a)
@@ -432,26 +422,24 @@ let handler = eff =&gt; switch eff {
 }
 
 let result = appendStringToFile-&gt;FileEffect.interpreter(handler)</code></pre>
-      <blockquote>
-      <p><strong>"Effects as a data structure is cool and all but I
-      don't want to write code that looks like a ladder"</strong> -
-      Former student who died under suspicious circumstances shortly
-      after making this statement</p>
-      </blockquote>
-      <p>I get it. It looks ugly. All new-born babies do. We just need
-      some <em>SYNTAX SUGAR</em> to make things better. Don't worry tho.
-      I got you. But before we go there, we need to implement a
-      <code>flatMap</code> operation for our effect.</p>
-      <p>You may know <code>flatMap</code> from it's critically
-      acclaimed role in <code>Belt.Option</code> and
-      <code>Belt.Result</code> modules. Also, the horrible
-      <code>Js.Promise.then_</code>, is also a <code>flatMap</code> on
-      promises. In general,
-      <code>flatMap: t&lt;'a&gt; =&gt; ('a =&gt; t&lt;'b&gt;) =&gt; t&lt;'b&gt; </code>
-      allows us to chain <code>t&lt;'a&gt;</code> to
-      <code>t&lt;'b&gt;</code> using the result of
-      <code>t&lt;'a&gt;</code>.</p>
-      <pre class="reasonml"><code>// This is a map operation over our file operation
+<blockquote>
+<p><strong>"Effects as a data structure is cool and all but I don't want
+to write code that looks like a ladder"</strong> - Former student who
+died under suspicious circumstances shortly after making this
+statement</p>
+</blockquote>
+<p>I get it. It looks ugly. All new-born babies do. We just need some
+<em>SYNTAX SUGAR</em> to make things better. Don't worry tho. I got you.
+But before we go there, we need to implement a <code>flatMap</code>
+operation for our effect.</p>
+<p>You may know <code>flatMap</code> from it's critically acclaimed role
+in <code>Belt.Option</code> and <code>Belt.Result</code> modules. Also,
+the horrible <code>Js.Promise.then_</code>, is also a
+<code>flatMap</code> on promises. In general,
+<code>flatMap: t&lt;'a&gt; =&gt; ('a =&gt; t&lt;'b&gt;) =&gt; t&lt;'b&gt; </code>
+allows us to chain <code>t&lt;'a&gt;</code> to <code>t&lt;'b&gt;</code>
+using the result of <code>t&lt;'a&gt;</code>.</p>
+<pre class="reasonml"><code>// This is a map operation over our file operation
 let fileOpsMap = (eff, fn) =&gt; switch eff {
   | ReadFile(f, next) =&gt; ReadFile(f, e =&gt; e-&gt;next-&gt;fn)
   | WriteFile(f, c, next) =&gt; WriteFile(f, c, e =&gt; e-&gt;next-&gt;fn)
@@ -462,15 +450,15 @@ let rec flatMap = (eff, fn) =&gt; switch eff {
   | Return(a) =&gt; fn(a)
   | Eff(m) =&gt; Eff(m-&gt;fileOpsMap(flatMap(_, fn)))
 }</code></pre>
-      <p>While we're at it, we'll also need another function called
-      <code>liftEff</code>. This function <strong>lifts</strong> any
-      given operation into an <code>Effect</code> and makes it terminate
-      with its result. <code>x =&gt; next effect?</code> becomes
-      <code>Eff(x =&gt; Return(x))</code></p>
-      <pre class="reasonml"><code>let liftEff = fa =&gt; Eff(fa-&gt;fileOpsMap(e =&gt; Return(e)));</code></pre>
-      <p>Now putting it all together, our effects helper and file effect
-      will look something like this</p>
-      <pre class="reasonml"><code>module type EFFECT = {
+<p>While we're at it, we'll also need another function called
+<code>liftEff</code>. This function <strong>lifts</strong> any given
+operation into an <code>Effect</code> and makes it terminate with its
+result. <code>x =&gt; next effect?</code> becomes
+<code>Eff(x =&gt; Return(x))</code></p>
+<pre class="reasonml"><code>let liftEff = fa =&gt; Eff(fa-&gt;fileOpsMap(e =&gt; Return(e)));</code></pre>
+<p>Now putting it all together, our effects helper and file effect will
+look something like this</p>
+<pre class="reasonml"><code>module type EFFECT = {
   type rec t&lt;&#39;a&gt;;
   let map : t&lt;&#39;a&gt; =&gt; (&#39;a =&gt; &#39;b) =&gt; t&lt;&#39;b&gt;;
 };
@@ -512,49 +500,44 @@ let readFileOp = file =&gt;
 
 let writeFileOp = (file, contents) =&gt;
   FileEffect.liftEff(FileOperations.WriteFile(file, contents, x =&gt; x));</code></pre>
-      <p>Now for the <em>SYNTAX SUGAR</em> I promised!</p>
-      <pre class="reasonml"><code>let appendStringToFile = (fileName, logLine) =&gt; {
+<p>Now for the <em>SYNTAX SUGAR</em> I promised!</p>
+<pre class="reasonml"><code>let appendStringToFile = (fileName, logLine) =&gt; {
   open FileEffect;
 
   readFileOp(fileName)
   -&gt;flatMap(contents =&gt; writeFileOp(fileName, contents ++ logLine))
   -&gt;flatMap(_ =&gt; readFileOp(fileName))
 };</code></pre>
-      <p>We have turned our <code>FileOperations</code> into a
-      functor</p>
-      <hr />
-      <h2 id="no-not-that-functor-the-other-functor">No, not that
-      functor, the other functor.</h2>
-      <p>Functors in ocaml (<a
-      href="https://rescript-lang.org/docs/manual/latest/module#module-functions-functors">module
-      functions</a>) are very different from functors in category
-      theory.</p>
-      <p>What we have made here is a combination of both kinds of
-      functors. The <code>FileOperations</code> <strong>functor</strong>
-      (category theory) goes into the <code>MakeEffect</code>
-      <strong>functor</strong> (module function) and returns
-      <code>FileEffect</code> <strong>monad</strong> (category
-      theory).</p>
-      <blockquote>
-      <p>Fun fact: Functor comes from the contraction of, fun which is
-      Russian for vodka, ca which of course is the sound a crow makes
-      and tor which is a modern tin foil hat that actually works.</p>
-      </blockquote>
-      <blockquote>
-      <p>Fun fact: Monad comes from the mind of a mathematician who
-      forgot about the essay that was due, so at the last minute,
-      started making up words to fill up the 800 words.</p>
-      </blockquote>
-      <p>Don't quote me on that but it's probably true. We'll never
-      know.</p>
-      <p>We don't have to get into the specifics of functors and monads
-      to make sense of this class but it is worth the learning
-      curve.</p>
-      <hr />
-      <h2 id="ugh-unit-tests">Ugh.. Unit tests</h2>
-      <p>Writing tests for it is as simple as creating <strong>a mock
-      handler</strong>.</p>
-      <pre class="reasonml"><code>let mockFile = ref(&quot;init:&quot;);
+<p>We have turned our <code>FileOperations</code> into a functor</p>
+<hr />
+<h2 id="no-not-that-functor-the-other-functor">No, not that functor, the
+other functor.</h2>
+<p>Functors in ocaml (<a
+href="https://rescript-lang.org/docs/manual/latest/module#module-functions-functors">module
+functions</a>) are very different from functors in category theory.</p>
+<p>What we have made here is a combination of both kinds of functors.
+The <code>FileOperations</code> <strong>functor</strong> (category
+theory) goes into the <code>MakeEffect</code> <strong>functor</strong>
+(module function) and returns <code>FileEffect</code>
+<strong>monad</strong> (category theory).</p>
+<blockquote>
+<p>Fun fact: Functor comes from the contraction of, fun which is Russian
+for vodka, ca which of course is the sound a crow makes and tor which is
+a modern tin foil hat that actually works.</p>
+</blockquote>
+<blockquote>
+<p>Fun fact: Monad comes from the mind of a mathematician who forgot
+about the essay that was due, so at the last minute, started making up
+words to fill up the 800 words.</p>
+</blockquote>
+<p>Don't quote me on that but it's probably true. We'll never know.</p>
+<p>We don't have to get into the specifics of functors and monads to
+make sense of this class but it is worth the learning curve.</p>
+<hr />
+<h2 id="ugh-unit-tests">Ugh.. Unit tests</h2>
+<p>Writing tests for it is as simple as creating <strong>a mock
+handler</strong>.</p>
+<pre class="reasonml"><code>let mockFile = ref(&quot;init:&quot;);
 let mockHandler = eff =&gt; switch eff {
   | FileOperations.ReadFile(fileName, resume) =&gt; resume(mockFile.contents);
   | FileOperations.WriteFile(fileName, contents, resume) =&gt; {
@@ -568,14 +551,14 @@ let result = appendStringToFile(&quot;./file&quot;, &quot;text to append&quot;)
 
 expect.string(result).toEqual(&quot;init:text to append&quot;);
 expect.string(mockFile.contents).toEqual(&quot;init:text to append&quot;);</code></pre>
-      <p>And now for the best part... <em>drum rolls</em></p>
-      <p><strong>SNAPSHOT/GOLDEN TESTING</strong></p>
-      <p>Yes! As all our business logic is now just a data structure,
-      you can create a snapshot of it to test against!</p>
-      <p>You can perform snapshot testing of your effect by
-      <strong>accumulating the effects</strong> called on your handler
-      as an array.</p>
-      <pre class="reasonml"><code>let nodes = ref([]-&gt;Obj.magic);
+<p>And now for the best part... <em>drum rolls</em></p>
+<p><strong>SNAPSHOT/GOLDEN TESTING</strong></p>
+<p>Yes! As all our business logic is now just a data structure, you can
+create a snapshot of it to test against!</p>
+<p>You can perform snapshot testing of your effect by
+<strong>accumulating the effects</strong> called on your handler as an
+array.</p>
+<pre class="reasonml"><code>let nodes = ref([]-&gt;Obj.magic);
 let addNode = node =&gt; nodes.contents = nodes.contents-&gt;Belt.Array.concat([node]);
 
 let mockHandler = eff =&gt; {
@@ -589,30 +572,29 @@ let mockHandler = eff =&gt; {
 appendStringToFile(&quot;./file&quot;, &quot;text to append&quot;)-&gt;FileEffect.interpreter(mockHandler)-&gt;ignore;
 
 expect.value(nodes).toMatchSnapshot();</code></pre>
-      <p>And just like that, all of our business logic is now 100% safe
-      against all kinds of refactor.</p>
-      <ul>
-      <li>You change the order of effects?... Tests break!</li>
-      <li>You add another effect in between?... Tests break!</li>
-      <li>You accidentally delete everything?... Tests explodes!</li>
-      <li>You got scammed by a Nigerian prince?... This won't help with
-      that!</li>
-      <li>You change something that doesn't impact your program?...
-      Tests pass!</li>
-      </ul>
-      <hr />
-      <h2 id="effect-composition">Effect composition</h2>
-      <p>File IO is great but your code will involve other effects too.
-      Maybe you want to implement <strong>logging</strong>? Or maybe
-      some <strong>caching</strong> mechanism? Or maybe you just want to
-      maintain a piece of <strong>mutable state</strong> in your code?
-      Just having one effect called <code>FileEffect</code> is not gonna
-      cut it.</p>
-      <p>To be able to compose multiple effects into one big effect, we
-      can use the almighty <a
-      href="https://rescript-lang.org/docs/manual/latest/polymorphic-variant">STRUCTURAL/POLYMORPHIC
-      VARIANTS</a>!</p>
-      <pre class="reasonml"><code>// File IO effect
+<p>And just like that, all of our business logic is now 100% safe
+against all kinds of refactor.</p>
+<ul>
+<li>You change the order of effects?... Tests break!</li>
+<li>You add another effect in between?... Tests break!</li>
+<li>You accidentally delete everything?... Tests explodes!</li>
+<li>You got scammed by a Nigerian prince?... This won't help with
+that!</li>
+<li>You change something that doesn't impact your program?... Tests
+pass!</li>
+</ul>
+<hr />
+<h2 id="effect-composition">Effect composition</h2>
+<p>File IO is great but your code will involve other effects too. Maybe
+you want to implement <strong>logging</strong>? Or maybe some
+<strong>caching</strong> mechanism? Or maybe you just want to maintain a
+piece of <strong>mutable state</strong> in your code? Just having one
+effect called <code>FileEffect</code> is not gonna cut it.</p>
+<p>To be able to compose multiple effects into one big effect, we can
+use the almighty <a
+href="https://rescript-lang.org/docs/manual/latest/polymorphic-variant">STRUCTURAL/POLYMORPHIC
+VARIANTS</a>!</p>
+<pre class="reasonml"><code>// File IO effect
 module FileOperations = {
   type rec t&lt;&#39;a&gt; = [ #ReadFile(string, string =&gt; &#39;a) | #WriteFile(string, string, unit =&gt; &#39;a) ];
 
@@ -657,10 +639,10 @@ let appendStringToFile = (fileName, logLine) =&gt; {
   -&gt;flatMap(_ =&gt; readFileOp(fileName))
   -&gt;flatMap(logMessageOp(&quot;:: Logging file contents after update -&quot;))
 };</code></pre>
-      <p>You can <strong>compose any number of effects</strong> together
-      into one for your programs!</p>
-      <p>And of course, nothing would work without the handler so...</p>
-      <pre class="reasonml"><code>let handler = eff =&gt; switch eff {
+<p>You can <strong>compose any number of effects</strong> together into
+one for your programs!</p>
+<p>And of course, nothing would work without the handler so...</p>
+<pre class="reasonml"><code>let handler = eff =&gt; switch eff {
   | #LogMessage(message, data, resume) =&gt; {
     Js.log2(message, data);
     resume(data);
@@ -673,71 +655,86 @@ let appendStringToFile = (fileName, logLine) =&gt; {
 };
 
 let result = appendStringToFile-&gt;MyCustomEff.interpreter(handler);</code></pre>
-      <hr />
-      <h2 id="does-all-of-this-have-a-name">Does all of this have a
-      name?</h2>
-      <p>What we just learned is a construct in functional programming
-      called <a href="https://wiki.haskell.org/Free_structure">free
-      algebraic structures</a>. More specifically,
-      <code>FileEffect</code> and <code>MyCustomEff</code> are Free
-      Monads.</p>
-      <p>In general, a free monad on a Functor <code>f</code> is a
-      structure where each node represents <code>f</code>. If you
-      understood what I just said, please explain it to me after class
-      so I don't look like an idiot in front of my other students.</p>
-      <p>In this class, we used it to <strong>fold</strong> (interpret)
-      a data structure to generate effects. It allowed us to decouple
-      the composition of our effects with the effect's behavior by
-      creating a pure representation of our computations.</p>
-      <p>Free monad implementation for dealing with effects in such a
-      way is also referred to as <a
-      href="https://overreacted.io/algebraic-effects-for-the-rest-of-us/">algebraic
-      effects</a>.</p>
-      <p>To learn more about this, you could walk through the following
-      links -</p>
-      <ul>
-      <li><a
-      href="https://rescript-lang.org/docs/manual/latest/module#module-functions-functors">What
-      the fuck are module functions/functors?</a></li>
-      <li><a
-      href="https://medium.com/@dtinth/what-is-a-functor-dcf510b098b6">What
-      the fuck is a Functor in category theory?</a></li>
-      <li><a href="https://wiki.haskell.org/All_About_Monads">What the
-      fuck is a Monad?</a></li>
-      <li><a href="https://wiki.haskell.org/Free_structure">What the
-      fuck are Free Algebraic Structures?</a></li>
-      <li><a
-      href="https://overreacted.io/algebraic-effects-for-the-rest-of-us/">What
-      the fuck are algebraic effects?</a></li>
-      </ul>
-      <hr />
-      <h2 id="report-card">Report card</h2>
-      <p>Our jobs as programmers is to create as many
-      <strong>guarantees</strong> in our code as possible. To achieve
-      this, we should always try to design things in a way that pushes
-      everything we can't guarantee to the edges.</p>
-      <p>This not only reduces the <strong>surface area for
-      bugs</strong>, but also reduces the <strong>mental
-      overhead</strong> to the person reading the code.</p>
-      <p>This is why we should always try to minimize the surface area
-      of impurity in our code.</p>
-      <p>With free monads, we create a guarantee that our business logic
-      is sound and we push the effects to the edge in the form of our
-      interpreter since we may not be able to guarantee the correctness
-      of effectful behavior.</p>
-      <p>Anyways, impure programs get a C for "Can do better".
-      Almost-pure programs with Free monads, get an A for "Aahaaa,
-      functional programming wins again".</p>
-      <p>Alright kids, get a signature on the report card from your
-      parents. No fake signatures, John. Those squiggly lines aren't
-      fooling anyone.</p>
+<hr />
+<h2 id="does-all-of-this-have-a-name">Does all of this have a name?</h2>
+<p>What we just learned is a construct in functional programming called
+<a href="https://wiki.haskell.org/Free_structure">free algebraic
+structures</a>. More specifically, <code>FileEffect</code> and
+<code>MyCustomEff</code> are Free Monads.</p>
+<p>In general, a free monad on a Functor <code>f</code> is a structure
+where each node represents <code>f</code>. If you understood what I just
+said, please explain it to me after class so I don't look like an idiot
+in front of my other students.</p>
+<p>In this class, we used it to <strong>fold</strong> (interpret) a data
+structure to generate effects. It allowed us to decouple the composition
+of our effects with the effect's behavior by creating a pure
+representation of our computations.</p>
+<p>Free monad implementation for dealing with effects in such a way is
+also referred to as <a
+href="https://overreacted.io/algebraic-effects-for-the-rest-of-us/">algebraic
+effects</a>.</p>
+<p>To learn more about this, you could walk through the following links
+-</p>
+<ul>
+<li><a
+href="https://rescript-lang.org/docs/manual/latest/module#module-functions-functors">What
+the fuck are module functions/functors?</a></li>
+<li><a
+href="https://medium.com/@dtinth/what-is-a-functor-dcf510b098b6">What
+the fuck is a Functor in category theory?</a></li>
+<li><a href="https://wiki.haskell.org/All_About_Monads">What the fuck is
+a Monad?</a></li>
+<li><a href="https://wiki.haskell.org/Free_structure">What the fuck are
+Free Algebraic Structures?</a></li>
+<li><a
+href="https://overreacted.io/algebraic-effects-for-the-rest-of-us/">What
+the fuck are algebraic effects?</a></li>
+</ul>
+<hr />
+<h2 id="report-card">Report card</h2>
+<p>Our jobs as programmers is to create as many
+<strong>guarantees</strong> in our code as possible. To achieve this, we
+should always try to design things in a way that pushes everything we
+can't guarantee to the edges.</p>
+<p>This not only reduces the <strong>surface area for bugs</strong>, but
+also reduces the <strong>mental overhead</strong> to the person reading
+the code.</p>
+<p>This is why we should always try to minimize the surface area of
+impurity in our code.</p>
+<p>With free monads, we create a guarantee that our business logic is
+sound and we push the effects to the edge in the form of our interpreter
+since we may not be able to guarantee the correctness of effectful
+behavior.</p>
+<p>Anyways, impure programs get a C for "Can do better". Almost-pure
+programs with Free monads, get an A for "Aahaaa, functional programming
+wins again".</p>
+<p>Alright kids, get a signature on the report card from your parents.
+No fake signatures, John. Those squiggly lines aren't fooling
+anyone.</p>
     </main>
 
   </div>
 
-    <div class="post-date centered-content">2021-03-01</div>
-    <hr />
-    <div id="comment">   <script src="https://giscus.app/client.js"           data-repo="phenax/ediblemonad.dev"           data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="           data-category="Announcements"           data-category-id="DIC_kwDOBILsg84C84jX"           data-mapping="pathname"           data-strict="0"           data-reactions-enabled="1"           data-emit-metadata="0"           data-input-position="bottom"           data-theme="dark"           data-lang="en"           crossorigin="anonymous"           async>   </script> </div> 
+  <div class="post-date centered-content">2021-03-01</div>
+<hr />
+<div id="comment">
+  <script src="https://giscus.app/client.js"
+          data-repo="phenax/ediblemonad.dev"
+          data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOBILsg84C84jX"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
   </body>
 
 </html>

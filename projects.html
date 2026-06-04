@@ -168,53 +168,53 @@
 
 <body>
 
-    <header class="header">
-      <div>
-        <a class="header-title" href="/">akshay</a>
-      </div>
-      <div class="header-nav">
-        <a class="header-link" href="/">home</a>
-        <a class="header-link" href="/trash">trash</a>
-        <a class="header-link" href="/projects">projects</a>
-      </div>
-    </header>
+  <header class="header">
+  <div>
+    <a class="header-title" href="/">akshay</a>
+  </div>
+  <div class="header-nav">
+    <a class="header-link" href="/">home</a>
+    <a class="header-link" href="/trash">trash</a>
+    <a class="header-link" href="/projects">projects</a>
+  </div>
+</header>
 
-    <style>
-      .header {
-        padding: var(--page-v-padding) var(--page-h-padding);
-        max-width: var(--page-max-width);
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 6px;
-        border-bottom: 1px solid var(--color-gray-1);
-      }
+<style>
+  .header {
+    padding: var(--page-v-padding) var(--page-h-padding);
+    max-width: var(--page-max-width);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--color-gray-1);
+  }
 
-      .header-link {
-        display: block;
-      }
+  .header-link {
+    display: block;
+  }
 
-      .header-nav {
-        display: flex;
-        font-size: 0.8rem;
-        gap: 8px;
-      }
+  .header-nav {
+    display: flex;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
 
-      .header-title {
-        display: block;
-        font-size: 1rem;
-        text-decoration: none !important;
-        color: var(--color-foreground-1) !important;
-      }
+  .header-title {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none !important;
+    color: var(--color-foreground-1) !important;
+  }
 
-      @media (max-width: 480px) {
-        .header {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
+  @media (max-width: 480px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
   
   <div class="root">
         <header id="title-block-header">
@@ -222,10 +222,226 @@
                             </header>
         
     <main>
-      <p>Some fun things I've made</p>
-      <ul class="card-container">
-        <li class="inline-card">   <h2 id="chiral-keyboard">Chiral keyboard</h2> <p>My custom ortholinear split keyboard design running on an RP2040 zero.</p> <p><a href="https://github.com/phenax/chiral-keyboard" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="daffm">Daffm</h2> <p>A minimal tui file manager with the goal of not being a file manager as much as possible. Simple configuration format that allows integrating with any tool to build a rich file manager. Built with haskell.</p> <p><a href="https://github.com/phenax/daffm" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="temperature-sensor-attiny84a">Temperature sensor attiny84a</h2> <p>A simple temperature sensor and display running on an attiny84a meant for soldering iron.</p> <p><a href="https://github.com/phenax/temperature-sensor-attiny84a" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="css-everything">css-everything</h2> <p>An experimental/gag ui framework where you only write turing complete CSS. No HTML, no JS, no build system. Just CSS.</p> <p><a href="https://github.com/phenax/css-everything" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="homeserver">Homeserver</h2> <p>My personal home server configuration in nixos.</p> <p><a href="https://github.com/phenax/homeserver-nixos" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="null-browser">Null browser</h2> <p>An infinitly extensible web browser built on top of qtwebengine. Built with c++, qt with a libuv event system.</p> <p><a href="https://github.com/phenax/null-browser" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="chelleport">Chelleport</h2> <p>App for X11 linux to control your mouse pointer with your keyboard with hints and OCR written in haskell.</p> <p><a href="https://github.com/phenax/chelleport" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="aether-lang">Aether lang</h2> <p>A lisp interpreter written in haskell.</p> <p><a href="https://github.com/phenax/aether" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="yaml-transformer">Yaml transformer</h2> <p>A cli to update yaml properties while preserving whitespace and comments in its original state. Built with haskell.</p> <p><a href="https://github.com/phenax/yaml-transform" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="this-website">This website</h2> <p>Built with a toy static site generator written in nix and pandoc.</p> <p><a href="https://github.com/phenax/ediblemonad.dev" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="desmos-graph-manager">Desmos graph manager</h2> <p>A personal graph manager using desmos graphing calculator.</p> <p><a href="https://desmos.ediblemonad.dev" target="_blank _parent" rel="noopener">Website</a></p> <p><a href="https://github.com/phenax/edible-desmos" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="react-is-a-programming-language">React is a programming language</h2> <p>A PoC for using react to emulate turing complete behaviors and building a "programming language" from it.</p> <p><a href="https://github.com/phenax/react-is-a-programming-language" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="notical">Notical</h2> <p>Programmable markdown compatible wysiwyg note-taking application with a simple extension system based on markdown code blocks.</p> <p><a href="https://github.com/notical-run/notical-run" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="runtime-for-ts-types">Runtime for TS types</h2> <p>A runtime and library for typescript's types that turns the type system into a general purpose, purely functional programming language.</p> <p><a href="https://github.com/phenax/ts-types-runtime" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="ts-types-theorem-prover">TS types theorem prover</h2> <p>A simple (terrible) theorem proof embedding in typescript's type system.</p> <p><a href="https://github.com/phenax/ts-theorem-provinator" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="esbuild-plugin-elm">esbuild-plugin-elm</h2> <p>An esbuild plugin for building elm projects.</p> <p><a href="https://github.com/phenax/esbuild-plugin-elm" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="cmp-graphql-for-neovim">cmp-graphql for neovim</h2> <p>A neovim completions (nvim-cmp) plugin for schema-based completions for graphql syntax (works inside gql tagged template literals).</p> <p><a href="https://github.com/phenax/cmp-graphql" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="elxr-list-expressions">Elxr (list expressions)</h2> <p>An implementation of a regex-like syntax that generalizes regex operations for any sequential data structure.</p> <p><a href="https://github.com/phenax/elxr" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="typed-regex">Typed RegEx</h2> <p>A typescript library for automatic type inference on regular expressions using named capture groups.</p> <p><a href="https://github.com/phenax/typed-regex" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="algebraic-effects">Algebraic Effects</h2> <p>An implementation of algebraic effects in javascript as a library for managing side-effects in a pure and composable way.</p> <p><a href="https://github.com/phenax/algebraic-effects" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="is-adev">is-a.dev</h2> <p>A free and open source service for developers to register a .is-a.dev subdomain for their personal websites.</p> <p><a href="https://github.com/is-a-dev/register" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="enumfp">EnumFP</h2> <p>A js library for defining functional Enum type / Sum type for javascript with simple pattern matching.</p> <p><a href="https://github.com/phenax/enum-fp" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="shotkey">Shotkey</h2> <p>Hotkey daemon for X11 window managers written in C.</p> <p><a href="https://github.com/phenax/shotkey" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="bsp-layout">bsp-layout</h2> <p>A dynamic layout management script for bspwm.</p> <p><a href="https://github.com/phenax/bsp-layout" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="daft-launcher">Daft Launcher</h2> <p>A minimalist, text-only launcher written in flutter which I use every day.</p> <p><a href="https://github.com/makedaft/daft-launcher" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="daft-jukebox">Daft Jukebox</h2> <p>A simple mp3 player that loads music from an SD card with an esp32 microcontroller.</p> <p><a href="https://github.com/makedaft/daft-jukebox" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="plasmajs">PlasmaJS</h2> <p>An isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel.</p> <p><a href="https://github.com/phenax/plasmajs" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="pipey">Pipey</h2> <p>A js library for creating pipeline operator ready functions by converting instance methods's to context-free functions.</p> <p><a href="https://github.com/phenax/pipey" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="diary-pwa">Diary PWA</h2> <p>A progressive web app in go-lang that lets you carry a personalized secure diary in your pocket. Integrated pattern-lock-js library to allow for privacy. Built with golang and a graphql API.</p> <p><a href="https://github.com/phenax/diary-pwa" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="pattern-lock">Pattern Lock</h2> <p>A js library for creating customizable pattern lock for the web and PWAs using HTML5 canvas.</p> <p><a href="https://github.com/phenax/pattern-lock-js" target="_blank _parent" rel="noopener">Github</a></p>        </li> <li class="inline-card">   <h2 id="h-kotlin">H Kotlin</h2> <p>A simple, easy to use, library for HTML templating in kotlin.</p> <p><a href="https://github.com/phenax/h" target="_blank _parent" rel="noopener">Github</a></p>        </li> 
-      </ul>
+<p>Some fun things I've made</p>
+<ul class="card-container">
+  <li class="inline-card">
+  <h2 id="chiral-keyboard">Chiral keyboard</h2>
+<p>My custom ortholinear split keyboard design running on an RP2040
+zero.</p>
+<p><a href="https://github.com/phenax/chiral-keyboard" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="daffm">Daffm</h2>
+<p>A minimal tui file manager with the goal of not being a file manager
+as much as possible. Simple configuration format that allows integrating
+with any tool to build a rich file manager. Built with haskell.</p>
+<p><a href="https://github.com/phenax/daffm" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="temperature-sensor-attiny84a">Temperature sensor attiny84a</h2>
+<p>A simple temperature sensor and display running on an attiny84a meant
+for soldering iron.</p>
+<p><a href="https://github.com/phenax/temperature-sensor-attiny84a" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="css-everything">css-everything</h2>
+<p>An experimental/gag ui framework where you only write turing complete
+CSS. No HTML, no JS, no build system. Just CSS.</p>
+<p><a href="https://github.com/phenax/css-everything" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="homeserver">Homeserver</h2>
+<p>My personal home server configuration in nixos.</p>
+<p><a href="https://github.com/phenax/homeserver-nixos" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="null-browser">Null browser</h2>
+<p>An infinitly extensible web browser built on top of qtwebengine.
+Built with c++, qt with a libuv event system.</p>
+<p><a href="https://github.com/phenax/null-browser" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="chelleport">Chelleport</h2>
+<p>App for X11 linux to control your mouse pointer with your keyboard
+with hints and OCR written in haskell.</p>
+<p><a href="https://github.com/phenax/chelleport" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="aether-lang">Aether lang</h2>
+<p>A lisp interpreter written in haskell.</p>
+<p><a href="https://github.com/phenax/aether" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="yaml-transformer">Yaml transformer</h2>
+<p>A cli to update yaml properties while preserving whitespace and
+comments in its original state. Built with haskell.</p>
+<p><a href="https://github.com/phenax/yaml-transform" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="this-website">This website</h2>
+<p>Built with a toy static site generator written in nix and pandoc.</p>
+<p><a href="https://github.com/phenax/ediblemonad.dev" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="desmos-graph-manager">Desmos graph manager</h2>
+<p>A personal graph manager using desmos graphing calculator.</p>
+<p><a href="https://desmos.ediblemonad.dev" target="_blank _parent" rel="noopener">Website</a></p>
+<p><a href="https://github.com/phenax/edible-desmos" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="react-is-a-programming-language">React is a programming
+language</h2>
+<p>A PoC for using react to emulate turing complete behaviors and
+building a "programming language" from it.</p>
+<p><a href="https://github.com/phenax/react-is-a-programming-language" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="notical">Notical</h2>
+<p>Programmable markdown compatible wysiwyg note-taking application with
+a simple extension system based on markdown code blocks.</p>
+<p><a href="https://github.com/notical-run/notical-run" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="runtime-for-ts-types">Runtime for TS types</h2>
+<p>A runtime and library for typescript's types that turns the type
+system into a general purpose, purely functional programming
+language.</p>
+<p><a href="https://github.com/phenax/ts-types-runtime" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="ts-types-theorem-prover">TS types theorem prover</h2>
+<p>A simple (terrible) theorem proof embedding in typescript's type
+system.</p>
+<p><a href="https://github.com/phenax/ts-theorem-provinator" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="esbuild-plugin-elm">esbuild-plugin-elm</h2>
+<p>An esbuild plugin for building elm projects.</p>
+<p><a href="https://github.com/phenax/esbuild-plugin-elm" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="cmp-graphql-for-neovim">cmp-graphql for neovim</h2>
+<p>A neovim completions (nvim-cmp) plugin for schema-based completions
+for graphql syntax (works inside gql tagged template literals).</p>
+<p><a href="https://github.com/phenax/cmp-graphql" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="elxr-list-expressions">Elxr (list expressions)</h2>
+<p>An implementation of a regex-like syntax that generalizes regex
+operations for any sequential data structure.</p>
+<p><a href="https://github.com/phenax/elxr" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="typed-regex">Typed RegEx</h2>
+<p>A typescript library for automatic type inference on regular
+expressions using named capture groups.</p>
+<p><a href="https://github.com/phenax/typed-regex" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="algebraic-effects">Algebraic Effects</h2>
+<p>An implementation of algebraic effects in javascript as a library for
+managing side-effects in a pure and composable way.</p>
+<p><a href="https://github.com/phenax/algebraic-effects" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="is-adev">is-a.dev</h2>
+<p>A free and open source service for developers to register a .is-a.dev
+subdomain for their personal websites.</p>
+<p><a href="https://github.com/is-a-dev/register" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="enumfp">EnumFP</h2>
+<p>A js library for defining functional Enum type / Sum type for
+javascript with simple pattern matching.</p>
+<p><a href="https://github.com/phenax/enum-fp" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="shotkey">Shotkey</h2>
+<p>Hotkey daemon for X11 window managers written in C.</p>
+<p><a href="https://github.com/phenax/shotkey" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="bsp-layout">bsp-layout</h2>
+<p>A dynamic layout management script for bspwm.</p>
+<p><a href="https://github.com/phenax/bsp-layout" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="daft-launcher">Daft Launcher</h2>
+<p>A minimalist, text-only launcher written in flutter which I use every
+day.</p>
+<p><a href="https://github.com/makedaft/daft-launcher" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="daft-jukebox">Daft Jukebox</h2>
+<p>A simple mp3 player that loads music from an SD card with an esp32
+microcontroller.</p>
+<p><a href="https://github.com/makedaft/daft-jukebox" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="plasmajs">PlasmaJS</h2>
+<p>An isomorphic NodeJS framework powered with React for building web
+apps. It has features like declarative syntax, isomorphic routing,
+isolated routing for building REST APIs, middlewares, ES2015 syntax with
+babel.</p>
+<p><a href="https://github.com/phenax/plasmajs" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="pipey">Pipey</h2>
+<p>A js library for creating pipeline operator ready functions by
+converting instance methods's to context-free functions.</p>
+<p><a href="https://github.com/phenax/pipey" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="diary-pwa">Diary PWA</h2>
+<p>A progressive web app in go-lang that lets you carry a personalized
+secure diary in your pocket. Integrated pattern-lock-js library to allow
+for privacy. Built with golang and a graphql API.</p>
+<p><a href="https://github.com/phenax/diary-pwa" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="pattern-lock">Pattern Lock</h2>
+<p>A js library for creating customizable pattern lock for the web and
+PWAs using HTML5 canvas.</p>
+<p><a href="https://github.com/phenax/pattern-lock-js" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+<li class="inline-card">
+  <h2 id="h-kotlin">H Kotlin</h2>
+<p>A simple, easy to use, library for HTML templating in kotlin.</p>
+<p><a href="https://github.com/phenax/h" target="_blank _parent" rel="noopener">Github</a></p>
+
+</li>
+
+</ul>
     </main>
 
   </div>

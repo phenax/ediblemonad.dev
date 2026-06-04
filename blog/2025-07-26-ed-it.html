@@ -168,56 +168,56 @@
 
 <body>
 
-    <header class="header">
-      <div>
-        <a class="header-title" href="/">akshay</a>
-      </div>
-      <div class="header-nav">
-        <a class="header-link" href="/">home</a>
-        <a class="header-link" href="/trash">trash</a>
-        <a class="header-link" href="/projects">projects</a>
-      </div>
-    </header>
+  <header class="header">
+  <div>
+    <a class="header-title" href="/">akshay</a>
+  </div>
+  <div class="header-nav">
+    <a class="header-link" href="/">home</a>
+    <a class="header-link" href="/trash">trash</a>
+    <a class="header-link" href="/projects">projects</a>
+  </div>
+</header>
 
-    <style>
-      .header {
-        padding: var(--page-v-padding) var(--page-h-padding);
-        max-width: var(--page-max-width);
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 6px;
-        border-bottom: 1px solid var(--color-gray-1);
-      }
+<style>
+  .header {
+    padding: var(--page-v-padding) var(--page-h-padding);
+    max-width: var(--page-max-width);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--color-gray-1);
+  }
 
-      .header-link {
-        display: block;
-      }
+  .header-link {
+    display: block;
+  }
 
-      .header-nav {
-        display: flex;
-        font-size: 0.8rem;
-        gap: 8px;
-      }
+  .header-nav {
+    display: flex;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
 
-      .header-title {
-        display: block;
-        font-size: 1rem;
-        text-decoration: none !important;
-        color: var(--color-foreground-1) !important;
-      }
+  .header-title {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none !important;
+    color: var(--color-foreground-1) !important;
+  }
 
-      @media (max-width: 480px) {
-        .header {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
-    <div class="header-secondary">
-      <a href="/blog">&lt; Back to blog</a>
-    </div>
+  @media (max-width: 480px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+  <div class="header-secondary">
+  <a href="/blog">&lt; Back to blog</a>
+</div>
   
   <div class="root">
         <header id="title-block-header">
@@ -225,163 +225,170 @@
                             </header>
         
     <main>
-      <p>Can you say that you <strong>truly</strong> understand the
-      tools you use?</p>
-      <p>Text editors like vscode (or any other web browser as a text
-      editor things) or an IDE like intellij, are a russian doll for
-      layers of abstractions that you're meant to accept as a whole and
-      never think about. With something like vscode, there's the editor
-      itself, all the integrations that it comes with, the browser
-      behind the scenes that renders everything, some electron magic
-      that connects that browser internals to your system, whatever
-      nodejs does, etc.</p>
-      <p>But as a programmer, that feeling is something that I've grown
-      very uncomfortable with. Which is partly why I've always
-      gravitated towards tools that are simple and let me break that
-      abstraction and build around it. The cost of that choice is of
-      course that you have to trade off some convinience to do this
-      either as a one time investment to set it up or a continuous cost
-      if it's not very easy to use.</p>
-      <h2 id="prompt-driven-programming-before-ai">Prompt-driven
-      programming before AI</h2>
-      <p>Back in the day when people thought we'd have flying cars by
-      the year 2025, the primary way to interact with a computer was
-      through a teletype interface. Not a fancy terminal emulator that
-      allows displaying images or one that asks you to sign-up with your
-      email address to use your terminal, just a regular ol' teletype
-      terminal.</p>
-      <p>So an obvious choice to write code within this environment was
-      an editor that took commands for editing text and applied those
-      commands on the file. One such solution was a line-wise text
-      editor called <a href="https://linux.die.net/man/1/ed">ed</a>.</p>
-      <p>The way you edit text in ed is using commands in a repl
-      interface that operate on lines. You can
-      <strong>d</strong>elete/<strong>i</strong>nsert/<strong>a</strong>ppend/<strong>c</strong>hange/<strong>m</strong>ove/cop<strong>y</strong>
-      lines. If you want to change something inside a line you can use
-      the <strong>s</strong>ubstitute command
-      <code>s/pattern/replacement/</code>. There is also the
-      <strong>g</strong>lobal command which applies one of the other
-      commands over all lines that match the given pattern. People
-      familiar with vim will already be familiar with a lot of these
-      commands.</p>
-      <h2 id="influence">Influence</h2>
-      <p>Not going into details of the history because if you can read
-      this, you can read wikipedia. But I can give you a lazy,
-      poorly-researched summary which is all you'll remember from
-      wikipedia anyway.</p>
-      <ul>
-      <li>At first, there was <code>qed</code> which inspired
-      <code>ed</code></li>
-      <li>Then some dude said "want more" and went ahead and made
-      <code>ex</code></li>
-      <li>Then <code>ex</code> got a visual mode which became
-      <code>vi</code></li>
-      <li>Then came <a
-      href="https://en.wikipedia.org/wiki/Stevie_%28text_editor%29">stevie</a>,
-      a fork of vi for Atari ST</li>
-      <li>Then <code>vi</code> got <strong>im</strong>proved when stevie
-      got forked as <code>vim</code></li>
-      <li>Then finally we get the cool kid, neovim (<a
-      href="https://neovim.io/charter/">fork of vim</a>)</li>
-      <li>Also a side-note, almost all text editors come with a vi-mode
-      as a result of this chain of influence</li>
-      </ul>
-      <p>But that's not all</p>
-      <ul>
-      <li><code>sed</code> is essentially <code>ed</code>'s line-based
-      editing operations on streaming data (<strong>s</strong>tream
-      <strong>ed</strong>itor).</li>
-      <li><code>grep</code>'s name comes from a specific ed
-      <strong>g</strong>lobal command <code>g/re/p</code> which prints
-      everything that matches a given <strong>re</strong>gular
-      expression.</li>
-      <li>theres probably more things to add here but leaving this here
-      because I felt uncomfortable making a list of 2 items</li>
-      </ul>
-      <h2 id="modern-ux">Modern UX</h2>
-      <p>Having developed a lot of different user interfaces in my
-      career, I've come to the conclusion that modern user interfaces
-      are designed for idiots. Not saying, those interfaces are only
-      used by idiots but they're designed for the lowest common
-      denominator of technologically inept.</p>
-      <blockquote>
-      <p>This button called 'Move to trash' will move your file to
-      trash. If you hover over it, it'll also show you a tooltip saying
-      that it will move your file to trash. Clicking on it will show you
-      a dialog box asking if you're absolutely sure that you want to
-      move the file to trash. If you click yes and then you realize that
-      you want the file back, you can go to the trash folder and restore
-      it.</p>
-      </blockquote>
-      <p>Just <code>rm -rf</code> it, you pussy.</p>
-      <p>This is done not because, it's necessary but because the people
-      behind the tool pictured you as the worst case scenario of a user.
-      They imagined a user so incompetent with tech that they can't be
-      trusted with something they own. This reasoning is what then
-      branches into a justification for the lack of ownership with a lot
-      of modern technology but I'll leave some of this rambling to your
-      imagination.</p>
-      <h2 id="simplicity">Simplicity</h2>
-      <p>I've always found ed to be quite elegant. Not because it's a
-      good tool to use but because of a very specific feeling associated
-      with using tools like this. Tools that are so simple that you feel
-      like you completely understand the underlying mechanics of it and
-      not just as an abstraction. You don't need a hand-wavy explanation
-      for how it works. It is obvious at first glance. There are a small
-      set of primitives you learn (commands in case of ed) and you know
-      everything about how to use the tool, how it works, and how to
-      very accurately predict it's behavior. If it breaks, it must've
-      been a bit flip because a tool that simple just can't break.</p>
-      <p>It's a breath of fresh air from all the high-level nonsense
-      that we've been fed all our lives in the 21st century that we
-      learn to never question and accept on faith. Not that far from
-      religion, the way we treat all the systems around us.</p>
-      <p>Like using a hammer. You look at it and you understand it. You
-      don't have to plug it into a wall. There's no installing updates
-      to improve security of the hammer. There's no sending usage data
-      to some server in the background to allow the hammer company to
-      "improve" the tool. Ignoring the quite likely kickstarter project
-      doing those things, it's a hammer. You hit things with it..</p>
-      <p>Most popular tools we use now are wrapped in so many layers of
-      abstraction that we are completely disconnected from the tools we
-      rely on. This trend is not acceptable to me.</p>
-      <h2 id="fun">Fun</h2>
-      <p>One of the biggest case I could make to try ed is that it's
-      just fun. It's an editor that feels very technical to use and
-      provides enough constraints to turn the experience of editing text
-      into a turn-based strategy game. You execute a few commands one
-      after another, without knowing if the edits are all correct and
-      then you print the contents inside ed and you feel the rush of
-      getting it right! Or the disappointment of forgetting to account
-      for the added line in a previous command.</p>
-      <h2 id="ai">AI</h2>
-      <p>We've sort of come full circle now. Prompts to edit text is
-      back but with the thickest layer of abstraction the world has
-      every seen.</p>
-      <ul>
-      <li>You prompt it to make some edits, and it does that magically
-      (among other things).</li>
-      <li>You review the code (or don't if you're <em>really</em>
-      vibing).</li>
-      <li>You add it to your version control system (or don't if you're
-      vibing extra hard).</li>
-      <li>That's it. Do we really need a step here called "effort"?</li>
-      </ul>
-      <p>I cannot put into words worthy of a prompt to chatgpt, how
-      extremely unappealing this is to me.</p>
-      <p>Writing code and interacting with a computer in general has
-      never been a means to an end for me. That is the point. I write
-      code because I like writing code. Outsourcing that would be
-      extremely pointless.</p>
-      <h2 id="inconclushun">Inconclushun</h2>
-      <p>Idk. Simple tools are fun. Bye.</p>
+<p>Can you say that you <strong>truly</strong> understand the tools you
+use?</p>
+<p>Text editors like vscode (or any other web browser as a text editor
+things) or an IDE like intellij, are a russian doll for layers of
+abstractions that you're meant to accept as a whole and never think
+about. With something like vscode, there's the editor itself, all the
+integrations that it comes with, the browser behind the scenes that
+renders everything, some electron magic that connects that browser
+internals to your system, whatever nodejs does, etc.</p>
+<p>But as a programmer, that feeling is something that I've grown very
+uncomfortable with. Which is partly why I've always gravitated towards
+tools that are simple and let me break that abstraction and build around
+it. The cost of that choice is of course that you have to trade off some
+convinience to do this either as a one time investment to set it up or a
+continuous cost if it's not very easy to use.</p>
+<h2 id="prompt-driven-programming-before-ai">Prompt-driven programming
+before AI</h2>
+<p>Back in the day when people thought we'd have flying cars by the year
+2025, the primary way to interact with a computer was through a teletype
+interface. Not a fancy terminal emulator that allows displaying images
+or one that asks you to sign-up with your email address to use your
+terminal, just a regular ol' teletype terminal.</p>
+<p>So an obvious choice to write code within this environment was an
+editor that took commands for editing text and applied those commands on
+the file. One such solution was a line-wise text editor called <a
+href="https://linux.die.net/man/1/ed">ed</a>.</p>
+<p>The way you edit text in ed is using commands in a repl interface
+that operate on lines. You can
+<strong>d</strong>elete/<strong>i</strong>nsert/<strong>a</strong>ppend/<strong>c</strong>hange/<strong>m</strong>ove/cop<strong>y</strong>
+lines. If you want to change something inside a line you can use the
+<strong>s</strong>ubstitute command <code>s/pattern/replacement/</code>.
+There is also the <strong>g</strong>lobal command which applies one of
+the other commands over all lines that match the given pattern. People
+familiar with vim will already be familiar with a lot of these
+commands.</p>
+<h2 id="influence">Influence</h2>
+<p>Not going into details of the history because if you can read this,
+you can read wikipedia. But I can give you a lazy, poorly-researched
+summary which is all you'll remember from wikipedia anyway.</p>
+<ul>
+<li>At first, there was <code>qed</code> which inspired
+<code>ed</code></li>
+<li>Then some dude said "want more" and went ahead and made
+<code>ex</code></li>
+<li>Then <code>ex</code> got a visual mode which became
+<code>vi</code></li>
+<li>Then came <a
+href="https://en.wikipedia.org/wiki/Stevie_%28text_editor%29">stevie</a>,
+a fork of vi for Atari ST</li>
+<li>Then <code>vi</code> got <strong>im</strong>proved when stevie got
+forked as <code>vim</code></li>
+<li>Then finally we get the cool kid, neovim (<a
+href="https://neovim.io/charter/">fork of vim</a>)</li>
+<li>Also a side-note, almost all text editors come with a vi-mode as a
+result of this chain of influence</li>
+</ul>
+<p>But that's not all</p>
+<ul>
+<li><code>sed</code> is essentially <code>ed</code>'s line-based editing
+operations on streaming data (<strong>s</strong>tream
+<strong>ed</strong>itor).</li>
+<li><code>grep</code>'s name comes from a specific ed
+<strong>g</strong>lobal command <code>g/re/p</code> which prints
+everything that matches a given <strong>re</strong>gular
+expression.</li>
+<li>theres probably more things to add here but leaving this here
+because I felt uncomfortable making a list of 2 items</li>
+</ul>
+<h2 id="modern-ux">Modern UX</h2>
+<p>Having developed a lot of different user interfaces in my career,
+I've come to the conclusion that modern user interfaces are designed for
+idiots. Not saying, those interfaces are only used by idiots but they're
+designed for the lowest common denominator of technologically inept.</p>
+<blockquote>
+<p>This button called 'Move to trash' will move your file to trash. If
+you hover over it, it'll also show you a tooltip saying that it will
+move your file to trash. Clicking on it will show you a dialog box
+asking if you're absolutely sure that you want to move the file to
+trash. If you click yes and then you realize that you want the file
+back, you can go to the trash folder and restore it.</p>
+</blockquote>
+<p>Just <code>rm -rf</code> it, you pussy.</p>
+<p>This is done not because, it's necessary but because the people
+behind the tool pictured you as the worst case scenario of a user. They
+imagined a user so incompetent with tech that they can't be trusted with
+something they own. This reasoning is what then branches into a
+justification for the lack of ownership with a lot of modern technology
+but I'll leave some of this rambling to your imagination.</p>
+<h2 id="simplicity">Simplicity</h2>
+<p>I've always found ed to be quite elegant. Not because it's a good
+tool to use but because of a very specific feeling associated with using
+tools like this. Tools that are so simple that you feel like you
+completely understand the underlying mechanics of it and not just as an
+abstraction. You don't need a hand-wavy explanation for how it works. It
+is obvious at first glance. There are a small set of primitives you
+learn (commands in case of ed) and you know everything about how to use
+the tool, how it works, and how to very accurately predict it's
+behavior. If it breaks, it must've been a bit flip because a tool that
+simple just can't break.</p>
+<p>It's a breath of fresh air from all the high-level nonsense that
+we've been fed all our lives in the 21st century that we learn to never
+question and accept on faith. Not that far from religion, the way we
+treat all the systems around us.</p>
+<p>Like using a hammer. You look at it and you understand it. You don't
+have to plug it into a wall. There's no installing updates to improve
+security of the hammer. There's no sending usage data to some server in
+the background to allow the hammer company to "improve" the tool.
+Ignoring the quite likely kickstarter project doing those things, it's a
+hammer. You hit things with it..</p>
+<p>Most popular tools we use now are wrapped in so many layers of
+abstraction that we are completely disconnected from the tools we rely
+on. This trend is not acceptable to me.</p>
+<h2 id="fun">Fun</h2>
+<p>One of the biggest case I could make to try ed is that it's just fun.
+It's an editor that feels very technical to use and provides enough
+constraints to turn the experience of editing text into a turn-based
+strategy game. You execute a few commands one after another, without
+knowing if the edits are all correct and then you print the contents
+inside ed and you feel the rush of getting it right! Or the
+disappointment of forgetting to account for the added line in a previous
+command.</p>
+<h2 id="ai">AI</h2>
+<p>We've sort of come full circle now. Prompts to edit text is back but
+with the thickest layer of abstraction the world has every seen.</p>
+<ul>
+<li>You prompt it to make some edits, and it does that magically (among
+other things).</li>
+<li>You review the code (or don't if you're <em>really</em>
+vibing).</li>
+<li>You add it to your version control system (or don't if you're vibing
+extra hard).</li>
+<li>That's it. Do we really need a step here called "effort"?</li>
+</ul>
+<p>I cannot put into words worthy of a prompt to chatgpt, how extremely
+unappealing this is to me.</p>
+<p>Writing code and interacting with a computer in general has never
+been a means to an end for me. That is the point. I write code because I
+like writing code. Outsourcing that would be extremely pointless.</p>
+<h2 id="inconclushun">Inconclushun</h2>
+<p>Idk. Simple tools are fun. Bye.</p>
     </main>
 
   </div>
 
-    <div class="post-date centered-content">2025-07-26</div>
-    <hr />
-    <div id="comment">   <script src="https://giscus.app/client.js"           data-repo="phenax/ediblemonad.dev"           data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="           data-category="Announcements"           data-category-id="DIC_kwDOBILsg84C84jX"           data-mapping="pathname"           data-strict="0"           data-reactions-enabled="1"           data-emit-metadata="0"           data-input-position="bottom"           data-theme="dark"           data-lang="en"           crossorigin="anonymous"           async>   </script> </div> 
+  <div class="post-date centered-content">2025-07-26</div>
+<hr />
+<div id="comment">
+  <script src="https://giscus.app/client.js"
+          data-repo="phenax/ediblemonad.dev"
+          data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOBILsg84C84jX"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
   </body>
 
 </html>

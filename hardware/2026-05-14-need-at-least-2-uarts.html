@@ -168,56 +168,56 @@
 
 <body>
 
-    <header class="header">
-      <div>
-        <a class="header-title" href="/">akshay</a>
-      </div>
-      <div class="header-nav">
-        <a class="header-link" href="/">home</a>
-        <a class="header-link" href="/trash">trash</a>
-        <a class="header-link" href="/projects">projects</a>
-      </div>
-    </header>
+  <header class="header">
+  <div>
+    <a class="header-title" href="/">akshay</a>
+  </div>
+  <div class="header-nav">
+    <a class="header-link" href="/">home</a>
+    <a class="header-link" href="/trash">trash</a>
+    <a class="header-link" href="/projects">projects</a>
+  </div>
+</header>
 
-    <style>
-      .header {
-        padding: var(--page-v-padding) var(--page-h-padding);
-        max-width: var(--page-max-width);
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 6px;
-        border-bottom: 1px solid var(--color-gray-1);
-      }
+<style>
+  .header {
+    padding: var(--page-v-padding) var(--page-h-padding);
+    max-width: var(--page-max-width);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--color-gray-1);
+  }
 
-      .header-link {
-        display: block;
-      }
+  .header-link {
+    display: block;
+  }
 
-      .header-nav {
-        display: flex;
-        font-size: 0.8rem;
-        gap: 8px;
-      }
+  .header-nav {
+    display: flex;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
 
-      .header-title {
-        display: block;
-        font-size: 1rem;
-        text-decoration: none !important;
-        color: var(--color-foreground-1) !important;
-      }
+  .header-title {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none !important;
+    color: var(--color-foreground-1) !important;
+  }
 
-      @media (max-width: 480px) {
-        .header {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
-    <div class="header-secondary centered-content">
-      <a href="/hardware">&lt; Back to hardware</a>
-    </div>
+  @media (max-width: 480px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+  <div class="header-secondary centered-content">
+  <a href="/hardware">&lt; Back to hardware</a>
+</div>
   
   <div class="root">
         <header id="title-block-header">
@@ -225,36 +225,51 @@
                             </header>
         
     <main>
-      <p>I think people who make SBCs should add at least 2 UART ports.
-      RPI zero just has 1 which hurts when you want to reserve the UART
-      port for serial console and then all of a sudden you also need it
-      to communicate with some other module. I'm in that situation right
-      now.</p>
-      <p>Options I have:</p>
-      <ol type="1">
-      <li>USB for console with dwc2 (depends on SBC). UART for
-      module.</li>
-      <li>UART for serial console. USB-to-serial adapter for module (or
-      vice-versa but makes more sense if console's serial device can't
-      be unplugged).</li>
-      <li>UART for serial console. Bit-bang the module at a much lower
-      baud rate (if that's supported).</li>
-      <li>Board has wifi? Just ssh into it. Although, seems overkill for
-      simpler use-cases and might not be ideal in some situations. Not
-      an option for my pi zero.</li>
-      </ol>
-      <p>Maybe theres another option that I'm not aware of?</p>
-      <p>Going with 1 because it's less work on a pi zero. USB-to-serial
-      if the board doesn't support dwc2. But for a serial console you
-      have to 69 2 USB-to-serial adapters to get a console. But all of
-      this goes away if you just fucking add the 2nd UART port.</p>
+<p>I think people who make SBCs should add at least 2 UART ports. RPI
+zero just has 1 which hurts when you want to reserve the UART port for
+serial console and then all of a sudden you also need it to communicate
+with some other module. I'm in that situation right now.</p>
+<p>Options I have:</p>
+<ol type="1">
+<li>USB for console with dwc2 (depends on SBC). UART for module.</li>
+<li>UART for serial console. USB-to-serial adapter for module (or
+vice-versa but makes more sense if console's serial device can't be
+unplugged).</li>
+<li>UART for serial console. Bit-bang the module at a much lower baud
+rate (if that's supported).</li>
+<li>Board has wifi? Just ssh into it. Although, seems overkill for
+simpler use-cases and might not be ideal in some situations. Not an
+option for my pi zero.</li>
+</ol>
+<p>Maybe theres another option that I'm not aware of?</p>
+<p>Going with 1 because it's less work on a pi zero. USB-to-serial if
+the board doesn't support dwc2. But for a serial console you have to 69
+2 USB-to-serial adapters to get a console. But all of this goes away if
+you just fucking add the 2nd UART port.</p>
     </main>
 
   </div>
 
-    <div class="post-date centered-content">2026-05-14</div>
-    <hr />
-    <div id="comment">   <script src="https://giscus.app/client.js"           data-repo="phenax/ediblemonad.dev"           data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="           data-category="Announcements"           data-category-id="DIC_kwDOBILsg84C84jX"           data-mapping="pathname"           data-strict="0"           data-reactions-enabled="1"           data-emit-metadata="0"           data-input-position="bottom"           data-theme="dark"           data-lang="en"           crossorigin="anonymous"           async>   </script> </div> 
+  <div class="post-date centered-content">2026-05-14</div>
+<hr />
+<div id="comment">
+  <script src="https://giscus.app/client.js"
+          data-repo="phenax/ediblemonad.dev"
+          data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOBILsg84C84jX"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
   </body>
 
 </html>

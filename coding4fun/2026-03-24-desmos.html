@@ -168,56 +168,56 @@
 
 <body>
 
-    <header class="header">
-      <div>
-        <a class="header-title" href="/">akshay</a>
-      </div>
-      <div class="header-nav">
-        <a class="header-link" href="/">home</a>
-        <a class="header-link" href="/trash">trash</a>
-        <a class="header-link" href="/projects">projects</a>
-      </div>
-    </header>
+  <header class="header">
+  <div>
+    <a class="header-title" href="/">akshay</a>
+  </div>
+  <div class="header-nav">
+    <a class="header-link" href="/">home</a>
+    <a class="header-link" href="/trash">trash</a>
+    <a class="header-link" href="/projects">projects</a>
+  </div>
+</header>
 
-    <style>
-      .header {
-        padding: var(--page-v-padding) var(--page-h-padding);
-        max-width: var(--page-max-width);
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 6px;
-        border-bottom: 1px solid var(--color-gray-1);
-      }
+<style>
+  .header {
+    padding: var(--page-v-padding) var(--page-h-padding);
+    max-width: var(--page-max-width);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--color-gray-1);
+  }
 
-      .header-link {
-        display: block;
-      }
+  .header-link {
+    display: block;
+  }
 
-      .header-nav {
-        display: flex;
-        font-size: 0.8rem;
-        gap: 8px;
-      }
+  .header-nav {
+    display: flex;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
 
-      .header-title {
-        display: block;
-        font-size: 1rem;
-        text-decoration: none !important;
-        color: var(--color-foreground-1) !important;
-      }
+  .header-title {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none !important;
+    color: var(--color-foreground-1) !important;
+  }
 
-      @media (max-width: 480px) {
-        .header {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
-    <div class="header-secondary centered-content">
-      <a href="/coding4fun">&lt; Back to coding4fun</a>
-    </div>
+  @media (max-width: 480px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+  <div class="header-secondary centered-content">
+  <a href="/coding4fun">&lt; Back to coding4fun</a>
+</div>
   
   <div class="root">
         <header id="title-block-header">
@@ -225,67 +225,79 @@
                             </header>
         
     <main>
-      <p>Desmos is a graphing calculator where you can input math
-      equations and it'll plot it. The normal way to use it would be to
-      throw in an equation like <span
-      class="math inline"><em>y</em> = 2<em>x</em><sup>2</sup> + 2</span>
-      and boom you have a parabola. Even though it might seem simple on
-      the surface, it is hiding an incredible programming language and
-      rendering engine that you can use to build pretty much anything
-      you'd like.</p>
-      <p>Want to draw a box and a circle? <span
-      class="math display">{−5 &lt; <em>x</em> &lt; 5}{−5 &lt; <em>y</em> &lt; 5} &gt; 0</span>
-      <span
-      class="math display"><em>x</em><sup>2</sup> + <em>y</em><sup>2</sup> &lt; 25</span></p>
-      <p>Here, the comparisons at the top level means region (or range
-      in general) and conditional enclosed in curly braves like <span
-      class="math inline">{−5 &lt; <em>x</em> &lt; 5 &gt; 0}</span> are
-      expressions that can either return 1 if true or undefined if
-      false. 2 of these expressions next to each other is the product of
-      both.</p>
-      <p>Want to conditionally draw either a box or a circle and toggle
-      between them on the click of a button?
-      (<a href="https://www.desmos.com/calculator/zom3hguvjv" target="_blank _parent" rel="noopener">on
-      desmos</a>) <span
-      class="math display">{<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 1 : −<em>x</em><sup>2</sup> − <em>y</em><sup>2</sup> + 25, {−5 &lt; <em>x</em> &lt; 5 &gt; 0}{−5 &lt; <em>y</em> &lt; 5}} &gt; 0</span>
-      <span
-      class="math display"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0</span>
-      <span
-      class="math display"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> → {<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0 : 1, 0}</span></p>
-      <p>Here, if you click the arrow button to the left of the last
-      equation, it will update/toggle <span
-      class="math inline"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub></span>.
-      An expression like <span
-      class="math inline">{<em>x</em> &gt; 0 : 42, 7}</span> is a
-      conditional expression but instead of 1 or undefined, it will
-      return 42 when true and 7 when false (i.e. if expression). Also,
-      <span
-      class="math inline"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> → {<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0 : 1, 0}</span>
-      means when the action is triggered (button is clicked or via
-      timer), it will update the value which in this case would toggle
-      between 0 and 1.</p>
-      <p>The action can also be connected to any object drawn on screen
-      by clicking the cog in the sidebar, clicking on the icon to the
-      left of the equation for the object and then enabling
-      "Clickable".</p>
-      <p>You could also have that action be triggered every second (or
-      whatever interval) using the ticker feature in desmos (+ button in
-      the sidebar &gt; Ticker).</p>
-      <p>This post doesn't even begin to cover the incredible features
-      desmos provides but I think the fun is in exploring so if you find
-      desmos interesting, it's better to discover those yourself.</p>
-      <p><a href="https://desmos.ediblemonad.dev/#/graphs/snake-game" target="_blank _parent" rel="noopener">Here's
-      a snake game implemented in desmos</a>. Press "Play/Pause" to
-      start.</p>
-      <p>I maintain my collection of desmos experiments
-      <a href="https://desmos.ediblemonad.dev" target="_blank _parent" rel="noopener">here</a>.</p>
+<p>Desmos is a graphing calculator where you can input math equations
+and it'll plot it. The normal way to use it would be to throw in an
+equation like <span
+class="math inline"><em>y</em> = 2<em>x</em><sup>2</sup> + 2</span> and
+boom you have a parabola. Even though it might seem simple on the
+surface, it is hiding an incredible programming language and rendering
+engine that you can use to build pretty much anything you'd like.</p>
+<p>Want to draw a box and a circle? <span
+class="math display">{−5 &lt; <em>x</em> &lt; 5}{−5 &lt; <em>y</em> &lt; 5} &gt; 0</span>
+<span
+class="math display"><em>x</em><sup>2</sup> + <em>y</em><sup>2</sup> &lt; 25</span></p>
+<p>Here, the comparisons at the top level means region (or range in
+general) and conditional enclosed in curly braves like <span
+class="math inline">{−5 &lt; <em>x</em> &lt; 5 &gt; 0}</span> are
+expressions that can either return 1 if true or undefined if false. 2 of
+these expressions next to each other is the product of both.</p>
+<p>Want to conditionally draw either a box or a circle and toggle
+between them on the click of a button?
+(<a href="https://www.desmos.com/calculator/zom3hguvjv" target="_blank _parent" rel="noopener">on
+desmos</a>) <span
+class="math display">{<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 1 : −<em>x</em><sup>2</sup> − <em>y</em><sup>2</sup> + 25, {−5 &lt; <em>x</em> &lt; 5 &gt; 0}{−5 &lt; <em>y</em> &lt; 5}} &gt; 0</span>
+<span
+class="math display"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0</span>
+<span
+class="math display"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> → {<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0 : 1, 0}</span></p>
+<p>Here, if you click the arrow button to the left of the last equation,
+it will update/toggle <span
+class="math inline"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub></span>.
+An expression like <span
+class="math inline">{<em>x</em> &gt; 0 : 42, 7}</span> is a conditional
+expression but instead of 1 or undefined, it will return 42 when true
+and 7 when false (i.e. if expression). Also, <span
+class="math inline"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> → {<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0 : 1, 0}</span>
+means when the action is triggered (button is clicked or via timer), it
+will update the value which in this case would toggle between 0 and
+1.</p>
+<p>The action can also be connected to any object drawn on screen by
+clicking the cog in the sidebar, clicking on the icon to the left of the
+equation for the object and then enabling "Clickable".</p>
+<p>You could also have that action be triggered every second (or
+whatever interval) using the ticker feature in desmos (+ button in the
+sidebar &gt; Ticker).</p>
+<p>This post doesn't even begin to cover the incredible features desmos
+provides but I think the fun is in exploring so if you find desmos
+interesting, it's better to discover those yourself.</p>
+<p><a href="https://desmos.ediblemonad.dev/#/graphs/snake-game" target="_blank _parent" rel="noopener">Here's
+a snake game implemented in desmos</a>. Press "Play/Pause" to start.</p>
+<p>I maintain my collection of desmos experiments
+<a href="https://desmos.ediblemonad.dev" target="_blank _parent" rel="noopener">here</a>.</p>
     </main>
 
   </div>
 
-    <div class="post-date centered-content">2026-03-24</div>
-    <hr />
-    <div id="comment">   <script src="https://giscus.app/client.js"           data-repo="phenax/ediblemonad.dev"           data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="           data-category="Announcements"           data-category-id="DIC_kwDOBILsg84C84jX"           data-mapping="pathname"           data-strict="0"           data-reactions-enabled="1"           data-emit-metadata="0"           data-input-position="bottom"           data-theme="dark"           data-lang="en"           crossorigin="anonymous"           async>   </script> </div> 
+  <div class="post-date centered-content">2026-03-24</div>
+<hr />
+<div id="comment">
+  <script src="https://giscus.app/client.js"
+          data-repo="phenax/ediblemonad.dev"
+          data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOBILsg84C84jX"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
   </body>
 
 </html>

@@ -5,6 +5,58 @@
     <link>https://ediblemonad.dev/coding4fun</link>
     
     <item>
+  <guid>/coding4fun/2026-06-03-creative-coding-in-sqlite.html</guid>
+  <title>## Creative coding in sqlite</title>
+  <link>https://ediblemonad.dev/coding4fun/2026-06-03-creative-coding-in-sqlite.html</link>
+  <comments>https://ediblemonad.dev/coding4fun/2026-06-03-creative-coding-in-sqlite.html</comments>
+  <pubDate>2026-06-03</pubDate>
+  <description>
+    <![CDATA[<h3 id="creative-coding-in-sqlite">Creative coding in sqlite</h3>
+<p>Been trying out creative coding in sqlite recently
+<a href="https://github.com/phenax/sqlite-creative-coding" target="_blank _parent" rel="noopener">here</a>.
+Generating images is pretty straight forward. The SQL uses
+<a href="https://sqlite.org/lang_with.html" target="_blank _parent" rel="noopener">recursive
+CTE</a> to generate and store pixel rgb values in the db. Then a bash
+script reads the pixel values structures them in the ppm text format
+which is then converted to png using imagemagick. I was thinking of
+taking this a step further by converting to ppm from within sql but
+didn't feel like that added much except boilerplate.</p>
+<p>Here's a simplified example that generates 400x400 grid of pixels
+with a circle in the middle:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> RECURSIVE</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    image(width, height, cx, cy, radius) <span class="kw">AS</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> <span class="dv">400</span> <span class="kw">AS</span> width, <span class="dv">400</span> <span class="kw">AS</span> height, <span class="dv">200</span> <span class="kw">AS</span> cx, <span class="dv">200</span> <span class="kw">AS</span> cy, <span class="dv">160</span> <span class="kw">AS</span> radius),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    horizontal(x) <span class="kw">AS</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> width <span class="kw">FROM</span> image</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">SELECT</span> x <span class="op">-</span> <span class="dv">1</span> <span class="kw">FROM</span> horizontal <span class="kw">WHERE</span> x <span class="op">&gt;</span> <span class="dv">1</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    vertical(y) <span class="kw">AS</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> height <span class="kw">FROM</span> image</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">SELECT</span> y <span class="op">-</span> <span class="dv">1</span> <span class="kw">FROM</span> vertical <span class="kw">WHERE</span> y <span class="op">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> x, y,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dv">255</span> <span class="op">*</span> <span class="fu">MAX</span>(<span class="dv">0</span>, <span class="fu">MIN</span>(<span class="dv">1</span>, (x <span class="op">-</span> cx)<span class="op">*</span>(x <span class="op">-</span> cx) <span class="op">+</span> (y <span class="op">-</span> cy)<span class="op">*</span>(y <span class="op">-</span> cy) <span class="op">-</span> radius<span class="op">*</span>radius)),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dv">150</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dv">150</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> vertical, horizontal, image;</span></code></pre></div>
+<p>Here, <code>horizontal</code>/<code>vertical</code> generates x and y
+coordinates, the final select assigns the r,g,b values for each x,y
+coordinate.</p>
+<p>Turned out to be a lot more fun than what writing practical SQL had
+conditioned me to believe.</p>
+<p>In theory generating videos/gifs should be easy enough just multiple
+images stiched together but thats next. Generating audio out of samples
+should also be simple with raw PCM data and then to ffmpeg to convert to
+wav. Another more ambitious idea is to build a simple snake game. The
+way I'm thinking is with the ppm output streaming to ffplay and using
+terminal raw mode for input which will update relevant values either
+directly or via triggers.</p>
+<p>SQL can be fun.</p>
+]]>
+  </description>
+</item>
+<item>
   <guid>/coding4fun/2026-03-24-desmos.html</guid>
   <title># Desmos is beautiful</title>
   <link>https://ediblemonad.dev/coding4fun/2026-03-24-desmos.html</link>

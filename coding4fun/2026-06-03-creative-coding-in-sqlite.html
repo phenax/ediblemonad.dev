@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-          <title>ediblemonad – Coding for fun</title>
+          <title>ediblemonad – pkrcvvamqqki0ycy5yv36lyk0imh03g5--nix-store-vpzds2sxcc57b1hk2b9h08izfanxvzxg-pages-coding4fun-2026-06-03-creative-coding-in-sqlite</title>
   <style>
     *,
     *::before,
@@ -162,6 +162,71 @@
       vertical-align: middle;
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
     <link rel="stylesheet" href="/style.css" />
       </head>
@@ -215,21 +280,14 @@
     }
   }
 </style>
+  <div class="header-secondary centered-content">
+  <a href="/coding4fun">&lt; Back to coding4fun</a>
+</div>
   
   <div class="root">
-        <header id="title-block-header">
-      <h1 class="title">Coding for fun</h1>
-                            </header>
         
     <main>
-<link rel="alternate" type="application/rss+xml" href="https://ediblemonad.dev/coding4fun.xml" title="Akshay likes coding for fun" />
-<div style="text-align: right;">
-  <a href="https://ediblemonad.dev/coding4fun.xml" target="_blank _parent" rel="noopener">RSS</a>
-</div>
-
-<ul class="card-container">
-  <li class="inline-card">
-  <h3 id="creative-coding-in-sqlite">Creative coding in sqlite</h3>
+<h1 id="creative-coding-in-sqlite">Creative coding in sqlite</h1>
 <p>Been trying out creative coding in sqlite recently
 <a href="https://github.com/phenax/sqlite-creative-coding" target="_blank _parent" rel="noopener">here</a>.
 Generating images is pretty straight forward. The SQL uses
@@ -271,105 +329,29 @@ way I'm thinking is with the ppm output streaming to ffplay and using
 terminal raw mode for input which will update relevant values either
 directly or via triggers.</p>
 <p>SQL can be fun.</p>
-
-  <div class="post-date">2026-06-03</div>
-  <div class="inline-card-footer">
-  <a href="/coding4fun/2026-06-03-creative-coding-in-sqlite.html#comment">
-    Comment >>
-  </a>
-</div>
-
-</li>
-<li class="inline-card">
-  <h2 id="desmos-is-beautiful">Desmos is beautiful</h2>
-<p>Desmos is a graphing calculator where you can input math equations
-and it'll plot it. The normal way to use it would be to throw in an
-equation like <span
-class="math inline"><em>y</em> = 2<em>x</em><sup>2</sup> + 2</span> and
-boom you have a parabola. Even though it might seem simple on the
-surface, it is hiding an incredible programming language and rendering
-engine that you can use to build pretty much anything you'd like.</p>
-<p>Want to draw a box and a circle? <span
-class="math display">{−5 &lt; <em>x</em> &lt; 5}{−5 &lt; <em>y</em> &lt; 5} &gt; 0</span>
-<span
-class="math display"><em>x</em><sup>2</sup> + <em>y</em><sup>2</sup> &lt; 25</span></p>
-<p>Here, the comparisons at the top level means region (or range in
-general) and conditional enclosed in curly braves like <span
-class="math inline">{−5 &lt; <em>x</em> &lt; 5 &gt; 0}</span> are
-expressions that can either return 1 if true or undefined if false. 2 of
-these expressions next to each other is the product of both.</p>
-<p>Want to conditionally draw either a box or a circle and toggle
-between them on the click of a button?
-(<a href="https://www.desmos.com/calculator/zom3hguvjv" target="_blank _parent" rel="noopener">on
-desmos</a>) <span
-class="math display">{<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 1 : −<em>x</em><sup>2</sup> − <em>y</em><sup>2</sup> + 25, {−5 &lt; <em>x</em> &lt; 5 &gt; 0}{−5 &lt; <em>y</em> &lt; 5}} &gt; 0</span>
-<span
-class="math display"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0</span>
-<span
-class="math display"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> → {<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0 : 1, 0}</span></p>
-<p>Here, if you click the arrow button to the left of the last equation,
-it will update/toggle <span
-class="math inline"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub></span>.
-An expression like <span
-class="math inline">{<em>x</em> &gt; 0 : 42, 7}</span> is a conditional
-expression but instead of 1 or undefined, it will return 42 when true
-and 7 when false (i.e. if expression). Also, <span
-class="math inline"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> → {<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0 : 1, 0}</span>
-means when the action is triggered (button is clicked or via timer), it
-will update the value which in this case would toggle between 0 and
-1.</p>
-<p>The action can also be connected to any object drawn on screen by
-clicking the cog in the sidebar, clicking on the icon to the left of the
-equation for the object and then enabling "Clickable".</p>
-<p>You could also have that action be triggered every second (or
-whatever interval) using the ticker feature in desmos (+ button in the
-sidebar &gt; Ticker).</p>
-<p>This post doesn't even begin to cover the incredible features desmos
-provides but I think the fun is in exploring so if you find desmos
-interesting, it's better to discover those yourself.</p>
-<p><a href="https://desmos.ediblemonad.dev/#/graphs/snake-game" target="_blank _parent" rel="noopener">Here's
-a snake game implemented in desmos</a>. Press "Play/Pause" to start.</p>
-<p>I maintain my collection of desmos experiments
-<a href="https://desmos.ediblemonad.dev" target="_blank _parent" rel="noopener">here</a>.</p>
-
-  <div class="post-date">2026-03-24</div>
-  <div class="inline-card-footer">
-  <a href="/coding4fun/2026-03-24-desmos.html#comment">
-    Comment >>
-  </a>
-</div>
-
-</li>
-<li class="inline-card">
-  <h2 id="uiua">Uiua</h2>
-<p><a href="https://www.uiua.org" target="_blank _parent" rel="noopener">Uiua</a>
-is one of the most fun languages for creative coding. There are a bunch
-of really good primitives for generating audio files from samples,
-generating an image from an array of pixels, generating a gif from an
-array of array of pixels, etc. Messed around with it
-<a href="https://github.com/phenax/uiua-playground" target="_blank _parent" rel="noopener">here</a>
-some time ago and I've started to miss it. The only other APL-ish
-language I've tried is BQN which is also an amazing language but
-thinking tacit is hard and it takes time to get used to. There are smart
-people in the world. Being a member and representative of the other side
-of that spectrum, I need my escape hatches and they need to be pleasant.
-I've come to appreciate the stack-based escape hatches a lot more than
-the functional escape hatches with blocks using 𝕩 and the other spicy
-letters.</p>
-
-  <div class="post-date">2026-03-22</div>
-  <div class="inline-card-footer">
-  <a href="/coding4fun/2026-03-22-uiua.html#comment">
-    Comment >>
-  </a>
-</div>
-
-</li>
-
-</ul>
     </main>
 
   </div>
+
+  <div class="post-date centered-content">2026-06-03</div>
+<hr />
+<div id="comment">
+  <script src="https://giscus.app/client.js"
+          data-repo="phenax/ediblemonad.dev"
+          data-repo-id="MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOBILsg84C84jX"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
 
   </body>
 

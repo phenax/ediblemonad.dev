@@ -40,8 +40,8 @@ outputs)</li>
 <li>add the mounting holes as soon as possible after board outline to
 reserve enough space for them</li>
 <li>add mounting holes in schematic instead of just the pcb or lock the
-mounting holes in pcb. Mounting holes can get removed when doing "Update
-PCB from schematic"</li>
+mounting holes in pcb. Fucked it up and mounting holes got removed when
+doing "Update PCB from schematic". Confused the shit out off me</li>
 <li>for mcus, plan the firmware early on when drawing out the
 schematics</li>
 <li>pay attention to res pullups values for i2c lines based on the
@@ -49,7 +49,7 @@ frequency (from i2c spec). Used 4.7K on mine which seems alright</li>
 <li>dont move the ic around in the pcb and leave the bypass capacitors
 behind (happened twice)</li>
 </ul>
-<p>project is wip so will add more here...</p>
+<p>project is wip so will add more here as a fuck more things up...</p>
 ]]>
   </description>
 </item>
