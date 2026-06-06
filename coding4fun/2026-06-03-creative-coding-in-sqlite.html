@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-          <title>ediblemonad – pkrcvvamqqki0ycy5yv36lyk0imh03g5--nix-store-vpzds2sxcc57b1hk2b9h08izfanxvzxg-pages-coding4fun-2026-06-03-creative-coding-in-sqlite</title>
+          <title>ediblemonad – yx2y3i5xh40fa8qb13f948xk67nm6f49--nix-store-5gq5zf9sg83jfbiaakdgisl7n4kyrr7l-pages-coding4fun-2026-06-03-creative-coding-in-sqlite</title>
   <style>
     *,
     *::before,
@@ -290,13 +290,25 @@
 <h1 id="creative-coding-in-sqlite">Creative coding in sqlite</h1>
 <p>Been trying out creative coding in sqlite recently
 <a href="https://github.com/phenax/sqlite-creative-coding" target="_blank _parent" rel="noopener">here</a>.
-Generating images is pretty straight forward. The SQL uses
+Turned out to be a lot more fun than what writing practical SQL had
+conditioned me to believe!</p>
+<p>Generating images is pretty straight forward. The SQL uses
 <a href="https://sqlite.org/lang_with.html" target="_blank _parent" rel="noopener">recursive
 CTE</a> to generate and store pixel rgb values in the db. Then a bash
 script reads the pixel values structures them in the ppm text format
 which is then converted to png using imagemagick. I was thinking of
 taking this a step further by converting to ppm from within sql but
 didn't feel like that added much except boilerplate.</p>
+<p>Currently I've got 2 scripts image.sh and video.sh to generate images
+and videos respectively.</p>
+<ul>
+<li><strong>image.sh</strong>: Generates a ppm from the pixels stored in
+the db. Uses imagemagick to convert that to a png (and also for
+displaying it)</li>
+<li><strong>video.sh</strong>: Generates a ppm stream for each stored
+frame of the video. Uses ffmpeg to convert that to a gif (and uses
+ffplay for displaying it)</li>
+</ul>
 <p>Here's a simplified example that generates 400x400 grid of pixels
 with a circle in the middle:</p>
 <div class="sourceCode" id="cb1"><pre
@@ -318,16 +330,17 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#c
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> vertical, horizontal, image;</span></code></pre></div>
 <p>Here, <code>horizontal</code>/<code>vertical</code> generates x and y
 coordinates, the final select assigns the r,g,b values for each x,y
-coordinate.</p>
-<p>Turned out to be a lot more fun than what writing practical SQL had
-conditioned me to believe.</p>
-<p>In theory generating videos/gifs should be easy enough just multiple
-images stiched together but thats next. Generating audio out of samples
-should also be simple with raw PCM data and then to ffmpeg to convert to
-wav. Another more ambitious idea is to build a simple snake game. The
-way I'm thinking is with the ppm output streaming to ffplay and using
-terminal raw mode for input which will update relevant values either
-directly or via triggers.</p>
+coordinate which is what allows generating the visuals.</p>
+<p>In the repo, I'm storing the pixels instead of generating just
+generating them directly. I went with this approach for 2 reasons -
+debugging and reducing the pain of generating a video. Although,
+could've used materialized views but nah simpler is better.</p>
+<p>Generating audio out of samples should also be simple with raw PCM
+data and then to ffmpeg to convert to wav but haven't tried that yet.
+Another more ambitious idea is to build a simple snake game. The way I'm
+thinking is with the ppm output streaming to ffplay and using terminal
+raw mode for input which will update relevant values either directly or
+via triggers. Leaving that for future me to fuck around with.</p>
 <p>SQL can be fun.</p>
     </main>
 
