@@ -1,5 +1,7 @@
 # Blog
 
+<a href="/trash" class="back-link">&lt; Back to interests</a>
+
 ${partials.linkRss "${baseUrl}/blog.xml" "Akshay's blog"}
 
 <ul class="card-container">

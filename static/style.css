@@ -206,6 +206,13 @@ li:has(.card) {
   margin: auto;
 }
 
+.back-link {
+  display: block;
+  width: max-content;
+  font-size: 0.8rem;
+  margin-top: -1rem;
+}
+
 .giscus {
   padding: 0 var(--page-h-padding) 2rem;
   min-height: 400px;

@@ -1,5 +1,7 @@
 # Books
 
+<a href="/trash" class="back-link">&lt; Back to interests</a>
+
 Don't know how to read but I try my best.
 
 ${partials.linkRss "${baseUrl}/books.xml" "Akshay likes books"}
