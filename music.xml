@@ -5,6 +5,61 @@
     <link>https://ediblemonad.dev/music</link>
     
     <item>
+  <guid>/music/2026-06-06-spotify-can-suck-it.html</guid>
+  <title># Fuck spotify</title>
+  <link>https://ediblemonad.dev/music/2026-06-06-spotify-can-suck-it.html</link>
+  <comments>https://ediblemonad.dev/music/2026-06-06-spotify-can-suck-it.html</comments>
+  <pubDate>2026-06-06</pubDate>
+  <description>
+    <![CDATA[<h2 id="fuck-spotify">Fuck spotify</h2>
+<p>It's not breaking news that a lot of subscription services are
+predatory towards their customers. But spotify taskes it a step further
+and is predatory towards their artists as well. And thats just for the
+popular artists, newer artists and niche ones cannot survive with
+this.</p>
+<p>Why am I avoiding piracy if the artists still barely get paid? Answer
+my question, Lars!</p>
+<p>In exchange they offer convinience to both sides. Is that really
+worth it? I thought so for a while too but then I started feeling
+uncomfortable with the whole thing.</p>
+<p>So what are the alternatives? Theres a lot of good options but the
+technicality and time spent evaluating the options might put off some
+people.</p>
+<ul>
+<li>Self-hosted music streaming server:
+<a href="https://jellyfin.org/" target="_blank _parent" rel="noopener">jellyfin
+server</a>,
+<a href="https://mopidy.com/" target="_blank _parent" rel="noopener">mopidy</a>,
+<a href="https://www.navidrome.org/" target="_blank _parent" rel="noopener">navidrome</a>,
+<a href="https://github.com/epoupon/lms" target="_blank _parent" rel="noopener">LMS</a></li>
+<li>Music client:
+<a href="https://www.symfonium.app/" target="_blank _parent" rel="noopener">Symfonium</a>,
+<a href="https://mopidy.com/ext/iris/" target="_blank _parent" rel="noopener">mopidy-iris
+(for mopidy)</a>,
+<a href="https://jellyfin.org/" target="_blank _parent" rel="noopener">jellyfin
+client</a>
+<a href="https://github.com/UnicornsOnLSD/finamp" target="_blank _parent" rel="noopener">Finamp
+(for jellyfin)</a></li>
+<li>Self-hosted music discovery:
+<a href="https://github.com/LumePart/Explo" target="_blank _parent" rel="noopener">explo</a>
++
+<a href="https://listenbrainz.org/" target="_blank _parent" rel="noopener">listenbrainz</a></li>
+<li>Purchasing music:
+<a href="https://bandcamp.com/" target="_blank _parent" rel="noopener">bandcamp</a>,
+<a href="https://www.qobuz.com" target="_blank _parent" rel="noopener"><a
+href="https://www.qobuz.com">https://www.qobuz.com</a></a></li>
+</ul>
+<p>This path is way more accessible and convinient than it might seem at
+first.</p>
+<p>Another much simpler alternative is to use a physical music player
+(or just your phone) and load all your music files in there. I use a
+snowsky echo mini which has an sd card with all the albums I own (flacs
+from bandcamp) which is a fair compromise for me.</p>
+<p>Spotify can suck it.</p>
+]]>
+  </description>
+</item>
+<item>
   <guid>/music/2026-05-02-mr-bungle-is-real-fart.html</guid>
   <title># Mr. Bungle is real art</title>
   <link>https://ediblemonad.dev/music/2026-05-02-mr-bungle-is-real-fart.html</link>
