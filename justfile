@@ -27,7 +27,7 @@ post dir:
   title=$(bash -c 'read -e -p "title > " result; echo "$result"' | tail -n 1)
   postfile="./pages/{{dir}}/$(date +'%F')-$(echo "$title" | sed 's/[^A-Za-z0-9]/-/g' | tr '[A-Z]' '[a-z]').md"
   if ! [ -f "$postfile" ]; then
-    echo "## $title" > "$postfile";
+    echo "# $title" > "$postfile";
   fi
   "$EDITOR" "$postfile";
 
@@ -39,7 +39,7 @@ blog:
   postfile="${path}.md"
   nixfile="${path}.nix"
   if ! [ -f "$postfile" ]; then
-    echo "## $title" > "$postfile";
+    echo "# $title" > "$postfile";
   fi
   if ! [ -f "$nixfile" ]; then
     echo "{ title = \"$title\"; }" > "$nixfile";

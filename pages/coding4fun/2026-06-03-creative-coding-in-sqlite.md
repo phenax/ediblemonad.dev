@@ -1,4 +1,4 @@
-## Creative coding in sqlite
+# Creative coding in sqlite
 
 Been trying out creative coding in sqlite recently ${partials.linkExternal "https://github.com/phenax/sqlite-creative-coding" "here"}. Turned out to be a lot more fun than what writing practical SQL had conditioned me to believe!
 
