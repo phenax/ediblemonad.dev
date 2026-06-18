@@ -6,12 +6,12 @@
     
     <item>
   <guid>/coding4fun/2026-06-03-creative-coding-in-sqlite.html</guid>
-  <title>## Creative coding in sqlite</title>
+  <title># Creative coding in sqlite</title>
   <link>https://ediblemonad.dev/coding4fun/2026-06-03-creative-coding-in-sqlite.html</link>
   <comments>https://ediblemonad.dev/coding4fun/2026-06-03-creative-coding-in-sqlite.html</comments>
   <pubDate>2026-06-03</pubDate>
   <description>
-    <![CDATA[<h3 id="creative-coding-in-sqlite">Creative coding in sqlite</h3>
+    <![CDATA[<h2 id="creative-coding-in-sqlite">Creative coding in sqlite</h2>
 <p>Been trying out creative coding in sqlite recently
 <a href="https://github.com/phenax/sqlite-creative-coding" target="_blank _parent" rel="noopener">here</a>.
 Turned out to be a lot more fun than what writing practical SQL had
