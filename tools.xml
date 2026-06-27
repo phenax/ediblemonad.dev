@@ -5,6 +5,102 @@
     <link>https://ediblemonad.dev/tools</link>
     
     <item>
+  <guid>/tools/2026-06-27-kakoune--snippets.html</guid>
+  <title># Kakoune: snippets</title>
+  <link>https://ediblemonad.dev/tools/2026-06-27-kakoune--snippets.html</link>
+  <comments>https://ediblemonad.dev/tools/2026-06-27-kakoune--snippets.html</comments>
+  <pubDate>2026-06-27</pubDate>
+  <description>
+    <![CDATA[<h2 id="kakoune-snippets">Kakoune: snippets</h2>
+<p>Kakoune doesn't have built-in support for snippets. You can use
+plugins like
+<a href="https://github.com/occivink/kakoune-snippets" target="_blank _parent" rel="noopener">occivink/kakoune-snippets</a>
+to have that in the editor but you could also have a much simpler setup
+for snippets with a few lines of scripting.</p>
+<p>My first iteration of snippets was just to use commands and prompt
+for input like so:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">declare-option</span> <span class="at">-hidden</span> str-list snippets_list</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> snippets-insert %{</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">prompt</span> <span class="at">-menu</span> <span class="st">&#39;Snippets: &#39;</span> <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-shell-script-candidates</span> <span class="st">&#39;echo &quot;$kak_opt_snippet_list&quot;&#39;</span> <span class="dt">\</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    %{ evaluate-commands %val{text} }</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> define-snippet <span class="at">-params</span> 2 %{</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">set-option</span> <span class="at">-add</span> %arg{1} snippets_list %sh{ echo <span class="at">-e</span> <span class="st">&quot;</span><span class="va">$2</span><span class="st">\n&quot;</span> }</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hook</span> global BufSetOption filetype=<span class="er">(</span><span class="ex">?:ruby</span><span class="kw">)</span> <span class="ex">%{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">define-snippet</span> buffer snip-rails-class</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> snip-rails-class %{</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">eval</span> %sh{</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">class_name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$kak_bufname</span><span class="st">&quot;</span> .rb <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-e</span> <span class="st">&#39;s/[^A-Za-z0-9]\(\w\)/\U\1/g&#39;</span> <span class="at">-e</span> <span class="st">&#39;s/^\w/\U\0/g&#39;</span><span class="va">)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;set-register c </span><span class="va">$class_name</span><span class="st">&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="er">}</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&#39;&lt;esc&gt;,i# frozen_string_literal: true&lt;ret&gt;&lt;ret&gt;&#39;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&#39;class &lt;c-r&gt;c&lt;ret&gt;&#39;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&#39;end&#39;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
+<p>Here, it parses the ruby class name from the file name to generate
+the snippet but this could also just be a <code>prompt</code> command
+instead.</p>
+<p>This worked okay but it was pretty hard to maintain. Would be much
+easier if the snippets themselves were easier to create and read. So,
+that eventually evolved into this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">declare-option</span> str snippets_dir <span class="st">&quot;%val{config}/snippets&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> snippets-insert <span class="at">-docstring</span> <span class="st">&#39;Snippets&#39;</span> %{</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">prompt</span> <span class="at">-menu</span> <span class="st">&quot;Snippets: &quot;</span> <span class="at">-init</span> <span class="st">&quot;%opt{filetype}/&quot;</span> <span class="dt">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-shell-script-candidates</span> %{ fd <span class="at">--type</span> file <span class="at">--base-directory</span> <span class="st">&quot;</span><span class="va">$kak_opt_snippets_dir</span><span class="st">&quot;</span> } <span class="dt">\</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     %{</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="ex">evaluate-commands</span> %sh{</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">&quot;</span><span class="va">$kak_text</span><span class="st">&quot;</span> <span class="kw">in</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="pp">*</span><span class="ss">.snip.kak</span><span class="kw">)</span> <span class="fu">cat</span> <span class="st">&quot;</span><span class="va">$kak_opt_snippets_dir</span><span class="st">/</span><span class="va">$kak_text</span><span class="st">&quot;</span> <span class="cf">;;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>          <span class="pp">*</span><span class="kw">)</span> <span class="bu">echo</span> <span class="st">&quot;insert-text-snippet %{</span><span class="va">$kak_text</span><span class="st">}&quot;</span> <span class="cf">;;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">esac</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="er">}</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> <span class="at">-hidden</span> insert-text-snippet <span class="at">-params</span> 1 %{</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&quot;,|cat &quot;&quot;%opt{snippets_dir}/%arg{1}&quot;&quot;&lt;ret&gt;&quot;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="at">-save-regs</span> <span class="st">&#39;&#39;</span> <span class="st">&quot;s[$]\d+&lt;ret&gt;&quot;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&quot;%sh{echo </span><span class="va">$((kak_selection_count</span> <span class="op">+</span> <span class="dv">1</span><span class="va">))</span><span class="st">}n&quot;</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
+<p>Now each snippet is a file placed in
+<code>~/.config/kak/snippets/</code>. The files in my case are organized
+by filetype in directories as <code>{filetype}/snippetname.{ext}</code>
+or <code>{filetype}/snippetname.snip.kak</code>. The prompt is filled
+with <code>{filetype}/</code> so at first you see the snippets for the
+current filetype but you can delete that in the prompt to see all.</p>
+<p>If it's a .snip.kak file, it is evaluated as a kakoune script which
+is the same as the commands from before. Otherwise the contents of the
+snippet file is inserted into the buffer directly and any
+<code>$n</code> (<code>$1</code>, <code>$2</code>, ...) will be added as
+a selection. Example:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># frozen_string_literal: true</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="va">$1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">$2</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">$3</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p>The above snippet, <code>$1</code> is automatically selected first.
+You can press <code>c</code> to change it and <code>Esc</code> to go
+back to normal mode. Then when you press <code>n</code>, it jumps to the
+next <code>$n</code>.</p>
+<p>I know this already exists for every other editor out of the box and
+is much more fleshed out but the experience of understanding a system
+and defining a feature within it, in it's simplest form, is a really
+pleasant.</p>
+]]>
+  </description>
+</item>
+<item>
   <guid>/tools/2026-05-14-nixos-is-a-chore.html</guid>
   <title># NixOS is a chore</title>
   <link>https://ediblemonad.dev/tools/2026-05-14-nixos-is-a-chore.html</link>

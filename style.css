@@ -293,7 +293,7 @@ main code span.an {
 
 /* Annotation */
 main code span.at {
-  color: #7d9029;
+  color: #90a0a0;
 }
 
 /* Attribute */
@@ -353,8 +353,7 @@ main code span.dv {
 
 /* DecVal */
 main code span.er {
-  color: #ff0000;
-  font-weight: bold;
+  color: white;
 }
 
 /* Error */
@@ -367,7 +366,7 @@ main code span.fl {
 
 /* Float */
 main code span.fu {
-  color: #0070a0;
+  color: #007070;
 }
 
 /* Function */
@@ -411,17 +410,17 @@ main code span.sc {
 
 /* SpecialChar */
 main code span.ss {
-  color: #bb6688;
+  color: white;
 }
 
 /* SpecialString */
 main code span.st {
-  color: #4070a0;
+  color: #b3f6c0;
 }
 
 /* String */
 main code span.va {
-  color: #19177c;
+  color: #81a2be;
 }
 
 /* Variable */
