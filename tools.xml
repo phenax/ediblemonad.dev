@@ -5,6 +5,28 @@
     <link>https://ediblemonad.dev/tools</link>
     
     <item>
+  <guid>/tools/2026-07-02-normalize-official-rss-feeds.html</guid>
+  <title># Normalize official RSS feeds</title>
+  <link>https://ediblemonad.dev/tools/2026-07-02-normalize-official-rss-feeds.html</link>
+  <comments>https://ediblemonad.dev/tools/2026-07-02-normalize-official-rss-feeds.html</comments>
+  <pubDate>2026-07-02</pubDate>
+  <description>
+    <![CDATA[<h2 id="normalize-official-rss-feeds">Normalize official RSS feeds</h2>
+<p>Given the shitshow every single medium of accessing information and
+entertainment feeds has turned into with organizations optimizing the
+amount of time people spend on their apps, I think we need more neutral
+sources. Source that are not trying to "understand" us to manipulate us
+into using their app more like the most toxic relationship. RSS seems
+like the only good standard left for this. I really like that youtube
+and reddit have official rss feeds which I use a lot. And I'm also very
+happy with the amount of blogs I've found that provide an rss feed. But
+we could definitely use more of this. We also need to normalize it's use
+to the point where people lean towards rss instinctively rather than
+reaching for the apps/websites.</p>
+]]>
+  </description>
+</item>
+<item>
   <guid>/tools/2026-06-27-kakoune--snippets.html</guid>
   <title># Kakoune: snippets</title>
   <link>https://ediblemonad.dev/tools/2026-06-27-kakoune--snippets.html</link>
