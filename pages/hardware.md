@@ -1,6 +1,6 @@
 # Hardware & embedded
 
-<a href="/trash" class="back-link">&lt; Back to interests</a>
+<a href="/" class="back-link">&lt; Back to home</a>
 
 ${partials.linkRss "${baseUrl}/hardware.xml" "Akshay likes hardware and embedded systems"}
 

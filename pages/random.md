@@ -1,6 +1,6 @@
 # Noise
 
-<a href="/trash" class="back-link">&lt; Back to interests</a>
+<a href="/" class="back-link">&lt; Back to home</a>
 
 ${partials.linkRss "${baseUrl}/random.xml" "Not worth reading"}
 

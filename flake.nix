@@ -27,7 +27,6 @@
             pages = {
               "index.html" = ssg.mdPage "home.md";
               "projects.html" = ssg.mdPage "projects.md";
-              "trash.html" = ssg.mdPage "trash.md";
 
               "blog/index.html" = ssg.mdPage "blog.md";
               "blog" = ssg.mdPageDir "blog";
