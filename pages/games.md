@@ -1,6 +1,6 @@
 # Video games
 
-<a href="/trash" class="back-link">&lt; Back to interests</a>
+<a href="/" class="back-link">&lt; Back to home</a>
 
 ${partials.linkRss "${baseUrl}/games.xml" "Akshay likes video games"}
 

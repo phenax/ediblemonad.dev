@@ -1,6 +1,6 @@
 # Coding for fun
 
-<a href="/trash" class="back-link">&lt; Back to interests</a>
+<a href="/" class="back-link">&lt; Back to home</a>
 
 ${partials.linkRss "${baseUrl}/coding4fun.xml" "Akshay likes coding for fun"}
 
