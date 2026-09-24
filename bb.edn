@@ -1,0 +1,6 @@
+{:paths ["src"]
+ :deps {comb/comb {:mvn/version "1.0.0"}}
+ :tasks {lint {:task (shell "clj-kondo --lint .")}
+         r {:requires ([ediblemonad.main])
+            :task (apply ediblemonad.main/-main *command-line-args*)}}}
+

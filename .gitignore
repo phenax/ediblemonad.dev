@@ -1,2 +1,5 @@
 result
 .build/
+
+.clj-kondo/
+.lsp/
