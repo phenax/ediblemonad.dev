@@ -1,2 +1,2 @@
 build:
-  bb src/main.clj
+  bb r

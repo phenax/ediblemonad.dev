@@ -17,7 +17,7 @@
   $if(description-meta)$
   <meta name="description" content="$description-meta$" />
   $endif$
-  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
   <style>
     *,
     *::before,
@@ -175,7 +175,7 @@
 <body>
 
   $for(include-before)$
-$include-before$
+  $include-before$
   $endfor$
 
   <div class="root">
@@ -194,7 +194,7 @@ $include-before$
       $if(abstract)$
       <div class="abstract">
         <div class="abstract-title">$abstract-title$</div>
-$abstract$
+        $abstract$
       </div>
       $endif$
     </header>
@@ -204,18 +204,18 @@ $abstract$
       $if(toc-title)$
       <h2 id="$idprefix$toc-title">$toc-title$</h2>
       $endif$
-$table-of-contents$
+      $table-of-contents$
     </nav>
     $endif$
 
     <main>
-$body$
+      $body$
     </main>
 
   </div>
 
   $for(include-after)$
-$include-after$
+  $include-after$
   $endfor$
 </body>
 

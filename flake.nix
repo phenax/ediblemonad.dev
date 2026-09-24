@@ -26,6 +26,7 @@
             clj-kondo
             bbin
             babashka
+            pandoc
           ];
         }
       );
