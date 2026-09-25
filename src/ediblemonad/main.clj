@@ -3,92 +3,87 @@
    [babashka.fs :as fs]
    [clojure.string :as str]
    [ediblemonad.template]
-   [clojure.java.shell :refer [sh]]))
-
-(def configuration {:output-dir "/tmp/ediblemonad-out"
-                    :pages-dir "pages"
-                    :static-dir "static"
-                    :title-prefix "Akshay"
-                    :headers ["header.html"]
-                    :template "template.html"
-                    :stylesheets ["/style.css"]
-                    :routes {:home {:output "index.html"}
-                             :coding4fun {:type :articles}
-                             :blog {:type :articles}}})
+   [ediblemonad.types :refer [mk-page mk-route-config mk-configuration]]
+   [clojure.java.shell :refer [sh]])
+  (:import [ediblemonad.types RouteConfig Configuration Page]))
 
 (def reserved-path? #(str/ends-with? % "+index.md"))
 
-(defn definition->pages-standalone [route route-cfg config]
-  [(ediblemonad.template/load-page-template config {:output (or (:output route-cfg) (str route "/index.html"))
-                                                    :source (str (:pages-dir config) "/" route ".md")
-                                                    :source-name ""
-                                                    :route route
-                                                    :route-cfg route-cfg
-                                                    :articles []
-                                                    :layouts {}})])
+(defn route->pages-standalone [^String route ^RouteConfig route-cfg ^Configuration config]
+  [(ediblemonad.template/load-page-template config
+                                            (mk-page {:output (or (:output route-cfg) (str route "/index.html"))
+                                                      :source (str (:pages-dir config) "/" route ".md")
+                                                      :route route
+                                                      :route-cfg route-cfg}))])
 
-(defn definition->pages-articles [route route-cfg config]
+(defn route->pages-articles [^String route ^RouteConfig route-cfg ^Configuration config]
   (let [{:keys [pages-dir]} config
-        mkpage (fn [src out]
-                 (let [source-path (str src)
-                       source-name (str/replace (fs/file-name source-path) #".md$" "")
-                       date (re-find #"\d{4}-\d{2}-\d{2}" source-name)]
-                   {:output (str out) :source source-path :source-name source-name
-                    :date date :route-cfg route-cfg :route route :articles [] :layouts {}}))
+        page-for (fn [src out]
+                   (let [source-path (str src)
+                         source-name (str/replace (fs/file-name source-path) #".md$" "")
+                         date (re-find #"\d{4}-\d{2}-\d{2}" source-name)]
+                     (mk-page {:output (str out) :source source-path :source-name source-name
+                               :date date :route-cfg route-cfg :route route})))
         existing #(when (fs/exists? %) %)
         article-layouts {:before (existing (str pages-dir "/" route "/+before.html"))
                          :after (existing (str pages-dir "/" route "/+after.html"))}
         articles (->>
                   (fs/glob (str pages-dir "/" route) "*.md")
                   (remove reserved-path?)
-                  (map #(mkpage % (str route "/" (str/replace (fs/file-name %) #".md$" ".html"))))
+                  (map #(page-for % (str route "/" (str/replace (fs/file-name %) #".md$" ".html"))))
                   (map #(merge % {:layouts article-layouts}))
                   (map #(ediblemonad.template/load-page-template config %)))
         index-page (->>
-                    (mkpage (str pages-dir "/" route "/+index.md") (str route "/index.html"))
+                    (page-for (str pages-dir "/" route "/+index.md") (str route "/index.html"))
                     (#(merge % {:articles articles}))
-                    (ediblemonad.template/load-page-template config))]
-    (->> articles (concat [index-page]) (into []))))
+                    (ediblemonad.template/load-page-template config))
+        pages (if (:article-pages? route-cfg) (concat [index-page] articles) [index-page])]
+    (into [] pages)))
 
-(defn definition->pages [route route-cfg config]
+(defn route->pages [^String route ^RouteConfig route-cfg ^Configuration config]
   (cond
-    (= :articles (:type route-cfg)) (definition->pages-articles route route-cfg config)
-    :else (definition->pages-standalone route route-cfg config)))
+    (= :articles (:type route-cfg)) (route->pages-articles route route-cfg config)
+    :else (route->pages-standalone route route-cfg config)))
 
-(defn config->pages [config]
+(defn config->pages [^Configuration config]
   (->> (seq (:routes config))
-       (map (fn [[route route-cfg]] (definition->pages (name route) route-cfg config)))
+       (map (fn [[route route-cfg]] (route->pages (name route) (mk-route-config route-cfg) config)))
        flatten))
 
-(defn exec-pandoc [inputfile outputfile {:keys [title-prefix template headers footers stylesheets metadata]}]
+(defn exec-pandoc [^String inputfile ^String outputfile ^Configuration {:keys [title-prefix template headers footers stylesheets metadata]}]
   (println "Generating" outputfile "...")
-  (let [multi-args (fn [arg vals] (flatten (map #(conj [arg] %) vals)))
+  (let [mkargs (fn [arg vals] (->> (remove nil? vals) (map #(conj [arg] %)) flatten))
         args (flatten ["--shift-heading-level-by=-1" "--standalone" "--from=gfm" "--to=html"
-                       (if (nil? title-prefix) [] ["--title-prefix" title-prefix])
-                       (multi-args "-c" stylesheets) (->> [template] (filter fs/exists?) (multi-args "--template"))
-                       (->> (or headers []) (filter fs/exists?) (multi-args "--include-before-body"))
-                       (->> (or footers []) (filter fs/exists?) (multi-args "--include-after-body"))
-                       (multi-args "-M" (map (fn [[k v]] (str (name k) ":" v)) metadata))
-                       (str inputfile) "-o" (str outputfile)])
+                       (mkargs "--title-prefix" [title-prefix])
+                       (mkargs "--css" stylesheets)
+                       (mkargs "--template" [template])
+                       (mkargs "--include-before-body" (or headers []))
+                       (mkargs "--include-after-body" (or footers []))
+                       (mkargs "--metadata" (map (fn [[k v]] (str (name k) ":" v)) metadata))
+                       (str inputfile) "--output" (str outputfile)])
         {:keys [exit err]} (apply sh "pandoc" args)]
     (when (not (zero? exit))
       (println "Failed with exit code" exit ":" err)
       (System/exit exit))))
 
-(defn gen-page [page config tmp-dir]
+(defn gen-page [^Page page ^Configuration config ^String tmp-dir]
   (let [outpath (str (:output-dir config) "/" (:output page))
         templatepath (str (fs/create-temp-file {:dir tmp-dir}))
         layouts (:layouts page)]
     (fs/create-dirs (fs/parent outpath))
     (spit templatepath (:content page))
-    (exec-pandoc templatepath outpath (merge config {:headers (concat (:headers config) [(:before layouts)])
-                                                     :footers (concat [(:after layouts)] (:footers config))
-                                                     :metadata @(:meta page)}))))
+    (exec-pandoc templatepath outpath
+                 (merge config {:headers (concat (:headers config) [(:before layouts)])
+                                :footers (concat [(:after layouts)] (:footers config))
+                                :metadata @(:meta page)}))))
 
-(defn -main []
-  (let [pages (config->pages configuration)]
-    (fs/delete-tree (:output-dir configuration))
-    (fs/copy-tree (:static-dir configuration) (:output-dir configuration))
+(defn gen-site [^Configuration config]
+  (let [pages (config->pages config)]
+    (fs/delete-tree (:output-dir config))
+    (fs/copy-tree (:static-dir config) (:output-dir config))
     #_{:clj-kondo/ignore [:invalid-arity]}
     (fs/with-temp-dir [tmp-dir {}]
-      (run! #(gen-page % configuration tmp-dir) pages))))
+      (run! #(gen-page % config tmp-dir) pages))))
+
+(defn -main []
+  (->> (load-file "blog.config.clj") mk-configuration gen-site))
