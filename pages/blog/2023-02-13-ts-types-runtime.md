@@ -1,3 +1,6 @@
+<% (meta ctx {:title "TypeScript's type-system as a runtime"
+              :description "Interrogation of a suspect who allegedly turned typescripts type-system into its own purely functional programming language"}) %>
+
 # TypeScript's type-system as a runtime
 
 > Disclaimer: The following content is not very informative
