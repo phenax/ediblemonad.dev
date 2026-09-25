@@ -1,7 +1,8 @@
+<% (meta ctx {:description "Akshay likes games"}) %>
+
 # Video games
 
-<a href="/" class="back-link">&lt; Back to home</a>
+<%= (link :home "Back to home" {:class "back-link"}) %>
 
-${partials.linkRss "${baseUrl}/games.xml" "Akshay likes video games"}
+<%= (show-articles articles inline-article-card) %>
 
-${partials.inline-card-list (mdPageDir "games").files}
