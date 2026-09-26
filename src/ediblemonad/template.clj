@@ -49,12 +49,36 @@
                     (str
                      "(TODO: rss)\n\n"
                      (apply make-elem :ul {:class "card-container"}
-                            (map #(render-item opts %) articles))))})
+                            (map #(render-item opts %) articles))))
+   :comment-section (fn []
+                      (make-elem :div {:id "comment"}
+                                 (make-elem :script {:src "https://giscus.app/client.js"
+                                                     :data-repo "phenax/ediblemonad.dev"
+                                                     :data-repo-id "MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+                                                     :data-category "Announcements"
+                                                     :data-category-id "DIC_kwDOBILsg84C84jX"
+                                                     :data-mapping "pathname"
+                                                     :data-strict "0"
+                                                     :data-reactions-enabled "1"
+                                                     :data-emit-metadata "0"
+                                                     :data-input-position "bottom"
+                                                     :data-theme "dark"
+                                                     :data-lang "en"
+                                                     :crossorigin "anonymous"
+                                                     :async "async"})))})
 
-(defn load-page-template [^Configuration config ^Page page]
-  (let [meta (or (:meta page) (atom {}))
-        extra-bindings {:ctx {:meta meta}
-                        :articles (:articles page)}]
-    (->> (slurp (:source page))
-         (#(comb/eval % (merge (default-bindings config) extra-bindings)))
-         (#(merge page {:content % :meta meta})))))
+(defn eval-template-string [^String contents ^Configuration config & [^hash-map extra-bindings]]
+  (let [meta (or (:meta (or extra-bindings {})) (atom {}))
+        bindings (merge (default-bindings config) extra-bindings {:ctx {:meta meta}})
+        result (comb/eval contents bindings)]
+    {:content result :meta meta}))
+
+(defn eval-template-file [^String file ^Configuration config & [^hash-map extra-bindings]]
+  (let [contents (slurp file)]
+    (eval-template-string contents config extra-bindings)))
+
+(defn load-page-template [^Configuration config ^Page page & [^hash-map extra-bindings]]
+  (let [bindings (merge (or extra-bindings {}) {:articles (:articles page)})
+        {:keys [content meta]} (eval-template-file (:source page) config bindings)]
+    (merge page {:content content :meta meta})))
+

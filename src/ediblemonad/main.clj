@@ -25,13 +25,13 @@
                      (mk-page {:output (str out) :source source-path :source-name source-name
                                :date date :route-cfg route-cfg :route route})))
         existing #(when (fs/exists? %) %)
-        article-layouts {:before (existing (str pages-dir "/" route "/+before.html"))
-                         :after (existing (str pages-dir "/" route "/+after.html"))}
+        layouts {:before (some->> (str pages-dir "/" route "/+before.html") existing)
+                 :after (some->> (str pages-dir "/" route "/+after.html") existing)}
         articles (->>
                   (fs/glob (str pages-dir "/" route) "*.md")
                   (remove reserved-path?)
                   (map #(page-for % (str route "/" (str/replace (fs/file-name %) #".md$" ".html"))))
-                  (map #(merge % {:layouts article-layouts}))
+                  (map #(merge % {:layouts layouts}))
                   (map #(ediblemonad.template/load-page-template config %)))
         index-page (->>
                     (page-for (str pages-dir "/" route "/+index.md") (str route "/index.html"))
@@ -69,12 +69,16 @@
 (defn gen-page [^Page page ^Configuration config ^String tmp-dir]
   (let [outpath (str (:output-dir config) "/" (:output page))
         templatepath (str (fs/create-temp-file {:dir tmp-dir}))
+        before-template (str (fs/create-temp-file {:dir tmp-dir}))
+        after-template (str (fs/create-temp-file {:dir tmp-dir}))
         layouts (:layouts page)]
     (fs/create-dirs (fs/parent outpath))
     (spit templatepath (:content page))
+    (some->> layouts :before (#(ediblemonad.template/eval-template-file % config {})) :content (spit before-template))
+    (some->> layouts :after (#(ediblemonad.template/eval-template-file % config {})) :content (spit after-template))
     (exec-pandoc templatepath outpath
-                 (merge config {:headers (concat (:headers config) [(:before layouts)])
-                                :footers (concat [(:after layouts)] (:footers config))
+                 (merge config {:headers (concat (:headers config) [before-template])
+                                :footers (concat [after-template] (:footers config))
                                 :metadata @(:meta page)}))))
 
 (defn gen-site [^Configuration config]
