@@ -66,12 +66,13 @@
    :video (fn [src & [attrs]]
             (elem :div {:class "image-container"}
                   (elem :video (merge attrs {:src src :controls true :autoplay "autoplay" :muted "true" :loop "loop"}))))
-   :inline-article-card (fn [_opts ^Page {:keys [route route-cfg source-name content date]}]
+   :inline-article-card (fn [{:keys [open-text]} ^Page {:keys [route route-cfg source-name content date]}]
                           (let [href (get-page-link route-cfg route source-name)]
                             (elem :li {:class "inline-card"}
                                   "\n\n" content "\n\n" (elem :div {:class "post-date"} date)
                                   (elem :div {:class "inline-card-footer"}
-                                        (when (:article-pages? route-cfg) (make-link href "read more" {}))))))
+                                        (when (:article-pages? route-cfg)
+                                          (make-link href (or open-text "leave a comment") {}))))))
    :link-article-card (fn [_opts ^Page {:keys [meta route output route-cfg source-name date]}]
                         (let [{:keys [title description]} @meta
                               href (get-page-link route-cfg route source-name)]
@@ -93,15 +94,16 @@
                            (elem :div {:style "text-align: right;"} (external-link link "RSS")))
                        (apply elem :ul {:class "card-container"}
                               (map #(render-item opts %) (:articles page))))))
-   :breadcrumbs (fn [{:keys [route route-cfg index?]}]
+   :breadcrumbs (fn [{:keys [route route-cfg source-name index?]}]
                   (let [home-link (make-link "/" "home")
                         separator (elem :span {} ">")
                         route-link (make-link (get-page-link route-cfg route) (name route))
+                        current-mark (elem :span {} (if index? (name route) (or source-name ".")))
                         wrap (fn [& args] (apply elem :div {:class "centered-content breadcrumbs"} args))]
                     (cond
                       (= :home route) ""
-                      index? (wrap home-link)
-                      :else (wrap home-link separator route-link))))
+                      index? (wrap home-link separator current-mark)
+                      :else (wrap home-link separator route-link separator current-mark))))
    :comment-section (fn []
                       (elem :div {:id "comment"}
                             (elem :script {:src "https://giscus.app/client.js"
