@@ -4,6 +4,7 @@
 
 I make stuff:
 - [Projects](/projects)
+- [Creative coding](/creative-coding)
 - <%= (external-link "https://desmos.ediblemonad.dev" "Desmos experiments") %>
 
 ---

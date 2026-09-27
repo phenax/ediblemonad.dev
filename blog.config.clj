@@ -7,6 +7,7 @@
  :stylesheets ["/style.css"]
  :routes {:home {:output "index.html"}
           :projects {:type :articles :article-pages? false}
+          :creative-coding {:type :articles}
           :coding4fun {:type :articles}
           :tools {:type :articles}
           :games {:type :articles}
