@@ -1,6 +1,14 @@
-# Hey there
+# Hey there, I'm Akshay
 
-I'm Akshay. I make stuff and write about things I find interesting:
+---
+
+I make stuff:
+- [Projects](/projects)
+- <%= (external-link "https://desmos.ediblemonad.dev" "Desmos experiments") %>
+
+---
+
+...and I write about stuff I find interesting:
 - [Coding for fun](/coding4fun)
 - [Hardware & embedded](/hardware)
 - [Tools](/tools)

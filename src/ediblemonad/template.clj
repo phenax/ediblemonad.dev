@@ -91,7 +91,7 @@
                         wrap (fn [& args] (apply elem :div {:class "centered-content breadcrumbs"} args))]
                     (cond
                       (= :home route) ""
-                      index? ""
+                      index? (wrap home-link)
                       :else (wrap home-link separator route-link))))
    :comment-section (fn []
                       (elem :div {:id "comment"}
