@@ -1,0 +1,1421 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Older blog posts</title>
+<link>https://ediblemonad.dev/blog</link>
+<description>Akshay's old blog posts</description>
+<article><guid>2025-07-26-ed-it</guid>
+<title>A case for ed</title>
+<link>https://ediblemonad.dev/blog/2025-07-26-ed-it</link>
+<comments>https://ediblemonad.dev/blog/2025-07-26-ed-it</comments>
+<pubDate>2025-07-26</pubDate>
+<description><![CDATA[
+
+# A case for ed
+
+Can you say that you **truly** understand the tools you use?
+
+Text editors like vscode (or any other web browser as a text editor things) or an IDE like intellij, are a russian doll for layers of abstractions that you're meant to accept as a whole and never think about. With something like vscode, there's the editor itself, all the integrations that it comes with, the browser behind the scenes that renders everything, some electron magic that connects that browser internals to your system, whatever nodejs does, etc.
+
+But as a programmer, that feeling is something that I've grown very uncomfortable with. Which is partly why I've always gravitated towards tools that are simple and let me break that abstraction and build around it. The cost of that choice is of course that you have to trade off some convinience to do this either as a one time investment to set it up or a continuous cost if it's not very easy to use.
+
+
+### Prompt-driven programming before AI
+Back in the day when people thought we'd have flying cars by the year 2025, the primary way to interact with a computer was through a teletype interface. Not a fancy terminal emulator that allows displaying images or one that asks you to sign-up with your email address to use your terminal, just a regular ol' teletype terminal.
+
+So an obvious choice to write code within this environment was an editor that took commands for editing text and applied those commands on the file. One such solution was a line-wise text editor called [ed](https://linux.die.net/man/1/ed).
+
+The way you edit text in ed is using commands in a repl interface that operate on lines. You can **d**elete/**i**nsert/**a**ppend/**c**hange/**m**ove/cop**y** lines. If you want to change something inside a line you can use the **s**ubstitute command `s/pattern/replacement/`. There is also the **g**lobal command which applies one of the other commands over all lines that match the given pattern. People familiar with vim will already be familiar with a lot of these commands.
+
+
+### Influence
+Not going into details of the history because if you can read this, you can read wikipedia. But I can give you a lazy, poorly-researched summary which is all you'll remember from wikipedia anyway.
+
+- At first, there was `qed` which inspired `ed`
+- Then some dude said "want more" and went ahead and made `ex`
+- Then `ex` got a visual mode which became `vi`
+- Then came [stevie](https://en.wikipedia.org/wiki/Stevie_%28text_editor%29), a fork of vi for Atari ST
+- Then `vi` got **im**proved when stevie got forked as `vim`
+- Then finally we get the cool kid, neovim ([fork of vim](https://neovim.io/charter/))
+- Also a side-note, almost all text editors come with a vi-mode as a result of this chain of influence
+
+But that's not all
+- `sed` is essentially `ed`'s line-based editing operations on streaming data (**s**tream **ed**itor).
+- `grep`'s name comes from a specific ed **g**lobal command `g/re/p` which prints everything that matches a given **re**gular expression.
+- theres probably more things to add here but leaving this here because I felt uncomfortable making a list of 2 items
+
+
+### Modern UX
+
+Having developed a lot of different user interfaces in my career, I've come to the conclusion that modern user interfaces are designed for idiots.
+Not saying, those interfaces are only used by idiots but they're designed for the lowest common denominator of technologically inept.
+
+> This button called 'Move to trash' will move your file to trash.
+> If you hover over it, it'll also show you a tooltip saying that it will move your file to trash.
+> Clicking on it will show you a dialog box asking if you're absolutely sure that you want to move the file to trash.
+> If you click yes and then you realize that you want the file back, you can go to the trash folder and restore it.
+
+Just `rm -rf` it, you pussy.
+
+This is done not because, it's necessary but because the people behind the tool pictured you as the worst case scenario of a user.
+They imagined a user so incompetent with tech that they can't be trusted with something they own.
+This reasoning is what then branches into a justification for the lack of ownership with a lot of modern technology but I'll leave some of this rambling to your imagination.
+
+
+### Simplicity
+
+I've always found ed to be quite elegant. Not because it's a good tool to use but because of a very specific feeling associated with using tools like this.
+Tools that are so simple that you feel like you completely understand the underlying mechanics of it and not just as an abstraction.
+You don't need a hand-wavy explanation for how it works. It is obvious at first glance.
+There are a small set of primitives you learn (commands in case of ed) and you know everything about how to use the tool, how it works, and how to very accurately predict it's behavior. If it breaks, it must've been a bit flip because a tool that simple just can't break.
+
+It's a breath of fresh air from all the high-level nonsense that we've been fed all our lives in the 21st century that we learn to never question and accept on faith. Not that far from religion, the way we treat all the systems around us.
+
+Like using a hammer. You look at it and you understand it. You don't have to plug it into a wall. There's no installing updates to improve security of the hammer. There's no sending usage data to some server in the background to allow the hammer company to "improve" the tool. Ignoring the quite likely kickstarter project doing those things, it's a hammer. You hit things with it..
+
+Most popular tools we use now are wrapped in so many layers of abstraction that we are completely disconnected from the tools we rely on.
+This trend is not acceptable to me.
+
+
+
+### Fun
+
+One of the biggest case I could make to try ed is that it's just fun.
+It's an editor that feels very technical to use and provides enough constraints to turn the experience of editing text into a turn-based strategy game.
+You execute a few commands one after another, without knowing if the edits are all correct and then you print the contents inside ed and you feel the rush of getting it right! Or the disappointment of forgetting to account for the added line in a previous command.
+
+
+
+### AI
+
+We've sort of come full circle now. Prompts to edit text is back but with the thickest layer of abstraction the world has every seen.
+- You prompt it to make some edits, and it does that magically (among other things).
+- You review the code (or don't if you're *really* vibing).
+- You add it to your version control system (or don't if you're vibing extra hard).
+- That's it. Do we really need a step here called "effort"?
+
+I cannot put into words worthy of a prompt to chatgpt, how extremely unappealing this is to me.
+
+Writing code and interacting with a computer in general has never been a means to an end for me. That is the point.
+I write code because I like writing code. Outsourcing that would be extremely pointless.
+
+
+
+### Inconclushun
+
+Idk. Simple tools are fun. Bye.
+
+]]></description></article>
+<article><guid>2023-02-13-ts-types-runtime</guid>
+<title>TypeScript's type-system as a runtime</title>
+<link>https://ediblemonad.dev/blog/2023-02-13-ts-types-runtime</link>
+<comments>https://ediblemonad.dev/blog/2023-02-13-ts-types-runtime</comments>
+<pubDate>2023-02-13</pubDate>
+<description><![CDATA[
+
+# TypeScript's type-system as a runtime
+
+> Disclaimer: The following content is not very informative
+
+Where were you on the night of 20th January? ANSWER ME, YOU FUCK!
+Not a talker, yeah? No problem. You'll talk eventually. They all do.
+
+We have an overwhelming amount of evidence that suggests that you were the one responsible for turning typescript's type system into it's own purely functional programming language.
+What kind of a sick, twisted man, does that?
+You're gonna be spending a lot of time behind bars for this.
+
+The reports suggest that you can even read/write files, perform basic io and even interop with js from it?
+
+Take a look at some of the crime scene photos.
+
+```typescript
+export type main = [
+  PutStringLn<'Greetotron 6000 initializing...'>,
+
+  PutString<'Your name? '>,
+  Bind<ReadLine, <name extends string>() => PutStringLn<`Hello, ${name}`>>,
+
+  PutString<'Your purpose in life? '>,
+  Bind<ReadLine, HandleResponse>,
+
+  PutStringLn<'Bye bye'>,
+]
+
+// Equivalent to `HandleResponse :: string -> Effect ()`
+interface HandleResponse extends Kind1<string, Effect> {
+  return: Do<[
+    PutStringLn<`Interesting that you believe "${this['input']}" is your purpose. Hmmmm...`>,
+    PutStringLn<'Judging harshly...'>,
+    PutStringLn<'Saving response...'>,
+    WriteFile<'./response.txt', this['input']>,
+  ]>
+}
+```
+
+Do you feel any remorse for the victims you've affected? I hope you get the chair for this.
+
+
+We also found the murder weapon on the crime scene - `npx tsr run ./somefile.ts`.
+Not just that, it says here you built the weapon yourself using `ts-morph` as a wrapper around the typescript compiler.
+Did you use the source file as your runtime representation of memory, you piece of shit?!
+But, we're getting a bit ahead of ourselves here.
+
+Let's get to the motive which is the only piece of the puzzle we're missing.
+Why would a mediocre software developer suddenly go postal and make something like this?
+Did someone pay you to do this? Is that what this is about? Money?
+Naah. This was a little more personal than that.
+I have a theory for why you did it. And it's as simple as it gets.
+You're a sick man who enjoys watching people cringe and suffer. Is that what this blog post is about? More cringe?
+
+We've even figured out how you smuggled all the results of the io back into the program.
+It was a result node, wasn't it? A stray object that you injected properties into, you sick fuck.
+Was that your runtime representation of memory? You just used the randomly generated property name to access the result in your effects.
+
+```typescript
+type __$result = {
+  '90sd9...': { output: 'Result of computation' }
+}
+```
+
+
+
+
+Another thing that's been bugging me is,
+
+### Why is the effects api monadic?
+
+Was it because you wanted all operations on the results represented in the type tree so you could manipulate it?
+
+You disgust me. In my 20 years on the force, I've never met a man as disturbed as you.
+Don't bother pleading insanity here though. This was calculated. No one is going to buy it.
+
+
+### Remember your hacky attempts at first class functions?
+
+We have it in our custody and it's talking like a parrot.
+Telling us everything we need to know about your sick experiments!
+
+```typescript
+interface Greet extends Kind1<string, string> {
+  return: `Hello, ${this['input']}!`
+}
+
+type msg = Apply<Greet, 'EdibleMonad'> // : 'Hello, EdibleMonad!'
+```
+
+Yeah, we got you now, you bastard!
+
+You weren't satisfied with this tho, were you?
+You wanted your first-class functions to be inline. You needed it.
+So you made your runtime recognize lambda functions as first-class functions.
+
+```typescript
+type main = Bind<
+  ReadFile<'./file.txt'>,
+  <T extends string>() => PutStringLn<T>
+>
+```
+
+But this is where you fucked up. You couldn't generalize this as a pattern because typescript doesn't work like that.
+Typescript doesn't support higher kinded types, dumbass!
+So you settled for only allowing this pattern inside `Bind` and `Try`.
+You flew too close to the sun, Icarus and it lead us straight to you.
+
+
+
+You're done, buddy. This case is as good as closed so you might as well confess.
+
+### Alright! Alright! I confess!
+
+It was me who did it. I made the runtime that turns typescript types into a purely functional programming language!
+I did it because I fucking wanted to! And I enjoyed every second of it!
+
+I saw people making things that defied all logic, like an [assembly interpreter](https://github.com/judehunter/ts-asm) within the typescript type-system.
+I knew if I wanted to make it do something more, I'll need a runtime! That's when I came up with my master plan.
+
+I don't regret a thing! I've made my mark on the world even if that mark is a piss stain on the side of the street.
+
+---
+
+> Akshay was charged with cringe and sentenced to death by lethal injection. It was later discovered that this wasn't all that big of a deal and completely blown out of proportion.
+
+Ok bye
+
+]]></description></article>
+<article><guid>2021-03-01-effect-handlers</guid>
+<title>Designing effects as data structures</title>
+<link>https://ediblemonad.dev/blog/2021-03-01-effect-handlers</link>
+<comments>https://ediblemonad.dev/blog/2021-03-01-effect-handlers</comments>
+<pubDate>2021-03-01</pubDate>
+<description><![CDATA[
+
+# Designing effects as data structures
+
+You gotta teach your effects some manners.
+
+We work with effects everyday, but those rascals have a habit of running around loose in our programs.
+I'm not saying it's just bad parenting but we have to draw the line at some point.
+
+Look at pure functions, they are so disciplined and obedient. They never get into any trouble.
+You ask them a question, they give you an answer. That's what you expect from good code.
+If you find out that your function, while giving you the answer, also went ahead and made 5 api calls, thats a good sign that your code needs some disciplining.
+
+---
+
+### Let's implement a linked list
+
+I swear this is relevant and not a plot to make you learn DSA again.
+
+```reasonml
+type rec myList<'a> = Nil | Cons('a, myList<'a>)
+
+let ls = Cons(5, Cons(20, Cons(-28, Nil)))
+```
+
+That is a simple **linked list** implemented in [rescript](https://rescript-lang.org/).
+`Nil` marks the end of the list and every element before it contains an item of that list and the rest of the list.
+They know how to stand in a straight line like good students.
+
+But, this is an **eager list** since all items of the list already exist on the time of its creation. For what we're working on today, eager lists won't be enough. We need our list to be *lazy*.
+We can turn that into a **lazy linked list** by replacing the rest of the list with a function returning the rest of the list like so -
+
+```reasonml
+type rec lazyList<'a> = Nil | Cons('a, unit => lazyList<'a>)
+
+let ls = Cons(5, () =>
+  Cons(20, () =>
+    Cons(512, () =>
+      Nil)))
+```
+
+This makes it so the rest of the linked list doesn't exist till the function is called.
+This is helpful if you wanted to create an **infinite list**.
+
+```reasonml
+let rec fibonacci = (a, b) => Cons(b, () => fibonacci(b, a + b))
+
+let rec take = (ls, n) => switch (n, ls) {
+  | (_, Nil) | (0, _) => Nil
+  | (n, Cons(value, next)) => Cons(value, () => next()->take(n - 1))
+}
+
+let rec forEach = (ls, fn) => switch ls {
+  | Nil => ()
+  | Cons(value, next) => {
+    fn(value)
+    next()->forEach(fn)
+  }
+}
+
+fibonacci(0, 1)->take(20)->forEach(Js.log)
+```
+
+`fibonacci` returns a lazy list of all the numbers in Fibonacci series starting with `a` and `b`. We then use the `take` function to ignore the list after the first `20` items. `forEach`, then goes through the new list till the 20 items and logs each one out.
+
+This is very helpful for **modeling continuous sequences** of data without consuming all the space it may need.
+
+Everything we've played with so far has been *simple* and *pure*. Unlike those disobedient effects passing notes to each other, non-deterministically. Oh I hate them so much.
+
+---
+
+### Can effects be more like that?
+
+Close your eyes. No, seriously, close them. This is important.
+Now, imagine a world where all your effectful code could just be designed as *data structures*!
+Are your eyes still closed? Good.
+Something as simple as a linked list that describes all the effectful logic in your code.
+Writing tests will become fun!
+Everything would be so much simpler. All of our life's problems would just disappear.
+
+Well, today's yo... Oh you can open your eyes now. Sorry.
+Well, today's your lucky day!
+
+We will turn your ill-mannered effects into well behaved pure data structures.
+
+---
+
+### Impure effect? More like code neglect, amirite? Please clap
+
+Kids, please turn in your assignment from last week. I hope you all implemented `appendStringToFile: string => string => string` that appends a string to a file and returns the new contents, given the imaginary synchronous functions `readFile: string => string` and `writeFile: string => string => ()` for doing file IO.
+
+```reasonml
+let appendStringToFile = (fileName, logLine) => {
+  let contents = readFile(fileName)
+  writeFile(contents ++ logLine)
+  readFile(fileName)
+}
+
+let newLogContents = appendStringToFile(fileName, "\nSome text")
+```
+
+Oh my god, Timmy! Is that imperative and impure function calls in your notebook? That's it. To the principals office! Now!
+
+Now let's try to think of a way to do this that's not an absolute nightmare to test.
+What if we just made a data structure out of it?
+
+Let's try turning each of those statements into variants that can be linked together lazily.
+
+```reasonml
+type rec fileEff<'a> =
+  | ReadFile(string, string => fileEff<'a>)
+  | WriteFile(string, string, unit => fileEff<'a>)
+  | Return(string)
+
+let appendStringToFile = (fileName, logLine) =>
+  ReadFile(fileName, contents =>
+    WriteFile(fileName, contents ++ logLine, _ =>
+      ReadFile(fileName, newContents =>
+        Return(newContents))))
+```
+
+You can read `Something(a, b, c => fileEff<'a>)` as an operation `Something` that takes `a` and `b` and returns a `c`.
+
+If you squint hard enough, you'll find that this is very similar to the **lazy list** data structure we implemented earlier.
+You have the last item `Return`, and each item before it is a description of an effect.
+
+This is similar to how programming languages have **Abstract Syntax Trees (AST)** that describe the syntax of the language which then goes through the **interpreter** to be executed.
+Just like ASTs, to get our code working, we need to write an interpreter to evaluate our data structure and produce effects.
+
+```reasonml
+let rec interpreter = eff => switch eff {
+  | Return(contents) => contents
+  | ReadFile(fileName, getNext) =>
+    readFile(fileName)->getNext->interpreter
+  | WriteFile(fileName, contents, getNext) => {
+    writeFile(fileName, contents);
+    ()->getNext->interpreter;
+  }
+}
+
+let result = interpreter(appendStringToFile("./file", "hello world"));
+```
+
+The interpreter walks through the list-like structure and calls itself recursively on each of the nodes till it hits `Return`.
+
+Kevin: "Why is this better than writing it imperatively?"
+
+\*takes a deep breath\*
+Kevin... STFU!
+
+This is better because it **decouples** your **business logic** from the **effects**!
+This is better because you can just create a **mock interpreter** and **write tests for your business logic** without actually generating effects!
+This is better because you get **dependency injection** for free!
+
+---
+
+### Are we composable yet?
+
+Now we have a new problem though. It seems like `Return` will have to be defined for every kind of effect we may have.
+This will also make it difficult to **compose** it with other effects.
+So let's abstract that out.
+
+We can create a module function for creating effects and handling the recursion in the interpreter.
+
+```reasonml
+module type EFFECT = {
+  type t<'a>
+}
+
+module MakeEffect = (Eff: EFFECT) => {
+  type rec t<'a, 'ret> = 
+    | Return('ret)
+    | Operation(Eff.t<t<'a, 'ret>>)
+
+  let rec interpreter = (eff, handler) => switch eff {
+    | Return(x) => x
+    | Operation(m) => handler(m)->interpreter(handler)
+  }
+}
+```
+
+
+Then we can rewrite our file effect in peace.
+
+```reasonml
+module FileOperations = {
+  type t<'a> =
+    | ReadFile(string, string => 'a)
+    | WriteFile(string, string, unit => 'a)
+}
+
+module FileEffect = MakeEffect(FileOperations)
+
+let appendStringToFile = (fileName, logLine) => {
+  open FileOperations;
+  open FileEffect;
+
+  Operation(ReadFile(fileName, contents =>
+    Operation(WriteFile(fileName, contents ++ logLine, _ =>
+      Operation(ReadFile(fileName, contents =>
+        Return(contents)
+      ))
+    ))
+  ))
+}
+
+let handler = eff => switch eff {
+  | ReadFile(fileName, resume) => readFile(fileName)->resume;
+  | WriteFile(fileName, contents, resume) => {
+    writeFile(fileName, contents);
+    resume(());
+  }
+}
+
+let result = appendStringToFile->FileEffect.interpreter(handler)
+```
+
+> **"Effects as a data structure is cool and all but I don't want to write code that looks like a ladder"**
+>     - Former student who died under suspicious circumstances shortly after making this statement
+
+I get it. It looks ugly. All new-born babies do. We just need some *SYNTAX SUGAR* to make things better.
+Don't worry tho. I got you. But before we go there, we need to implement a `flatMap` operation for our effect.
+
+You may know `flatMap` from it's critically acclaimed role in `Belt.Option` and `Belt.Result` modules. Also, the horrible `Js.Promise.then_`, is also a `flatMap` on promises.
+In general, `flatMap: t<'a> => ('a => t<'b>) => t<'b> ` allows us to chain `t<'a>` to `t<'b>` using the result of `t<'a>`.
+
+```reasonml
+// This is a map operation over our file operation
+let fileOpsMap = (eff, fn) => switch eff {
+  | ReadFile(f, next) => ReadFile(f, e => e->next->fn)
+  | WriteFile(f, c, next) => WriteFile(f, c, e => e->next->fn)
+}
+
+// This function allows us to chain our effects together
+let rec flatMap = (eff, fn) => switch eff {
+  | Return(a) => fn(a)
+  | Eff(m) => Eff(m->fileOpsMap(flatMap(_, fn)))
+}
+```
+
+While we're at it, we'll also need another function called `liftEff`.
+This function **lifts** any given operation into an `Effect` and makes it terminate with its result.
+`x => next effect?` becomes `Eff(x => Return(x))`
+
+```reasonml
+let liftEff = fa => Eff(fa->fileOpsMap(e => Return(e)));
+```
+
+
+Now putting it all together, our effects helper and file effect will look something like this
+
+```reasonml
+module type EFFECT = {
+  type rec t<'a>;
+  let map : t<'a> => ('a => 'b) => t<'b>;
+};
+
+module MakeEffect = (Eff: EFFECT) => {
+  type rec t<'a> = 
+    | Return('a)
+    | Eff(Eff.t<t<'a>>);
+
+  let liftEff = fa => Eff(fa->Eff.map(e => Return(e)));
+
+  let rec flatMap = (eff, fn) => switch eff {
+    | Return(a) => fn(a)
+    | Eff(m) => Eff(m->Eff.map(flatMap(_, fn)))
+  };
+
+  let rec interpreter = (eff, handler) => switch eff {
+    | Return(x) => x
+    | Eff(m) => handler(m)->interpreter(handler)
+  };
+};
+
+module FileOperations = {
+  type rec t<'a> =
+    | ReadFile(string, string => 'a)
+    | WriteFile(string, string, unit => 'a);
+
+  let map = (eff, fn) => switch eff {
+    | ReadFile(f, next) => ReadFile(f, e => e->next->fn)
+    | WriteFile(f, c, next) => WriteFile(f, c, e => e->next->fn)
+  };
+};
+
+module FileEffect = MakeEffect(FileOperations);
+
+// Lifted helper functions
+let readFileOp = file =>
+  FileEffect.liftEff(FileOperations.ReadFile(file, x => x));
+
+let writeFileOp = (file, contents) =>
+  FileEffect.liftEff(FileOperations.WriteFile(file, contents, x => x));
+```
+
+
+Now for the *SYNTAX SUGAR* I promised!
+
+```reasonml
+let appendStringToFile = (fileName, logLine) => {
+  open FileEffect;
+
+  readFileOp(fileName)
+  ->flatMap(contents => writeFileOp(fileName, contents ++ logLine))
+  ->flatMap(_ => readFileOp(fileName))
+};
+```
+
+We have turned our `FileOperations` into a functor
+
+
+---
+
+### No, not that functor, the other functor.
+
+Functors in ocaml ([module functions](https://rescript-lang.org/docs/manual/latest/module#module-functions-functors)) are very different from functors in category theory.
+
+What we have made here is a combination of both kinds of functors.
+The `FileOperations` **functor** (category theory) goes into the `MakeEffect` **functor** (module function) and returns `FileEffect` **monad** (category theory).
+
+> Fun fact: Functor comes from the contraction of, fun which is Russian for vodka, ca which of course is the sound a crow makes and tor which is a modern tin foil hat that actually works.
+
+> Fun fact: Monad comes from the mind of a mathematician who forgot about the essay that was due, so at the last minute, started making up words to fill up the 800 words.
+
+Don't quote me on that but it's probably true. We'll never know.
+
+We don't have to get into the specifics of functors and monads to make sense of this class but it is worth the learning curve.
+
+---
+
+### Ugh.. Unit tests
+
+Writing tests for it is as simple as creating **a mock handler**.
+
+```reasonml
+let mockFile = ref("init:");
+let mockHandler = eff => switch eff {
+  | FileOperations.ReadFile(fileName, resume) => resume(mockFile.contents);
+  | FileOperations.WriteFile(fileName, contents, resume) => {
+    mockFile.contents = contents;
+    resume(());
+  };
+};
+
+let result = appendStringToFile("./file", "text to append")
+  ->FileEffect.interpreter(mockHandler);
+
+expect.string(result).toEqual("init:text to append");
+expect.string(mockFile.contents).toEqual("init:text to append");
+```
+
+And now for the best part... *drum rolls*
+
+**SNAPSHOT/GOLDEN TESTING**
+
+Yes! As all our business logic is now just a data structure, you can create a snapshot of it to test against!
+
+You can perform snapshot testing of your effect by **accumulating the effects** called on your handler as an array.
+
+```reasonml
+let nodes = ref([]->Obj.magic);
+let addNode = node => nodes.contents = nodes.contents->Belt.Array.concat([node]);
+
+let mockHandler = eff => {
+  addNode(eff);
+  switch eff {
+    | FileOperations.ReadFile(_f, resume) => resume("mock file contents")
+    | FileOperations.WriteFile(_f, _c, resume) => resume(())
+  };
+};
+
+appendStringToFile("./file", "text to append")->FileEffect.interpreter(mockHandler)->ignore;
+
+expect.value(nodes).toMatchSnapshot();
+```
+
+And just like that, all of our business logic is now 100% safe against all kinds of refactor.
+- You change the order of effects?... Tests break!
+- You add another effect in between?... Tests break!
+- You accidentally delete everything?... Tests explodes!
+- You got scammed by a Nigerian prince?... This won't help with that!
+- You change something that doesn't impact your program?... Tests pass!
+
+
+---
+
+### Effect composition
+
+File IO is great but your code will involve other effects too.
+Maybe you want to implement **logging**? Or maybe some **caching** mechanism? Or maybe you just want to maintain a piece of **mutable state** in your code?
+Just having one effect called `FileEffect` is not gonna cut it.
+
+To be able to compose multiple effects into one big effect, we can use the almighty [STRUCTURAL/POLYMORPHIC VARIANTS](https://rescript-lang.org/docs/manual/latest/polymorphic-variant)!
+
+```reasonml
+// File IO effect
+module FileOperations = {
+  type rec t<'a> = [ #ReadFile(string, string => 'a) | #WriteFile(string, string, unit => 'a) ];
+
+  let map = (eff, fn) => switch eff {
+    | #ReadFile(f, next) => #ReadFile(f, e => e->next->fn)
+    | #WriteFile(f, c, next) => #WriteFile(f, c, e => e->next->fn)
+  };
+};
+
+// Logger effect
+module LoggerOperations = {
+  type rec t<'a> = [ #LogMessage(string, string, string => 'a) ];
+
+  let map = (eff, fn) => switch eff {
+    | #LogMessage(m, d, next) => #LogMessage(m, d, e => e->next->fn)
+  };
+};
+
+// Composition of FileOperations and LoggerOperations
+module MyCustomOperations = {
+  type rec t<'a> = [ LoggerOperations.t<'a> | FileOperations.t<'a> ];
+
+  let map = eff => switch eff {
+    | #...FileOperations.t as e => FileOperations.map(e)
+    | #...LoggerOperations.t as e => LoggerOperations.map(e)
+  };
+};
+
+module MyCustomEff = MakeEffect(MyCustomOperations);
+
+let logMessageOp = (message, data) => MyCustomEff.liftEff(#LogMessage(message, data, x => x));
+let readFileOp = file => MyCustomEff.liftEff(#ReadFile(file, x => x));
+let writeFileOp = (file, contents) => MyCustomEff.liftEff(#WriteFile(file, contents, x => x));
+
+// Our program
+let appendStringToFile = (fileName, logLine) => {
+  open MyCustomEff;
+
+  readFileOp(fileName)
+  ->flatMap(logMessageOp(":: Logging file contents before update -"))
+  ->flatMap(contents => writeFileOp(fileName, contents ++ logLine))
+  ->flatMap(_ => readFileOp(fileName))
+  ->flatMap(logMessageOp(":: Logging file contents after update -"))
+};
+```
+
+You can **compose any number of effects** together into one for your programs!
+
+And of course, nothing would work without the handler so...
+
+```reasonml
+let handler = eff => switch eff {
+  | #LogMessage(message, data, resume) => {
+    Js.log2(message, data);
+    resume(data);
+  }
+  | #ReadFile(fileName, resume) => readFile(fileName)->resume;
+  | #WriteFile(fileName, contents, resume) => {
+    writeFile(fileName, contents);
+    resume(());
+  };
+};
+
+let result = appendStringToFile->MyCustomEff.interpreter(handler);
+```
+
+---
+
+### Does all of this have a name?
+
+What we just learned is a construct in functional programming called [free algebraic structures](https://wiki.haskell.org/Free_structure). More specifically, `FileEffect` and `MyCustomEff` are Free Monads.
+
+In general, a free monad on a Functor `f` is a structure where each node represents `f`. If you understood what I just said, please explain it to me after class so I don't look like an idiot in front of my other students.
+
+In this class, we used it to **fold** (interpret) a data structure to generate effects.
+It allowed us to decouple the composition of our effects with the effect's behavior by creating a pure representation of our computations.
+
+Free monad implementation for dealing with effects in such a way is also referred to as [algebraic effects](https://overreacted.io/algebraic-effects-for-the-rest-of-us/).
+
+To learn more about this, you could walk through the following links -
+* [What the fuck are module functions/functors?](https://rescript-lang.org/docs/manual/latest/module#module-functions-functors)
+* [What the fuck is a Functor in category theory?](https://medium.com/@dtinth/what-is-a-functor-dcf510b098b6)
+* [What the fuck is a Monad?](https://wiki.haskell.org/All_About_Monads)
+* [What the fuck are Free Algebraic Structures?](https://wiki.haskell.org/Free_structure)
+* [What the fuck are algebraic effects?](https://overreacted.io/algebraic-effects-for-the-rest-of-us/)
+
+---
+
+### Report card
+
+Our jobs as programmers is to create as many **guarantees** in our code as possible.
+To achieve this, we should always try to design things in a way that pushes everything we can't guarantee to the edges.
+
+This not only reduces the **surface area for bugs**, but also reduces the **mental overhead** to the person reading the code.
+
+This is why we should always try to minimize the surface area of impurity in our code.
+
+With free monads, we create a guarantee that our business logic is sound and we push the effects to the edge in the form of our interpreter since we may not be able to guarantee the correctness of effectful behavior.
+
+Anyways, impure programs get a C for "Can do better". Almost-pure programs with Free monads, get an A for "Aahaaa, functional programming wins again".
+
+Alright kids, get a signature on the report card from your parents. No fake signatures, John. Those squiggly lines aren't fooling anyone.
+
+]]></description></article>
+<article><guid>2019-03-29-js-magic</guid>
+<title>JS Magic Tricks to impress your friends</title>
+<link>https://ediblemonad.dev/blog/2019-03-29-js-magic</link>
+<comments>https://ediblemonad.dev/blog/2019-03-29-js-magic</comments>
+<pubDate>2019-03-29</pubDate>
+<description><![CDATA[
+
+# JS Magic Tricks to impress your friends
+
+My name is Houdini J.S. Magnifico. What I'm about to perform here are a set of illusions and magic tricks that are sure to blow your mind! So prepare to be amazed!
+
+> The tricks shown here are performed by trained professionals. Do not attempt these stunts at home. Do it in production. Viewer discretion is advised.
+
+Let the show begin!
+
+* * *
+
+### For my first trick, I will make this function… DISAPPEAR!
+
+This is my totally normal function. Nothing weird about it. A function you'd find in the wild.
+
+```javascript
+typeof innocentTotallyNormalFunction === "function" // > true
+```
+
+Let me just wave Brendan Eich's mouse pad over it for a bit… and… BOOM!
+
+```javascript
+innocentTotallyNormalFunction()
+// > Uncaught TypeError: innocentTotallyNormalFunction is not a function
+```
+
+GONE! The function is not a function anymore. Schrodinger's function has dissappeared!
+
+**_audience applauds_**
+
+Thank you! Thank you!
+
+#### Here's how it works
+
+```javascript
+const innocentTotallyNormalFunction = (() => {}).apply.bind();
+// Works with any method's bind();
+```
+
+Weird right? It's called JavaScript and a lot of people use this in production. The reason this doesn't work is because .apply method expects the context of a function but .bind gives it undefined as the context. this.means that the apply method doesn't know which function it is trying to apply. Then the apply method has an identity crisis and everything goes to shit.
+
+* * *
+
+### Magic list
+
+Here I have a function that clones an array. Perfectly normal, production ready code.
+
+```javascript
+const clone = list => list.reduce((newList, item) => [...newList, item], []);
+
+// Another clone implementation you can use is,
+const clone = Object.values;
+
+// Or if you wanna go old school...
+const clone = list => {
+  const newList = [];
+
+  for(let index in list) {
+    newList.push(list[index]);
+  }
+
+  return newList;
+};
+```
+
+Here's an ordinary list with nothing fishy going on inside
+
+```javascript
+array.length // > 23
+```
+
+I'm just gonna casually use the clone function to copy the list and check the length of the newly created list…
+
+```javascript
+clone(array).length // > 1
+```
+
+**Magic!!**
+
+The list is no longer 23 items long. 23 to 1! Next-gen compression algorithm, question mark? Or is it just magic?
+
+#### Well, here's how it all went down
+
+The concept behind this is one that not many developers are familiar with. Array holes, also called empty slots are points in an array that are empty. No, I'm not talking about undefined or null or 0. Just empty.
+
+Ref: [Array holes/empty slots](https://2ality.com/2015/09/holes-arrays-es6.html), [Sparse arrays](https://2ality.com/2012/06/dense-arrays.html)
+
+```javascript
+Array(5) // > [<empty x 5>]
+// OR
+[,,,,,] // > [<empty x 5>]
+```
+
+This creates an array of 5 items but without any values. But javascript doesn't use undefined as the default values tho. It instead creates empty slots (holes) in the arrays but keeps given the length. So when you copy it using the reduce method, it doesn't iterate over the empty slots. So the newly generated array is shorter.
+
+* * *
+
+### Schrodinger's magic list
+
+The list we are gonna be working on is document.all which is a list of all nodes in a document.
+
+```javascript
+document.all // > HTMLAllCollection {...}
+```
+
+Council of W3C, give me the strength to make this list disappear!!! Boom! Shaa! Waka-Waka Boom!
+
+```javascript
+typeof document.all // > undefined
+```
+
+**_Be Amazed!!_**
+
+Go get an MRI scan because your tiny little brain just exploded!
+
+#### Here's the big reveal!
+
+`document.all` is a very old and deprecated api that allowed you to iterate over all the nodes rendered to the DOM. The typeof expression returning `undefined` was by design as a part of deprecation of that non-standard feature. Weird, I know. But that's just how javascript rolls.
+
+* * *
+
+
+### Are we Infinity yet?
+
+Let's take a number, `let x: number`.
+
+```javascript
+x + 1 === x; // >> true
+x + 2 === x; // >> false
+```
+
+“What just happened?”
+
+I added 1 to x and the value didn't change! Then I added 2 to it and… the universe… it changed.
+
+#### Check out how this works
+
+```javascript
+const x = 1e16; // OR 1 * Math.pow(10, 16) OR 10000000000000000
+```
+
+This is by design. It's documented in IEEE 754-2008. When the number is as large as this, it rounds it up to the nearest even number.
+
+Ref: [Rounding rules section in IEEE 754](https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules)
+
+* * *
+
+
+### Is a “not a number” a number or not a number? Well, it's NaN of your business
+
+```javascript
+typeof NaN === 'number' // >> true
+NaN !== NaN // >> true
+```
+
+Wut? ‘Not a number' is a number and ‘Not a number' is not equal to ‘Not a number'
+
+Javascript is a magical language
+
+#### Know the trick
+
+NaN is a numeric data type but it behaves as an identity when any mathematical operation is applied to it.
+
+_“But why is NaN === NaN returning false?”_
+
+Because the Gods of Javascript wished so. If either side of === operator is NaN, the operation returns false. Thats just how it works. Don't question it.
+
+
+* * *
+
+### Check if your list has more than 1 items
+
+A very complicated problem in programming.
+
+A normie dev would go ahead and write something like
+
+```javascript
+const hasAtleast2Elements = x => x.length >= 2;
+```
+
+That solution is 13 characters long. In the modern world of javascript, 13 characters is way too many characters. It is a performance bottleneck.
+
+Let's write something more optimized in size
+
+```javascript
+const hasAtleast2Elements = x => !isNaN(+x);
+```
+
+There. 10 characters. Much better. We removed **23%** of our JavaScript! Good job. Less JavaScript is good JavaScript
+
+#### The genius behind this action
+
+We improved our load time by 23% but at what cost?! How does that function even work? Magic? Not magic, JavaScript!
+
+The + operator applied to a list returns NaN if the number of items in the list is more than 1.
+
+Why does it do that? Well, type casting. +[] is equal to +[].toString().
+
+So,
+
+```javascript
+[].toString() === '' // >> +'' === 0
+[1].toString() === '1' // >> +'1' === 1
+[1, 2].toString() === '1,2' // >> +'1,2' === NaN (Cannot typecast as it is not a number)
+```
+
+* * *
+
+* * *
+
+That's all for today! Tune in next time to watch Magnifico use magic in production and get fired immediately.
+
+Now I'm gonna make myself disappear.
+
+…
+
+…
+
+…
+
+Why is this… Just a second folks… Some technical difficul…
+
+**_magic man magically disappears_**
+]]></description></article>
+<article><guid>2019-03-15-redux-recipies</guid>
+<title>Grandma's recipes for cooking redux</title>
+<link>https://ediblemonad.dev/blog/2019-03-15-redux-recipies</link>
+<comments>https://ediblemonad.dev/blog/2019-03-15-redux-recipies</comments>
+<pubDate>2019-03-15</pubDate>
+<description><![CDATA[
+
+# Grandma's recipes for cooking redux
+
+Welcome to my Grandma's Kitchen. I'm your host, the grandson. Let's start cooking, shall we?
+
+Disclaimer: Stuff referenced in this post are not my opinions, they are straight up facts. If you disagree, you're probably right but don't tell anyone. Reader discretion is advised.
+
+For far too long have we suffered the torture of writing boilerplate code and messy actions. Not anymore. Here are some recipes to cook redux the way my grandma wants you to.
+
+We are going to be cooking with the following ingredients today -
+
+- [Redux Saga](https://github.com/redux-saga/redux-saga)
+- [Redux Utils](https://github.com/phenax/redux-utils)
+- [Crocks](https://github.com/evilsoft/crocks)
+- [Reselect](https://github.com/reduxjs/reselect)
+- [Ramda](https://github.com/ramda/ramda) (optional. Add according to taste)
+
+* * *
+
+### Spicy hot action names/types
+
+You wouldn't expect there to be any changes in the way you create action names/types but why not? Go check your action types file. You will find that there is a recurring pattern of the three states. `ACTION_PENDING`, `ACTION_SUCCESS` and `ACTION_FAILURE` (not FAIL because `PENDING`, `SUCCESS` and `FAILURE` have the same number of characters and my grandma likes consistency). And while we are at it we can also learn something from the REST architecture from my grandma's time and bring the resource/action pattern in here.
+
+`actionTypes` function uses the `@resource/ACTION/STATE` convention.
+
+```javascript
+import { actionTypes } from '@phenax/redux-utils';
+
+const types = actionTypes({
+  DISHES: {
+    LIST: ['PENDING', 'SUCCESS', 'FAILURE'],
+    ADD: ['PENDING', 'SUCCESS', 'FAILURE'],
+  },
+  SESSION: {
+    INIT: ['PENDING', 'SUCCESS', 'FAILURE'],
+  },
+});
+
+types.DISHES.ADD.SUCCESS === '@dishes/ADD/SUCCESS'; // true
+
+// Your actions will then look something like
+dispatch({
+  type: types.DISHES.ADD._,
+  payload: {
+    name: 'Chicken that tastes like paneer',
+    ingredients: {
+      chicken: { count: 1, unit: 'bird' },
+      salt: { toTaste: true },
+      pepper: { count: 2, unit: 'shakes' },
+      milk: { count: 3, unit: 'seconds of pouring' },
+    },
+  },
+});
+
+// The underescore (`._`) is the dispatch that gets picked up by the sagas. Its a default dispatch i.e. stateless dispatch.
+```
+
+* * *
+
+### Reducer salad
+
+The three state pattern is also seen repeated a lot inside reducers. My grandma keeps telling me “My back hurts when I scroll through long switch-case statements”. So if you haven't guessed already, we are going to change that too now. We have to care for the elderly.
+
+```javascript
+import { createPartialReducer, mergeReducers } from '@phenax/redux-utils';
+
+const initialState = { loading: false, readyForServing: true, dishes: [], error: "" };
+
+const getLoadingState = state => ({ readyForServing }) => ({
+  ...state,
+  readyForServing,
+  loading: true,
+});
+
+const addDishReducer = createPartialReducer(types.DISHES.ADD, (state = initialState, action) => ({
+  PENDING: getLoadingState(state),
+  SUCCESS: newDish => ({
+    ...state,
+    readyForServing: true,
+    loading: true,
+    dishes: [...state.dishes, newDish],
+  }),
+  FAILURE: e => ({
+    ...state,
+    readyForServing: false,
+    loading: true,
+    error: e.message,
+  }),
+}));
+
+// Your regular reducer can be merged with partials
+const regularOldReducer = (state = initialState, action) => {
+  switch(action.type) {
+    case types.SOMEOTHER.ACTION.PENDING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.SOMEOTHER.ACTION.SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        dishes: [],
+      };
+    case types.SOMEOTHER.ACTION.FAILURE:
+      return {
+        ...state,
+        loading: false,
+        dishes: [],
+        error: e.message,
+      };
+  }
+};
+
+export default mergeReducers(addDishReducer, regularOldReducer);
+```
+
+The partial reducers allow you to split the reducer into smaller functions based on the resource/action/state convention. You can also use this to show off your rad point-free trick shots.
+
+* * *
+
+### Duck promises
+
+There are 3 different ways to interpret name of this dish. Clue, it's not a typo (even though it fits perfectly). Another clue, we're not cooking a duck here. You are correct. Just duck those promises and go with `Async` from crocks. (Not to be confused with `async/await` which is just a prank that the C# community is playing on us disguised as w3c draft authors). Here's how to use fetch (or any other promise based api) and turn it into a composible, cancellable, lazy Async task. Grandma does not approve laziness but we will use it anyway because GOD DAMMIT, IT'S MY FREAKING COOKING SHOW! GET OUT OF MY ROOM, GRANDMA!
+
+For you, a simple made-up example of fetching with network timeout. fetchJson is just an Async wrapper for fetch api.
+
+```javascript
+import Async from 'crocks/Async';
+import { prop, filter, map, either, complement } from 'ramda';
+import { fetchJson } from '@phenax/redux-utils/async';
+
+// Some other api call that happens after we get the data from the user
+// fetchChefInfo :: a -> Async a
+const fetchChefInfo = data => Async((rej, res) => setTimeout(() => res(data), 700));
+
+// fetchServableDishes :: Object * -> Async [User]
+const fetchServableDishes = params => fetchJson('/dishes', params)
+  .race(Async.rejectAfter(2000, new Error('Request Timeout')))
+  .map(prop('dishes'))
+  .map(compose(
+    filter,
+    complement,
+    either(
+      prop('isReady'),
+      prop('isBurnt'),
+    ),
+  ));
+
+let task = fetchServableDishes();
+
+// The request has not been sent yet (it's lazy like crazy! Thank you. Thank you.). You can keep composing and chaining stuff
+task = task
+  .map(map(decorateDish))
+  .chain(fetchChefInfo);
+
+// And when you finally decide that you want to make the api call, you can fork it.
+// Nothing is executed till you call .fork
+task.fork(
+  e => console.error(e),
+  activeUsers => {
+    // Do stuff
+  },
+);
+```
+
+* * *
+
+### Barbecue sagas
+
+Redux saga is the best way to write actions. That is a fact, not an opinion. No need to look it up. Not going to change anything with that but we can add a few ingredients to enhance its flavor. We are also going to use `Async` instead of `Promise` because my grandma believes you shouldn't make promises you can't keep/manage.
+
+```javascript
+import { put } from 'redux-saga/effects';
+import { callAsync, putResponse } from '@phenax/redux-utils/saga';
+
+export function* add({ payload }) {
+  yield put({ type: types.DISHES.ADD.PENDING, payload: {} });
+  const response = yield callAsync(saveNewDish, payload);
+  yield putResponse(types.DISHES.ADD, response);
+};
+
+export function* list({ payload }) {
+  yield put({ type: types.DISHES.LIST.PENDING, payload: {} });
+  const response = yield callAsync(fetchServableDishes);
+  yield putResponse(types.DISHES.LIST, response);
+};
+
+export default function* root() {
+  yield all([takeLatest(types.DISHES.ADD._, add)]);
+  yield all([takeLatest(types.DISHES.LIST._, list)]);
+};
+```
+
+Here,
+
+```javascript
+yield putResponse(types.DISHES.LIST, response);
+// is just a shorthand for
+yield put(response.cata({
+  Success: data => ({ type: types.DISHES.LIST.SUCCESS, payload: data }),
+  Failure: error => ({ type: types.DISHES.LIST.FAILURE, payload: error }),
+}));
+```
+
+* * *
+
+### Selector noodles
+
+Selectors allow you to derive your data from the state and memoize the operation. We are going to use reselect for this and we're also gonna sprinkle some ramda in there according to taste. You can use lodash too but why would you do something like that? Ramda is to lodash what a smart watch is to a tin-can telephone.
+
+Grandma: “Back in my day, underscore was pretty popular. It was like…”.
+
+Yeah grandma, we get it, you're old. Now shut up and let me show these people some selector action.
+
+```javascript
+import { createSelector } from "reselect";
+import { pathOr, prop, __, map } from 'ramda';
+
+// selectBurntDishes :: { dishes :: { dishIds :: [String], items :: Object Profile } } -> [String]
+export const selectBurntDishes = createSelector(
+  pathOr({}, ['dishes', 'items']),
+  pathOr([], ['dishes', 'dishIds']),
+  (items, dishIds) => dishIds.filter(compose(
+    prop('isBurnt'),
+    map(prop(__, items)),
+  )),
+);
+```
+
+Now you can use it anywhere…
+
+In you component's mapStateToProps,
+
+```javascript
+const mapStateToProps = state => ({
+  burntDishes: selectBurntDishes(state),
+});
+
+export default connect(mapStateToProps)(ListBurntDishes);
+```
+
+In your sagas,
+
+```javascript
+function* mySaga() {
+  const burntDishes = yield select(selectBurntDishes);
+  // Do stuff with those ids
+}
+```
+
+Doesn't that look pretty? If you're new to the point-free way, you may feel like you just watched a french movie without subtitles but trust me, this is worth the confusing first few days.
+
+* * *
+
+### Conclusion
+
+Old ideas and opinions are what new ones are born from. Grandma's recipes were great and they've come out of experience that doesn't mean we have to keep making the same thing a billion times. Small (and sometimes large) migrations are a good thing.
+
+So let's summarise. What did we learn today?
+
+- Use grandma's favorite convention of `@resource/ACTION/STATE` for your action types
+- The elderly hate long switch case statements
+- Duck promises because `Async` rocks!
+- Sagas are the freakin best!!
+- Memoize those selectors for a better tomorrow
+
+These are all solutions to the small yet annoying inconveniences that I ran into while working on a personal project of mine. I'm collecting all of the tiny helpers over at [@phenax/redux-utils](https://github.com/phenax/redux-utils). The project is not done yet so the library will be getting more updates. PRs are welcome!!
+
+Hope these ideas help you write some tasty code.
+
+]]></description></article>
+<article><guid>2019-03-14-sum-types</guid>
+<title>Functional JS - Sum Types In JavaScript</title>
+<link>https://ediblemonad.dev/blog/2019-03-14-sum-types</link>
+<comments>https://ediblemonad.dev/blog/2019-03-14-sum-types</comments>
+<pubDate>2019-03-14</pubDate>
+<description><![CDATA[
+
+# Functional JS - Sum Types In JavaScript
+
+JavaScript has a very bad reputation in most developer communities. So much so that, “Writing cleaner and safer JavaScript…” in the title may already seem a bit redundant to most readers. A lot of that has to do with loose typing, invalid values and the horrible chain of ternary expressions or heaven forbid, if statements to handle them. With JavaScript, all functions run on the concept of “pretend what you are getting is what you asked for”. If the value is not valid for the kind of operation you are running on it, well, too bad. To save yourself from this, you can write run-time validations, add type-checks, etc but the core of the problem is till left largely unsolved.
+
+* * *
+
+### Let’s learn from Haskell
+
+Functional programming languages like Haskell have a clear solution for this. Sum Types! Sum Type (or Tagged Union) is an Algebraic Data Type which describes values that can take on several different types. Popular examples in haskell are the Maybe monad (for handling the validity of values) and the Either monad (for error handling).
+
+Don’t worry. Maybe, I don’t know anything about monads Either (see what I did there?). All we need to know is that a Sum Type is a has multiple named constructors.
+
+In Haskell, a Sum type looks something like this -
+
+```haskell
+data MetalGenre = ProgMetal | DeathCore
+
+scream :: MetalGenre -> IO ()
+scream genre = putStrLn $ case genre of
+  ProgMetal -> "Oh!"
+  DeathCore -> "BleaAaAHHH!!"
+
+main :: IO()
+main = scream ProgMetal
+```
+
+Here, MetalGenre is the type and ProgMetal, DeathCore are constructors of that type.
+
+A really popular and useful example of a Sum type in the functional world is the Maybe type. In Haskell, Maybe is a monad that wraps a value and helps you make sure that invalid values are not acted upon, thus allowing you to write safer functions.
+
+This is what Maybe’s definition looks like in Haskell -
+
+```haskell
+data Maybe = Just a | Nothing
+```
+
+Now here, all valid values will be wrapped in a Just and all invalid values will be wrapped in a Nothing. This way, we can handle invalid values in a clean and elegant way and be sure of the fact that the function is only called for the valid values.
+
+You might be thinking, “But isn’t this only possible because Haskell is a statically typed beauty and JavaScript is the spawn of satan?”. Maybe it isn’t. (The joke’s getting old now)
+
+* * *
+
+### EnumFP
+
+Shameless self-plug alert!
+
+I have a library to help with that! (Said every JavaScript developer ever).
+
+[EnumFP](https://github.com/phenax/enum-fp) (PRs welcome)
+
+EnumFP is a simple and light-weight way to create Sum types in JavaScript. Inspired by the awesomeness of Haskell, the library is written with safety in mind.
+
+This is what the metal genre example would look like with EnumFP.
+
+```javascript
+const MetalGenre = Enum(['ProgMetal', 'DeathCore'])
+
+const scream = compose(console.log, MetalGenre.cata({
+  ProgMetal: () => "Oh!",
+  DeathCore: () => "BleaAaAHHH!!",
+}));
+
+scream(MetalGenre.ProgMetal());
+```
+
+* * *
+
+### Maybe, maybe?
+
+The concept of what a Maybe does is more important than the implementation itself. Containing a value in a way that allows you to perform a set of operations on the container and not worry about the validity of the input is what Maybe is about.
+
+You can implement a simple Maybe and a couple of utility functions using EnumFP. EnumFP also allows you to add argument descriptions. This example uses the caseOf function which is like match but for partial application).
+
+```javascript
+const Maybe = Enum({ Just: ['value'], Nothing: [] });
+
+// fmap :: (a -> b) -> Maybe a -> Maybe b
+const fmap = fn => Maybe.cata({
+  Just: compose(Maybe.Just, fn),
+  Nothing: Maybe.Nothing,
+});
+
+// mjoin :: Maybe Maybe a -> Maybe a
+const mjoin = Maybe.cata({
+  Just: x => x,
+  Nothing: Maybe.Nothing,
+});
+
+// chain :: (a -> Maybe b) -> Maybe a -> Maybe b
+const chain = fn => compose(mjoin, fmap(fn));
+```
+
+Here,
+
+**fmap** returns a new Maybe and runs the function over the value inside, in case of Just and ignores a Nothing. (Like Array.prototype.map)
+
+**mjoin** unwraps a given nested Maybe. Because many monads like Maybe, are agnostic about the value inside, you can put the monad inside another monad (That’s what shesaid) (Like Array.prototype.flatten)
+
+**chain** maps over the Maybe and then flattens the resulting nested Maybe. (Like Array.prototype.flatMap).
+
+Let’s use this and write a function that accepts a User instance and gives you the first name without throwing an error for invalid user or invalid name.
+
+```javascript
+// head :: [a] -> Maybe a
+const head = arr => (arr.length ? Maybe.Just(arr[0]) : Maybe.Nothing());
+
+// prop :: String -> Object a -> Maybe a
+const prop = key => obj => key in obj ? Maybe.Just(obj[key]) : Maybe.Nothing();
+
+// trim :: String -> String
+const trim = str => str.trim();
+
+// split :: String -> String -> [String]
+const split = seperator => str => str.split(seperator);
+
+// safeUser :: User -> Maybe User
+const safeUser = user => isUserValid(user) ? Maybe.Just(user) : Maybe.Nothing();
+
+// getFirstName :: User -> Maybe String
+const getFirstName = compose(
+    chain(head), // Maybe [String] -> Maybe String
+    fmap(split(' ')), // Maybe String -> Maybe [String]
+    fmap(trim), // Maybe String -> Maybe String
+    chain(prop('name')), // Maybe User -> Maybe String
+    safeUser, // User -> Maybe User
+);
+
+Maybe.match(getFirstName(user), {
+    Just: name => console.log('My name is', name),
+    Nothing: () => console.log('Whats in a name?'),
+});
+```
+
+In the example above, we first convert the user to a safe user by wrapping it in a Maybe. Then we get the user’s name using the prop function. The prop and head functions here, instead of returning the value, wraps the value in a Maybe. This is why to map it and then unwrap it, we use chain instead of fmap.
+
+* * *
+
+### Working with React
+
+Yes, EnumFP works well with react! (Jumping from one over-populated community to the next).
+
+With the new react hooks being introduced in 16.8, it would be a sin not to mention it here. EnumFP ships with a useReducer hook which is a simple wrapper around react’s useReducer.
+
+Don’t want to upgrade to 16.8? Do you still watch reruns of Seinfeld? Want to wait for your grand-children to help you with the upgrade… and… walking?
+
+No worries. There’s an HOC available as well.
+
+You can find out more about integrations with react here.
+
+And this is not limited to just component state tho. You can use Sum Types to work with any kind of enumerable state values. From handling Success, Pending and Failure states for any action to containing values based on it’s type or validity. Sum Types are here to clean up all of that.
+
+* * *
+
+### Conclusion
+
+This is just the tip of the iceberg. There are a lot more of these amazing ideas hidden in the world of functional programming, waiting to move to other languages. Being a part of the JavaScript community for a while has made me realise that it’s not all bad. What we lack in language features and standard library, we make up for in the variety of libraries just an npm install away, and the strong community constantly working towards “Making JS great again”. So let’s build a wall together between us and bad code. Covfefe.
+
+]]></description></article></channel></rss>

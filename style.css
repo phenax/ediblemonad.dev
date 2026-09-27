@@ -1,0 +1,470 @@
+:root {
+  --color-accent: #51e9a0;
+  --page-h-padding: 1.7rem;
+  --page-v-padding: 1.3rem;
+  --page-max-width: 1000px;
+  --color-gray-1: #111;
+  --color-gray-2: #222;
+  --color-gray-3: #333;
+  --color-gray-5: #555;
+  --color-gray-8: #888;
+  --color-background-1: #000;
+  --color-background-2: var(--color-gray-1);
+  --color-background-3: var(--color-gray-2);
+  --color-foreground-1: #ddd;
+  --color-foreground-2: #fff;
+
+  font-size: 16px;
+  font-family: monospace;
+  color: var(--color-foreground-1);
+}
+
+html,
+body {
+  background-color: var(--color-background-1);
+  line-height: 1.5em;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid var(--color-gray-2);
+  margin: 1rem 0 1.5rem;
+}
+
+p {
+  padding-bottom: 1rem;
+}
+
+pre {
+  background-color: var(--color-background-2);
+  padding: 1rem;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+code {
+  background-color: var(--color-background-3);
+  padding: 0.1em 0.5em;
+  color: var(--color-foreground-2);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500;
+  padding-bottom: 0.7em;
+  font-weight: bolder;
+  color: var(--color-foreground-2);
+  line-height: 1.3em;
+  padding-top: 0.3rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+ul {
+  padding: 0.5rem 0;
+  list-style: disc;
+  padding-left: 2rem;
+}
+
+ol {
+  list-style: decimal;
+  padding-left: 2rem;
+}
+
+li {
+  padding-bottom: 0.4rem;
+}
+
+.card-container {
+  padding: 0 !important;
+}
+
+.math {
+  background-color: var(--color-background-2);
+}
+
+.display.math {
+  padding: 0.3em;
+}
+
+.inline.math {
+  padding: 0 0.3em;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+strong {
+  font-weight: bolder;
+}
+
+em {
+  font-style: italic;
+}
+
+.root {
+  padding: 2.2rem var(--page-h-padding);
+  max-width: var(--page-max-width);
+  margin: auto;
+}
+
+.centered-content {
+  padding: var(--page-v-padding) var(--page-h-padding);
+  max-width: var(--page-max-width);
+  margin: auto;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  display: block;
+  border: 1px solid var(--color-gray-2);
+  padding: 0.6rem 1rem !important;
+  margin-bottom: 1rem;
+  text-decoration: none !important;
+}
+
+li:has(.card) {
+  list-style: none !important;
+}
+
+.card:hover .card-title {
+  text-decoration: underline;
+}
+
+.card-title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.card-description {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-gray-8);
+  padding-top: 0.5rem;
+}
+
+.card-date {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-gray-8);
+  padding-top: 0.3rem;
+}
+
+.inline-card {
+  border: 1px solid var(--color-gray-2);
+  padding: 1rem 1rem 0rem !important;
+  margin-bottom: 1rem;
+  list-style: none;
+}
+
+.inline-card-footer {
+  text-align: right;
+  font-size: 0.8rem;
+  padding-bottom: 0.7rem;
+}
+
+.post-date {
+  font-size: 0.8rem;
+  color: var(--color-gray-5);
+  font-style: italic;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0;
+}
+
+.image-container img, .image-container video {
+  width: 100%;
+  max-width: 720px;
+}
+
+.header-secondary {
+  font-size: 0.85rem;
+  padding: var(--page-v-padding) var(--page-h-padding) 0;
+  padding-top: 2rem;
+  padding-bottom: 0;
+  max-width: var(--page-max-width);
+  margin: auto;
+}
+
+.back-link {
+  display: block;
+  width: max-content;
+  font-size: 0.8rem;
+  margin-top: -1rem;
+}
+
+.giscus {
+  padding: 0 var(--page-h-padding) 2rem;
+  min-height: 400px;
+  max-width: var(--page-max-width);
+  margin: auto;
+}
+
+.breadcrumbs {
+  padding: 0.5rem var(--page-h-padding);
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--color-gray-1);
+}
+
+
+/* ---- Builtin styles for pandoc inline content ---- */
+
+code {
+  white-space: pre-wrap;
+}
+
+span.smallcaps {
+  font-variant: small-caps;
+}
+
+div.columns {
+  display: flex;
+  gap: min(4vw, 1.5em);
+}
+
+div.column {
+  flex: auto;
+  overflow-x: auto;
+}
+
+/* CSS for syntax highlighting */
+pre>code.sourceCode {
+  white-space: pre;
+  position: relative;
+}
+
+pre>code.sourceCode>span {
+  display: inline-block;
+  line-height: 1.25;
+}
+
+pre>code.sourceCode>span:empty {
+  height: 1.2em;
+}
+
+.sourceCode {
+  overflow: visible;
+}
+
+code.sourceCode>span {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+div.sourceCode {
+  margin: 1em 0;
+  overflow: auto;
+}
+
+pre.sourceCode {
+  margin: 0;
+  overflow-x: auto;
+}
+
+pre>code.sourceCode>span>a:first-child::before {
+  text-decoration: underline;
+}
+
+main code span.al {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+/* Alert */
+main code span.an {
+  color: #60a0b0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Annotation */
+main code span.at {
+  color: #90a0a0;
+}
+
+/* Attribute */
+main code span.bn {
+  color: #40a070;
+}
+
+/* BaseN */
+main code span.bu {
+  color: #009090;
+}
+
+/* BuiltIn */
+main code span.cf {
+  color: #007070;
+  font-weight: bold;
+}
+
+/* ControlFlow */
+main code span.ch {
+  color: #4070a0;
+}
+
+/* Char */
+main code span.cn {
+  color: #880000;
+}
+
+/* Constant */
+main code span.co {
+  color: #60a0b0;
+  font-style: italic;
+}
+
+/* Comment */
+main code span.cv {
+  color: #60a0b0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* CommentVar */
+main code span.do {
+  color: #ba2121;
+  font-style: italic;
+}
+
+/* Documentation */
+main code span.dt {
+  color: #902000;
+}
+
+/* DataType */
+main code span.dv {
+  color: #40a070;
+}
+
+/* DecVal */
+main code span.er {
+  color: white;
+}
+
+/* Error */
+main code span.ex {}
+
+/* Extension */
+main code span.fl {
+  color: #40a070;
+}
+
+/* Float */
+main code span.fu {
+  color: #007070;
+}
+
+/* Function */
+main code span.im {
+  color: #009090;
+  font-weight: bold;
+}
+
+/* Import */
+main code span.in {
+  color: #60a0b0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Information */
+main code span.kw {
+  color: #007070;
+  font-weight: bold;
+}
+
+/* Keyword */
+main code span.op {
+  color: #666666;
+}
+
+/* Operator */
+main code span.ot {
+  color: #007070;
+}
+
+/* Other */
+main code span.pp {
+  color: #bc7a00;
+}
+
+/* Preprocessor */
+main code span.sc {
+  color: #4070a0;
+}
+
+/* SpecialChar */
+main code span.ss {
+  color: white;
+}
+
+/* SpecialString */
+main code span.st {
+  color: #b3f6c0;
+}
+
+/* String */
+main code span.va {
+  color: #81a2be;
+}
+
+/* Variable */
+main code span.vs {
+  color: #4070a0;
+}
+
+/* VerbatimString */
+main code span.wa {
+  color: #60a0b0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Warning */

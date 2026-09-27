@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Creative coding</title>
+<link>https://ediblemonad.dev/creative-coding</link>
+<description>I like creative coding</description>
+<article><guid>011-newton</guid>
+<title>011-newton</title>
+<link>https://ediblemonad.dev/creative-coding/011-newton</link>
+<comments>https://ediblemonad.dev/creative-coding/011-newton</comments>
+
+<description><![CDATA[# Newton
+
+<div class="image-container"><video src="/cc/newton.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+
+[code](https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/newton.glsl)
+]]></description></article>
+<article><guid>010-geography</guid>
+<title>010-geography</title>
+<link>https://ediblemonad.dev/creative-coding/010-geography</link>
+<comments>https://ediblemonad.dev/creative-coding/010-geography</comments>
+
+<description><![CDATA[# Geography
+
+<div class="image-container"><video src="/cc/geography.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+
+[code](https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/warping.glsl)
+]]></description></article>
+<article><guid>009-abstract-sins</guid>
+<title>009-abstract-sins</title>
+<link>https://ediblemonad.dev/creative-coding/009-abstract-sins</link>
+<comments>https://ediblemonad.dev/creative-coding/009-abstract-sins</comments>
+
+<description><![CDATA[# Abstract sins
+
+<div class="image-container"><img src="/cc/abstract-sins.png" alt="Abstract sins"></img></div>
+
+[code](https://git.ediblemonad.dev/uiua-creative-coding/tree/4-im-a-sinner/main.ua)
+]]></description></article>
+<article><guid>008-hope</guid>
+<title>008-hope</title>
+<link>https://ediblemonad.dev/creative-coding/008-hope</link>
+<comments>https://ediblemonad.dev/creative-coding/008-hope</comments>
+
+<description><![CDATA[# Hope
+
+<div class="image-container"><audio src="/cc/hope.mp3" controls="true"></audio></div>
+
+[code](https://git.ediblemonad.dev/uiua-creative-coding/tree/5-polyrhythms/main.ua)
+]]></description></article>
+<article><guid>007-ike-whoaah</guid>
+<title>007-ike-whoaah</title>
+<link>https://ediblemonad.dev/creative-coding/007-ike-whoaah</link>
+<comments>https://ediblemonad.dev/creative-coding/007-ike-whoaah</comments>
+
+<description><![CDATA[# IKE-whoah
+
+<div class="image-container"><img src="/cc/ike-whoaah.gif" alt="IKE-whoah"></img></div>
+
+[code](https://git.ediblemonad.dev/uiua-creative-coding/tree/7-dan-flashes/main.ua)
+]]></description></article>
+<article><guid>006-juliua</guid>
+<title>006-juliua</title>
+<link>https://ediblemonad.dev/creative-coding/006-juliua</link>
+<comments>https://ediblemonad.dev/creative-coding/006-juliua</comments>
+
+<description><![CDATA[# Juliua
+
+Julia set fractal in uiua
+
+<div class="image-container"><img src="/cc/juliua.gif" alt="Juliua"></img></div>
+
+[code](https://git.ediblemonad.dev/uiua-creative-coding/tree/6-julia/main.ua)
+]]></description></article>
+<article><guid>005-neon-squiggles</guid>
+<title>005-neon-squiggles</title>
+<link>https://ediblemonad.dev/creative-coding/005-neon-squiggles</link>
+<comments>https://ediblemonad.dev/creative-coding/005-neon-squiggles</comments>
+
+<description><![CDATA[# Neon squiggles
+
+Using SQL to generate visuals
+
+<div class="image-container"><img src="/cc/neon-squiggles.gif" alt="Neon squiggles"></img></div>
+
+[code](https://git.ediblemonad.dev/sqlite-creative-coding/tree/src/rave.video.sql)
+]]></description></article>
+<article><guid>004-recursticks</guid>
+<title>004-recursticks</title>
+<link>https://ediblemonad.dev/creative-coding/004-recursticks</link>
+<comments>https://ediblemonad.dev/creative-coding/004-recursticks</comments>
+
+<description><![CDATA[# Recursticks
+
+<div class="image-container"><img src="/cc/recursticks.jpg" alt="Recursticks"></img></div>
+
+[code](https://git.ediblemonad.dev/creative-coding-playground/tree/sketches/08/tree.rkt)
+]]></description></article>
+<article><guid>003-vacation</guid>
+<title>003-vacation</title>
+<link>https://ediblemonad.dev/creative-coding/003-vacation</link>
+<comments>https://ediblemonad.dev/creative-coding/003-vacation</comments>
+
+<description><![CDATA[# Vacation
+
+<div class="image-container"><img src="/cc/vacation.png" alt="Vacation"></img></div>
+
+[code](https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/vacation.glsl)
+]]></description></article>
+<article><guid>002-sql-mario-bros</guid>
+<title>002-sql-mario-bros</title>
+<link>https://ediblemonad.dev/creative-coding/002-sql-mario-bros</link>
+<comments>https://ediblemonad.dev/creative-coding/002-sql-mario-bros</comments>
+
+<description><![CDATA[# SQL mario bros
+
+Using SQL to generate music.
+
+<div class="image-container"><audio src="/cc/sql-mario-bros.mp3" controls="true"></audio></div>
+
+[code](https://git.ediblemonad.dev/sqlite-creative-coding/tree/src/supermariobros.audio.sql)
+]]></description></article>
+<article><guid>001-seigaiha</guid>
+<title>001-seigaiha</title>
+<link>https://ediblemonad.dev/creative-coding/001-seigaiha</link>
+<comments>https://ediblemonad.dev/creative-coding/001-seigaiha</comments>
+
+<description><![CDATA[# Seigaiha
+
+<div class="image-container"><video src="/cc/seigaiha.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+
+[code](https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/seigaiha.glsl)
+]]></description></article></channel></rss>

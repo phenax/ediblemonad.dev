@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools</title>
+<link>https://ediblemonad.dev/tools</link>
+<description>I love my tools</description>
+<article><guid>2026-07-02-normalize-official-rss-feeds</guid>
+<title>2026-07-02-normalize-official-rss-feeds</title>
+<link>https://ediblemonad.dev/tools/2026-07-02-normalize-official-rss-feeds</link>
+<comments>https://ediblemonad.dev/tools/2026-07-02-normalize-official-rss-feeds</comments>
+<pubDate>2026-07-02</pubDate>
+<description><![CDATA[# Normalize official RSS feeds
+
+Given the shitshow every single medium of accessing information and entertainment feeds has turned into with organizations optimizing the amount of time people spend on their apps, I think we need more neutral sources. Source that are not trying to "understand" us to manipulate us into using their app more like the most toxic relationship. RSS seems like the only good standard left for this. I really like that youtube and reddit have official rss feeds which I use a lot. And I'm also very happy with the amount of blogs I've found that provide an rss feed. But we could definitely use more of this. We also need to normalize it's use to the point where people lean towards rss instinctively rather than reaching for the apps/websites.
+
+]]></description></article>
+<article><guid>2026-06-27-kakoune--snippets</guid>
+<title>2026-06-27-kakoune--snippets</title>
+<link>https://ediblemonad.dev/tools/2026-06-27-kakoune--snippets</link>
+<comments>https://ediblemonad.dev/tools/2026-06-27-kakoune--snippets</comments>
+<pubDate>2026-06-27</pubDate>
+<description><![CDATA[# Kakoune: snippets
+
+Kakoune doesn't have built-in support for snippets. You can use plugins like <a target="_blank _parent" rel="noopener" href="https://github.com/occivink/kakoune-snippets">occivink/kakoune-snippets</a> to have that in the editor but you could also have a much simpler setup for snippets with a few lines of scripting.
+
+My first iteration of snippets was just to use commands and prompt for input like so:
+
+```sh
+declare-option -hidden str-list snippets_list
+
+define-command snippets-insert %{
+  prompt -menu 'Snippets: ' \
+    -shell-script-candidates 'echo "$kak_opt_snippet_list"' \
+    %{ evaluate-commands %val{text} }
+}
+define-command define-snippet -params 2 %{
+  set-option -add %arg{1} snippets_list %sh{ echo -e "$2\n" }
+}
+```
+
+```sh
+hook global BufSetOption filetype=(?:ruby) %{
+  define-snippet buffer snip-rails-class
+}
+
+define-command snip-rails-class %{
+  eval %sh{
+    class_name=$(basename "$kak_bufname" .rb | sed -e 's/[^A-Za-z0-9]\(\w\)/\U\1/g' -e 's/^\w/\U\0/g')
+    echo "set-register c $class_name"
+  }
+  execute-keys '<esc>,i# frozen_string_literal: true<ret><ret>'
+  execute-keys 'class <c-r>c<ret>'
+  execute-keys 'end'
+}
+```
+
+Here, it parses the ruby class name from the file name to generate the snippet but this could also just be a `prompt` command instead.
+
+This worked okay but it was pretty hard to maintain. Would be much easier if the snippets themselves were easier to create and read.
+So, that eventually evolved into this:
+
+```sh
+declare-option str snippets_dir "%val{config}/snippets"
+
+define-command snippets-insert -docstring 'Snippets' %{
+  prompt -menu "Snippets: " -init "%opt{filetype}/" \
+    -shell-script-candidates %{ fd --type file --base-directory "$kak_opt_snippets_dir" } \
+     %{
+      evaluate-commands %sh{
+        case "$kak_text" in
+          *.snip.kak) cat "$kak_opt_snippets_dir/$kak_text" ;;
+          *) echo "insert-text-snippet %{$kak_text}" ;;
+        esac
+      }
+    }
+}
+
+define-command -hidden insert-text-snippet -params 1 %{
+  execute-keys ",|cat ""%opt{snippets_dir}/%arg{1}""<ret>"
+  execute-keys -save-regs '' "s[$]\d+<ret>"
+  execute-keys "%sh{echo $((kak_selection_count + 1))}n"
+}
+```
+
+Now each snippet is a file placed in `~/.config/kak/snippets/`.
+The files in my case are organized by filetype in directories as `{filetype}/snippetname.{ext}` or `{filetype}/snippetname.snip.kak`.
+The prompt is filled with `{filetype}/` so at first you see the snippets for the current filetype but you can delete that in the prompt to see all.
+
+If it's a .snip.kak file, it is evaluated as a kakoune script which is the same as the commands from before.
+Otherwise the contents of the snippet file is inserted into the buffer directly and any `$n` (`$1`, `$2`, ...) will be added as a selection.
+Example:
+
+```ruby
+# frozen_string_literal: true
+
+class $1
+  def initialize
+    $2
+  end
+
+  $3
+end
+```
+
+The above snippet, `$1` is automatically selected first. You can press `c` to change it and `Esc` to go back to normal mode. Then when you press `n`, it jumps to the next `$n`.
+
+I know this already exists for every other editor out of the box and is much more fleshed out but the experience of understanding a system and defining a feature within it, in it's simplest form, is a really pleasant.
+
+]]></description></article>
+<article><guid>2026-05-14-nixos-is-a-chore</guid>
+<title>2026-05-14-nixos-is-a-chore</title>
+<link>https://ediblemonad.dev/tools/2026-05-14-nixos-is-a-chore</link>
+<comments>https://ediblemonad.dev/tools/2026-05-14-nixos-is-a-chore</comments>
+<pubDate>2026-05-14</pubDate>
+<description><![CDATA[# NixOS is a chore
+
+Using nixos is a chore like brushing your teeth. Oh... I mean "teeth being brushed" (declarative).
+
+It takes work. A big investment up front in configuring it and tiny investments for as long as you use it to maintain the configuration. Sounds like a scam but I thank myself for this investment every time there is a bad update or running a project with a flake and having it work fine after many years of sitting idle (which is suprising in the modern norm of having a web of dependencies). This brings an insane amount of confidence in any change I make to my system which lets me explore more things without being afraid touching the wrong thing on MY computer.
+
+I've had it running as a daily driver for about 6 years and on my home server (just an old laptop) for more than a year. My review: 10/10, do it.
+
+<div style="text-align:center;">
+  <img src="/images/nixos.png" alt="NixOS declarative" style="width:100%;max-width:400px" />
+</div>
+]]></description></article>
+<article><guid>2026-05-03-kakoune-supremacy</guid>
+<title>2026-05-03-kakoune-supremacy</title>
+<link>https://ediblemonad.dev/tools/2026-05-03-kakoune-supremacy</link>
+<comments>https://ediblemonad.dev/tools/2026-05-03-kakoune-supremacy</comments>
+<pubDate>2026-05-03</pubDate>
+<description><![CDATA[# Kakoune supremacy
+
+I've tried a bunch of different code editors and IDEs over the years but nothing beats the control of a modal text editor. Even as "vi plugins" in normie editors and IDEs, the difference in user experience is massive. But I've come to crave more from my tools. By "more" I mean fewer features and better primitives to allow me to build my own experience on top of it. Because at the end of the day, I've spend a considerable amount of time using the tools that I use for work and as a hobby so I know better than the devs of these tools what I'd like my tool to do.
+
+For a while my answer to this was neovim (vim before that). Neovim is a really solid code editor and it comes with the simplest and a really powerful configuration framework for building on top of it (emacs guys suck it (jk, I love emacs too)). I dove so deep into the lua rabit-hole that I trimmed my setup down to a few essential plugins and every other feature was implemented by me in my config. But over time, I've felt like the foundations are a bit "off". The primitives that it provides felt a bit inconsistent and like carrying too much weight for my taste.
+
+So as any mentally ill person would, I decided to spend a shit-load of time setting up a kakoune configuration that I could use many moons ago. And it just made sense. Kakoune's shell based extension framework is exactly the kind of simplicity that I was looking for. It is in no way a perfect editor but it fits in my hands perfectly. No file explorer, no build system, no fancy built-in language server, no split windows, etc. Nothing other than a simple code editor with a good-enough configuration language that lets you integrate kakoune with any other tool you want. I have unix blood in my veins. This kind of workflow turns my terminal into an IDE with the editor just being a part of it (instead of the other way around. Looking at you, emacs). I still love neovim and might go back to it in the future but kakoune feels right for now.
+
+My crotch has never been wetter. Kthanxby.
+
+]]></description></article></channel></rss>

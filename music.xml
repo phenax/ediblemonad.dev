@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Music</title>
+<link>https://ediblemonad.dev/music</link>
+<description>I like music</description>
+<article><guid>2026-06-06-spotify-can-suck-it</guid>
+<title>2026-06-06-spotify-can-suck-it</title>
+<link>https://ediblemonad.dev/music/2026-06-06-spotify-can-suck-it</link>
+<comments>https://ediblemonad.dev/music/2026-06-06-spotify-can-suck-it</comments>
+<pubDate>2026-06-06</pubDate>
+<description><![CDATA[# Fuck spotify
+
+It's not breaking news that a lot of subscription services are predatory towards their customers.
+But spotify taskes it a step further and is predatory towards their artists as well. And thats just for the popular artists, newer artists and niche ones cannot survive with this.
+
+Why am I avoiding piracy if the artists still barely get paid? Answer my question, Lars!
+
+In exchange they offer convinience to both sides. Is that really worth it? I thought so for a while too but then I started feeling uncomfortable with the whole thing.
+
+So what are the alternatives? Theres a lot of good options but the technicality and time spent evaluating the options might put off some people.
+- Self-hosted music streaming server: <a target="_blank _parent" rel="noopener" href="https://jellyfin.org/">jellyfin server</a>, <a target="_blank _parent" rel="noopener" href="https://mopidy.com/">mopidy</a>, <a target="_blank _parent" rel="noopener" href="https://www.navidrome.org/">navidrome</a>, <a target="_blank _parent" rel="noopener" href="https://github.com/epoupon/lms">LMS</a>
+- Music client: <a target="_blank _parent" rel="noopener" href="https://www.symfonium.app/">Symfonium</a>, <a target="_blank _parent" rel="noopener" href="https://mopidy.com/ext/iris/">mopidy-iris (for mopidy)</a>, <a target="_blank _parent" rel="noopener" href="https://jellyfin.org/">jellyfin client</a> <a target="_blank _parent" rel="noopener" href="https://github.com/UnicornsOnLSD/finamp">Finamp (for jellyfin)</a>
+- Self-hosted music discovery: <a target="_blank _parent" rel="noopener" href="https://github.com/LumePart/Explo">explo</a> + <a target="_blank _parent" rel="noopener" href="https://listenbrainz.org/">listenbrainz</a>
+- Purchasing music: <a target="_blank _parent" rel="noopener" href="https://bandcamp.com/">bandcamp</a>, <a target="_blank _parent" rel="noopener" href="https://www.qobuz.com">https://www.qobuz.com</a>
+
+This path is way more accessible and convinient than it might seem at first.
+
+Another much simpler alternative is to use a physical music player (or just your phone) and load all your music files in there. I use a snowsky echo mini which has an sd card with all the albums I own (flacs from bandcamp) which is a fair compromise for me.
+
+Spotify can suck it.
+
+]]></description></article>
+<article><guid>2026-05-02-mr-bungle-is-real-fart</guid>
+<title>2026-05-02-mr-bungle-is-real-fart</title>
+<link>https://ediblemonad.dev/music/2026-05-02-mr-bungle-is-real-fart</link>
+<comments>https://ediblemonad.dev/music/2026-05-02-mr-bungle-is-real-fart</comments>
+<pubDate>2026-05-02</pubDate>
+<description><![CDATA[# Mr. Bungle is real art
+
+A band like Mr. Bungle is rare because given how hard it is to make enough money to survive as a band, I'm surprised how more bands don't lean towards mass appeal. But Mr. Bungle is comfortable with just finding an identity in making the songs that they want to make, even if that identity involves including <a target="_blank _parent" rel="noopener" href="https://youtu.be/nE6UUg0Nenc?si=-g8dWEof9tVkZWoG&t=448">the track 'Noises'</a> in your album.
+
+For people who want to get into them, the album order I enjoy is California -> Mr. Bungle -> Disco Volante -> everything after that. To me that is ordered by weirdness because I like starting comfortable.
+
+]]></description></article></channel></rss>
