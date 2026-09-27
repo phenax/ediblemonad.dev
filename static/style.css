@@ -83,7 +83,7 @@ h4 {
 
 ul {
   padding: 0.5rem 0;
-  list-style: circle;
+  list-style: disc;
   padding-left: 2rem;
 }
 
@@ -227,6 +227,15 @@ li:has(.card) {
   min-height: 400px;
   max-width: var(--page-max-width);
   margin: auto;
+}
+
+.breadcrumbs {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  font-size: 0.8rem;
 }
 
 

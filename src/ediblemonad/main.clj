@@ -73,21 +73,21 @@
   (let [outpath (str (:output-dir config) "/" (:output page))
         rssoutpath (str (:output-dir config) "/" (name (:route page)) ".xml")
         templatepath (str (fs/create-temp-file {:dir tmp-dir}))
-        before-template (str (fs/create-temp-file {:dir tmp-dir}))
-        after-template (str (fs/create-temp-file {:dir tmp-dir}))
         eval-layout #(ediblemonad.template/eval-template-file % config {:page page})
-        shift-heading-level-by (if (:index? page) 1 -1)]
+        gen-template-file (fn [infile]
+                            (let [tmpfile (str (fs/create-temp-file {:dir tmp-dir}))]
+                              (spit tmpfile (->> infile eval-layout :content))
+                              tmpfile))
+        headers (->> page :layouts :before (#(concat (or (:headers config) []) [%])) (remove nil?) (map gen-template-file))
+        footers (->> page :layouts :after (#(concat [%] (or (:footers config) []))) (remove nil?) (map gen-template-file))]
+
     (fs/create-dirs (fs/parent outpath))
     (spit templatepath (:content page))
-    (some->> page :layouts :before eval-layout :content (spit before-template))
-    (some->> page :layouts :after eval-layout :content (spit after-template))
     (when (:index? page)
       (->> (ediblemonad.template/gen-rss-xml page) (spit rssoutpath)))
     (exec-pandoc templatepath outpath
-                 (merge config {:headers (concat (:headers config) [before-template])
-                                :footers (concat [after-template] (:footers config))
-                                :metadata @(:meta page)})
-                 {:shift-heading-level-by shift-heading-level-by})))
+                 (merge config {:headers headers :footers footers :metadata @(:meta page)})
+                 {:shift-heading-level-by (if (:index? page) 1 -1)})))
 
 (defn gen-site [^Configuration config]
   (let [pages (config->pages config)]

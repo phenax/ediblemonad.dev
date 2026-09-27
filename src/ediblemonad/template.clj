@@ -84,6 +84,15 @@
                            (elem :div {:style "text-align: right;"} (external-link link "RSS")))
                        (apply elem :ul {:class "card-container"}
                               (map #(render-item opts %) (:articles page))))))
+   :breadcrumbs (fn [{:keys [route route-cfg index?]}]
+                  (let [home-link (make-link "/" "home")
+                        separator (elem :span {} ">")
+                        route-link (make-link (get-page-link route-cfg route) (name route))
+                        wrap (fn [& args] (apply elem :div {:class "centered-content breadcrumbs"} args))]
+                    (cond
+                      (= :home route) ""
+                      index? ""
+                      :else (wrap home-link separator route-link))))
    :comment-section (fn []
                       (elem :div {:id "comment"}
                             (elem :script {:src "https://giscus.app/client.js"

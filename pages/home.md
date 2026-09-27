@@ -1,6 +1,6 @@
 # Hey there
 
-I'm Akshay. I write about things I find interesting:
+I'm Akshay. I make stuff and write about things I find interesting:
 - [Coding for fun](/coding4fun)
 - [Hardware & embedded](/hardware)
 - [Tools](/tools)
