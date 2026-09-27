@@ -9,15 +9,16 @@
 
 (def reserved-path? #(str/ends-with? % "+index.md"))
 
-(defn route->pages-standalone [^String route ^RouteConfig route-cfg ^Configuration config]
+(defn route->pages-standalone [^symbol route ^RouteConfig route-cfg ^Configuration config]
   [(ediblemonad.template/load-page-template config
-                                            (mk-page {:output (or (:output route-cfg) (str route "/index.html"))
-                                                      :source (str (:pages-dir config) "/" route ".md")
+                                            (mk-page {:output (or (:output route-cfg) (str (name route) "/index.html"))
+                                                      :source (str (:pages-dir config) "/" (name route) ".md")
                                                       :route route
                                                       :route-cfg route-cfg}))])
 
-(defn route->pages-articles [^String route ^RouteConfig route-cfg ^Configuration config]
+(defn route->pages-articles [^symbol route ^RouteConfig route-cfg ^Configuration config]
   (let [{:keys [pages-dir]} config
+        route-name (name route)
         page-for (fn [src out]
                    (let [source-path (str src)
                          source-name (str/replace (fs/file-name source-path) #".md$" "")
@@ -25,35 +26,37 @@
                      (mk-page {:output (str out) :source source-path :source-name source-name
                                :date date :route-cfg route-cfg :route route})))
         existing #(when (fs/exists? %) %)
-        layouts {:before (some->> (str pages-dir "/" route "/+before.html") existing)
-                 :after (some->> (str pages-dir "/" route "/+after.html") existing)}
+        layouts {:before (some->> (str pages-dir "/" route-name "/+before.html") existing)
+                 :after (some->> (str pages-dir "/" route-name "/+after.html") existing)}
         articles (->>
-                  (fs/glob (str pages-dir "/" route) "*.md")
+                  (fs/glob (str pages-dir "/" route-name) "*.md")
                   (remove reserved-path?)
-                  (map #(page-for % (str route "/" (str/replace (fs/file-name %) #".md$" ".html"))))
+                  (sort #(compare %2 %1))
+                  (map #(page-for % (str route-name "/" (str/replace (fs/file-name %) #".md$" ".html"))))
                   (map #(merge % {:layouts layouts}))
                   (map #(ediblemonad.template/load-page-template config %)))
         index-page (->>
-                    (page-for (str pages-dir "/" route "/+index.md") (str route "/index.html"))
-                    (#(merge % {:articles articles}))
+                    (page-for (str pages-dir "/" route-name "/+index.md") (str route-name "/index.html"))
+                    (#(merge % {:articles articles :index? true}))
                     (ediblemonad.template/load-page-template config))
         pages (if (:article-pages? route-cfg) (concat [index-page] articles) [index-page])]
     (into [] pages)))
 
-(defn route->pages [^String route ^RouteConfig route-cfg ^Configuration config]
+(defn route->pages [^symbol route ^RouteConfig route-cfg ^Configuration config]
   (cond
     (= :articles (:type route-cfg)) (route->pages-articles route route-cfg config)
     :else (route->pages-standalone route route-cfg config)))
 
 (defn config->pages [^Configuration config]
   (->> (seq (:routes config))
-       (map (fn [[route route-cfg]] (route->pages (name route) (mk-route-config route-cfg) config)))
+       (map (fn [[route route-cfg]] (route->pages route (mk-route-config route-cfg) config)))
        flatten))
 
-(defn exec-pandoc [^String inputfile ^String outputfile ^Configuration {:keys [title-prefix template headers footers stylesheets metadata]}]
+(defn exec-pandoc [^String inputfile ^String outputfile ^Configuration {:keys [title-prefix template headers footers stylesheets metadata]} & [{:keys [shift-heading-level-by]}]]
   (println "Generating" outputfile "...")
   (let [mkargs (fn [arg vals] (->> (remove nil? vals) (map #(conj [arg] %)) flatten))
-        args (flatten ["--shift-heading-level-by=-1" "--standalone" "--from=gfm" "--to=html"
+        args (flatten ["--from=gfm" "--to=html" "--standalone"
+                       (str "--shift-heading-level-by=" (or shift-heading-level-by 0))
                        (mkargs "--title-prefix" [title-prefix])
                        (mkargs "--css" stylesheets)
                        (mkargs "--template" [template])
@@ -68,18 +71,23 @@
 
 (defn gen-page [^Page page ^Configuration config ^String tmp-dir]
   (let [outpath (str (:output-dir config) "/" (:output page))
+        rssoutpath (str (:output-dir config) "/" (name (:route page)) ".xml")
         templatepath (str (fs/create-temp-file {:dir tmp-dir}))
         before-template (str (fs/create-temp-file {:dir tmp-dir}))
         after-template (str (fs/create-temp-file {:dir tmp-dir}))
-        layouts (:layouts page)]
+        eval-layout #(ediblemonad.template/eval-template-file % config page)
+        shift-heading-level-by (if (:index? page) 1 -1)]
     (fs/create-dirs (fs/parent outpath))
     (spit templatepath (:content page))
-    (some->> layouts :before (#(ediblemonad.template/eval-template-file % config {})) :content (spit before-template))
-    (some->> layouts :after (#(ediblemonad.template/eval-template-file % config {})) :content (spit after-template))
+    (some->> page :layouts :before eval-layout :content (spit before-template))
+    (some->> page :layouts :after eval-layout :content (spit after-template))
+    (when (:index? page)
+      (->> (ediblemonad.template/gen-rss-xml page) (spit rssoutpath)))
     (exec-pandoc templatepath outpath
                  (merge config {:headers (concat (:headers config) [before-template])
                                 :footers (concat [after-template] (:footers config))
-                                :metadata @(:meta page)}))))
+                                :metadata @(:meta page)})
+                 {:shift-heading-level-by shift-heading-level-by})))
 
 (defn gen-site [^Configuration config]
   (let [pages (config->pages config)]

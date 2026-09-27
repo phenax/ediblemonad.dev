@@ -2,4 +2,4 @@
 
 An esbuild plugin for building elm projects.
 
-${partials.linkExternal "https://github.com/phenax/esbuild-plugin-elm" "Github"}
+<%= (external-link "https://github.com/phenax/esbuild-plugin-elm" "Github") %>

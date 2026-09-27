@@ -1,8 +1,8 @@
-<% (meta ctx {:description "Akshay likes games"}) %>
+<% (meta {:description "Akshay likes games"}) %>
 
 # Video games
 
 <%= (link :home "Back to home" {:class "back-link"}) %>
 
-<%= (show-articles articles inline-article-card) %>
+<%= (show-articles page inline-article-card) %>
 

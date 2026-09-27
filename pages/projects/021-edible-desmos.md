@@ -2,6 +2,6 @@
 
 A personal graph manager using desmos graphing calculator.
 
-${partials.linkExternal "https://desmos.ediblemonad.dev" "Website"}
+<%= (external-link "https://desmos.ediblemonad.dev" "Website") %>
 
-${partials.linkExternal "https://github.com/phenax/edible-desmos" "Github"}
+<%= (external-link "https://github.com/phenax/edible-desmos" "Github") %>

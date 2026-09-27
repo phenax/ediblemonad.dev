@@ -1,9 +1,5 @@
-<% (meta ctx {:description "My projects"}) %>
+<% (meta {:title "Projects" :description "My projects"}) %>
 
-# Projects
-
-Some fun things I've made
-
-<%= (show-articles articles inline-article-card) %>
+<%= (show-articles page inline-article-card {:hide-rss-link true}) %>
 
 

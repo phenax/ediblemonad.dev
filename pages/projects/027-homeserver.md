@@ -2,4 +2,4 @@
 
 My personal home server configuration in nixos.
 
-${partials.linkExternal "https://github.com/phenax/homeserver-nixos" "Github"}
+<%= (external-link "https://github.com/phenax/homeserver-nixos" "Github") %>

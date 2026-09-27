@@ -14,62 +14,97 @@
 
 (def attrs->html #(reduce-kv (fn [acc key val] (str acc " " (name key) "=\"" val "\"")) "" %))
 
-(defn make-elem [tag attrs & children]
+(defn elem [tag attrs & children]
   (str "<" (name tag) (attrs->html attrs) ">" (str/join "\n" children) "</" (name tag) ">"))
 
-(defn make-link [href text & [attrs]] (make-elem :a (merge (or attrs {}) {:href href}) text))
+(defn make-link [href text & [attrs]] (elem :a (merge (or attrs {}) {:href href}) text))
 
-(defn default-bindings [^Configuration config]
+(defn gen-rss-xml [page]
+  (let [meta @(:meta page)
+        title (:title meta)
+        description (:description meta)
+        link (str "https://ediblemonad.dev/" (name (:route page)))
+        article-link #(str link "/" (:source-name %))
+        article-title (fn [article] (or (:title @(:meta article)) (:source-name article)))]
+    (str
+     "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n"
+     (elem :rss {:version "2.0" :xmlns:atom "http://www.w3.org/2005/Atom"}
+           (elem :channel {}
+                 (elem :title {} title)
+                 (elem :link {} link)
+                 (if description (elem :description {} description) "")
+                 (->> (:articles page)
+                      (map (fn [article]
+                             (elem :article {}
+                                   (elem :guid {} (:source-name article))
+                                   (elem :title {} (article-title article))
+                                   (elem :link {} (article-link article))
+                                   (elem :comments {} (article-link article))
+                                   (if (:date article) (elem :pubDate {} (:date article)) "")
+                                   (elem :description {}
+                                         (str "<![CDATA[" (:content article) "]]>")))))
+                      (str/join "\n")))))))
+
+(defn external-link [href text] (make-link href text {:target "_blank _parent" :rel "noopener"}))
+
+(defn default-bindings [^Configuration config ^hash-map context]
   {:get-link (fn [s & args]
                (apply get-page-link (get (:routes config) s) s args))
-   :link (fn [route text attrs]
+   :link (fn [route text & [attrs]]
            (let [href (get-page-link (get (:routes config) (if (list? route) (first route) route)) route)]
              (make-link href text attrs)))
-   :external-link (fn [href text] (make-link href text {:target "_blank _parent" :rel "noopener"}))
-   :meta (fn [ctx meta] (swap! (:meta ctx) (fn [m] (merge m meta))))
+   :external-link external-link
+   :meta (fn
+           ([meta] (swap! (:meta context) (fn [m] (merge m meta))) @(:meta context))
+           ([] @(:meta context)))
    :inline-article-card (fn [_opts ^Page {:keys [route route-cfg source-name content date]}]
                           (let [href (get-page-link route-cfg route source-name)]
-                            (make-elem :li {:class "inline-card"}
-                                       "\n\n" content "\n\n" date
-                                       (make-elem :div {:class "inline-card-footer"}
-                                                  (when (:article-pages? route-cfg) (make-link href "read more" {}))))))
+                            (elem :li {:class "inline-card"}
+                                  "\n\n" content "\n\n" date
+                                  (elem :div {:class "inline-card-footer"}
+                                        (when (:article-pages? route-cfg) (make-link href "read more" {}))))))
    :link-article-card (fn [_opts ^Page {:keys [meta route output route-cfg source-name date]}]
                         (let [{:keys [title description]} @meta
                               href (get-page-link route-cfg route source-name)]
-                          (make-elem :li {}
-                                     (make-elem :a {:href href :class "card"}
-                                                (make-elem :div {:class "card-title"} (or title output))
-                                                (if (not-empty description)
-                                                  (make-elem :div {:class "card-description"} description)
-                                                  "")
-                                                (if (not-empty date)
-                                                  (make-elem :span {:class "card-date"} date)
-                                                  "")))))
-   :show-articles (fn [articles render-item & [{:keys [_rss & opts]}]]
-                    (str
-                     "(TODO: rss)\n\n"
-                     (apply make-elem :ul {:class "card-container"}
-                            (map #(render-item opts %) articles))))
+                          (elem :li {}
+                                (elem :a {:href href :class "card"}
+                                      (elem :div {:class "card-title"} (or title output))
+                                      (if (not-empty description)
+                                        (elem :div {:class "card-description"} description)
+                                        "")
+                                      (if (not-empty date)
+                                        (elem :span {:class "card-date"} date)
+                                        "")))))
+   :show-articles (fn [page render-item & [{:keys [hide-rss-link & opts]}]]
+                    (let [title "RSS stuff"
+                          link (str "https://ediblemonad.dev/" (name (:route page)) ".xml")]
+                      (str
+                       (elem :link {:rel "alternate" :type "application/rss+xml" :href link :title title})
+                       (if hide-rss-link ""
+                           (elem :div {:style "text-align: right;"} (external-link link "RSS")))
+                       (apply elem :ul {:class "card-container"}
+                              (map #(render-item opts %) (:articles page))))))
    :comment-section (fn []
-                      (make-elem :div {:id "comment"}
-                                 (make-elem :script {:src "https://giscus.app/client.js"
-                                                     :data-repo "phenax/ediblemonad.dev"
-                                                     :data-repo-id "MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
-                                                     :data-category "Announcements"
-                                                     :data-category-id "DIC_kwDOBILsg84C84jX"
-                                                     :data-mapping "pathname"
-                                                     :data-strict "0"
-                                                     :data-reactions-enabled "1"
-                                                     :data-emit-metadata "0"
-                                                     :data-input-position "bottom"
-                                                     :data-theme "dark"
-                                                     :data-lang "en"
-                                                     :crossorigin "anonymous"
-                                                     :async "async"})))})
+                      (elem :div {:id "comment"}
+                            (elem :script {:src "https://giscus.app/client.js"
+                                           :data-repo "phenax/ediblemonad.dev"
+                                           :data-repo-id "MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
+                                           :data-category "Announcements"
+                                           :data-category-id "DIC_kwDOBILsg84C84jX"
+                                           :data-mapping "pathname"
+                                           :data-strict "0"
+                                           :data-reactions-enabled "1"
+                                           :data-emit-metadata "0"
+                                           :data-input-position "bottom"
+                                           :data-theme "dark"
+                                           :data-lang "en"
+                                           :crossorigin "anonymous"
+                                           :async "async"})))})
 
 (defn eval-template-string [^String contents ^Configuration config & [^hash-map extra-bindings]]
   (let [meta (or (:meta (or extra-bindings {})) (atom {}))
-        bindings (merge (default-bindings config) extra-bindings {:ctx {:meta meta}})
+        context {:meta meta}
+        bindings (merge (default-bindings config context) extra-bindings {:ctx context})
         result (comb/eval contents bindings)]
     {:content result :meta meta}))
 
@@ -78,7 +113,7 @@
     (eval-template-string contents config extra-bindings)))
 
 (defn load-page-template [^Configuration config ^Page page & [^hash-map extra-bindings]]
-  (let [bindings (merge (or extra-bindings {}) {:articles (:articles page)})
+  (let [bindings (merge (or extra-bindings {}) {:articles (:articles page) :page page})
         {:keys [content meta]} (eval-template-file (:source page) config bindings)]
     (merge page {:content content :meta meta})))
 

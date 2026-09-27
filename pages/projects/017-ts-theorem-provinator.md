@@ -2,4 +2,4 @@
 
 A simple (terrible) theorem proof embedding in typescript's type system.
 
-${partials.linkExternal "https://github.com/phenax/ts-theorem-provinator" "Github"}
+<%= (external-link "https://github.com/phenax/ts-theorem-provinator" "Github") %>

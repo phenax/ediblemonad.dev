@@ -1,8 +1,6 @@
-<% (meta ctx {:description "Akshay likes coding for fun"}) %>
+<% (meta {:title "Coding for fun" :description "Akshay likes coding for fun"}) %>
 
-# Coding for fun
+<%= (link :home "&lt; home" {:class "back-link"}) %>
 
-<%= (link :home "Back to home" {:class "back-link"}) %>
-
-<%= (show-articles articles inline-article-card) %>
+<%= (show-articles page inline-article-card) %>
 
