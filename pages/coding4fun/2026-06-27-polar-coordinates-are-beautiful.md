@@ -1,6 +1,6 @@
 # Polar coordinates are beautiful
 
-Just go over to ${partials.linkExternal "https://www.desmos.com/calculator" "desmos"} and type a random equation with polar coordinates. There is a very good chance, you see something visually interesting.
+Just go over to <%= (external-link "https://www.desmos.com/calculator" "desmos") %> and type a random equation with polar coordinates. There is a very good chance, you see something visually interesting.
 
 Examples (try with $-12\pi\le\theta\le12\pi$):
 - $r=\theta$: the simplest form is already a spiral

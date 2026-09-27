@@ -1,7 +1,3 @@
-<% (meta {:description "Akshay's old blog posts"}) %>
-
-# Blog
-
-<%= (link :home "Back to home" {:class "back-link"}) %>
+<% (meta {:title "Older blog posts" :description "Akshay's old blog posts"}) %>
 
 <%= (show-articles page link-article-card) %>

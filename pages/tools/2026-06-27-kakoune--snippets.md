@@ -1,6 +1,6 @@
 # Kakoune: snippets
 
-Kakoune doesn't have built-in support for snippets. You can use plugins like ${partials.linkExternal "https://github.com/occivink/kakoune-snippets" "occivink/kakoune-snippets"} to have that in the editor but you could also have a much simpler setup for snippets with a few lines of scripting.
+Kakoune doesn't have built-in support for snippets. You can use plugins like <%= (external-link "https://github.com/occivink/kakoune-snippets" "occivink/kakoune-snippets") %> to have that in the editor but you could also have a much simpler setup for snippets with a few lines of scripting.
 
 My first iteration of snippets was just to use commands and prompt for input like so:
 

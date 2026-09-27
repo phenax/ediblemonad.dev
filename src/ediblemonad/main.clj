@@ -75,7 +75,7 @@
         templatepath (str (fs/create-temp-file {:dir tmp-dir}))
         before-template (str (fs/create-temp-file {:dir tmp-dir}))
         after-template (str (fs/create-temp-file {:dir tmp-dir}))
-        eval-layout #(ediblemonad.template/eval-template-file % config page)
+        eval-layout #(ediblemonad.template/eval-template-file % config {:page page})
         shift-heading-level-by (if (:index? page) 1 -1)]
     (fs/create-dirs (fs/parent outpath))
     (spit templatepath (:content page))

@@ -1,8 +1,8 @@
 # Creative coding in sqlite
 
-Been trying out creative coding in sqlite recently ${partials.linkExternal "https://github.com/phenax/sqlite-creative-coding" "here"}. Turned out to be a lot more fun than what writing practical SQL had conditioned me to believe!
+Been trying out creative coding in sqlite recently <%= (external-link "https://github.com/phenax/sqlite-creative-coding" "here") %>. Turned out to be a lot more fun than what writing practical SQL had conditioned me to believe!
 
-Generating images is pretty straight forward. The SQL uses ${partials.linkExternal "https://sqlite.org/lang_with.html" "recursive CTE"} to generate and store pixel rgb values in the db.
+Generating images is pretty straight forward. The SQL uses <%= (external-link "https://sqlite.org/lang_with.html" "recursive CTE") %> to generate and store pixel rgb values in the db.
 Then a bash script reads the pixel values structures them in the ppm text format which is then converted to png using imagemagick.
 I was thinking of taking this a step further by converting to ppm from within sql but didn't feel like that added much except boilerplate.
 

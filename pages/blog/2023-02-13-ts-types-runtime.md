@@ -1,5 +1,5 @@
 <% (meta {:title "TypeScript's type-system as a runtime"
-              :description "Interrogation of a suspect who allegedly turned typescripts type-system into its own purely functional programming language"}) %>
+          :description "Interrogation of a suspect who allegedly turned typescripts type-system into its own purely functional programming language"}) %>
 
 # TypeScript's type-system as a runtime
 
@@ -21,7 +21,7 @@ export type main = [
   PutStringLn<'Greetotron 6000 initializing...'>,
 
   PutString<'Your name? '>,
-  Bind<ReadLine, <name extends string>() => PutStringLn<`Hello, ${"\${name}"}`>>,
+  Bind<ReadLine, <name extends string>() => PutStringLn<`Hello, ${name}`>>,
 
   PutString<'Your purpose in life? '>,
   Bind<ReadLine, HandleResponse>,
@@ -32,7 +32,7 @@ export type main = [
 // Equivalent to `HandleResponse :: string -> Effect ()`
 interface HandleResponse extends Kind1<string, Effect> {
   return: Do<[
-    PutStringLn<`Interesting that you believe "${"\${this['input']}"}" is your purpose. Hmmmm...`>,
+    PutStringLn<`Interesting that you believe "${this['input']}" is your purpose. Hmmmm...`>,
     PutStringLn<'Judging harshly...'>,
     PutStringLn<'Saving response...'>,
     WriteFile<'./response.txt', this['input']>,
@@ -85,7 +85,7 @@ Telling us everything we need to know about your sick experiments!
 
 ```typescript
 interface Greet extends Kind1<string, string> {
-  return: `Hello, ${"\${this['input']}"}!`
+  return: `Hello, ${this['input']}!`
 }
 
 type msg = Apply<Greet, 'EdibleMonad'> // : 'Hello, EdibleMonad!'

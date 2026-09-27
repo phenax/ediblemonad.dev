@@ -1,6 +1,6 @@
 # Learnings from sinthinator
 
-I recently tried decided to randomly pick up a pcb design project for an ${partials.linkExternal "https://github.com/phenax/sinthinator" "stm32 based toy music instrument"} that used capacitive touch sensor traces on a PCB. Expected it to be a bit of a challenge because I've never dealt with most of the components involved and only have basic experience with SMD components.
+I recently tried decided to randomly pick up a pcb design project for an <%= (external-link "https://github.com/phenax/sinthinator" "stm32 based toy music instrument") %> that used capacitive touch sensor traces on a PCB. Expected it to be a bit of a challenge because I've never dealt with most of the components involved and only have basic experience with SMD components.
 
 Stuff I've learned:
 - keep in mind ICs with identical i2c addresses when you have multiple devices on an i2c bus. Use separate busses if possible or i2c multiplexer if thats becoming a problem

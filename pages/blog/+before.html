@@ -1,3 +1,3 @@
-<div class="header-secondary">
-  <a href="/blog">&lt; Back to blog</a>
+<div class="header-secondary centered-content">
+  <%= (link (:route page) (str "&lt; Back to " (name (:route page))) {:class "back-link" }) %>
 </div>

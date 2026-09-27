@@ -1,8 +1,4 @@
-<% (meta {:description "Akshay likes games"}) %>
-
-# Video games
-
-<%= (link :home "Back to home" {:class "back-link"}) %>
+<% (meta {:title "Video games" :description "I like games"}) %>
 
 <%= (show-articles page inline-article-card) %>
 

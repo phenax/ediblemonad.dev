@@ -1,7 +1,3 @@
-# Music
+<% (meta {:title "Music" :description "I like music"}) %>
 
-<a href="/" class="back-link">&lt; Back to home</a>
-
-${partials.linkRss "${baseUrl}/music.xml" "Akshay likes music"}
-
-${partials.inline-card-list (mdPageDir "music").files}
+<%= (show-articles page inline-article-card) %>

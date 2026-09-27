@@ -1,7 +1,3 @@
-# Hardware & embedded
+<% (meta {:title "Hardware & embedded" :description "I like hardware & embedded systems programming"}) %>
 
-<a href="/" class="back-link">&lt; Back to home</a>
-
-${partials.linkRss "${baseUrl}/hardware.xml" "Akshay likes hardware and embedded systems"}
-
-${partials.inline-card-list (mdPageDir "hardware").files}
+<%= (show-articles page inline-article-card) %>

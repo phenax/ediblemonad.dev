@@ -8,10 +8,10 @@ Why am I avoiding piracy if the artists still barely get paid? Answer my questio
 In exchange they offer convinience to both sides. Is that really worth it? I thought so for a while too but then I started feeling uncomfortable with the whole thing.
 
 So what are the alternatives? Theres a lot of good options but the technicality and time spent evaluating the options might put off some people.
-- Self-hosted music streaming server: ${partials.linkExternal "https://jellyfin.org/" "jellyfin server"}, ${partials.linkExternal "https://mopidy.com/" "mopidy"}, ${partials.linkExternal "https://www.navidrome.org/" "navidrome"}, ${partials.linkExternal "https://github.com/epoupon/lms" "LMS"}
-- Music client: ${partials.linkExternal "https://www.symfonium.app/" "Symfonium"}, ${partials.linkExternal "https://mopidy.com/ext/iris/" "mopidy-iris (for mopidy)"}, ${partials.linkExternal "https://jellyfin.org/" "jellyfin client"} ${partials.linkExternal "https://github.com/UnicornsOnLSD/finamp" "Finamp (for jellyfin)"}
-- Self-hosted music discovery: ${partials.linkExternal "https://github.com/LumePart/Explo" "explo"} + ${partials.linkExternal "https://listenbrainz.org/" "listenbrainz"}
-- Purchasing music: ${partials.linkExternal "https://bandcamp.com/" "bandcamp"}, ${partials.linkExternal "https://www.qobuz.com" "https://www.qobuz.com"}
+- Self-hosted music streaming server: <%= (external-link "https://jellyfin.org/" "jellyfin server") %>, <%= (external-link "https://mopidy.com/" "mopidy") %>, <%= (external-link "https://www.navidrome.org/" "navidrome") %>, <%= (external-link "https://github.com/epoupon/lms" "LMS") %>
+- Music client: <%= (external-link "https://www.symfonium.app/" "Symfonium") %>, <%= (external-link "https://mopidy.com/ext/iris/" "mopidy-iris (for mopidy)") %>, <%= (external-link "https://jellyfin.org/" "jellyfin client") %> <%= (external-link "https://github.com/UnicornsOnLSD/finamp" "Finamp (for jellyfin)") %>
+- Self-hosted music discovery: <%= (external-link "https://github.com/LumePart/Explo" "explo") %> + <%= (external-link "https://listenbrainz.org/" "listenbrainz") %>
+- Purchasing music: <%= (external-link "https://bandcamp.com/" "bandcamp") %>, <%= (external-link "https://www.qobuz.com" "https://www.qobuz.com") %>
 
 This path is way more accessible and convinient than it might seem at first.
 

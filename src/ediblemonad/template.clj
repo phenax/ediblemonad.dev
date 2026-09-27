@@ -60,7 +60,7 @@
    :inline-article-card (fn [_opts ^Page {:keys [route route-cfg source-name content date]}]
                           (let [href (get-page-link route-cfg route source-name)]
                             (elem :li {:class "inline-card"}
-                                  "\n\n" content "\n\n" date
+                                  "\n\n" content "\n\n" (elem :div {:class "post-date"} date)
                                   (elem :div {:class "inline-card-footer"}
                                         (when (:article-pages? route-cfg) (make-link href "read more" {}))))))
    :link-article-card (fn [_opts ^Page {:keys [meta route output route-cfg source-name date]}]
