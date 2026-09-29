@@ -2,27 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Creative coding</title>
 <link>https://ediblemonad.dev/creative-coding</link>
 <description>I like creative coding</description>
-<article><guid>011-newton</guid>
-<title>011-newton</title>
-<link>https://ediblemonad.dev/creative-coding/011-newton</link>
-<comments>https://ediblemonad.dev/creative-coding/011-newton</comments>
+<article><guid>012-newton</guid>
+<title>012-newton</title>
+<link>https://ediblemonad.dev/creative-coding/012-newton</link>
+<comments>https://ediblemonad.dev/creative-coding/012-newton</comments>
 
 <description><![CDATA[# Newton
 
 <div class="image-container"><video src="/cc/newton.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
-[code](https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/newton.glsl)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/newton.glsl">code</a>
 ]]></description></article>
-<article><guid>010-geography</guid>
-<title>010-geography</title>
-<link>https://ediblemonad.dev/creative-coding/010-geography</link>
-<comments>https://ediblemonad.dev/creative-coding/010-geography</comments>
+<article><guid>011-geography</guid>
+<title>011-geography</title>
+<link>https://ediblemonad.dev/creative-coding/011-geography</link>
+<comments>https://ediblemonad.dev/creative-coding/011-geography</comments>
 
 <description><![CDATA[# Geography
 
 <div class="image-container"><video src="/cc/geography.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
-[code](https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/warping.glsl)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/warping.glsl">code</a>
+]]></description></article>
+<article><guid>010-cloak</guid>
+<title>010-cloak</title>
+<link>https://ediblemonad.dev/creative-coding/010-cloak</link>
+<comments>https://ediblemonad.dev/creative-coding/010-cloak</comments>
+
+<description><![CDATA[# Cloak
+
+<div class="image-container"><img src="/cc/cloak.png" alt="Cloak"></img></div>
+
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/cloak.glsl">code</a>
 ]]></description></article>
 <article><guid>009-abstract-sins</guid>
 <title>009-abstract-sins</title>
@@ -33,7 +44,7 @@
 
 <div class="image-container"><img src="/cc/abstract-sins.png" alt="Abstract sins"></img></div>
 
-[code](https://git.ediblemonad.dev/uiua-creative-coding/tree/4-im-a-sinner/main.ua)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/4-im-a-sinner/main.ua">code</a>
 ]]></description></article>
 <article><guid>008-hope</guid>
 <title>008-hope</title>
@@ -44,7 +55,7 @@
 
 <div class="image-container"><audio src="/cc/hope.mp3" controls="true"></audio></div>
 
-[code](https://git.ediblemonad.dev/uiua-creative-coding/tree/5-polyrhythms/main.ua)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/5-polyrhythms/main.ua">code</a>
 ]]></description></article>
 <article><guid>007-ike-whoaah</guid>
 <title>007-ike-whoaah</title>
@@ -55,7 +66,7 @@
 
 <div class="image-container"><img src="/cc/ike-whoaah.gif" alt="IKE-whoah"></img></div>
 
-[code](https://git.ediblemonad.dev/uiua-creative-coding/tree/7-dan-flashes/main.ua)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/7-dan-flashes/main.ua">code</a>
 ]]></description></article>
 <article><guid>006-juliua</guid>
 <title>006-juliua</title>
@@ -68,7 +79,7 @@ Julia set fractal in uiua
 
 <div class="image-container"><img src="/cc/juliua.gif" alt="Juliua"></img></div>
 
-[code](https://git.ediblemonad.dev/uiua-creative-coding/tree/6-julia/main.ua)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/6-julia/main.ua">code</a>
 ]]></description></article>
 <article><guid>005-neon-squiggles</guid>
 <title>005-neon-squiggles</title>
@@ -81,7 +92,7 @@ Using SQL to generate visuals
 
 <div class="image-container"><img src="/cc/neon-squiggles.gif" alt="Neon squiggles"></img></div>
 
-[code](https://git.ediblemonad.dev/sqlite-creative-coding/tree/src/rave.video.sql)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/sqlite-creative-coding/tree/src/rave.video.sql">code</a>
 ]]></description></article>
 <article><guid>004-recursticks</guid>
 <title>004-recursticks</title>
@@ -92,7 +103,7 @@ Using SQL to generate visuals
 
 <div class="image-container"><img src="/cc/recursticks.jpg" alt="Recursticks"></img></div>
 
-[code](https://git.ediblemonad.dev/creative-coding-playground/tree/sketches/08/tree.rkt)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/creative-coding-playground/tree/sketches/08/tree.rkt">code</a>
 ]]></description></article>
 <article><guid>003-vacation</guid>
 <title>003-vacation</title>
@@ -103,7 +114,7 @@ Using SQL to generate visuals
 
 <div class="image-container"><img src="/cc/vacation.png" alt="Vacation"></img></div>
 
-[code](https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/vacation.glsl)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/vacation.glsl">code</a>
 ]]></description></article>
 <article><guid>002-sql-mario-bros</guid>
 <title>002-sql-mario-bros</title>
@@ -116,7 +127,7 @@ Using SQL to generate music.
 
 <div class="image-container"><audio src="/cc/sql-mario-bros.mp3" controls="true"></audio></div>
 
-[code](https://git.ediblemonad.dev/sqlite-creative-coding/tree/src/supermariobros.audio.sql)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/sqlite-creative-coding/tree/src/supermariobros.audio.sql">code</a>
 ]]></description></article>
 <article><guid>001-seigaiha</guid>
 <title>001-seigaiha</title>
@@ -127,5 +138,5 @@ Using SQL to generate music.
 
 <div class="image-container"><video src="/cc/seigaiha.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
-[code](https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/seigaiha.glsl)
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/seigaiha.glsl">code</a>
 ]]></description></article></channel></rss>
