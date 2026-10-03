@@ -213,7 +213,8 @@ li:has(.card) {
   padding: 0.6rem 0;
 }
 
-.image-container img, .image-container video {
+.image-container img,
+.image-container video {
   width: 100%;
   max-width: 720px;
 }
@@ -225,6 +226,10 @@ li:has(.card) {
   padding-bottom: 0;
   max-width: var(--page-max-width);
   margin: auto;
+}
+
+.text-sm {
+  font-size: 0.65rem;
 }
 
 .back-link {
@@ -250,6 +255,42 @@ li:has(.card) {
   justify-content: flex-start;
   font-size: 0.8rem;
   border-bottom: 1px solid var(--color-gray-1);
+  overflow-wrap: break-word;
+  flex-wrap: wrap;
+}
+
+
+@media all and (max-width: 700px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    padding-bottom: 0.4em;
+    line-height: 1.2em;
+    padding-top: 0.2rem;
+  }
+
+  :root {
+    --page-h-padding: 1.0rem;
+    --page-v-padding: 1.0rem;
+  }
 }
 
 
