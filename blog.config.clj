@@ -2,8 +2,9 @@
  :pages-dir "pages"
  :static-dir "static"
  :title-prefix "Akshay"
- :headers ["header.html"]
- :template "template.html"
+ :headers ["pages/header.html"]
+ :footers ["pages/footer.html"]
+ :template "pages/template.html"
  :stylesheets ["/style.css"]
  :routes {:home {:output "index.html"}
           :projects {:type :articles :article-pages? false}

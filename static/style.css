@@ -96,6 +96,10 @@ li {
   padding-bottom: 0.4rem;
 }
 
+footer hr {
+  margin-bottom: 1rem;
+}
+
 .card-container {
   padding: 0 !important;
 }
@@ -196,7 +200,6 @@ li:has(.card) {
 
 .inline-card-footer {
   text-align: right;
-  font-size: 0.8rem;
   padding-bottom: 0.7rem;
 }
 

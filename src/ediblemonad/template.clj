@@ -70,7 +70,7 @@
                           (let [href (get-page-link route-cfg route source-name)]
                             (elem :li {:class "inline-card"}
                                   "\n\n" content "\n\n" (elem :div {:class "post-date"} date)
-                                  (elem :div {:class "inline-card-footer"}
+                                  (elem :div {:class "inline-card-footer text-sm"}
                                         (when (:article-pages? route-cfg)
                                           (make-link href (or open-text "leave a comment") {}))))))
    :link-article-card (fn [_opts ^Page {:keys [meta route output route-cfg source-name date]}]

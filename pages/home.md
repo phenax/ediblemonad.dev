@@ -29,8 +29,3 @@ Here's some of my links if you're into URLs:
 - <%= (external-link "https://www.linkedin.com/in/akshay-nair5" "LinkedIn") %>
 - <%= (external-link "mailto:akshay.n0@protonmail.com" "akshay.n0&commat;protonmail.com") %>
 
----
-
-<div class="text-sm">
-  Nothing here was written or built using AI. This place is just for me.
-</div>
