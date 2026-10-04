@@ -96,7 +96,7 @@
                               (map #(render-item opts %) (:articles page))))))
    :breadcrumbs (fn [{:keys [route route-cfg source-name index?]}]
                   (let [home-link (make-link "/" "home")
-                        separator (elem :span {} ">")
+                        separator (elem :span {} "/")
                         route-link (make-link (get-page-link route-cfg route) (name route))
                         current-mark (elem :span {} (if index? (name route) (or source-name ".")))
                         wrap (fn [& args] (apply elem :div {:class "centered-content breadcrumbs"} args))]

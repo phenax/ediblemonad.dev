@@ -1,3 +1,5 @@
+<% (meta {:pagetitle "My place"}) %>
+
 # Hey there, I'm Akshay
 
 ---

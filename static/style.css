@@ -14,7 +14,7 @@
   --color-foreground-1: #ddd;
   --color-foreground-2: #fff;
 
-  font-size: 16px;
+  font-size: 14px;
   font-family: monospace;
   color: var(--color-foreground-1);
 }
@@ -229,7 +229,7 @@ li:has(.card) {
 }
 
 .text-sm {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
 }
 
 .back-link {
@@ -253,7 +253,7 @@ li:has(.card) {
   display: flex;
   gap: 0.5rem;
   justify-content: flex-start;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   border-bottom: 1px solid var(--color-gray-1);
   overflow-wrap: break-word;
   flex-wrap: wrap;
