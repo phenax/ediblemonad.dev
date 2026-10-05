@@ -2,6 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools</title>
 <link>https://ediblemonad.dev/tools</link>
 <description>I love my tools</description>
+<article><guid>2026-10-03-rss-is-dead</guid>
+<title>2026-10-03-rss-is-dead</title>
+<link>https://ediblemonad.dev/tools/2026-10-03-rss-is-dead</link>
+<comments>https://ediblemonad.dev/tools/2026-10-03-rss-is-dead</comments>
+<pubDate>2026-10-03</pubDate>
+<description><![CDATA[# RSS is dead
+
+Reddit decided to kill their [RSS feed](https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/). They say AI and scraping but that translates to "only we should make money off selling user content here". That was also the reason why they priced their public API to death previously and now that's killed for real as well. I think the internet as a whole is turning hostile towards people that want to consume content on their own terms. This is because of the sudden inflation of the value of user data caused by AI's presence. Before it used to just be about selling user data for targetted ads, now it's all about AI, baybee. So I wouldn't be surprised if more public RSS feeds and APIs start disappearing and eventually the only way to interact with the internet would be via AI and summaries of inaccessible information. A few big AI companies become the only medium for the internet and privacy becomes the thing we get all nostalgic thinking about. We're kinda fucked.
+]]></description></article>
 <article><guid>2026-07-02-normalize-official-rss-feeds</guid>
 <title>2026-07-02-normalize-official-rss-feeds</title>
 <link>https://ediblemonad.dev/tools/2026-07-02-normalize-official-rss-feeds</link>

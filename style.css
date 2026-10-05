@@ -14,7 +14,7 @@
   --color-foreground-1: #ddd;
   --color-foreground-2: #fff;
 
-  font-size: 16px;
+  font-size: 14px;
   font-family: monospace;
   color: var(--color-foreground-1);
 }
@@ -94,6 +94,10 @@ ol {
 
 li {
   padding-bottom: 0.4rem;
+}
+
+footer hr {
+  margin-bottom: 1rem;
 }
 
 .card-container {
@@ -196,7 +200,6 @@ li:has(.card) {
 
 .inline-card-footer {
   text-align: right;
-  font-size: 0.8rem;
   padding-bottom: 0.7rem;
 }
 
@@ -213,7 +216,8 @@ li:has(.card) {
   padding: 0.6rem 0;
 }
 
-.image-container img, .image-container video {
+.image-container img,
+.image-container video {
   width: 100%;
   max-width: 720px;
 }
@@ -225,6 +229,10 @@ li:has(.card) {
   padding-bottom: 0;
   max-width: var(--page-max-width);
   margin: auto;
+}
+
+.text-sm {
+  font-size: 0.8rem;
 }
 
 .back-link {
@@ -248,8 +256,44 @@ li:has(.card) {
   display: flex;
   gap: 0.5rem;
   justify-content: flex-start;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   border-bottom: 1px solid var(--color-gray-1);
+  overflow-wrap: break-word;
+  flex-wrap: wrap;
+}
+
+
+@media all and (max-width: 700px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    padding-bottom: 0.4em;
+    line-height: 1.2em;
+    padding-top: 0.2rem;
+  }
+
+  :root {
+    --page-h-padding: 1.0rem;
+    --page-v-padding: 1.0rem;
+  }
 }
 
 
