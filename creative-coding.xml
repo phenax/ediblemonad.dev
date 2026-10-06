@@ -66,18 +66,18 @@
 
 ]]>
 </description></item>
-<item><guid>009-abstract-sins</guid>
-<title>Abstract sins</title>
-<link>https://ediblemonad.dev/creative-coding/009-abstract-sins</link>
-<comments>https://ediblemonad.dev/creative-coding/009-abstract-sins</comments>
+<item><guid>009-mitosis</guid>
+<title>Mitosis</title>
+<link>https://ediblemonad.dev/creative-coding/009-mitosis</link>
+<comments>https://ediblemonad.dev/creative-coding/009-mitosis</comments>
 
 <description>
 <![CDATA[
-# Abstract sins
+# Mitosis
 
-<div class="image-container"><img src="/cc/abstract-sins.png" alt="Abstract sins"></img></div>
+<div class="image-container"><video src="/cc/mitosis.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
-<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/4-im-a-sinner/main.ua">code</a>
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/mitosis.glsl">code</a>
 
 ]]>
 </description></item>
