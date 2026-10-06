@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hardware & embedded</title>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hardware &amp; embedded</title>
 <link>https://ediblemonad.dev/hardware</link>
-<description>I like hardware & embedded systems programming</description>
-<article><guid>2026-09-04-differential-pair-skew-check-in-kicad</guid>
-<title>2026-09-04-differential-pair-skew-check-in-kicad</title>
+<language>en-us</language>
+<image><url>https://ediblemonad.dev/logo.png</url>
+<title>Ediblemonad</title>
+<link>https://ediblemonad.dev</link></image>
+<description>I like hardware &amp; embedded systems programming</description>
+<item><guid>2026-09-04-differential-pair-skew-check-in-kicad</guid>
+<title>Differential pair skew check in kicad</title>
 <link>https://ediblemonad.dev/hardware/2026-09-04-differential-pair-skew-check-in-kicad</link>
 <comments>https://ediblemonad.dev/hardware/2026-09-04-differential-pair-skew-check-in-kicad</comments>
 <pubDate>2026-09-04</pubDate>
-<description><![CDATA[# Differential pair skew check in kicad
+<description>
+<![CDATA[
+# Differential pair skew check in kicad
 
 Love DRC. Can't live without it. Want more. But there's some things that DRC doesn't know how to do out of the box like verifying the skew in my differential pair traces or telling me I'm a good boy. Luckily custom rules makes up for it (at least the first part)!
 
@@ -25,13 +31,17 @@ The above rule is specifically for a net class named `100Ohm`. This will show up
 
 There's a bunch of other constraints you can check for like diff_pair_uncoupled, diff_pair_gap, track_width, etc. Check the "Syntax Help" thing in the modal to see more stuff it comes with.
 
-]]></description></article>
-<article><guid>2026-05-23-learnings-from-sinthinator</guid>
-<title>2026-05-23-learnings-from-sinthinator</title>
+
+]]>
+</description></item>
+<item><guid>2026-05-23-learnings-from-sinthinator</guid>
+<title>Learnings from sinthinator</title>
 <link>https://ediblemonad.dev/hardware/2026-05-23-learnings-from-sinthinator</link>
 <comments>https://ediblemonad.dev/hardware/2026-05-23-learnings-from-sinthinator</comments>
 <pubDate>2026-05-23</pubDate>
-<description><![CDATA[# Learnings from sinthinator
+<description>
+<![CDATA[
+# Learnings from sinthinator
 
 I recently tried decided to randomly pick up a pcb design project for an <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/sinthinator">stm32 based toy music instrument</a> that used capacitive touch sensor traces on a PCB. Expected it to be a bit of a challenge because I've never dealt with most of the components involved and only have basic experience with SMD components.
 
@@ -48,13 +58,17 @@ Stuff I've learned:
 - dont move the ic around in the pcb and leave the bypass capacitors behind (happened twice)
 
 project is wip so will add more here as a fuck more things up...
-]]></description></article>
-<article><guid>2026-05-14-need-at-least-2-uarts</guid>
-<title>2026-05-14-need-at-least-2-uarts</title>
+
+]]>
+</description></item>
+<item><guid>2026-05-14-need-at-least-2-uarts</guid>
+<title>Single UART? More like U-fart. JK haha lol</title>
 <link>https://ediblemonad.dev/hardware/2026-05-14-need-at-least-2-uarts</link>
 <comments>https://ediblemonad.dev/hardware/2026-05-14-need-at-least-2-uarts</comments>
 <pubDate>2026-05-14</pubDate>
-<description><![CDATA[# Single UART? More like U-fart. JK haha lol
+<description>
+<![CDATA[
+# Single UART? More like U-fart. JK haha lol
 
 I think people who make SBCs should add at least 2 UART ports. RPI zero just has 1 which hurts when you want to reserve the UART port for serial console and then all of a sudden you also need it to communicate with some other module. I'm in that situation right now.
 
@@ -67,23 +81,31 @@ Options I have:
 Maybe theres another option that I'm not aware of?
 
 Going with 1 because it's less work on a pi zero. USB-to-serial if the board doesn't support dwc2. But for a serial console you have to 69 2 USB-to-serial adapters to get a console. But all of this goes away if you just fucking add the 2nd UART port.
-]]></description></article>
-<article><guid>2026-04-29-fpga-dreams</guid>
-<title>2026-04-29-fpga-dreams</title>
+
+]]>
+</description></item>
+<item><guid>2026-04-29-fpga-dreams</guid>
+<title>FPGA dreams</title>
 <link>https://ediblemonad.dev/hardware/2026-04-29-fpga-dreams</link>
 <comments>https://ediblemonad.dev/hardware/2026-04-29-fpga-dreams</comments>
 <pubDate>2026-04-29</pubDate>
-<description><![CDATA[# FPGA dreams
+<description>
+<![CDATA[
+# FPGA dreams
 
 I want to mess around with FPGAs at some point. It looks really interesting but I need to grow a few more IQ points before I can play with that new toy. At this point I know nothing about them or hardware description languages but can't wait to meet future me who already knows some of that stuff. If that's you reading this for some reason, is GTA 6 out yet?
 
-]]></description></article>
-<article><guid>2026-04-12-v-usb-is-kinda-neat</guid>
-<title>2026-04-12-v-usb-is-kinda-neat</title>
+
+]]>
+</description></item>
+<item><guid>2026-04-12-v-usb-is-kinda-neat</guid>
+<title>V-USB is kinda neat</title>
 <link>https://ediblemonad.dev/hardware/2026-04-12-v-usb-is-kinda-neat</link>
 <comments>https://ediblemonad.dev/hardware/2026-04-12-v-usb-is-kinda-neat</comments>
 <pubDate>2026-04-12</pubDate>
-<description><![CDATA[# V-USB is kinda neat
+<description>
+<![CDATA[
+# V-USB is kinda neat
 
 I only ran into <a target="_blank _parent" rel="noopener" href="https://github.com/obdev/v-usb">v-usb</a> while going through the <a target="_blank _parent" rel="noopener" href="https://docs.qmk.fm/compatible_microcontrollers">qmk docs</a> where it mentions that mcus that don't have native usb will use v-usb instead.
 
@@ -96,13 +118,17 @@ Second challenge: we need 3.3V for the usb data lines but the LEDs need 5V. I ca
 Third challenge: after writing the fuse bits to use the external crystal oscillator, couldn't program it again. The crystal is connected with load caps and the program (an rgb version of blink) seems to run fine with or without the crystal. Makes no sense. Saw somewhere that you can set up a high voltage programmer (12v) to get the fuse bits to reset. So will try that next.
 
 To be continued...
-]]></description></article>
-<article><guid>2026-03-08-analog-of-digital</guid>
-<title>2026-03-08-analog-of-digital</title>
+
+]]>
+</description></item>
+<item><guid>2026-03-08-analog-of-digital</guid>
+<title>The analog of the digital</title>
 <link>https://ediblemonad.dev/hardware/2026-03-08-analog-of-digital</link>
 <comments>https://ediblemonad.dev/hardware/2026-03-08-analog-of-digital</comments>
 <pubDate>2026-03-08</pubDate>
-<description><![CDATA[# The analog of the digital
+<description>
+<![CDATA[
+# The analog of the digital
 
 In digital electronics something that always catches me off guard is the analog suprise. Don't get me started on signal integrity issues but what I'm talking about is when a random part of your schematic depends on a very specific analog behavior. I ran into one of those while working on <a target="_blank _parent" rel="noopener" href="https://github.com/makedaft/daft-watch">a clock using attiny84a microcontroller IC</a>. That project was my re-creation of <a target="_blank _parent" rel="noopener" href="https://ingep.net/breadboardwatch/">breadboard watch</a> which taught me a very simple but neat trick.
 
@@ -127,4 +153,6 @@ If we have `DDRA = (1 << PA6)` (PA6 output, PA7 input),
 - When `PORTA = (1 << PA6)` (PA6 high, PA7 floating), digit 3 is on but the F segment is off as the current has nowhere to go through the diodes.
 
 Applying the inverse of that, we can achieve the last state we need to draw anything on each of the 7 segment displays. With this we now have 2 pins doing the work for 3. Adding in-between states in our digital logic that don't exist in pure boolean logic. Doesn't that feel satisfying?
-]]></description></article></channel></rss>
+
+]]>
+</description></item></channel></rss>

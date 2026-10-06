@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Coding for fun</title>
 <link>https://ediblemonad.dev/coding4fun</link>
+<language>en-us</language>
+<image><url>https://ediblemonad.dev/logo.png</url>
+<title>Ediblemonad</title>
+<link>https://ediblemonad.dev</link></image>
 <description>I like coding for fun</description>
-<article><guid>2026-06-27-polar-coordinates-are-beautiful</guid>
-<title>2026-06-27-polar-coordinates-are-beautiful</title>
+<item><guid>2026-06-27-polar-coordinates-are-beautiful</guid>
+<title>Polar coordinates are beautiful</title>
 <link>https://ediblemonad.dev/coding4fun/2026-06-27-polar-coordinates-are-beautiful</link>
 <comments>https://ediblemonad.dev/coding4fun/2026-06-27-polar-coordinates-are-beautiful</comments>
 <pubDate>2026-06-27</pubDate>
-<description><![CDATA[# Polar coordinates are beautiful
+<description>
+<![CDATA[
+# Polar coordinates are beautiful
 
 Just go over to <a target="_blank _parent" rel="noopener" href="https://www.desmos.com/calculator">desmos</a> and type a random equation with polar coordinates. There is a very good chance, you see something visually interesting.
 
@@ -19,13 +25,17 @@ Examples (try with $-12\pi\le\theta\le12\pi$):
 - $r=e^{\theta\left(\sin\left(\theta\right)\cos\left(\theta\right)\right)^{6}}$: would make a really cool visualizer for music
 
 Designing a logo? Just play around with polar coordinates till you find a shape inside it that looks interesting. Won't take long.
-]]></description></article>
-<article><guid>2026-06-03-creative-coding-in-sqlite</guid>
-<title>2026-06-03-creative-coding-in-sqlite</title>
+
+]]>
+</description></item>
+<item><guid>2026-06-03-creative-coding-in-sqlite</guid>
+<title>Creative coding in sqlite</title>
 <link>https://ediblemonad.dev/coding4fun/2026-06-03-creative-coding-in-sqlite</link>
 <comments>https://ediblemonad.dev/coding4fun/2026-06-03-creative-coding-in-sqlite</comments>
 <pubDate>2026-06-03</pubDate>
-<description><![CDATA[# Creative coding in sqlite
+<description>
+<![CDATA[
+# Creative coding in sqlite
 
 Been trying out creative coding in sqlite recently <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/sqlite-creative-coding">here</a>. Turned out to be a lot more fun than what writing practical SQL had conditioned me to believe!
 
@@ -66,13 +76,17 @@ Generating audio out of samples should also be simple with raw PCM data and then
 Another more ambitious idea is to build a simple snake game. The way I'm thinking is with the ppm output streaming to ffplay and using terminal raw mode for input which will update relevant values either directly or via triggers. Leaving that for future me to fuck around with.
 
 SQL can be fun.
-]]></description></article>
-<article><guid>2026-03-24-desmos</guid>
-<title>2026-03-24-desmos</title>
+
+]]>
+</description></item>
+<item><guid>2026-03-24-desmos</guid>
+<title>Desmos is beautiful</title>
 <link>https://ediblemonad.dev/coding4fun/2026-03-24-desmos</link>
 <comments>https://ediblemonad.dev/coding4fun/2026-03-24-desmos</comments>
 <pubDate>2026-03-24</pubDate>
-<description><![CDATA[# Desmos is beautiful
+<description>
+<![CDATA[
+# Desmos is beautiful
 
 Desmos is a graphing calculator where you can input math equations and it'll plot it.
 The normal way to use it would be to throw in an equation like $y = 2x^2 + 2$ and boom you have a parabola.
@@ -112,13 +126,19 @@ This post doesn't even begin to cover the incredible features desmos provides bu
 <a target="_blank _parent" rel="noopener" href="https://desmos.ediblemonad.dev/#/graphs/snake-game">Here's a snake game implemented in desmos</a>. Press "Play/Pause" to start.
 
 I maintain my collection of desmos experiments <a target="_blank _parent" rel="noopener" href="https://desmos.ediblemonad.dev">here</a>.
-]]></description></article>
-<article><guid>2026-03-22-uiua</guid>
-<title>2026-03-22-uiua</title>
+
+]]>
+</description></item>
+<item><guid>2026-03-22-uiua</guid>
+<title>Uiua</title>
 <link>https://ediblemonad.dev/coding4fun/2026-03-22-uiua</link>
 <comments>https://ediblemonad.dev/coding4fun/2026-03-22-uiua</comments>
 <pubDate>2026-03-22</pubDate>
-<description><![CDATA[# Uiua
+<description>
+<![CDATA[
+# Uiua
 
 <a target="_blank _parent" rel="noopener" href="https://www.uiua.org">Uiua</a> is one of the most fun languages for creative coding. There are a bunch of really good primitives for generating audio files from samples, generating an image from an array of pixels, generating a gif from an array of array of pixels, etc. Messed around with it <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/uiua-playground">here</a> some time ago and I've started to miss it. The only other APL-ish language I've tried is BQN which is also an amazing language but thinking tacit is hard and it takes time to get used to. There are smart people in the world. Being a member and representative of the other side of that spectrum, I need my escape hatches and they need to be pleasant. I've come to appreciate the stack-based escape hatches a lot more than the functional escape hatches with blocks using 𝕩 and the other spicy letters.
-]]></description></article></channel></rss>
+
+]]>
+</description></item></channel></rss>

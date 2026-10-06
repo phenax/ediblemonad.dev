@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Older blog posts</title>
 <link>https://ediblemonad.dev/blog</link>
-<description>Akshay's old blog posts</description>
-<article><guid>2025-07-26-ed-it</guid>
+<language>en-us</language>
+<image><url>https://ediblemonad.dev/logo.png</url>
+<title>Ediblemonad</title>
+<link>https://ediblemonad.dev</link></image>
+<description>Akshay&#x27;s old blog posts</description>
+<item><guid>2025-07-26-ed-it</guid>
 <title>A case for ed</title>
 <link>https://ediblemonad.dev/blog/2025-07-26-ed-it</link>
 <comments>https://ediblemonad.dev/blog/2025-07-26-ed-it</comments>
 <pubDate>2025-07-26</pubDate>
-<description><![CDATA[
+<description>
+<![CDATA[
+
 
 # A case for ed
 
@@ -103,13 +109,17 @@ I write code because I like writing code. Outsourcing that would be extremely po
 
 Idk. Simple tools are fun. Bye.
 
-]]></description></article>
-<article><guid>2023-02-13-ts-types-runtime</guid>
-<title>TypeScript's type-system as a runtime</title>
+
+]]>
+</description></item>
+<item><guid>2023-02-13-ts-types-runtime</guid>
+<title>TypeScript&#x27;s type-system as a runtime</title>
 <link>https://ediblemonad.dev/blog/2023-02-13-ts-types-runtime</link>
 <comments>https://ediblemonad.dev/blog/2023-02-13-ts-types-runtime</comments>
 <pubDate>2023-02-13</pubDate>
-<description><![CDATA[
+<description>
+<![CDATA[
+
 
 # TypeScript's type-system as a runtime
 
@@ -239,13 +249,17 @@ I don't regret a thing! I've made my mark on the world even if that mark is a pi
 
 Ok bye
 
-]]></description></article>
-<article><guid>2021-03-01-effect-handlers</guid>
+
+]]>
+</description></item>
+<item><guid>2021-03-01-effect-handlers</guid>
 <title>Designing effects as data structures</title>
 <link>https://ediblemonad.dev/blog/2021-03-01-effect-handlers</link>
 <comments>https://ediblemonad.dev/blog/2021-03-01-effect-handlers</comments>
 <pubDate>2021-03-01</pubDate>
-<description><![CDATA[
+<description>
+<![CDATA[
+
 
 # Designing effects as data structures
 
@@ -745,13 +759,17 @@ Anyways, impure programs get a C for "Can do better". Almost-pure programs with 
 
 Alright kids, get a signature on the report card from your parents. No fake signatures, John. Those squiggly lines aren't fooling anyone.
 
-]]></description></article>
-<article><guid>2019-03-29-js-magic</guid>
+
+]]>
+</description></item>
+<item><guid>2019-03-29-js-magic</guid>
 <title>JS Magic Tricks to impress your friends</title>
 <link>https://ediblemonad.dev/blog/2019-03-29-js-magic</link>
 <comments>https://ediblemonad.dev/blog/2019-03-29-js-magic</comments>
 <pubDate>2019-03-29</pubDate>
-<description><![CDATA[
+<description>
+<![CDATA[
+
 
 # JS Magic Tricks to impress your friends
 
@@ -975,13 +993,17 @@ Now I'm gonna make myself disappear.
 Why is this… Just a second folks… Some technical difficul…
 
 **_magic man magically disappears_**
-]]></description></article>
-<article><guid>2019-03-15-redux-recipies</guid>
-<title>Grandma's recipes for cooking redux</title>
+
+]]>
+</description></item>
+<item><guid>2019-03-15-redux-recipies</guid>
+<title>Grandma&#x27;s recipes for cooking redux</title>
 <link>https://ediblemonad.dev/blog/2019-03-15-redux-recipies</link>
 <comments>https://ediblemonad.dev/blog/2019-03-15-redux-recipies</comments>
 <pubDate>2019-03-15</pubDate>
-<description><![CDATA[
+<description>
+<![CDATA[
+
 
 # Grandma's recipes for cooking redux
 
@@ -1253,13 +1275,17 @@ These are all solutions to the small yet annoying inconveniences that I ran into
 
 Hope these ideas help you write some tasty code.
 
-]]></description></article>
-<article><guid>2019-03-14-sum-types</guid>
+
+]]>
+</description></item>
+<item><guid>2019-03-14-sum-types</guid>
 <title>Functional JS - Sum Types In JavaScript</title>
 <link>https://ediblemonad.dev/blog/2019-03-14-sum-types</link>
 <comments>https://ediblemonad.dev/blog/2019-03-14-sum-types</comments>
 <pubDate>2019-03-14</pubDate>
-<description><![CDATA[
+<description>
+<![CDATA[
+
 
 # Functional JS - Sum Types In JavaScript
 
@@ -1418,4 +1444,6 @@ And this is not limited to just component state tho. You can use Sum Types to wo
 
 This is just the tip of the iceberg. There are a lot more of these amazing ideas hidden in the world of functional programming, waiting to move to other languages. Being a part of the JavaScript community for a while has made me realise that it’s not all bad. What we lack in language features and standard library, we make up for in the variety of libraries just an npm install away, and the strong community constantly working towards “Making JS great again”. So let’s build a wall together between us and bad code. Covfefe.
 
-]]></description></article></channel></rss>
+
+]]>
+</description></item></channel></rss>

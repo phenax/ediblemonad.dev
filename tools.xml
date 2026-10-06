@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools</title>
 <link>https://ediblemonad.dev/tools</link>
+<language>en-us</language>
+<image><url>https://ediblemonad.dev/logo.png</url>
+<title>Ediblemonad</title>
+<link>https://ediblemonad.dev</link></image>
 <description>I love my tools</description>
-<article><guid>2026-10-03-rss-is-dead</guid>
-<title>2026-10-03-rss-is-dead</title>
+<item><guid>2026-10-03-rss-is-dead</guid>
+<title>RSS is dead</title>
 <link>https://ediblemonad.dev/tools/2026-10-03-rss-is-dead</link>
 <comments>https://ediblemonad.dev/tools/2026-10-03-rss-is-dead</comments>
 <pubDate>2026-10-03</pubDate>
-<description><![CDATA[# RSS is dead
+<description>
+<![CDATA[
+# RSS is dead
 
 Reddit decided to kill their [RSS feed](https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/). They say AI and scraping but that translates to "only we should make money off selling user content here". That was also the reason why they priced their public API to death previously and now that's killed for real as well. I think the internet as a whole is turning hostile towards people that want to consume content on their own terms. This is because of the sudden inflation of the value of user data caused by AI's presence. Before it used to just be about selling user data for targetted ads, now it's all about AI, baybee. So I wouldn't be surprised if more public RSS feeds and APIs start disappearing and eventually the only way to interact with the internet would be via AI and summaries of inaccessible information. A few big AI companies become the only medium for the internet and privacy becomes the thing we get all nostalgic thinking about. We're kinda fucked.
-]]></description></article>
-<article><guid>2026-07-02-normalize-official-rss-feeds</guid>
-<title>2026-07-02-normalize-official-rss-feeds</title>
+
+]]>
+</description></item>
+<item><guid>2026-07-02-normalize-official-rss-feeds</guid>
+<title>Normalize official RSS feeds</title>
 <link>https://ediblemonad.dev/tools/2026-07-02-normalize-official-rss-feeds</link>
 <comments>https://ediblemonad.dev/tools/2026-07-02-normalize-official-rss-feeds</comments>
 <pubDate>2026-07-02</pubDate>
-<description><![CDATA[# Normalize official RSS feeds
+<description>
+<![CDATA[
+# Normalize official RSS feeds
 
 Given the shitshow every single medium of accessing information and entertainment feeds has turned into with organizations optimizing the amount of time people spend on their apps, I think we need more neutral sources. Source that are not trying to "understand" us to manipulate us into using their app more like the most toxic relationship. RSS seems like the only good standard left for this. I really like that youtube and reddit have official rss feeds which I use a lot. And I'm also very happy with the amount of blogs I've found that provide an rss feed. But we could definitely use more of this. We also need to normalize it's use to the point where people lean towards rss instinctively rather than reaching for the apps/websites.
 
-]]></description></article>
-<article><guid>2026-06-27-kakoune--snippets</guid>
-<title>2026-06-27-kakoune--snippets</title>
+
+]]>
+</description></item>
+<item><guid>2026-06-27-kakoune--snippets</guid>
+<title>Kakoune: snippets</title>
 <link>https://ediblemonad.dev/tools/2026-06-27-kakoune--snippets</link>
 <comments>https://ediblemonad.dev/tools/2026-06-27-kakoune--snippets</comments>
 <pubDate>2026-06-27</pubDate>
-<description><![CDATA[# Kakoune: snippets
+<description>
+<![CDATA[
+# Kakoune: snippets
 
 Kakoune doesn't have built-in support for snippets. You can use plugins like <a target="_blank _parent" rel="noopener" href="https://github.com/occivink/kakoune-snippets">occivink/kakoune-snippets</a> to have that in the editor but you could also have a much simpler setup for snippets with a few lines of scripting.
 
@@ -113,13 +127,17 @@ The above snippet, `$1` is automatically selected first. You can press `c` to ch
 
 I know this already exists for every other editor out of the box and is much more fleshed out but the experience of understanding a system and defining a feature within it, in it's simplest form, is a really pleasant.
 
-]]></description></article>
-<article><guid>2026-05-14-nixos-is-a-chore</guid>
-<title>2026-05-14-nixos-is-a-chore</title>
+
+]]>
+</description></item>
+<item><guid>2026-05-14-nixos-is-a-chore</guid>
+<title>NixOS is a chore</title>
 <link>https://ediblemonad.dev/tools/2026-05-14-nixos-is-a-chore</link>
 <comments>https://ediblemonad.dev/tools/2026-05-14-nixos-is-a-chore</comments>
 <pubDate>2026-05-14</pubDate>
-<description><![CDATA[# NixOS is a chore
+<description>
+<![CDATA[
+# NixOS is a chore
 
 Using nixos is a chore like brushing your teeth. Oh... I mean "teeth being brushed" (declarative).
 
@@ -130,13 +148,17 @@ I've had it running as a daily driver for about 6 years and on my home server (j
 <div style="text-align:center;">
   <img src="/images/nixos.png" alt="NixOS declarative" style="width:100%;max-width:400px" />
 </div>
-]]></description></article>
-<article><guid>2026-05-03-kakoune-supremacy</guid>
-<title>2026-05-03-kakoune-supremacy</title>
+
+]]>
+</description></item>
+<item><guid>2026-05-03-kakoune-supremacy</guid>
+<title>Kakoune supremacy</title>
 <link>https://ediblemonad.dev/tools/2026-05-03-kakoune-supremacy</link>
 <comments>https://ediblemonad.dev/tools/2026-05-03-kakoune-supremacy</comments>
 <pubDate>2026-05-03</pubDate>
-<description><![CDATA[# Kakoune supremacy
+<description>
+<![CDATA[
+# Kakoune supremacy
 
 I've tried a bunch of different code editors and IDEs over the years but nothing beats the control of a modal text editor. Even as "vi plugins" in normie editors and IDEs, the difference in user experience is massive. But I've come to crave more from my tools. By "more" I mean fewer features and better primitives to allow me to build my own experience on top of it. Because at the end of the day, I've spend a considerable amount of time using the tools that I use for work and as a hobby so I know better than the devs of these tools what I'd like my tool to do.
 
@@ -146,4 +168,6 @@ So as any mentally ill person would, I decided to spend a shit-load of time sett
 
 My crotch has never been wetter. Kthanxby.
 
-]]></description></article></channel></rss>
+
+]]>
+</description></item></channel></rss>

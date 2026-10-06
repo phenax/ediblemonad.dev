@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Music</title>
 <link>https://ediblemonad.dev/music</link>
+<language>en-us</language>
+<image><url>https://ediblemonad.dev/logo.png</url>
+<title>Ediblemonad</title>
+<link>https://ediblemonad.dev</link></image>
 <description>I like music</description>
-<article><guid>2026-10-05-kph40-is-fun</guid>
-<title>2026-10-05-kph40-is-fun</title>
+<item><guid>2026-10-05-kph40-is-fun</guid>
+<title>KPH40 is fun</title>
 <link>https://ediblemonad.dev/music/2026-10-05-kph40-is-fun</link>
 <comments>https://ediblemonad.dev/music/2026-10-05-kph40-is-fun</comments>
 <pubDate>2026-10-05</pubDate>
-<description><![CDATA[# KPH40 is fun
+<description>
+<![CDATA[
+# KPH40 is fun
 
 Got Koss KPH40 utility recently and it's pretty fun. It's not as loud as I'd like but the sound quality is quite good. Pretty good detail with suprisingly decent bass. A tiny bit of sound-leak but not that bad. Sits quite comfortably on the head.
 
@@ -15,13 +21,17 @@ Whatever. We all know this already. That's already talked about but 1 criteria n
 
 6/10 headbangable. Up next, my review on condom helicopterability.
 
-]]></description></article>
-<article><guid>2026-06-06-spotify-can-suck-it</guid>
-<title>2026-06-06-spotify-can-suck-it</title>
+
+]]>
+</description></item>
+<item><guid>2026-06-06-spotify-can-suck-it</guid>
+<title>Fuck spotify</title>
 <link>https://ediblemonad.dev/music/2026-06-06-spotify-can-suck-it</link>
 <comments>https://ediblemonad.dev/music/2026-06-06-spotify-can-suck-it</comments>
 <pubDate>2026-06-06</pubDate>
-<description><![CDATA[# Fuck spotify
+<description>
+<![CDATA[
+# Fuck spotify
 
 It's not breaking news that a lot of subscription services are predatory towards their customers.
 But spotify taskes it a step further and is predatory towards their artists as well. And thats just for the popular artists, newer artists and niche ones cannot survive with this.
@@ -42,16 +52,22 @@ Another much simpler alternative is to use a physical music player (or just your
 
 Spotify can suck it.
 
-]]></description></article>
-<article><guid>2026-05-02-mr-bungle-is-real-fart</guid>
-<title>2026-05-02-mr-bungle-is-real-fart</title>
+
+]]>
+</description></item>
+<item><guid>2026-05-02-mr-bungle-is-real-fart</guid>
+<title>Mr. Bungle is real art</title>
 <link>https://ediblemonad.dev/music/2026-05-02-mr-bungle-is-real-fart</link>
 <comments>https://ediblemonad.dev/music/2026-05-02-mr-bungle-is-real-fart</comments>
 <pubDate>2026-05-02</pubDate>
-<description><![CDATA[# Mr. Bungle is real art
+<description>
+<![CDATA[
+# Mr. Bungle is real art
 
 A band like Mr. Bungle is rare because given how hard it is to make enough money to survive as a band, I'm surprised how more bands don't lean towards mass appeal. But Mr. Bungle is comfortable with just finding an identity in making the songs that they want to make, even if that identity involves including <a target="_blank _parent" rel="noopener" href="https://youtu.be/nE6UUg0Nenc?si=-g8dWEof9tVkZWoG&t=448">the track 'Noises'</a> in your album.
 
 For people who want to get into them, the album order I enjoy is California -> Mr. Bungle -> Disco Volante -> everything after that. To me that is ordered by weirdness because I like starting comfortable.
 
-]]></description></article></channel></rss>
+
+]]>
+</description></item></channel></rss>

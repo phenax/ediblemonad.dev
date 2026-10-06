@@ -1,347 +1,475 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects</title>
 <link>https://ediblemonad.dev/projects</link>
+<language>en-us</language>
+<image><url>https://ediblemonad.dev/logo.png</url>
+<title>Ediblemonad</title>
+<link>https://ediblemonad.dev</link></image>
 <description>Some of my projects</description>
-<article><guid>031-chiral-keyboard</guid>
-<title>031-chiral-keyboard</title>
+<item><guid>031-chiral-keyboard</guid>
+<title>Chiral keyboard</title>
 <link>https://ediblemonad.dev/projects/031-chiral-keyboard</link>
 <comments>https://ediblemonad.dev/projects/031-chiral-keyboard</comments>
 
-<description><![CDATA[# Chiral keyboard
+<description>
+<![CDATA[
+# Chiral keyboard
 
 My custom ortholinear split keyboard design running on an RP2040 zero.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/chiral-keyboard">Github</a>
-]]></description></article>
-<article><guid>030-daffm</guid>
-<title>030-daffm</title>
+
+]]>
+</description></item>
+<item><guid>030-daffm</guid>
+<title>Daffm</title>
 <link>https://ediblemonad.dev/projects/030-daffm</link>
 <comments>https://ediblemonad.dev/projects/030-daffm</comments>
 
-<description><![CDATA[# Daffm
+<description>
+<![CDATA[
+# Daffm
 
 A minimal tui file manager with the goal of not being a file manager as much as possible. Simple configuration format that allows integrating with any tool to build a rich file manager. Built with haskell.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/daffm">Github</a>
-]]></description></article>
-<article><guid>029-temperature-sensor</guid>
-<title>029-temperature-sensor</title>
+
+]]>
+</description></item>
+<item><guid>029-temperature-sensor</guid>
+<title>Temperature sensor attiny84a</title>
 <link>https://ediblemonad.dev/projects/029-temperature-sensor</link>
 <comments>https://ediblemonad.dev/projects/029-temperature-sensor</comments>
 
-<description><![CDATA[# Temperature sensor attiny84a
+<description>
+<![CDATA[
+# Temperature sensor attiny84a
 
 A simple temperature sensor and display running on an attiny84a meant for soldering iron.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/temperature-sensor-attiny84a">Github</a>
-]]></description></article>
-<article><guid>028-css-everything</guid>
-<title>028-css-everything</title>
+
+]]>
+</description></item>
+<item><guid>028-css-everything</guid>
+<title>css-everything</title>
 <link>https://ediblemonad.dev/projects/028-css-everything</link>
 <comments>https://ediblemonad.dev/projects/028-css-everything</comments>
 
-<description><![CDATA[# css-everything
+<description>
+<![CDATA[
+# css-everything
 
 An experimental/gag ui framework where you only write turing complete CSS. No HTML, no JS, no build system. Just CSS.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/css-everything">Github</a>
-]]></description></article>
-<article><guid>027-homeserver</guid>
-<title>027-homeserver</title>
+
+]]>
+</description></item>
+<item><guid>027-homeserver</guid>
+<title>Homeserver</title>
 <link>https://ediblemonad.dev/projects/027-homeserver</link>
 <comments>https://ediblemonad.dev/projects/027-homeserver</comments>
 
-<description><![CDATA[# Homeserver
+<description>
+<![CDATA[
+# Homeserver
 
 My personal home server configuration in nixos.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/homeserver-nixos">Github</a>
-]]></description></article>
-<article><guid>026-null-browser</guid>
-<title>026-null-browser</title>
+
+]]>
+</description></item>
+<item><guid>026-null-browser</guid>
+<title>Null browser</title>
 <link>https://ediblemonad.dev/projects/026-null-browser</link>
 <comments>https://ediblemonad.dev/projects/026-null-browser</comments>
 
-<description><![CDATA[# Null browser
+<description>
+<![CDATA[
+# Null browser
 
 An infinitly extensible web browser built on top of qtwebengine. Built with c++, qt with a libuv event system.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/null-browser">Github</a>
-]]></description></article>
-<article><guid>025-chelleport</guid>
-<title>025-chelleport</title>
+
+]]>
+</description></item>
+<item><guid>025-chelleport</guid>
+<title>Chelleport</title>
 <link>https://ediblemonad.dev/projects/025-chelleport</link>
 <comments>https://ediblemonad.dev/projects/025-chelleport</comments>
 
-<description><![CDATA[# Chelleport
+<description>
+<![CDATA[
+# Chelleport
 
 App for X11 linux to control your mouse pointer with your keyboard with hints and OCR written in haskell.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/chelleport">Github</a>
-]]></description></article>
-<article><guid>024-aether</guid>
-<title>024-aether</title>
+
+]]>
+</description></item>
+<item><guid>024-aether</guid>
+<title>Aether lang</title>
 <link>https://ediblemonad.dev/projects/024-aether</link>
 <comments>https://ediblemonad.dev/projects/024-aether</comments>
 
-<description><![CDATA[# Aether lang
+<description>
+<![CDATA[
+# Aether lang
 
 A lisp interpreter written in haskell.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/aether">Github</a>
-]]></description></article>
-<article><guid>023-yaml-transformer</guid>
-<title>023-yaml-transformer</title>
+
+]]>
+</description></item>
+<item><guid>023-yaml-transformer</guid>
+<title>Yaml transformer</title>
 <link>https://ediblemonad.dev/projects/023-yaml-transformer</link>
 <comments>https://ediblemonad.dev/projects/023-yaml-transformer</comments>
 
-<description><![CDATA[# Yaml transformer
+<description>
+<![CDATA[
+# Yaml transformer
 
 A cli to update yaml properties while preserving whitespace and comments in its original state. Built with haskell.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/yaml-transform">Github</a>
-]]></description></article>
-<article><guid>022-ediblemonad-website</guid>
-<title>022-ediblemonad-website</title>
+
+]]>
+</description></item>
+<item><guid>022-ediblemonad-website</guid>
+<title>This website</title>
 <link>https://ediblemonad.dev/projects/022-ediblemonad-website</link>
 <comments>https://ediblemonad.dev/projects/022-ediblemonad-website</comments>
 
-<description><![CDATA[# This website
+<description>
+<![CDATA[
+# This website
 
 Built with a toy static site generator written in clojure (babashka) and pandoc. (Previously built with nix)
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/ediblemonad.dev">Github</a>
-]]></description></article>
-<article><guid>021-edible-desmos</guid>
-<title>021-edible-desmos</title>
+
+]]>
+</description></item>
+<item><guid>021-edible-desmos</guid>
+<title>Desmos graph manager</title>
 <link>https://ediblemonad.dev/projects/021-edible-desmos</link>
 <comments>https://ediblemonad.dev/projects/021-edible-desmos</comments>
 
-<description><![CDATA[# Desmos graph manager
+<description>
+<![CDATA[
+# Desmos graph manager
 
 A personal graph manager using desmos graphing calculator.
 
 <a target="_blank _parent" rel="noopener" href="https://desmos.ediblemonad.dev">Website</a>
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/edible-desmos">Github</a>
-]]></description></article>
-<article><guid>020-react-is-a-programming-language</guid>
-<title>020-react-is-a-programming-language</title>
+
+]]>
+</description></item>
+<item><guid>020-react-is-a-programming-language</guid>
+<title>React is a programming language</title>
 <link>https://ediblemonad.dev/projects/020-react-is-a-programming-language</link>
 <comments>https://ediblemonad.dev/projects/020-react-is-a-programming-language</comments>
 
-<description><![CDATA[# React is a programming language
+<description>
+<![CDATA[
+# React is a programming language
 
 A PoC for using react to emulate turing complete behaviors and building a "programming language" from it.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/react-is-a-programming-language">Github</a>
-]]></description></article>
-<article><guid>019-notical-run</guid>
-<title>019-notical-run</title>
+
+]]>
+</description></item>
+<item><guid>019-notical-run</guid>
+<title>Notical</title>
 <link>https://ediblemonad.dev/projects/019-notical-run</link>
 <comments>https://ediblemonad.dev/projects/019-notical-run</comments>
 
-<description><![CDATA[# Notical
+<description>
+<![CDATA[
+# Notical
 
 Programmable markdown compatible wysiwyg note-taking application with a simple extension system based on markdown code blocks.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/notical-run/notical-run">Github</a>
-]]></description></article>
-<article><guid>018-ts-typeslang</guid>
-<title>018-ts-typeslang</title>
+
+]]>
+</description></item>
+<item><guid>018-ts-typeslang</guid>
+<title>Runtime for TS types</title>
 <link>https://ediblemonad.dev/projects/018-ts-typeslang</link>
 <comments>https://ediblemonad.dev/projects/018-ts-typeslang</comments>
 
-<description><![CDATA[# Runtime for TS types
+<description>
+<![CDATA[
+# Runtime for TS types
 
 A runtime and library for typescript's types that turns the type system into a general purpose, purely functional programming language.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/ts-types-runtime">Github</a>
-]]></description></article>
-<article><guid>017-ts-theorem-provinator</guid>
-<title>017-ts-theorem-provinator</title>
+
+]]>
+</description></item>
+<item><guid>017-ts-theorem-provinator</guid>
+<title>TS types theorem prover</title>
 <link>https://ediblemonad.dev/projects/017-ts-theorem-provinator</link>
 <comments>https://ediblemonad.dev/projects/017-ts-theorem-provinator</comments>
 
-<description><![CDATA[# TS types theorem prover
+<description>
+<![CDATA[
+# TS types theorem prover
 
 A simple (terrible) theorem proof embedding in typescript's type system.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/ts-theorem-provinator">Github</a>
-]]></description></article>
-<article><guid>016-esbuild-plugin-elm</guid>
-<title>016-esbuild-plugin-elm</title>
+
+]]>
+</description></item>
+<item><guid>016-esbuild-plugin-elm</guid>
+<title>esbuild-plugin-elm</title>
 <link>https://ediblemonad.dev/projects/016-esbuild-plugin-elm</link>
 <comments>https://ediblemonad.dev/projects/016-esbuild-plugin-elm</comments>
 
-<description><![CDATA[# esbuild-plugin-elm
+<description>
+<![CDATA[
+# esbuild-plugin-elm
 
 An esbuild plugin for building elm projects.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/esbuild-plugin-elm">Github</a>
-]]></description></article>
-<article><guid>015-cmp-graphql</guid>
-<title>015-cmp-graphql</title>
+
+]]>
+</description></item>
+<item><guid>015-cmp-graphql</guid>
+<title>cmp-graphql for neovim</title>
 <link>https://ediblemonad.dev/projects/015-cmp-graphql</link>
 <comments>https://ediblemonad.dev/projects/015-cmp-graphql</comments>
 
-<description><![CDATA[# cmp-graphql for neovim
+<description>
+<![CDATA[
+# cmp-graphql for neovim
 
 A neovim completions (nvim-cmp) plugin for schema-based completions for graphql syntax (works inside gql tagged template literals).
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/cmp-graphql">Github</a>
-]]></description></article>
-<article><guid>014-elxr</guid>
-<title>014-elxr</title>
+
+]]>
+</description></item>
+<item><guid>014-elxr</guid>
+<title>Elxr (list expressions)</title>
 <link>https://ediblemonad.dev/projects/014-elxr</link>
 <comments>https://ediblemonad.dev/projects/014-elxr</comments>
 
-<description><![CDATA[# Elxr (list expressions)
+<description>
+<![CDATA[
+# Elxr (list expressions)
 
 An implementation of a regex-like syntax that generalizes regex operations for any sequential data structure.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/elxr">Github</a>
-]]></description></article>
-<article><guid>013-typed-regex</guid>
-<title>013-typed-regex</title>
+
+]]>
+</description></item>
+<item><guid>013-typed-regex</guid>
+<title>Typed RegEx</title>
 <link>https://ediblemonad.dev/projects/013-typed-regex</link>
 <comments>https://ediblemonad.dev/projects/013-typed-regex</comments>
 
-<description><![CDATA[# Typed RegEx
+<description>
+<![CDATA[
+# Typed RegEx
 
 A typescript library for automatic type inference on regular expressions using named capture groups.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/typed-regex">Github</a>
-]]></description></article>
-<article><guid>012-algebraic-effects</guid>
-<title>012-algebraic-effects</title>
+
+]]>
+</description></item>
+<item><guid>012-algebraic-effects</guid>
+<title>Algebraic Effects</title>
 <link>https://ediblemonad.dev/projects/012-algebraic-effects</link>
 <comments>https://ediblemonad.dev/projects/012-algebraic-effects</comments>
 
-<description><![CDATA[# Algebraic Effects
+<description>
+<![CDATA[
+# Algebraic Effects
 
 An implementation of algebraic effects in javascript as a library for managing side-effects in a pure and composable way.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/algebraic-effects">Github</a>
-]]></description></article>
-<article><guid>011-is-a-dev</guid>
-<title>011-is-a-dev</title>
+
+]]>
+</description></item>
+<item><guid>011-is-a-dev</guid>
+<title>is-a.dev</title>
 <link>https://ediblemonad.dev/projects/011-is-a-dev</link>
 <comments>https://ediblemonad.dev/projects/011-is-a-dev</comments>
 
-<description><![CDATA[# is-a.dev
+<description>
+<![CDATA[
+# is-a.dev
 
 A free and open source service for developers to register a .is-a.dev subdomain for their personal websites.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/is-a-dev/register">Github</a>
-]]></description></article>
-<article><guid>010-enum-fp</guid>
-<title>010-enum-fp</title>
+
+]]>
+</description></item>
+<item><guid>010-enum-fp</guid>
+<title>EnumFP</title>
 <link>https://ediblemonad.dev/projects/010-enum-fp</link>
 <comments>https://ediblemonad.dev/projects/010-enum-fp</comments>
 
-<description><![CDATA[# EnumFP
+<description>
+<![CDATA[
+# EnumFP
 
 A js library for defining functional Enum type / Sum type for javascript with simple pattern matching.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/enum-fp">Github</a>
-]]></description></article>
-<article><guid>009-shotkey</guid>
-<title>009-shotkey</title>
+
+]]>
+</description></item>
+<item><guid>009-shotkey</guid>
+<title>Shotkey</title>
 <link>https://ediblemonad.dev/projects/009-shotkey</link>
 <comments>https://ediblemonad.dev/projects/009-shotkey</comments>
 
-<description><![CDATA[# Shotkey
+<description>
+<![CDATA[
+# Shotkey
 
 Hotkey daemon for X11 window managers written in C.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/shotkey">Github</a>
-]]></description></article>
-<article><guid>008-bsp-layout</guid>
-<title>008-bsp-layout</title>
+
+]]>
+</description></item>
+<item><guid>008-bsp-layout</guid>
+<title>bsp-layout</title>
 <link>https://ediblemonad.dev/projects/008-bsp-layout</link>
 <comments>https://ediblemonad.dev/projects/008-bsp-layout</comments>
 
-<description><![CDATA[# bsp-layout
+<description>
+<![CDATA[
+# bsp-layout
 
 A dynamic layout management script for bspwm.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/bsp-layout">Github</a>
-]]></description></article>
-<article><guid>007-daft-launcher</guid>
-<title>007-daft-launcher</title>
+
+]]>
+</description></item>
+<item><guid>007-daft-launcher</guid>
+<title>Daft Launcher</title>
 <link>https://ediblemonad.dev/projects/007-daft-launcher</link>
 <comments>https://ediblemonad.dev/projects/007-daft-launcher</comments>
 
-<description><![CDATA[# Daft Launcher
+<description>
+<![CDATA[
+# Daft Launcher
 
 A minimalist, text-only launcher written in flutter which I use every day.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/makedaft/daft-launcher">Github</a>
-]]></description></article>
-<article><guid>006-daft-jukebox</guid>
-<title>006-daft-jukebox</title>
+
+]]>
+</description></item>
+<item><guid>006-daft-jukebox</guid>
+<title>Daft Jukebox</title>
 <link>https://ediblemonad.dev/projects/006-daft-jukebox</link>
 <comments>https://ediblemonad.dev/projects/006-daft-jukebox</comments>
 
-<description><![CDATA[# Daft Jukebox
+<description>
+<![CDATA[
+# Daft Jukebox
 
 A simple mp3 player that loads music from an SD card with an esp32 microcontroller.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/makedaft/daft-jukebox">Github</a>
-]]></description></article>
-<article><guid>005-plasmajs</guid>
-<title>005-plasmajs</title>
+
+]]>
+</description></item>
+<item><guid>005-plasmajs</guid>
+<title>PlasmaJS</title>
 <link>https://ediblemonad.dev/projects/005-plasmajs</link>
 <comments>https://ediblemonad.dev/projects/005-plasmajs</comments>
 
-<description><![CDATA[# PlasmaJS
+<description>
+<![CDATA[
+# PlasmaJS
 
 An isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/plasmajs">Github</a>
-]]></description></article>
-<article><guid>004-pipey</guid>
-<title>004-pipey</title>
+
+]]>
+</description></item>
+<item><guid>004-pipey</guid>
+<title>Pipey</title>
 <link>https://ediblemonad.dev/projects/004-pipey</link>
 <comments>https://ediblemonad.dev/projects/004-pipey</comments>
 
-<description><![CDATA[# Pipey
+<description>
+<![CDATA[
+# Pipey
 
 A js library for creating pipeline operator ready functions by converting instance methods's to context-free functions.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/pipey">Github</a>
-]]></description></article>
-<article><guid>003-diary-pwa</guid>
-<title>003-diary-pwa</title>
+
+]]>
+</description></item>
+<item><guid>003-diary-pwa</guid>
+<title>Diary PWA</title>
 <link>https://ediblemonad.dev/projects/003-diary-pwa</link>
 <comments>https://ediblemonad.dev/projects/003-diary-pwa</comments>
 
-<description><![CDATA[# Diary PWA
+<description>
+<![CDATA[
+# Diary PWA
 
 A progressive web app in go-lang that lets you carry a personalized secure diary in your pocket. Integrated pattern-lock-js library to allow for privacy. Built with golang and a graphql API.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/diary-pwa">Github</a>
-]]></description></article>
-<article><guid>002-pattern-lock-js</guid>
-<title>002-pattern-lock-js</title>
+
+]]>
+</description></item>
+<item><guid>002-pattern-lock-js</guid>
+<title>Pattern Lock</title>
 <link>https://ediblemonad.dev/projects/002-pattern-lock-js</link>
 <comments>https://ediblemonad.dev/projects/002-pattern-lock-js</comments>
 
-<description><![CDATA[# Pattern Lock
+<description>
+<![CDATA[
+# Pattern Lock
 
 A js library for creating customizable pattern lock for the web and PWAs using HTML5 canvas.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/pattern-lock-js">Github</a>
-]]></description></article>
-<article><guid>001-h</guid>
-<title>001-h</title>
+
+]]>
+</description></item>
+<item><guid>001-h</guid>
+<title>H Kotlin</title>
 <link>https://ediblemonad.dev/projects/001-h</link>
 <comments>https://ediblemonad.dev/projects/001-h</comments>
 
-<description><![CDATA[# H Kotlin
+<description>
+<![CDATA[
+# H Kotlin
 
 A simple, easy to use, library for HTML templating in kotlin.
 
 <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/h">Github</a>
-]]></description></article></channel></rss>
+
+]]>
+</description></item></channel></rss>
