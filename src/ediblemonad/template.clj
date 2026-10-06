@@ -81,13 +81,14 @@
            ([] @(:meta context)))
    :image (fn [src title & [attrs]]
             (elem :div {:class "image-container"}
-                  (elem :img (merge attrs {:src src :alt title}))))
+                  (elem :img (merge attrs {:src src :alt title :loading "lazy"}))))
    :audio (fn [src & [attrs]]
             (elem :div {:class "image-container"}
                   (elem :audio (merge attrs {:src src :controls true}))))
    :video (fn [src & [attrs]]
             (elem :div {:class "image-container"}
-                  (elem :video (merge attrs {:src src :controls true :autoplay "autoplay" :muted "true" :loop "loop"}))))
+                  (elem :video (merge attrs {:src src :loading "lazy" :preload "none"
+                                             :controls true :autoplay "autoplay" :muted "true" :loop "loop"}))))
    :inline-article-card (fn [{:keys [open-text]} ^Page {:keys [route route-cfg source-name content date]}]
                           (let [href (get-page-link route-cfg route source-name)]
                             (elem :li {:class "inline-card"}
