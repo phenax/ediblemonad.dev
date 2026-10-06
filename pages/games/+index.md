@@ -1,4 +1,4 @@
-<% (meta {:title "Video games" :description "I like games"}) %>
+<% (meta {:title "Video games" :description "I like video games"}) %>
 
 <%= (show-articles page inline-article-card) %>
 

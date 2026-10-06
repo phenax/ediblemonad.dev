@@ -12,6 +12,12 @@
                                          (if (nil? subroute) "" (str "/" (if (symbol? subroute) (name subroute) subroute))))
     :else (if (nil? (:output route-cfg)) (name route) (str "/" (str/replace (:output route-cfg) #"/?index[.]html$" "")))))
 
+(def html-escape #(str/escape (str %) {\& "&amp;"
+                                       \< "&lt;"
+                                       \> "&gt;"
+                                       \" "&quot;"
+                                       \' "&#x27;"}))
+
 (def attrs->html #(reduce-kv (fn [acc key val] (str acc " " (name key) "=\"" val "\"")) "" %))
 
 (defn elem [tag attrs & children]
@@ -19,31 +25,47 @@
 
 (defn make-link [href text & [attrs]] (elem :a (merge (or attrs {}) {:href href}) text))
 
-(defn gen-rss-xml [page]
+(defn gen-rss-channel-xml [page]
   (let [meta @(:meta page)
         title (:title meta)
         description (:description meta)
         link (str "https://ediblemonad.dev/" (name (:route page)))
         article-link #(str link "/" (:source-name %))
-        article-title (fn [article] (or (:title @(:meta article)) (:source-name article)))]
-    (str
-     "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n"
-     (elem :rss {:version "2.0" :xmlns:atom "http://www.w3.org/2005/Atom"}
-           (elem :channel {}
-                 (elem :title {} title)
-                 (elem :link {} link)
-                 (if description (elem :description {} description) "")
-                 (->> (:articles page)
-                      (map (fn [article]
-                             (elem :article {}
-                                   (elem :guid {} (:source-name article))
-                                   (elem :title {} (article-title article))
-                                   (elem :link {} (article-link article))
-                                   (elem :comments {} (article-link article))
-                                   (if (:date article) (elem :pubDate {} (:date article)) "")
-                                   (elem :description {}
-                                         (str "<![CDATA[" (:content article) "]]>")))))
-                      (str/join "\n")))))))
+        article-title (fn [article]
+                        (or (:rsstitle @(:meta article))
+                            (:title @(:meta article))
+                            (some->> (:content article) str/split-lines
+                                     (filter #(str/starts-with? % "# ")) first
+                                     (#(str/replace-first % #"#\s+" ""))
+                                     str/trim not-empty)
+                            (:source-name article)))]
+    #_(comment Need to render the rss content with markdown)
+    (elem :channel {}
+          (elem :title {} (html-escape title))
+          (elem :link {} link)
+          (elem :language {} "en-us")
+          (elem :image {}
+                (elem :url {} "https://ediblemonad.dev/logo.png")
+                (elem :title {} "Ediblemonad")
+                (elem :link {} "https://ediblemonad.dev"))
+          (if description (elem :description {} (html-escape description)) "")
+          (->> (:articles page)
+               (map (fn [article]
+                      (elem :item {}
+                            (elem :guid {} (:source-name article))
+                            (elem :title {} (html-escape (article-title article)))
+                            (elem :link {} (article-link article))
+                            (elem :comments {} (article-link article))
+                            (if (:date article) (elem :pubDate {} (:date article)) "")
+                            (elem :description {}
+                                  (str "\n<![CDATA[\n" (:content article) "\n]]>\n")))))
+               (str/join "\n")))))
+
+(defn gen-rss-xml [& pages]
+  (str
+   "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n"
+   (elem :rss {:version "2.0" :xmlns:atom "http://www.w3.org/2005/Atom"}
+         (apply str (map gen-rss-channel-xml pages)))))
 
 (defn external-link [href text] (make-link href text {:target "_blank _parent" :rel "noopener"}))
 

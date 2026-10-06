@@ -90,12 +90,21 @@
                  {:shift-heading-level-by (if (:index? page) 1 -1)})))
 
 (defn gen-site [^Configuration config]
-  (let [pages (config->pages config)]
+  (let [pages (config->pages config)
+        render-all-rss-xml (fn []
+                             #_(comment must accumulate all articles)
+                             (->> pages
+                                  (filter :index?)
+                                  (map #(map (fn [a] (merge a {:index-page %})) (:articles %)))
+                                  flatten
+                                  ediblemonad.template/gen-rss-xml
+                                  (#(spit (str (:output-dir config) "/all.xml") %))))]
     (fs/delete-tree (:output-dir config))
     (fs/copy-tree (:static-dir config) (:output-dir config))
     #_{:clj-kondo/ignore [:invalid-arity]}
     (fs/with-temp-dir [tmp-dir {}]
-      (run! #(gen-page % config tmp-dir) pages))))
+      (run! #(gen-page % config tmp-dir) pages)
+      #_(render-all-rss-xml))))
 
 (defn -main []
   (->> (load-file "blog.config.clj") mk-configuration gen-site))

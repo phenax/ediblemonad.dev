@@ -7,7 +7,7 @@ The world they set up feels very *real* despite the absurdity of that statement.
 
 And don't get me started on the gameplay. Smooth traversal like the original Control. Much more difficult than control but thats only a motivation to spend time with the upgrades and exploring more side quests. A decent variety of memorable bosses too. Chefs kiss for striking the right balance. Although I did cheat a couple of times by using the accessibility settings to increase damage a bit.
 
-The only complain, the god damn taxi disappointment. Amazing build up and really fun puzzles but the ending was so damn unsatisfying. Nitpick considering everything else the game gets absolutely right.
+The only complain, the god damn taxi disappointment. Amazing build up and really fun puzzles but the ending of the taxi quest was so damn unsatisfying. Nitpick considering everything else the game gets absolutely right.
 
 Another hit as expected. This Sam Lake guy and his team know what they're doing. More please of this.
 
