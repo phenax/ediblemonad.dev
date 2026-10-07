@@ -1,6 +1,6 @@
-<% (meta {:title "Creative coding" :description "I like creative coding"}) %>
+<% (meta {:title "Creative coding" :description "Generating art with code and mathematics"}) %>
 
-Generating art with code
+Generating art with code and mathematics
 
 <%= (show-articles page inline-article-card) %>
 
