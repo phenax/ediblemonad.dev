@@ -5,34 +5,49 @@
 <image><url>https://ediblemonad.dev/logo.png</url>
 <title>Ediblemonad</title>
 <link>https://ediblemonad.dev</link></image>
-<description>I like creative coding</description>
-<item><guid>013-newton</guid>
+<description>Creating art with code and mathematics</description>
+<item><guid>014-newton</guid>
 <title>Newton</title>
-<link>https://ediblemonad.dev/creative-coding/013-newton</link>
-<comments>https://ediblemonad.dev/creative-coding/013-newton</comments>
+<link>https://ediblemonad.dev/creative-coding/014-newton</link>
+<comments>https://ediblemonad.dev/creative-coding/014-newton</comments>
 
 <description>
 <![CDATA[
 # Newton
 
-<div class="image-container"><video src="/cc/newton.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+<div class="image-container"><video src="/cc/newton.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/newton.glsl">code</a>
 
 ]]>
 </description></item>
-<item><guid>012-time</guid>
+<item><guid>013-time</guid>
 <title>Time</title>
-<link>https://ediblemonad.dev/creative-coding/012-time</link>
-<comments>https://ediblemonad.dev/creative-coding/012-time</comments>
+<link>https://ediblemonad.dev/creative-coding/013-time</link>
+<comments>https://ediblemonad.dev/creative-coding/013-time</comments>
 
 <description>
 <![CDATA[
 # Time
 
-<div class="image-container"><video src="/cc/time.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+<div class="image-container"><video src="/cc/time.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/time.glsl">code</a>
+
+]]>
+</description></item>
+<item><guid>012-vase</guid>
+<title>Vase</title>
+<link>https://ediblemonad.dev/creative-coding/012-vase</link>
+<comments>https://ediblemonad.dev/creative-coding/012-vase</comments>
+
+<description>
+<![CDATA[
+# Vase
+
+<div class="image-container"><img src="/cc/vase.png" alt="Vase" loading="lazy"></img></div>
+
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/vase.glsl">code</a>
 
 ]]>
 </description></item>
@@ -45,7 +60,7 @@
 <![CDATA[
 # Cloak
 
-<div class="image-container"><img src="/cc/cloak.png" alt="Cloak"></img></div>
+<div class="image-container"><img src="/cc/cloak.png" alt="Cloak" loading="lazy"></img></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/cloak.glsl">code</a>
 
@@ -60,7 +75,7 @@
 <![CDATA[
 # Geography
 
-<div class="image-container"><video src="/cc/geography.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+<div class="image-container"><video src="/cc/geography.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/warping.glsl">code</a>
 
@@ -75,9 +90,10 @@
 <![CDATA[
 # Mitosis
 
-<div class="image-container"><video src="/cc/mitosis.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+<div class="image-container"><video src="/cc/mitosis.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/mitosis.glsl">code</a>
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/4-im-a-sinner/main.ua">(older uiua version)</a>
 
 ]]>
 </description></item>
@@ -96,35 +112,33 @@
 
 ]]>
 </description></item>
-<item><guid>007-ike-whoaah</guid>
+<item><guid>007-flow</guid>
+<title>Flow</title>
+<link>https://ediblemonad.dev/creative-coding/007-flow</link>
+<comments>https://ediblemonad.dev/creative-coding/007-flow</comments>
+
+<description>
+<![CDATA[
+# Flow
+
+<div class="image-container"><video src="/cc/flow.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/flow.glsl">code</a>
+
+]]>
+</description></item>
+<item><guid>006-ike-whoaah</guid>
 <title>IKE-whoah</title>
-<link>https://ediblemonad.dev/creative-coding/007-ike-whoaah</link>
-<comments>https://ediblemonad.dev/creative-coding/007-ike-whoaah</comments>
+<link>https://ediblemonad.dev/creative-coding/006-ike-whoaah</link>
+<comments>https://ediblemonad.dev/creative-coding/006-ike-whoaah</comments>
 
 <description>
 <![CDATA[
 # IKE-whoah
 
-<div class="image-container"><img src="/cc/ike-whoaah.gif" alt="IKE-whoah"></img></div>
+<div class="image-container"><img src="/cc/ike-whoaah.gif" alt="IKE-whoah" loading="lazy"></img></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/7-dan-flashes/main.ua">code</a>
-
-]]>
-</description></item>
-<item><guid>006-juliua</guid>
-<title>Juliua</title>
-<link>https://ediblemonad.dev/creative-coding/006-juliua</link>
-<comments>https://ediblemonad.dev/creative-coding/006-juliua</comments>
-
-<description>
-<![CDATA[
-# Juliua
-
-Julia set fractal in uiua
-
-<div class="image-container"><img src="/cc/juliua.gif" alt="Juliua"></img></div>
-
-<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/6-julia/main.ua">code</a>
 
 ]]>
 </description></item>
@@ -139,7 +153,7 @@ Julia set fractal in uiua
 
 Using SQL to generate visuals
 
-<div class="image-container"><img src="/cc/neon-squiggles.gif" alt="Neon squiggles"></img></div>
+<div class="image-container"><img src="/cc/neon-squiggles.gif" alt="Neon squiggles" loading="lazy"></img></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/sqlite-creative-coding/tree/src/rave.video.sql">code</a>
 
@@ -154,7 +168,7 @@ Using SQL to generate visuals
 <![CDATA[
 # Recursticks
 
-<div class="image-container"><img src="/cc/recursticks.jpg" alt="Recursticks"></img></div>
+<div class="image-container"><img src="/cc/recursticks.jpg" alt="Recursticks" loading="lazy"></img></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/creative-coding-playground/tree/sketches/08/tree.rkt">code</a>
 
@@ -169,7 +183,7 @@ Using SQL to generate visuals
 <![CDATA[
 # Vacation
 
-<div class="image-container"><img src="/cc/vacation.png" alt="Vacation"></img></div>
+<div class="image-container"><img src="/cc/vacation.png" alt="Vacation" loading="lazy"></img></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/vacation.glsl">code</a>
 
@@ -201,7 +215,7 @@ Using SQL to generate music.
 <![CDATA[
 # Seigaiha
 
-<div class="image-container"><video src="/cc/seigaiha.mp4" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+<div class="image-container"><video src="/cc/seigaiha.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/seigaiha.glsl">code</a>
 
