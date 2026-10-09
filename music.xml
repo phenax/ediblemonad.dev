@@ -13,14 +13,19 @@
 <pubDate>2026-10-05</pubDate>
 <description>
 <![CDATA[
-# KPH40 is fun
-
-Got Koss KPH40 utility recently and it's pretty fun. It's not as loud as I'd like but the sound quality is quite good. Pretty good detail with suprisingly decent bass. A tiny bit of sound-leak but not that bad. Sits quite comfortably on the head.
-
-Whatever. We all know this already. That's already talked about but 1 criteria nobody mentions is headbangability. I was an IEM person for the most part because I move my head a lot when music plays. KPH40 stays on my head fine but for a violent enough head shake, it starts moving. It survives mild desk headbanging pretty well but, not as good as an IEM.
-
-6/10 headbangable. Up next, my review on condom helicopterability.
-
+<h1 id="kph40-is-fun">KPH40 is fun</h1>
+<p>Got Koss KPH40 utility recently and it's pretty fun. It's not as loud
+as I'd like but the sound quality is quite good. Pretty good detail with
+suprisingly decent bass. A tiny bit of sound-leak but not that bad. Sits
+quite comfortably on the head.</p>
+<p>Whatever. We all know this already. That's already talked about but 1
+criteria nobody mentions is headbangability. I was an IEM person for the
+most part because I move my head a lot when music plays. KPH40 stays on
+my head fine but for a violent enough head shake, it starts moving. It
+survives mild desk headbanging pretty well but, not as good as an
+IEM.</p>
+<p>6/10 headbangable. Up next, my review on condom
+helicopterability.</p>
 
 ]]>
 </description></item>
@@ -31,27 +36,51 @@ Whatever. We all know this already. That's already talked about but 1 criteria n
 <pubDate>2026-06-06</pubDate>
 <description>
 <![CDATA[
-# Fuck spotify
-
-It's not breaking news that a lot of subscription services are predatory towards their customers.
-But spotify taskes it a step further and is predatory towards their artists as well. And thats just for the popular artists, newer artists and niche ones cannot survive with this.
-
-Why am I avoiding piracy if the artists still barely get paid? Answer my question, Lars!
-
-In exchange they offer convinience to both sides. Is that really worth it? I thought so for a while too but then I started feeling uncomfortable with the whole thing.
-
-So what are the alternatives? Theres a lot of good options but the technicality and time spent evaluating the options might put off some people.
-- Self-hosted music streaming server: <a target="_blank _parent" rel="noopener" href="https://jellyfin.org/">jellyfin server</a>, <a target="_blank _parent" rel="noopener" href="https://mopidy.com/">mopidy</a>, <a target="_blank _parent" rel="noopener" href="https://www.navidrome.org/">navidrome</a>, <a target="_blank _parent" rel="noopener" href="https://github.com/epoupon/lms">LMS</a>
-- Music client: <a target="_blank _parent" rel="noopener" href="https://www.symfonium.app/">Symfonium</a>, <a target="_blank _parent" rel="noopener" href="https://mopidy.com/ext/iris/">mopidy-iris (for mopidy)</a>, <a target="_blank _parent" rel="noopener" href="https://jellyfin.org/">jellyfin client</a> <a target="_blank _parent" rel="noopener" href="https://github.com/UnicornsOnLSD/finamp">Finamp (for jellyfin)</a>
-- Self-hosted music discovery: <a target="_blank _parent" rel="noopener" href="https://github.com/LumePart/Explo">explo</a> + <a target="_blank _parent" rel="noopener" href="https://listenbrainz.org/">listenbrainz</a>
-- Purchasing music: <a target="_blank _parent" rel="noopener" href="https://bandcamp.com/">bandcamp</a>, <a target="_blank _parent" rel="noopener" href="https://www.qobuz.com">https://www.qobuz.com</a>
-
-This path is way more accessible and convinient than it might seem at first.
-
-Another much simpler alternative is to use a physical music player (or just your phone) and load all your music files in there. I use a snowsky echo mini which has an sd card with all the albums I own (flacs from bandcamp) which is a fair compromise for me.
-
-Spotify can suck it.
-
+<h1 id="fuck-spotify">Fuck spotify</h1>
+<p>It's not breaking news that a lot of subscription services are
+predatory towards their customers. But spotify taskes it a step further
+and is predatory towards their artists as well. And thats just for the
+popular artists, newer artists and niche ones cannot survive with
+this.</p>
+<p>Why am I avoiding piracy if the artists still barely get paid? Answer
+my question, Lars!</p>
+<p>In exchange they offer convinience to both sides. Is that really
+worth it? I thought so for a while too but then I started feeling
+uncomfortable with the whole thing.</p>
+<p>So what are the alternatives? Theres a lot of good options but the
+technicality and time spent evaluating the options might put off some
+people.</p>
+<ul>
+<li>Self-hosted music streaming server:
+<a target="_blank _parent" rel="noopener" href="https://jellyfin.org/">jellyfin
+server</a>,
+<a target="_blank _parent" rel="noopener" href="https://mopidy.com/">mopidy</a>,
+<a target="_blank _parent" rel="noopener" href="https://www.navidrome.org/">navidrome</a>,
+<a target="_blank _parent" rel="noopener" href="https://github.com/epoupon/lms">LMS</a></li>
+<li>Music client:
+<a target="_blank _parent" rel="noopener" href="https://www.symfonium.app/">Symfonium</a>,
+<a target="_blank _parent" rel="noopener" href="https://mopidy.com/ext/iris/">mopidy-iris
+(for mopidy)</a>,
+<a target="_blank _parent" rel="noopener" href="https://jellyfin.org/">jellyfin
+client</a>
+<a target="_blank _parent" rel="noopener" href="https://github.com/UnicornsOnLSD/finamp">Finamp
+(for jellyfin)</a></li>
+<li>Self-hosted music discovery:
+<a target="_blank _parent" rel="noopener" href="https://github.com/LumePart/Explo">explo</a>
++
+<a target="_blank _parent" rel="noopener" href="https://listenbrainz.org/">listenbrainz</a></li>
+<li>Purchasing music:
+<a target="_blank _parent" rel="noopener" href="https://bandcamp.com/">bandcamp</a>,
+<a target="_blank _parent" rel="noopener" href="https://www.qobuz.com"><a
+href="https://www.qobuz.com">https://www.qobuz.com</a></a></li>
+</ul>
+<p>This path is way more accessible and convinient than it might seem at
+first.</p>
+<p>Another much simpler alternative is to use a physical music player
+(or just your phone) and load all your music files in there. I use a
+snowsky echo mini which has an sd card with all the albums I own (flacs
+from bandcamp) which is a fair compromise for me.</p>
+<p>Spotify can suck it.</p>
 
 ]]>
 </description></item>
@@ -62,12 +91,18 @@ Spotify can suck it.
 <pubDate>2026-05-02</pubDate>
 <description>
 <![CDATA[
-# Mr. Bungle is real art
-
-A band like Mr. Bungle is rare because given how hard it is to make enough money to survive as a band, I'm surprised how more bands don't lean towards mass appeal. But Mr. Bungle is comfortable with just finding an identity in making the songs that they want to make, even if that identity involves including <a target="_blank _parent" rel="noopener" href="https://youtu.be/nE6UUg0Nenc?si=-g8dWEof9tVkZWoG&t=448">the track 'Noises'</a> in your album.
-
-For people who want to get into them, the album order I enjoy is California -> Mr. Bungle -> Disco Volante -> everything after that. To me that is ordered by weirdness because I like starting comfortable.
-
+<h1 id="mr-bungle-is-real-art">Mr. Bungle is real art</h1>
+<p>A band like Mr. Bungle is rare because given how hard it is to make
+enough money to survive as a band, I'm surprised how more bands don't
+lean towards mass appeal. But Mr. Bungle is comfortable with just
+finding an identity in making the songs that they want to make, even if
+that identity involves including
+<a target="_blank _parent" rel="noopener" href="https://youtu.be/nE6UUg0Nenc?si=-g8dWEof9tVkZWoG&t=448">the
+track 'Noises'</a> in your album.</p>
+<p>For people who want to get into them, the album order I enjoy is
+California -&gt; Mr. Bungle -&gt; Disco Volante -&gt; everything after
+that. To me that is ordered by weirdness because I like starting
+comfortable.</p>
 
 ]]>
 </description></item></channel></rss>

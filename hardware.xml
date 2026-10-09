@@ -13,24 +13,31 @@
 <pubDate>2026-09-04</pubDate>
 <description>
 <![CDATA[
-# Differential pair skew check in kicad
-
-Love DRC. Can't live without it. Want more. But there's some things that DRC doesn't know how to do out of the box like verifying the skew in my differential pair traces or telling me I'm a good boy. Luckily custom rules makes up for it (at least the first part)!
-
-Go to Board Setup > Design Rules > Custom Rules (or manually edit `*.kicad_dru` file, if you're not right in the head) and add the following:
-
-```lisp
-(version 1)
-
-(rule "100Ohm differential pair skew"
-    (condition "A.NetClass == '100Ohm'")
-    (constraint skew (max 0.05mm) (within_diff_pairs)))
-```
-
-The above rule is specifically for a net class named `100Ohm`. This will show up as an error if your differential pairs have a skew greater than 0.05mm. You can also use `A.hasNetclass('DiffPair-*')` if you have some `DiffPair-100Ohm`, `DiffPair-90Ohm`, etc. convention going on. Or combine them as `(condition "A.hasNetclass('100Ohm') || A.hasNetclass('90Ohm')")`
-
-There's a bunch of other constraints you can check for like diff_pair_uncoupled, diff_pair_gap, track_width, etc. Check the "Syntax Help" thing in the modal to see more stuff it comes with.
-
+<h1 id="differential-pair-skew-check-in-kicad">Differential pair skew
+check in kicad</h1>
+<p>Love DRC. Can't live without it. Want more. But there's some things
+that DRC doesn't know how to do out of the box like verifying the skew
+in my differential pair traces or telling me I'm a good boy. Luckily
+custom rules makes up for it (at least the first part)!</p>
+<p>Go to Board Setup &gt; Design Rules &gt; Custom Rules (or manually
+edit <code>*.kicad_dru</code> file, if you're not right in the head) and
+add the following:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode lisp"><code class="sourceCode commonlisp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(version <span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(rule <span class="st">&quot;100Ohm differential pair skew&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">condition</span> <span class="st">&quot;A.NetClass == &#39;100Ohm&#39;&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    (constraint skew (<span class="kw">max</span> <span class="fl">0.05</span>mm) (within_diff_pairs)))</span></code></pre></div>
+<p>The above rule is specifically for a net class named
+<code>100Ohm</code>. This will show up as an error if your differential
+pairs have a skew greater than 0.05mm. You can also use
+<code>A.hasNetclass('DiffPair-*')</code> if you have some
+<code>DiffPair-100Ohm</code>, <code>DiffPair-90Ohm</code>, etc.
+convention going on. Or combine them as
+<code>(condition "A.hasNetclass('100Ohm') || A.hasNetclass('90Ohm')")</code></p>
+<p>There's a bunch of other constraints you can check for like
+diff_pair_uncoupled, diff_pair_gap, track_width, etc. Check the "Syntax
+Help" thing in the modal to see more stuff it comes with.</p>
 
 ]]>
 </description></item>
@@ -41,23 +48,39 @@ There's a bunch of other constraints you can check for like diff_pair_uncoupled,
 <pubDate>2026-05-23</pubDate>
 <description>
 <![CDATA[
-# Learnings from sinthinator
-
-I recently tried decided to randomly pick up a pcb design project for an <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/sinthinator">stm32 based toy music instrument</a> that used capacitive touch sensor traces on a PCB. Expected it to be a bit of a challenge because I've never dealt with most of the components involved and only have basic experience with SMD components.
-
-Stuff I've learned:
-- keep in mind ICs with identical i2c addresses when you have multiple devices on an i2c bus. Use separate busses if possible or i2c multiplexer if thats becoming a problem
-- dont forget the cc pins on a usbc connector
-- read the datasheet more carefully and dont just rely on the "typical application" diagram
-- keep pcb traces in mind when drawing schematics. Not to have them laid out the same way, but whenever there's a choice for which pins keep the ICs position in mind. Or just re-do the connections in the schematics later, I'm not your dad
-- add extra header pins/test pads to make debugging easier. Always design for testing.
-- use solder jumpers and DNP resistors as "flags" if needed
-- add the mounting holes as soon as possible after board outline to reserve enough space for them
-- for mcus, plan the firmware early on when drawing out the schematics
-- pay attention to res pullups values for i2c lines based on the frequency (from i2c spec). Used 4.7K on mine which seems alright
-- dont move the ic around in the pcb and leave the bypass capacitors behind (happened twice)
-
-project is wip so will add more here as a fuck more things up...
+<h1 id="learnings-from-sinthinator">Learnings from sinthinator</h1>
+<p>I recently tried decided to randomly pick up a pcb design project for
+an
+<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/sinthinator">stm32
+based toy music instrument</a> that used capacitive touch sensor traces
+on a PCB. Expected it to be a bit of a challenge because I've never
+dealt with most of the components involved and only have basic
+experience with SMD components.</p>
+<p>Stuff I've learned:</p>
+<ul>
+<li>keep in mind ICs with identical i2c addresses when you have multiple
+devices on an i2c bus. Use separate busses if possible or i2c
+multiplexer if thats becoming a problem</li>
+<li>dont forget the cc pins on a usbc connector</li>
+<li>read the datasheet more carefully and dont just rely on the "typical
+application" diagram</li>
+<li>keep pcb traces in mind when drawing schematics. Not to have them
+laid out the same way, but whenever there's a choice for which pins keep
+the ICs position in mind. Or just re-do the connections in the
+schematics later, I'm not your dad</li>
+<li>add extra header pins/test pads to make debugging easier. Always
+design for testing.</li>
+<li>use solder jumpers and DNP resistors as "flags" if needed</li>
+<li>add the mounting holes as soon as possible after board outline to
+reserve enough space for them</li>
+<li>for mcus, plan the firmware early on when drawing out the
+schematics</li>
+<li>pay attention to res pullups values for i2c lines based on the
+frequency (from i2c spec). Used 4.7K on mine which seems alright</li>
+<li>dont move the ic around in the pcb and leave the bypass capacitors
+behind (happened twice)</li>
+</ul>
+<p>project is wip so will add more here as a fuck more things up...</p>
 
 ]]>
 </description></item>
@@ -68,19 +91,29 @@ project is wip so will add more here as a fuck more things up...
 <pubDate>2026-05-14</pubDate>
 <description>
 <![CDATA[
-# Single UART? More like U-fart. JK haha lol
-
-I think people who make SBCs should add at least 2 UART ports. RPI zero just has 1 which hurts when you want to reserve the UART port for serial console and then all of a sudden you also need it to communicate with some other module. I'm in that situation right now.
-
-Options I have:
-1. USB for console with dwc2 (depends on SBC). UART for module.
-2. UART for serial console. USB-to-serial adapter for module (or vice-versa but makes more sense if console's serial device can't be unplugged).
-3. UART for serial console. Bit-bang the module at a much lower baud rate (if that's supported).
-4. Board has wifi? Just ssh into it. Although, seems overkill for simpler use-cases and might not be ideal in some situations. Not an option for my pi zero.
-
-Maybe theres another option that I'm not aware of?
-
-Going with 1 because it's less work on a pi zero. USB-to-serial if the board doesn't support dwc2. But for a serial console you have to 69 2 USB-to-serial adapters to get a console. But all of this goes away if you just fucking add the 2nd UART port.
+<h1 id="single-uart-more-like-u-fart-jk-haha-lol">Single UART? More like
+U-fart. JK haha lol</h1>
+<p>I think people who make SBCs should add at least 2 UART ports. RPI
+zero just has 1 which hurts when you want to reserve the UART port for
+serial console and then all of a sudden you also need it to communicate
+with some other module. I'm in that situation right now.</p>
+<p>Options I have:</p>
+<ol type="1">
+<li>USB for console with dwc2 (depends on SBC). UART for module.</li>
+<li>UART for serial console. USB-to-serial adapter for module (or
+vice-versa but makes more sense if console's serial device can't be
+unplugged).</li>
+<li>UART for serial console. Bit-bang the module at a much lower baud
+rate (if that's supported).</li>
+<li>Board has wifi? Just ssh into it. Although, seems overkill for
+simpler use-cases and might not be ideal in some situations. Not an
+option for my pi zero.</li>
+</ol>
+<p>Maybe theres another option that I'm not aware of?</p>
+<p>Going with 1 because it's less work on a pi zero. USB-to-serial if
+the board doesn't support dwc2. But for a serial console you have to 69
+2 USB-to-serial adapters to get a console. But all of this goes away if
+you just fucking add the 2nd UART port.</p>
 
 ]]>
 </description></item>
@@ -91,10 +124,13 @@ Going with 1 because it's less work on a pi zero. USB-to-serial if the board doe
 <pubDate>2026-04-29</pubDate>
 <description>
 <![CDATA[
-# FPGA dreams
-
-I want to mess around with FPGAs at some point. It looks really interesting but I need to grow a few more IQ points before I can play with that new toy. At this point I know nothing about them or hardware description languages but can't wait to meet future me who already knows some of that stuff. If that's you reading this for some reason, is GTA 6 out yet?
-
+<h1 id="fpga-dreams">FPGA dreams</h1>
+<p>I want to mess around with FPGAs at some point. It looks really
+interesting but I need to grow a few more IQ points before I can play
+with that new toy. At this point I know nothing about them or hardware
+description languages but can't wait to meet future me who already knows
+some of that stuff. If that's you reading this for some reason, is GTA 6
+out yet?</p>
 
 ]]>
 </description></item>
@@ -105,19 +141,35 @@ I want to mess around with FPGAs at some point. It looks really interesting but 
 <pubDate>2026-04-12</pubDate>
 <description>
 <![CDATA[
-# V-USB is kinda neat
-
-I only ran into <a target="_blank _parent" rel="noopener" href="https://github.com/obdev/v-usb">v-usb</a> while going through the <a target="_blank _parent" rel="noopener" href="https://docs.qmk.fm/compatible_microcontrollers">qmk docs</a> where it mentions that mcus that don't have native usb will use v-usb instead.
-
-Curiosity killed the akshay. Couldn't resist so started thinking of what I could use it for. Right now I'm in my 8-bit avr arc so seemed like the perfect thing to mess around with. I thought it would be fun to make a simple rgb light connected via USB that changes color via commands over serial. Seems simple enough, what could go wrong? Plenty as it turns out.
-
-First challenge: realized the internal clock of attiny84a and attiny4313 (the only 8-bit avr mcus I have) is 8MHz and v-usb only supports 12/15/16/18/20 MHz clocks. No biggie, heres a 16MHz crystal oscillator.
-
-Second challenge: we need 3.3V for the usb data lines but the LEDs need 5V. I can either drive the attiny4313 with 3.3V and maybe add a mosfet for the LEDs or use 5V for the mcu and LED but shift D+/D- to 3.3V level. Went with the latter using a zener diode to maintain the 3.3V level on data lines since that seemed simpler.
-
-Third challenge: after writing the fuse bits to use the external crystal oscillator, couldn't program it again. The crystal is connected with load caps and the program (an rgb version of blink) seems to run fine with or without the crystal. Makes no sense. Saw somewhere that you can set up a high voltage programmer (12v) to get the fuse bits to reset. So will try that next.
-
-To be continued...
+<h1 id="v-usb-is-kinda-neat">V-USB is kinda neat</h1>
+<p>I only ran into
+<a target="_blank _parent" rel="noopener" href="https://github.com/obdev/v-usb">v-usb</a>
+while going through the
+<a target="_blank _parent" rel="noopener" href="https://docs.qmk.fm/compatible_microcontrollers">qmk
+docs</a> where it mentions that mcus that don't have native usb will use
+v-usb instead.</p>
+<p>Curiosity killed the akshay. Couldn't resist so started thinking of
+what I could use it for. Right now I'm in my 8-bit avr arc so seemed
+like the perfect thing to mess around with. I thought it would be fun to
+make a simple rgb light connected via USB that changes color via
+commands over serial. Seems simple enough, what could go wrong? Plenty
+as it turns out.</p>
+<p>First challenge: realized the internal clock of attiny84a and
+attiny4313 (the only 8-bit avr mcus I have) is 8MHz and v-usb only
+supports 12/15/16/18/20 MHz clocks. No biggie, heres a 16MHz crystal
+oscillator.</p>
+<p>Second challenge: we need 3.3V for the usb data lines but the LEDs
+need 5V. I can either drive the attiny4313 with 3.3V and maybe add a
+mosfet for the LEDs or use 5V for the mcu and LED but shift D+/D- to
+3.3V level. Went with the latter using a zener diode to maintain the
+3.3V level on data lines since that seemed simpler.</p>
+<p>Third challenge: after writing the fuse bits to use the external
+crystal oscillator, couldn't program it again. The crystal is connected
+with load caps and the program (an rgb version of blink) seems to run
+fine with or without the crystal. Makes no sense. Saw somewhere that you
+can set up a high voltage programmer (12v) to get the fuse bits to
+reset. So will try that next.</p>
+<p>To be continued...</p>
 
 ]]>
 </description></item>
@@ -128,31 +180,73 @@ To be continued...
 <pubDate>2026-03-08</pubDate>
 <description>
 <![CDATA[
-# The analog of the digital
-
-In digital electronics something that always catches me off guard is the analog suprise. Don't get me started on signal integrity issues but what I'm talking about is when a random part of your schematic depends on a very specific analog behavior. I ran into one of those while working on <a target="_blank _parent" rel="noopener" href="https://github.com/makedaft/daft-watch">a clock using attiny84a microcontroller IC</a>. That project was my re-creation of <a target="_blank _parent" rel="noopener" href="https://ingep.net/breadboardwatch/">breadboard watch</a> which taught me a very simple but neat trick.
-
-An rtc based on timer interrupts on a microcontroller, displayed on a 4 digit, 7 segment display seems simple enough but theres a sneaky problem with attiny84a. The total number of pins in the IC is 14. 1 for Vcc, 1 for GND, 1 for reset. Since it's battery powered, to avoid drawing more power than needed, we also need to use an external 32KHz crystal oscillator which then takes up the 2 XTAL pins. This leaves us with 9 pins to drive the display. But for 4 7-segment displays, you need 1 shared pin for each segments and 1 control pin for each digit. That comes out to 11 (7 + 4). But we only have 9 pins left so how do we drive the display?
-
-In avr, for a given pin, you can set the data direction (DDR* register) and the port value (PORT* register). When DDR bit is 1, the data direction is output so the respective PORT bit decides whether the output is high or low. But then if the DDR bit is 0, the value of PORT instead of being used for the output of that pin, it engages an internal pull-up resistor if the value is 1, and leaves it floating if the value is 0.
-
-This is the magic that makes feel things in the crotch. The solution used here is to use diodes to create a sort-of OR circuit by deriving segment states based on the state of the control pins. Here's the <a target="_blank _parent" rel="noopener" href="https://raw.githubusercontent.com/makedaft/daft-watch/refs/heads/main/watch.svg">full schematic for reference</a>.
-
-> Note: in my case it's a common anode display so segment pin low and control pin high means that segment on that digit is on.
-
-In the schematic, with `DDRA = (1 << PA6) | (1 << PA7)` (PA6 and PA7 both output),
-- When PA6 is high, and PA7 is low, it enables digit 3 and the F segment.
-- When PA6 is low, and PA7 is high, it enables digit 4 and the F segment.
-
-If we have `DDRA = 0` (PA6,PA7 both input),
-- When `PORTA = 0` (PA6,PA7 without internal pullup resistor), being floating, there is no current flowing which means both digits are off and the F segment is off. This state can be used when drawing the other 2 digits.
-
-So far we can turn off both digits or have either one on but with F segment enabled. But how do we disable the F segment?
-
-If we have `DDRA = (1 << PA6)` (PA6 output, PA7 input),
-- When `PORTA = (1 << PA6)` (PA6 high, PA7 floating), digit 3 is on but the F segment is off as the current has nowhere to go through the diodes.
-
-Applying the inverse of that, we can achieve the last state we need to draw anything on each of the 7 segment displays. With this we now have 2 pins doing the work for 3. Adding in-between states in our digital logic that don't exist in pure boolean logic. Doesn't that feel satisfying?
+<h1 id="the-analog-of-the-digital">The analog of the digital</h1>
+<p>In digital electronics something that always catches me off guard is
+the analog suprise. Don't get me started on signal integrity issues but
+what I'm talking about is when a random part of your schematic depends
+on a very specific analog behavior. I ran into one of those while
+working on
+<a target="_blank _parent" rel="noopener" href="https://github.com/makedaft/daft-watch">a
+clock using attiny84a microcontroller IC</a>. That project was my
+re-creation of
+<a target="_blank _parent" rel="noopener" href="https://ingep.net/breadboardwatch/">breadboard
+watch</a> which taught me a very simple but neat trick.</p>
+<p>An rtc based on timer interrupts on a microcontroller, displayed on a
+4 digit, 7 segment display seems simple enough but theres a sneaky
+problem with attiny84a. The total number of pins in the IC is 14. 1 for
+Vcc, 1 for GND, 1 for reset. Since it's battery powered, to avoid
+drawing more power than needed, we also need to use an external 32KHz
+crystal oscillator which then takes up the 2 XTAL pins. This leaves us
+with 9 pins to drive the display. But for 4 7-segment displays, you need
+1 shared pin for each segments and 1 control pin for each digit. That
+comes out to 11 (7 + 4). But we only have 9 pins left so how do we drive
+the display?</p>
+<p>In avr, for a given pin, you can set the data direction (DDR*
+register) and the port value (PORT* register). When DDR bit is 1, the
+data direction is output so the respective PORT bit decides whether the
+output is high or low. But then if the DDR bit is 0, the value of PORT
+instead of being used for the output of that pin, it engages an internal
+pull-up resistor if the value is 1, and leaves it floating if the value
+is 0.</p>
+<p>This is the magic that makes feel things in the crotch. The solution
+used here is to use diodes to create a sort-of OR circuit by deriving
+segment states based on the state of the control pins. Here's the
+<a target="_blank _parent" rel="noopener" href="https://raw.githubusercontent.com/makedaft/daft-watch/refs/heads/main/watch.svg">full
+schematic for reference</a>.</p>
+<blockquote>
+<p>Note: in my case it's a common anode display so segment pin low and
+control pin high means that segment on that digit is on.</p>
+</blockquote>
+<p>In the schematic, with
+<code>DDRA = (1 &lt;&lt; PA6) | (1 &lt;&lt; PA7)</code> (PA6 and PA7
+both output),</p>
+<ul>
+<li>When PA6 is high, and PA7 is low, it enables digit 3 and the F
+segment.</li>
+<li>When PA6 is low, and PA7 is high, it enables digit 4 and the F
+segment.</li>
+</ul>
+<p>If we have <code>DDRA = 0</code> (PA6,PA7 both input),</p>
+<ul>
+<li>When <code>PORTA = 0</code> (PA6,PA7 without internal pullup
+resistor), being floating, there is no current flowing which means both
+digits are off and the F segment is off. This state can be used when
+drawing the other 2 digits.</li>
+</ul>
+<p>So far we can turn off both digits or have either one on but with F
+segment enabled. But how do we disable the F segment?</p>
+<p>If we have <code>DDRA = (1 &lt;&lt; PA6)</code> (PA6 output, PA7
+input),</p>
+<ul>
+<li>When <code>PORTA = (1 &lt;&lt; PA6)</code> (PA6 high, PA7 floating),
+digit 3 is on but the F segment is off as the current has nowhere to go
+through the diodes.</li>
+</ul>
+<p>Applying the inverse of that, we can achieve the last state we need
+to draw anything on each of the 7 segment displays. With this we now
+have 2 pins doing the work for 3. Adding in-between states in our
+digital logic that don't exist in pure boolean logic. Doesn't that feel
+satisfying?</p>
 
 ]]>
 </description></item></channel></rss>

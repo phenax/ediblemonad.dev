@@ -13,18 +13,32 @@
 <pubDate>2026-10-09</pubDate>
 <description>
 <![CDATA[
-# Coding is a niche hobby again!
-
-For a while programming was one of the best career options for someone to pick. Still is to some extent. But there was a time before all of this when computers weren't everywhere as they are now and majority of programmers were just nerds with a niche hobby.
-
-With the whole AI takeover of the industry, the value of code went all the way down. With that a lot of people lost interest in writing code by themselves. Just like before, the value of code is as low as it was back then and writing code is not really a job. We've come full circle.
-
-This at first made me feel like shit. Mainly because of the huge discrepency between how I feel about coding and how the world does now. But that feeling was short-lived because as it turns out, I still feel the same way about code as I did when I first started. It's still as satisfying and enjoyable as the first "hello world". Yeah most of the software industry now uses AI to produce code, but thats alright. I can still write my own code in my free time and I still love doing it!
-
-There's so much depth to programming, so many rabit holes to dive into and so much more to learn that coding as a hobby will stay fun for me for the foreseeable future. I won't be using AI for any of the code I write for fun because I don't care about producing hobby code faster. It's hobby code. I wouldn't use an ice-cream eating robot to eat my ice-cream for me just because it can do it faster.
-
-So yeah, coding's just a niche hobby again. And it's a really fun one!
-
+<h1 id="coding-is-a-niche-hobby-again">Coding is a niche hobby
+again!</h1>
+<p>For a while programming was one of the best career options for
+someone to pick. Still is to some extent. But there was a time before
+all of this when computers weren't everywhere as they are now and
+majority of programmers were just nerds with a niche hobby.</p>
+<p>With the whole AI takeover of the industry, the value of code went
+all the way down. With that a lot of people lost interest in writing
+code by themselves. Just like before, the value of code is as low as it
+was back then and writing code is not really a job. We've come full
+circle.</p>
+<p>This at first made me feel like shit. Mainly because of the huge
+discrepency between how I feel about coding and how the world does now.
+But that feeling was short-lived because as it turns out, I still feel
+the same way about code as I did when I first started. It's still as
+satisfying and enjoyable as the first "hello world". Yeah most of the
+software industry now uses AI to produce code, but thats alright. I can
+still write my own code in my free time and I still love doing it!</p>
+<p>There's so much depth to programming, so many rabit holes to dive
+into and so much more to learn that coding as a hobby will stay fun for
+me for the foreseeable future. I won't be using AI for any of the code I
+write for fun because I don't care about producing hobby code faster.
+It's hobby code. I wouldn't use an ice-cream eating robot to eat my
+ice-cream for me just because it can do it faster.</p>
+<p>So yeah, coding's just a niche hobby again. And it's a really fun
+one!</p>
 
 ]]>
 </description></item>
@@ -35,18 +49,32 @@ So yeah, coding's just a niche hobby again. And it's a really fun one!
 <pubDate>2026-06-27</pubDate>
 <description>
 <![CDATA[
-# Polar coordinates are beautiful
-
-Just go over to <a target="_blank _parent" rel="noopener" href="https://www.desmos.com/calculator">desmos</a> and type a random equation with polar coordinates. There is a very good chance, you see something visually interesting.
-
-Examples (try with $-12\pi\le\theta\le12\pi$):
-- $r=\theta$: the simplest form is already a spiral
-- $r=\theta^{2}$: sqaure it, something that looks like infinite hear shapes
-- $r=e^{\theta}$: try zooming into it, it goes on forever
-- $r=\sin\left(0.3\theta\right)$: some floral shape. mess around with the factor (0.3) to watch it unravel in really cool ways.
-- $r=e^{\theta\left(\sin\left(\theta\right)\cos\left(\theta\right)\right)^{6}}$: would make a really cool visualizer for music
-
-Designing a logo? Just play around with polar coordinates till you find a shape inside it that looks interesting. Won't take long.
+<h1 id="polar-coordinates-are-beautiful">Polar coordinates are
+beautiful</h1>
+<p>Just go over to
+<a target="_blank _parent" rel="noopener" href="https://www.desmos.com/calculator">desmos</a>
+and type a random equation with polar coordinates. There is a very good
+chance, you see something visually interesting.</p>
+<p>Examples (try with <span
+class="math inline">−12<em>π</em> ≤ <em>θ</em> ≤ 12<em>π</em></span>):</p>
+<ul>
+<li><span class="math inline"><em>r</em> = <em>θ</em></span>: the
+simplest form is already a spiral</li>
+<li><span
+class="math inline"><em>r</em> = <em>θ</em><sup>2</sup></span>: sqaure
+it, something that looks like infinite hear shapes</li>
+<li><span
+class="math inline"><em>r</em> = <em>e</em><sup><em>θ</em></sup></span>:
+try zooming into it, it goes on forever</li>
+<li><span class="math inline"><em>r</em> = sin (0.3<em>θ</em>)</span>:
+some floral shape. mess around with the factor (0.3) to watch it unravel
+in really cool ways.</li>
+<li><span
+class="math inline"><em>r</em> = <em>e</em><sup><em>θ</em>(sin (<em>θ</em>)cos (<em>θ</em>))<sup>6</sup></sup></span>:
+would make a really cool visualizer for music</li>
+</ul>
+<p>Designing a logo? Just play around with polar coordinates till you
+find a shape inside it that looks interesting. Won't take long.</p>
 
 ]]>
 </description></item>
@@ -57,47 +85,61 @@ Designing a logo? Just play around with polar coordinates till you find a shape 
 <pubDate>2026-06-03</pubDate>
 <description>
 <![CDATA[
-# Creative coding in sqlite
-
-Been trying out creative coding in sqlite recently <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/sqlite-creative-coding">here</a>. Turned out to be a lot more fun than what writing practical SQL had conditioned me to believe!
-
-Generating images is pretty straight forward. The SQL uses <a target="_blank _parent" rel="noopener" href="https://sqlite.org/lang_with.html">recursive CTE</a> to generate and store pixel rgb values in the db.
-Then a bash script reads the pixel values structures them in the ppm text format which is then converted to png using imagemagick.
-I was thinking of taking this a step further by converting to ppm from within sql but didn't feel like that added much except boilerplate.
-
-Currently I've got 2 scripts image.sh and video.sh to generate images and videos respectively.
-- **image.sh**: Generates a ppm from the pixels stored in the db. Uses imagemagick to convert that to a png (and also for displaying it)
-- **video.sh**: Generates a ppm stream for each stored frame of the video. Uses ffmpeg to convert that to a gif (and uses ffplay for displaying it)
-
-Here's a simplified example that generates 400x400 grid of pixels with a circle in the middle:
-
-```sql
-WITH RECURSIVE
-    image(width, height, cx, cy, radius) AS
-        (SELECT 400 AS width, 400 AS height, 200 AS cx, 200 AS cy, 160 AS radius),
-    horizontal(x) AS
-        (SELECT width FROM image
-            UNION ALL
-            SELECT x - 1 FROM horizontal WHERE x > 1),
-    vertical(y) AS
-        (SELECT height FROM image
-            UNION ALL
-            SELECT y - 1 FROM vertical WHERE y > 1)
-SELECT x, y,
-    255 * MAX(0, MIN(1, (x - cx)*(x - cx) + (y - cy)*(y - cy) - radius*radius)),
-    150,
-    150
-    FROM vertical, horizontal, image;
-```
-
-Here, `horizontal`/`vertical` generates x and y coordinates, the final select assigns the r,g,b values for each x,y coordinate which is what allows generating the visuals.
-
-In the repo, I'm storing the pixels instead of generating just generating them directly. I went with this approach for 2 reasons - debugging and reducing the pain of generating a video. Although, could've used materialized views but nah simpler is better.
-
-Generating audio out of samples should also be simple with raw PCM data and then to ffmpeg to convert to wav but haven't tried that yet.
-Another more ambitious idea is to build a simple snake game. The way I'm thinking is with the ppm output streaming to ffplay and using terminal raw mode for input which will update relevant values either directly or via triggers. Leaving that for future me to fuck around with.
-
-SQL can be fun.
+<h1 id="creative-coding-in-sqlite">Creative coding in sqlite</h1>
+<p>Been trying out creative coding in sqlite recently
+<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/sqlite-creative-coding">here</a>.
+Turned out to be a lot more fun than what writing practical SQL had
+conditioned me to believe!</p>
+<p>Generating images is pretty straight forward. The SQL uses
+<a target="_blank _parent" rel="noopener" href="https://sqlite.org/lang_with.html">recursive
+CTE</a> to generate and store pixel rgb values in the db. Then a bash
+script reads the pixel values structures them in the ppm text format
+which is then converted to png using imagemagick. I was thinking of
+taking this a step further by converting to ppm from within sql but
+didn't feel like that added much except boilerplate.</p>
+<p>Currently I've got 2 scripts image.sh and video.sh to generate images
+and videos respectively.</p>
+<ul>
+<li><strong>image.sh</strong>: Generates a ppm from the pixels stored in
+the db. Uses imagemagick to convert that to a png (and also for
+displaying it)</li>
+<li><strong>video.sh</strong>: Generates a ppm stream for each stored
+frame of the video. Uses ffmpeg to convert that to a gif (and uses
+ffplay for displaying it)</li>
+</ul>
+<p>Here's a simplified example that generates 400x400 grid of pixels
+with a circle in the middle:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> RECURSIVE</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    image(width, height, cx, cy, radius) <span class="kw">AS</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> <span class="dv">400</span> <span class="kw">AS</span> width, <span class="dv">400</span> <span class="kw">AS</span> height, <span class="dv">200</span> <span class="kw">AS</span> cx, <span class="dv">200</span> <span class="kw">AS</span> cy, <span class="dv">160</span> <span class="kw">AS</span> radius),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    horizontal(x) <span class="kw">AS</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> width <span class="kw">FROM</span> image</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">SELECT</span> x <span class="op">-</span> <span class="dv">1</span> <span class="kw">FROM</span> horizontal <span class="kw">WHERE</span> x <span class="op">&gt;</span> <span class="dv">1</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    vertical(y) <span class="kw">AS</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> height <span class="kw">FROM</span> image</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">SELECT</span> y <span class="op">-</span> <span class="dv">1</span> <span class="kw">FROM</span> vertical <span class="kw">WHERE</span> y <span class="op">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> x, y,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dv">255</span> <span class="op">*</span> <span class="fu">MAX</span>(<span class="dv">0</span>, <span class="fu">MIN</span>(<span class="dv">1</span>, (x <span class="op">-</span> cx)<span class="op">*</span>(x <span class="op">-</span> cx) <span class="op">+</span> (y <span class="op">-</span> cy)<span class="op">*</span>(y <span class="op">-</span> cy) <span class="op">-</span> radius<span class="op">*</span>radius)),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dv">150</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dv">150</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> vertical, horizontal, image;</span></code></pre></div>
+<p>Here, <code>horizontal</code>/<code>vertical</code> generates x and y
+coordinates, the final select assigns the r,g,b values for each x,y
+coordinate which is what allows generating the visuals.</p>
+<p>In the repo, I'm storing the pixels instead of generating just
+generating them directly. I went with this approach for 2 reasons -
+debugging and reducing the pain of generating a video. Although,
+could've used materialized views but nah simpler is better.</p>
+<p>Generating audio out of samples should also be simple with raw PCM
+data and then to ffmpeg to convert to wav but haven't tried that yet.
+Another more ambitious idea is to build a simple snake game. The way I'm
+thinking is with the ppm output streaming to ffplay and using terminal
+raw mode for input which will update relevant values either directly or
+via triggers. Leaving that for future me to fuck around with.</p>
+<p>SQL can be fun.</p>
 
 ]]>
 </description></item>
@@ -108,46 +150,56 @@ SQL can be fun.
 <pubDate>2026-03-24</pubDate>
 <description>
 <![CDATA[
-# Desmos is beautiful
-
-Desmos is a graphing calculator where you can input math equations and it'll plot it.
-The normal way to use it would be to throw in an equation like $y = 2x^2 + 2$ and boom you have a parabola.
-Even though it might seem simple on the surface, it is hiding an incredible programming language and rendering engine that you can use to build pretty much anything you'd like.
-
-Want to draw a box and a circle?
-$$
-\left\{-5<x<5\right\}\left\{-5<y<5\right\}>0
-$$
-$$
-x^{2}+y^{2}<25
-$$
-
-Here, the comparisons at the top level means region (or range in general) and conditional enclosed in curly braves like $\left\{-5<x<5>0\right\}$ are expressions that can either return 1 if true or undefined if false. 2 of these expressions next to each other is the product of both.
-
-Want to conditionally draw either a box or a circle and toggle between them on the click of a button? (<a target="_blank _parent" rel="noopener" href="https://www.desmos.com/calculator/zom3hguvjv">on desmos</a>)
-$$
-\left\{V_{iscircle}=1:-x^{2}-y^{2}+25,\left\{-5<x<5>0\right\}\left\{-5<y<5\right\}\right\}>0
-$$
-$$
-V_{iscircle}=0
-$$
-$$
-V_{iscircle}\to\left\{V_{iscircle}=0:1,0\right\}
-$$
-
-Here, if you click the arrow button to the left of the last equation, it will update/toggle $V_{iscircle}$.
-An expression like $\{x > 0 : 42, 7\}$ is a conditional expression but instead of 1 or undefined, it will return 42 when true and 7 when false (i.e. if expression).
-Also, $V_{iscircle}\to\left\{V_{iscircle}=0:1,0\right\}$ means when the action is triggered (button is clicked or via timer), it will update the value which in this case would toggle between 0 and 1.
-
-The action can also be connected to any object drawn on screen by clicking the cog in the sidebar, clicking on the icon to the left of the equation for the object and then enabling "Clickable".
-
-You could also have that action be triggered every second (or whatever interval) using the ticker feature in desmos (+ button in the sidebar > Ticker).
-
-This post doesn't even begin to cover the incredible features desmos provides but I think the fun is in exploring so if you find desmos interesting, it's better to discover those yourself.
-
-<a target="_blank _parent" rel="noopener" href="https://desmos.ediblemonad.dev/#/graphs/snake-game">Here's a snake game implemented in desmos</a>. Press "Play/Pause" to start.
-
-I maintain my collection of desmos experiments <a target="_blank _parent" rel="noopener" href="https://desmos.ediblemonad.dev">here</a>.
+<h1 id="desmos-is-beautiful">Desmos is beautiful</h1>
+<p>Desmos is a graphing calculator where you can input math equations
+and it'll plot it. The normal way to use it would be to throw in an
+equation like <span
+class="math inline"><em>y</em> = 2<em>x</em><sup>2</sup> + 2</span> and
+boom you have a parabola. Even though it might seem simple on the
+surface, it is hiding an incredible programming language and rendering
+engine that you can use to build pretty much anything you'd like.</p>
+<p>Want to draw a box and a circle? <span
+class="math display">{−5 &lt; <em>x</em> &lt; 5}{−5 &lt; <em>y</em> &lt; 5} &gt; 0</span>
+<span
+class="math display"><em>x</em><sup>2</sup> + <em>y</em><sup>2</sup> &lt; 25</span></p>
+<p>Here, the comparisons at the top level means region (or range in
+general) and conditional enclosed in curly braves like <span
+class="math inline">{−5 &lt; <em>x</em> &lt; 5 &gt; 0}</span> are
+expressions that can either return 1 if true or undefined if false. 2 of
+these expressions next to each other is the product of both.</p>
+<p>Want to conditionally draw either a box or a circle and toggle
+between them on the click of a button?
+(<a target="_blank _parent" rel="noopener" href="https://www.desmos.com/calculator/zom3hguvjv">on
+desmos</a>) <span
+class="math display">{<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 1 : −<em>x</em><sup>2</sup> − <em>y</em><sup>2</sup> + 25, {−5 &lt; <em>x</em> &lt; 5 &gt; 0}{−5 &lt; <em>y</em> &lt; 5}} &gt; 0</span>
+<span
+class="math display"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0</span>
+<span
+class="math display"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> → {<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0 : 1, 0}</span></p>
+<p>Here, if you click the arrow button to the left of the last equation,
+it will update/toggle <span
+class="math inline"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub></span>.
+An expression like <span
+class="math inline">{<em>x</em> &gt; 0 : 42, 7}</span> is a conditional
+expression but instead of 1 or undefined, it will return 42 when true
+and 7 when false (i.e. if expression). Also, <span
+class="math inline"><em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> → {<em>V</em><sub><em>i</em><em>s</em><em>c</em><em>i</em><em>r</em><em>c</em><em>l</em><em>e</em></sub> = 0 : 1, 0}</span>
+means when the action is triggered (button is clicked or via timer), it
+will update the value which in this case would toggle between 0 and
+1.</p>
+<p>The action can also be connected to any object drawn on screen by
+clicking the cog in the sidebar, clicking on the icon to the left of the
+equation for the object and then enabling "Clickable".</p>
+<p>You could also have that action be triggered every second (or
+whatever interval) using the ticker feature in desmos (+ button in the
+sidebar &gt; Ticker).</p>
+<p>This post doesn't even begin to cover the incredible features desmos
+provides but I think the fun is in exploring so if you find desmos
+interesting, it's better to discover those yourself.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://desmos.ediblemonad.dev/#/graphs/snake-game">Here's
+a snake game implemented in desmos</a>. Press "Play/Pause" to start.</p>
+<p>I maintain my collection of desmos experiments
+<a target="_blank _parent" rel="noopener" href="https://desmos.ediblemonad.dev">here</a>.</p>
 
 ]]>
 </description></item>
@@ -158,9 +210,21 @@ I maintain my collection of desmos experiments <a target="_blank _parent" rel="n
 <pubDate>2026-03-22</pubDate>
 <description>
 <![CDATA[
-# Uiua
-
-<a target="_blank _parent" rel="noopener" href="https://www.uiua.org">Uiua</a> is one of the most fun languages for creative coding. There are a bunch of really good primitives for generating audio files from samples, generating an image from an array of pixels, generating a gif from an array of array of pixels, etc. Messed around with it <a target="_blank _parent" rel="noopener" href="https://github.com/phenax/uiua-playground">here</a> some time ago and I've started to miss it. The only other APL-ish language I've tried is BQN which is also an amazing language but thinking tacit is hard and it takes time to get used to. There are smart people in the world. Being a member and representative of the other side of that spectrum, I need my escape hatches and they need to be pleasant. I've come to appreciate the stack-based escape hatches a lot more than the functional escape hatches with blocks using 𝕩 and the other spicy letters.
+<h1 id="uiua">Uiua</h1>
+<p><a target="_blank _parent" rel="noopener" href="https://www.uiua.org">Uiua</a>
+is one of the most fun languages for creative coding. There are a bunch
+of really good primitives for generating audio files from samples,
+generating an image from an array of pixels, generating a gif from an
+array of array of pixels, etc. Messed around with it
+<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/uiua-playground">here</a>
+some time ago and I've started to miss it. The only other APL-ish
+language I've tried is BQN which is also an amazing language but
+thinking tacit is hard and it takes time to get used to. There are smart
+people in the world. Being a member and representative of the other side
+of that spectrum, I need my escape hatches and they need to be pleasant.
+I've come to appreciate the stack-based escape hatches a lot more than
+the functional escape hatches with blocks using 𝕩 and the other spicy
+letters.</p>
 
 ]]>
 </description></item></channel></rss>

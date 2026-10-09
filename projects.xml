@@ -13,11 +13,10 @@
 
 <description>
 <![CDATA[
-# Chiral keyboard
-
-My custom ortholinear split keyboard design running on an RP2040 zero.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/chiral-keyboard">Github</a>
+<h1 id="chiral-keyboard">Chiral keyboard</h1>
+<p>My custom ortholinear split keyboard design running on an RP2040
+zero.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/chiral-keyboard">Github</a></p>
 
 ]]>
 </description></item>
@@ -28,11 +27,11 @@ My custom ortholinear split keyboard design running on an RP2040 zero.
 
 <description>
 <![CDATA[
-# Daffm
-
-A minimal tui file manager with the goal of not being a file manager as much as possible. Simple configuration format that allows integrating with any tool to build a rich file manager. Built with haskell.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/daffm">Github</a>
+<h1 id="daffm">Daffm</h1>
+<p>A minimal tui file manager with the goal of not being a file manager
+as much as possible. Simple configuration format that allows integrating
+with any tool to build a rich file manager. Built with haskell.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/daffm">Github</a></p>
 
 ]]>
 </description></item>
@@ -43,11 +42,10 @@ A minimal tui file manager with the goal of not being a file manager as much as 
 
 <description>
 <![CDATA[
-# Temperature sensor attiny84a
-
-A simple temperature sensor and display running on an attiny84a meant for soldering iron.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/temperature-sensor-attiny84a">Github</a>
+<h1 id="temperature-sensor-attiny84a">Temperature sensor attiny84a</h1>
+<p>A simple temperature sensor and display running on an attiny84a meant
+for soldering iron.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/temperature-sensor-attiny84a">Github</a></p>
 
 ]]>
 </description></item>
@@ -58,11 +56,10 @@ A simple temperature sensor and display running on an attiny84a meant for solder
 
 <description>
 <![CDATA[
-# css-everything
-
-An experimental/gag ui framework where you only write turing complete CSS. No HTML, no JS, no build system. Just CSS.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/css-everything">Github</a>
+<h1 id="css-everything">css-everything</h1>
+<p>An experimental/gag ui framework where you only write turing complete
+CSS. No HTML, no JS, no build system. Just CSS.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/css-everything">Github</a></p>
 
 ]]>
 </description></item>
@@ -73,11 +70,9 @@ An experimental/gag ui framework where you only write turing complete CSS. No HT
 
 <description>
 <![CDATA[
-# Homeserver
-
-My personal home server configuration in nixos.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/homeserver-nixos">Github</a>
+<h1 id="homeserver">Homeserver</h1>
+<p>My personal home server configuration in nixos.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/homeserver-nixos">Github</a></p>
 
 ]]>
 </description></item>
@@ -88,11 +83,10 @@ My personal home server configuration in nixos.
 
 <description>
 <![CDATA[
-# Null browser
-
-An infinitly extensible web browser built on top of qtwebengine. Built with c++, qt with a libuv event system.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/null-browser">Github</a>
+<h1 id="null-browser">Null browser</h1>
+<p>An infinitly extensible web browser built on top of qtwebengine.
+Built with c++, qt with a libuv event system.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/null-browser">Github</a></p>
 
 ]]>
 </description></item>
@@ -103,11 +97,10 @@ An infinitly extensible web browser built on top of qtwebengine. Built with c++,
 
 <description>
 <![CDATA[
-# Chelleport
-
-App for X11 linux to control your mouse pointer with your keyboard with hints and OCR written in haskell.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/chelleport">Github</a>
+<h1 id="chelleport">Chelleport</h1>
+<p>App for X11 linux to control your mouse pointer with your keyboard
+with hints and OCR written in haskell.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/chelleport">Github</a></p>
 
 ]]>
 </description></item>
@@ -118,11 +111,9 @@ App for X11 linux to control your mouse pointer with your keyboard with hints an
 
 <description>
 <![CDATA[
-# Aether lang
-
-A lisp interpreter written in haskell.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/aether">Github</a>
+<h1 id="aether-lang">Aether lang</h1>
+<p>A lisp interpreter written in haskell.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/aether">Github</a></p>
 
 ]]>
 </description></item>
@@ -133,11 +124,10 @@ A lisp interpreter written in haskell.
 
 <description>
 <![CDATA[
-# Yaml transformer
-
-A cli to update yaml properties while preserving whitespace and comments in its original state. Built with haskell.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/yaml-transform">Github</a>
+<h1 id="yaml-transformer">Yaml transformer</h1>
+<p>A cli to update yaml properties while preserving whitespace and
+comments in its original state. Built with haskell.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/yaml-transform">Github</a></p>
 
 ]]>
 </description></item>
@@ -148,11 +138,10 @@ A cli to update yaml properties while preserving whitespace and comments in its 
 
 <description>
 <![CDATA[
-# This website
-
-Built with a toy static site generator written in clojure (babashka) and pandoc. (Previously built with nix)
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/ediblemonad.dev">Github</a>
+<h1 id="this-website">This website</h1>
+<p>Built with a toy static site generator written in clojure (babashka)
+and pandoc. (Previously built with nix)</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/ediblemonad.dev">Github</a></p>
 
 ]]>
 </description></item>
@@ -163,13 +152,10 @@ Built with a toy static site generator written in clojure (babashka) and pandoc.
 
 <description>
 <![CDATA[
-# Desmos graph manager
-
-A personal graph manager using desmos graphing calculator.
-
-<a target="_blank _parent" rel="noopener" href="https://desmos.ediblemonad.dev">Website</a>
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/edible-desmos">Github</a>
+<h1 id="desmos-graph-manager">Desmos graph manager</h1>
+<p>A personal graph manager using desmos graphing calculator.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://desmos.ediblemonad.dev">Website</a></p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/edible-desmos">Github</a></p>
 
 ]]>
 </description></item>
@@ -180,11 +166,11 @@ A personal graph manager using desmos graphing calculator.
 
 <description>
 <![CDATA[
-# React is a programming language
-
-A PoC for using react to emulate turing complete behaviors and building a "programming language" from it.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/react-is-a-programming-language">Github</a>
+<h1 id="react-is-a-programming-language">React is a programming
+language</h1>
+<p>A PoC for using react to emulate turing complete behaviors and
+building a "programming language" from it.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/react-is-a-programming-language">Github</a></p>
 
 ]]>
 </description></item>
@@ -195,11 +181,10 @@ A PoC for using react to emulate turing complete behaviors and building a "progr
 
 <description>
 <![CDATA[
-# Notical
-
-Programmable markdown compatible wysiwyg note-taking application with a simple extension system based on markdown code blocks.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/notical-run/notical-run">Github</a>
+<h1 id="notical">Notical</h1>
+<p>Programmable markdown compatible wysiwyg note-taking application with
+a simple extension system based on markdown code blocks.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/notical-run/notical-run">Github</a></p>
 
 ]]>
 </description></item>
@@ -210,11 +195,11 @@ Programmable markdown compatible wysiwyg note-taking application with a simple e
 
 <description>
 <![CDATA[
-# Runtime for TS types
-
-A runtime and library for typescript's types that turns the type system into a general purpose, purely functional programming language.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/ts-types-runtime">Github</a>
+<h1 id="runtime-for-ts-types">Runtime for TS types</h1>
+<p>A runtime and library for typescript's types that turns the type
+system into a general purpose, purely functional programming
+language.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/ts-types-runtime">Github</a></p>
 
 ]]>
 </description></item>
@@ -225,11 +210,10 @@ A runtime and library for typescript's types that turns the type system into a g
 
 <description>
 <![CDATA[
-# TS types theorem prover
-
-A simple (terrible) theorem proof embedding in typescript's type system.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/ts-theorem-provinator">Github</a>
+<h1 id="ts-types-theorem-prover">TS types theorem prover</h1>
+<p>A simple (terrible) theorem proof embedding in typescript's type
+system.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/ts-theorem-provinator">Github</a></p>
 
 ]]>
 </description></item>
@@ -240,11 +224,9 @@ A simple (terrible) theorem proof embedding in typescript's type system.
 
 <description>
 <![CDATA[
-# esbuild-plugin-elm
-
-An esbuild plugin for building elm projects.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/esbuild-plugin-elm">Github</a>
+<h1 id="esbuild-plugin-elm">esbuild-plugin-elm</h1>
+<p>An esbuild plugin for building elm projects.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/esbuild-plugin-elm">Github</a></p>
 
 ]]>
 </description></item>
@@ -255,11 +237,10 @@ An esbuild plugin for building elm projects.
 
 <description>
 <![CDATA[
-# cmp-graphql for neovim
-
-A neovim completions (nvim-cmp) plugin for schema-based completions for graphql syntax (works inside gql tagged template literals).
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/cmp-graphql">Github</a>
+<h1 id="cmp-graphql-for-neovim">cmp-graphql for neovim</h1>
+<p>A neovim completions (nvim-cmp) plugin for schema-based completions
+for graphql syntax (works inside gql tagged template literals).</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/cmp-graphql">Github</a></p>
 
 ]]>
 </description></item>
@@ -270,11 +251,10 @@ A neovim completions (nvim-cmp) plugin for schema-based completions for graphql 
 
 <description>
 <![CDATA[
-# Elxr (list expressions)
-
-An implementation of a regex-like syntax that generalizes regex operations for any sequential data structure.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/elxr">Github</a>
+<h1 id="elxr-list-expressions">Elxr (list expressions)</h1>
+<p>An implementation of a regex-like syntax that generalizes regex
+operations for any sequential data structure.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/elxr">Github</a></p>
 
 ]]>
 </description></item>
@@ -285,11 +265,10 @@ An implementation of a regex-like syntax that generalizes regex operations for a
 
 <description>
 <![CDATA[
-# Typed RegEx
-
-A typescript library for automatic type inference on regular expressions using named capture groups.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/typed-regex">Github</a>
+<h1 id="typed-regex">Typed RegEx</h1>
+<p>A typescript library for automatic type inference on regular
+expressions using named capture groups.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/typed-regex">Github</a></p>
 
 ]]>
 </description></item>
@@ -300,11 +279,10 @@ A typescript library for automatic type inference on regular expressions using n
 
 <description>
 <![CDATA[
-# Algebraic Effects
-
-An implementation of algebraic effects in javascript as a library for managing side-effects in a pure and composable way.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/algebraic-effects">Github</a>
+<h1 id="algebraic-effects">Algebraic Effects</h1>
+<p>An implementation of algebraic effects in javascript as a library for
+managing side-effects in a pure and composable way.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/algebraic-effects">Github</a></p>
 
 ]]>
 </description></item>
@@ -315,11 +293,10 @@ An implementation of algebraic effects in javascript as a library for managing s
 
 <description>
 <![CDATA[
-# is-a.dev
-
-A free and open source service for developers to register a .is-a.dev subdomain for their personal websites.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/is-a-dev/register">Github</a>
+<h1 id="is-adev">is-a.dev</h1>
+<p>A free and open source service for developers to register a .is-a.dev
+subdomain for their personal websites.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/is-a-dev/register">Github</a></p>
 
 ]]>
 </description></item>
@@ -330,11 +307,10 @@ A free and open source service for developers to register a .is-a.dev subdomain 
 
 <description>
 <![CDATA[
-# EnumFP
-
-A js library for defining functional Enum type / Sum type for javascript with simple pattern matching.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/enum-fp">Github</a>
+<h1 id="enumfp">EnumFP</h1>
+<p>A js library for defining functional Enum type / Sum type for
+javascript with simple pattern matching.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/enum-fp">Github</a></p>
 
 ]]>
 </description></item>
@@ -345,11 +321,9 @@ A js library for defining functional Enum type / Sum type for javascript with si
 
 <description>
 <![CDATA[
-# Shotkey
-
-Hotkey daemon for X11 window managers written in C.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/shotkey">Github</a>
+<h1 id="shotkey">Shotkey</h1>
+<p>Hotkey daemon for X11 window managers written in C.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/shotkey">Github</a></p>
 
 ]]>
 </description></item>
@@ -360,11 +334,9 @@ Hotkey daemon for X11 window managers written in C.
 
 <description>
 <![CDATA[
-# bsp-layout
-
-A dynamic layout management script for bspwm.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/bsp-layout">Github</a>
+<h1 id="bsp-layout">bsp-layout</h1>
+<p>A dynamic layout management script for bspwm.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/bsp-layout">Github</a></p>
 
 ]]>
 </description></item>
@@ -375,11 +347,10 @@ A dynamic layout management script for bspwm.
 
 <description>
 <![CDATA[
-# Daft Launcher
-
-A minimalist, text-only launcher written in flutter which I use every day.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/makedaft/daft-launcher">Github</a>
+<h1 id="daft-launcher">Daft Launcher</h1>
+<p>A minimalist, text-only launcher written in flutter which I use every
+day.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/makedaft/daft-launcher">Github</a></p>
 
 ]]>
 </description></item>
@@ -390,11 +361,10 @@ A minimalist, text-only launcher written in flutter which I use every day.
 
 <description>
 <![CDATA[
-# Daft Jukebox
-
-A simple mp3 player that loads music from an SD card with an esp32 microcontroller.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/makedaft/daft-jukebox">Github</a>
+<h1 id="daft-jukebox">Daft Jukebox</h1>
+<p>A simple mp3 player that loads music from an SD card with an esp32
+microcontroller.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/makedaft/daft-jukebox">Github</a></p>
 
 ]]>
 </description></item>
@@ -405,11 +375,12 @@ A simple mp3 player that loads music from an SD card with an esp32 microcontroll
 
 <description>
 <![CDATA[
-# PlasmaJS
-
-An isomorphic NodeJS framework powered with React for building web apps. It has features like declarative syntax, isomorphic routing, isolated routing for building REST APIs, middlewares, ES2015 syntax with babel.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/plasmajs">Github</a>
+<h1 id="plasmajs">PlasmaJS</h1>
+<p>An isomorphic NodeJS framework powered with React for building web
+apps. It has features like declarative syntax, isomorphic routing,
+isolated routing for building REST APIs, middlewares, ES2015 syntax with
+babel.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/plasmajs">Github</a></p>
 
 ]]>
 </description></item>
@@ -420,11 +391,10 @@ An isomorphic NodeJS framework powered with React for building web apps. It has 
 
 <description>
 <![CDATA[
-# Pipey
-
-A js library for creating pipeline operator ready functions by converting instance methods's to context-free functions.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/pipey">Github</a>
+<h1 id="pipey">Pipey</h1>
+<p>A js library for creating pipeline operator ready functions by
+converting instance methods's to context-free functions.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/pipey">Github</a></p>
 
 ]]>
 </description></item>
@@ -435,11 +405,11 @@ A js library for creating pipeline operator ready functions by converting instan
 
 <description>
 <![CDATA[
-# Diary PWA
-
-A progressive web app in go-lang that lets you carry a personalized secure diary in your pocket. Integrated pattern-lock-js library to allow for privacy. Built with golang and a graphql API.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/diary-pwa">Github</a>
+<h1 id="diary-pwa">Diary PWA</h1>
+<p>A progressive web app in go-lang that lets you carry a personalized
+secure diary in your pocket. Integrated pattern-lock-js library to allow
+for privacy. Built with golang and a graphql API.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/diary-pwa">Github</a></p>
 
 ]]>
 </description></item>
@@ -450,11 +420,10 @@ A progressive web app in go-lang that lets you carry a personalized secure diary
 
 <description>
 <![CDATA[
-# Pattern Lock
-
-A js library for creating customizable pattern lock for the web and PWAs using HTML5 canvas.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/pattern-lock-js">Github</a>
+<h1 id="pattern-lock">Pattern Lock</h1>
+<p>A js library for creating customizable pattern lock for the web and
+PWAs using HTML5 canvas.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/pattern-lock-js">Github</a></p>
 
 ]]>
 </description></item>
@@ -465,11 +434,9 @@ A js library for creating customizable pattern lock for the web and PWAs using H
 
 <description>
 <![CDATA[
-# H Kotlin
-
-A simple, easy to use, library for HTML templating in kotlin.
-
-<a target="_blank _parent" rel="noopener" href="https://github.com/phenax/h">Github</a>
+<h1 id="h-kotlin">H Kotlin</h1>
+<p>A simple, easy to use, library for HTML templating in kotlin.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://github.com/phenax/h">Github</a></p>
 
 ]]>
 </description></item></channel></rss>

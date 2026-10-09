@@ -13,9 +13,22 @@
 <pubDate>2026-10-03</pubDate>
 <description>
 <![CDATA[
-# RSS is dead
-
-Reddit decided to kill their [RSS feed](https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/). They say AI and scraping but that translates to "only we should make money off selling user content here". That was also the reason why they priced their public API to death previously and now that's killed for real as well. I think the internet as a whole is turning hostile towards people that want to consume content on their own terms. This is because of the sudden inflation of the value of user data caused by AI's presence. Before it used to just be about selling user data for targetted ads, now it's all about AI, baybee. So I wouldn't be surprised if more public RSS feeds and APIs start disappearing and eventually the only way to interact with the internet would be via AI and summaries of inaccessible information. A few big AI companies become the only medium for the internet and privacy becomes the thing we get all nostalgic thinking about. We're kinda fucked.
+<h1 id="rss-is-dead">RSS is dead</h1>
+<p>Reddit decided to kill their <a
+href="https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/">RSS
+feed</a>. They say AI and scraping but that translates to "only we
+should make money off selling user content here". That was also the
+reason why they priced their public API to death previously and now
+that's killed for real as well. I think the internet as a whole is
+turning hostile towards people that want to consume content on their own
+terms. This is because of the sudden inflation of the value of user data
+caused by AI's presence. Before it used to just be about selling user
+data for targetted ads, now it's all about AI, baybee. So I wouldn't be
+surprised if more public RSS feeds and APIs start disappearing and
+eventually the only way to interact with the internet would be via AI
+and summaries of inaccessible information. A few big AI companies become
+the only medium for the internet and privacy becomes the thing we get
+all nostalgic thinking about. We're kinda fucked.</p>
 
 ]]>
 </description></item>
@@ -26,10 +39,18 @@ Reddit decided to kill their [RSS feed](https://techcrunch.com/2026/09/30/reddit
 <pubDate>2026-07-02</pubDate>
 <description>
 <![CDATA[
-# Normalize official RSS feeds
-
-Given the shitshow every single medium of accessing information and entertainment feeds has turned into with organizations optimizing the amount of time people spend on their apps, I think we need more neutral sources. Source that are not trying to "understand" us to manipulate us into using their app more like the most toxic relationship. RSS seems like the only good standard left for this. I really like that youtube and reddit have official rss feeds which I use a lot. And I'm also very happy with the amount of blogs I've found that provide an rss feed. But we could definitely use more of this. We also need to normalize it's use to the point where people lean towards rss instinctively rather than reaching for the apps/websites.
-
+<h1 id="normalize-official-rss-feeds">Normalize official RSS feeds</h1>
+<p>Given the shitshow every single medium of accessing information and
+entertainment feeds has turned into with organizations optimizing the
+amount of time people spend on their apps, I think we need more neutral
+sources. Source that are not trying to "understand" us to manipulate us
+into using their app more like the most toxic relationship. RSS seems
+like the only good standard left for this. I really like that youtube
+and reddit have official rss feeds which I use a lot. And I'm also very
+happy with the amount of blogs I've found that provide an rss feed. But
+we could definitely use more of this. We also need to normalize it's use
+to the point where people lean towards rss instinctively rather than
+reaching for the apps/websites.</p>
 
 ]]>
 </description></item>
@@ -40,93 +61,92 @@ Given the shitshow every single medium of accessing information and entertainmen
 <pubDate>2026-06-27</pubDate>
 <description>
 <![CDATA[
-# Kakoune: snippets
-
-Kakoune doesn't have built-in support for snippets. You can use plugins like <a target="_blank _parent" rel="noopener" href="https://github.com/occivink/kakoune-snippets">occivink/kakoune-snippets</a> to have that in the editor but you could also have a much simpler setup for snippets with a few lines of scripting.
-
-My first iteration of snippets was just to use commands and prompt for input like so:
-
-```sh
-declare-option -hidden str-list snippets_list
-
-define-command snippets-insert %{
-  prompt -menu 'Snippets: ' \
-    -shell-script-candidates 'echo "$kak_opt_snippet_list"' \
-    %{ evaluate-commands %val{text} }
-}
-define-command define-snippet -params 2 %{
-  set-option -add %arg{1} snippets_list %sh{ echo -e "$2\n" }
-}
-```
-
-```sh
-hook global BufSetOption filetype=(?:ruby) %{
-  define-snippet buffer snip-rails-class
-}
-
-define-command snip-rails-class %{
-  eval %sh{
-    class_name=$(basename "$kak_bufname" .rb | sed -e 's/[^A-Za-z0-9]\(\w\)/\U\1/g' -e 's/^\w/\U\0/g')
-    echo "set-register c $class_name"
-  }
-  execute-keys '<esc>,i# frozen_string_literal: true<ret><ret>'
-  execute-keys 'class <c-r>c<ret>'
-  execute-keys 'end'
-}
-```
-
-Here, it parses the ruby class name from the file name to generate the snippet but this could also just be a `prompt` command instead.
-
-This worked okay but it was pretty hard to maintain. Would be much easier if the snippets themselves were easier to create and read.
-So, that eventually evolved into this:
-
-```sh
-declare-option str snippets_dir "%val{config}/snippets"
-
-define-command snippets-insert -docstring 'Snippets' %{
-  prompt -menu "Snippets: " -init "%opt{filetype}/" \
-    -shell-script-candidates %{ fd --type file --base-directory "$kak_opt_snippets_dir" } \
-     %{
-      evaluate-commands %sh{
-        case "$kak_text" in
-          *.snip.kak) cat "$kak_opt_snippets_dir/$kak_text" ;;
-          *) echo "insert-text-snippet %{$kak_text}" ;;
-        esac
-      }
-    }
-}
-
-define-command -hidden insert-text-snippet -params 1 %{
-  execute-keys ",|cat ""%opt{snippets_dir}/%arg{1}""<ret>"
-  execute-keys -save-regs '' "s[$]\d+<ret>"
-  execute-keys "%sh{echo $((kak_selection_count + 1))}n"
-}
-```
-
-Now each snippet is a file placed in `~/.config/kak/snippets/`.
-The files in my case are organized by filetype in directories as `{filetype}/snippetname.{ext}` or `{filetype}/snippetname.snip.kak`.
-The prompt is filled with `{filetype}/` so at first you see the snippets for the current filetype but you can delete that in the prompt to see all.
-
-If it's a .snip.kak file, it is evaluated as a kakoune script which is the same as the commands from before.
-Otherwise the contents of the snippet file is inserted into the buffer directly and any `$n` (`$1`, `$2`, ...) will be added as a selection.
-Example:
-
-```ruby
-# frozen_string_literal: true
-
-class $1
-  def initialize
-    $2
-  end
-
-  $3
-end
-```
-
-The above snippet, `$1` is automatically selected first. You can press `c` to change it and `Esc` to go back to normal mode. Then when you press `n`, it jumps to the next `$n`.
-
-I know this already exists for every other editor out of the box and is much more fleshed out but the experience of understanding a system and defining a feature within it, in it's simplest form, is a really pleasant.
-
+<h1 id="kakoune-snippets">Kakoune: snippets</h1>
+<p>Kakoune doesn't have built-in support for snippets. You can use
+plugins like
+<a target="_blank _parent" rel="noopener" href="https://github.com/occivink/kakoune-snippets">occivink/kakoune-snippets</a>
+to have that in the editor but you could also have a much simpler setup
+for snippets with a few lines of scripting.</p>
+<p>My first iteration of snippets was just to use commands and prompt
+for input like so:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">declare-option</span> <span class="at">-hidden</span> str-list snippets_list</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> snippets-insert %{</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">prompt</span> <span class="at">-menu</span> <span class="st">&#39;Snippets: &#39;</span> <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-shell-script-candidates</span> <span class="st">&#39;echo &quot;$kak_opt_snippet_list&quot;&#39;</span> <span class="dt">\</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    %{ evaluate-commands %val{text} }</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> define-snippet <span class="at">-params</span> 2 %{</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">set-option</span> <span class="at">-add</span> %arg{1} snippets_list %sh{ echo <span class="at">-e</span> <span class="st">&quot;</span><span class="va">$2</span><span class="st">\n&quot;</span> }</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hook</span> global BufSetOption filetype=<span class="er">(</span><span class="ex">?:ruby</span><span class="kw">)</span> <span class="ex">%{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">define-snippet</span> buffer snip-rails-class</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> snip-rails-class %{</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">eval</span> %sh{</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">class_name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$kak_bufname</span><span class="st">&quot;</span> .rb <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-e</span> <span class="st">&#39;s/[^A-Za-z0-9]\(\w\)/\U\1/g&#39;</span> <span class="at">-e</span> <span class="st">&#39;s/^\w/\U\0/g&#39;</span><span class="va">)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;set-register c </span><span class="va">$class_name</span><span class="st">&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="er">}</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&#39;&lt;esc&gt;,i# frozen_string_literal: true&lt;ret&gt;&lt;ret&gt;&#39;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&#39;class &lt;c-r&gt;c&lt;ret&gt;&#39;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&#39;end&#39;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
+<p>Here, it parses the ruby class name from the file name to generate
+the snippet but this could also just be a <code>prompt</code> command
+instead.</p>
+<p>This worked okay but it was pretty hard to maintain. Would be much
+easier if the snippets themselves were easier to create and read. So,
+that eventually evolved into this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">declare-option</span> str snippets_dir <span class="st">&quot;%val{config}/snippets&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> snippets-insert <span class="at">-docstring</span> <span class="st">&#39;Snippets&#39;</span> %{</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">prompt</span> <span class="at">-menu</span> <span class="st">&quot;Snippets: &quot;</span> <span class="at">-init</span> <span class="st">&quot;%opt{filetype}/&quot;</span> <span class="dt">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-shell-script-candidates</span> %{ fd <span class="at">--type</span> file <span class="at">--base-directory</span> <span class="st">&quot;</span><span class="va">$kak_opt_snippets_dir</span><span class="st">&quot;</span> } <span class="dt">\</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     %{</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="ex">evaluate-commands</span> %sh{</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">&quot;</span><span class="va">$kak_text</span><span class="st">&quot;</span> <span class="kw">in</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="pp">*</span><span class="ss">.snip.kak</span><span class="kw">)</span> <span class="fu">cat</span> <span class="st">&quot;</span><span class="va">$kak_opt_snippets_dir</span><span class="st">/</span><span class="va">$kak_text</span><span class="st">&quot;</span> <span class="cf">;;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>          <span class="pp">*</span><span class="kw">)</span> <span class="bu">echo</span> <span class="st">&quot;insert-text-snippet %{</span><span class="va">$kak_text</span><span class="st">}&quot;</span> <span class="cf">;;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">esac</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="er">}</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">define-command</span> <span class="at">-hidden</span> insert-text-snippet <span class="at">-params</span> 1 %{</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&quot;,|cat &quot;&quot;%opt{snippets_dir}/%arg{1}&quot;&quot;&lt;ret&gt;&quot;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="at">-save-regs</span> <span class="st">&#39;&#39;</span> <span class="st">&quot;s[$]\d+&lt;ret&gt;&quot;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">execute-keys</span> <span class="st">&quot;%sh{echo </span><span class="va">$((kak_selection_count</span> <span class="op">+</span> <span class="dv">1</span><span class="va">))</span><span class="st">}n&quot;</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
+<p>Now each snippet is a file placed in
+<code>~/.config/kak/snippets/</code>. The files in my case are organized
+by filetype in directories as <code>{filetype}/snippetname.{ext}</code>
+or <code>{filetype}/snippetname.snip.kak</code>. The prompt is filled
+with <code>{filetype}/</code> so at first you see the snippets for the
+current filetype but you can delete that in the prompt to see all.</p>
+<p>If it's a .snip.kak file, it is evaluated as a kakoune script which
+is the same as the commands from before. Otherwise the contents of the
+snippet file is inserted into the buffer directly and any
+<code>$n</code> (<code>$1</code>, <code>$2</code>, ...) will be added as
+a selection. Example:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># frozen_string_literal: true</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="va">$1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">$2</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">$3</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
+<p>The above snippet, <code>$1</code> is automatically selected first.
+You can press <code>c</code> to change it and <code>Esc</code> to go
+back to normal mode. Then when you press <code>n</code>, it jumps to the
+next <code>$n</code>.</p>
+<p>I know this already exists for every other editor out of the box and
+is much more fleshed out but the experience of understanding a system
+and defining a feature within it, in it's simplest form, is a really
+pleasant.</p>
 
 ]]>
 </description></item>
@@ -137,14 +157,21 @@ I know this already exists for every other editor out of the box and is much mor
 <pubDate>2026-05-14</pubDate>
 <description>
 <![CDATA[
-# NixOS is a chore
-
-Using nixos is a chore like brushing your teeth. Oh... I mean "teeth being brushed" (declarative).
-
-It takes work. A big investment up front in configuring it and tiny investments for as long as you use it to maintain the configuration. Sounds like a scam but I thank myself for this investment every time there is a bad update or running a project with a flake and having it work fine after many years of sitting idle (which is suprising in the modern norm of having a web of dependencies). This brings an insane amount of confidence in any change I make to my system which lets me explore more things without being afraid touching the wrong thing on MY computer.
-
-I've had it running as a daily driver for about 6 years and on my home server (just an old laptop) for more than a year. My review: 10/10, do it.
-
+<h1 id="nixos-is-a-chore">NixOS is a chore</h1>
+<p>Using nixos is a chore like brushing your teeth. Oh... I mean "teeth
+being brushed" (declarative).</p>
+<p>It takes work. A big investment up front in configuring it and tiny
+investments for as long as you use it to maintain the configuration.
+Sounds like a scam but I thank myself for this investment every time
+there is a bad update or running a project with a flake and having it
+work fine after many years of sitting idle (which is suprising in the
+modern norm of having a web of dependencies). This brings an insane
+amount of confidence in any change I make to my system which lets me
+explore more things without being afraid touching the wrong thing on MY
+computer.</p>
+<p>I've had it running as a daily driver for about 6 years and on my
+home server (just an old laptop) for more than a year. My review: 10/10,
+do it.</p>
 <div style="text-align:center;">
   <img src="/images/nixos.png" alt="NixOS declarative" style="width:100%;max-width:400px" />
 </div>
@@ -158,16 +185,39 @@ I've had it running as a daily driver for about 6 years and on my home server (j
 <pubDate>2026-05-03</pubDate>
 <description>
 <![CDATA[
-# Kakoune supremacy
-
-I've tried a bunch of different code editors and IDEs over the years but nothing beats the control of a modal text editor. Even as "vi plugins" in normie editors and IDEs, the difference in user experience is massive. But I've come to crave more from my tools. By "more" I mean fewer features and better primitives to allow me to build my own experience on top of it. Because at the end of the day, I've spend a considerable amount of time using the tools that I use for work and as a hobby so I know better than the devs of these tools what I'd like my tool to do.
-
-For a while my answer to this was neovim (vim before that). Neovim is a really solid code editor and it comes with the simplest and a really powerful configuration framework for building on top of it (emacs guys suck it (jk, I love emacs too)). I dove so deep into the lua rabit-hole that I trimmed my setup down to a few essential plugins and every other feature was implemented by me in my config. But over time, I've felt like the foundations are a bit "off". The primitives that it provides felt a bit inconsistent and like carrying too much weight for my taste.
-
-So as any mentally ill person would, I decided to spend a shit-load of time setting up a kakoune configuration that I could use many moons ago. And it just made sense. Kakoune's shell based extension framework is exactly the kind of simplicity that I was looking for. It is in no way a perfect editor but it fits in my hands perfectly. No file explorer, no build system, no fancy built-in language server, no split windows, etc. Nothing other than a simple code editor with a good-enough configuration language that lets you integrate kakoune with any other tool you want. I have unix blood in my veins. This kind of workflow turns my terminal into an IDE with the editor just being a part of it (instead of the other way around. Looking at you, emacs). I still love neovim and might go back to it in the future but kakoune feels right for now.
-
-My crotch has never been wetter. Kthanxby.
-
+<h1 id="kakoune-supremacy">Kakoune supremacy</h1>
+<p>I've tried a bunch of different code editors and IDEs over the years
+but nothing beats the control of a modal text editor. Even as "vi
+plugins" in normie editors and IDEs, the difference in user experience
+is massive. But I've come to crave more from my tools. By "more" I mean
+fewer features and better primitives to allow me to build my own
+experience on top of it. Because at the end of the day, I've spend a
+considerable amount of time using the tools that I use for work and as a
+hobby so I know better than the devs of these tools what I'd like my
+tool to do.</p>
+<p>For a while my answer to this was neovim (vim before that). Neovim is
+a really solid code editor and it comes with the simplest and a really
+powerful configuration framework for building on top of it (emacs guys
+suck it (jk, I love emacs too)). I dove so deep into the lua rabit-hole
+that I trimmed my setup down to a few essential plugins and every other
+feature was implemented by me in my config. But over time, I've felt
+like the foundations are a bit "off". The primitives that it provides
+felt a bit inconsistent and like carrying too much weight for my
+taste.</p>
+<p>So as any mentally ill person would, I decided to spend a shit-load
+of time setting up a kakoune configuration that I could use many moons
+ago. And it just made sense. Kakoune's shell based extension framework
+is exactly the kind of simplicity that I was looking for. It is in no
+way a perfect editor but it fits in my hands perfectly. No file
+explorer, no build system, no fancy built-in language server, no split
+windows, etc. Nothing other than a simple code editor with a good-enough
+configuration language that lets you integrate kakoune with any other
+tool you want. I have unix blood in my veins. This kind of workflow
+turns my terminal into an IDE with the editor just being a part of it
+(instead of the other way around. Looking at you, emacs). I still love
+neovim and might go back to it in the future but kakoune feels right for
+now.</p>
+<p>My crotch has never been wetter. Kthanxby.</p>
 
 ]]>
 </description></item></channel></rss>
