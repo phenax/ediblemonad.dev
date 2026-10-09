@@ -52,10 +52,9 @@
        (map (fn [[route route-cfg]] (route->pages route (mk-route-config route-cfg) config)))
        flatten))
 
-(defn exec-pandoc [^String inputfile ^String outputfile ^Configuration {:keys [title-prefix template headers footers stylesheets metadata]} & [{:keys [shift-heading-level-by]}]]
-  (println "Generating" outputfile "...")
+(defn exec-pandoc [^String inputfile ^String outputfile ^Configuration {:keys [title-prefix template headers footers stylesheets metadata]} & [{:keys [shift-heading-level-by standalone?]}]]
   (let [mkargs (fn [arg vals] (->> (remove nil? vals) (map #(conj [arg] %)) flatten))
-        args (flatten ["--from=gfm" "--to=html" "--standalone"
+        args (flatten ["--from=gfm" "--to=html" (if standalone? "--standalone" [])
                        (str "--shift-heading-level-by=" (or shift-heading-level-by 0))
                        (mkargs "--title-prefix" [title-prefix])
                        (mkargs "--css" stylesheets)
@@ -69,6 +68,14 @@
       (println "Failed with exit code" exit ":" err)
       (System/exit exit))))
 
+(defn render-markdown [^String content ^String tmp-dir]
+  (let [outpath (str (fs/create-temp-file {:dir tmp-dir}))
+        inpath (str (fs/create-temp-file {:dir tmp-dir}))]
+    (spit inpath content)
+    (exec-pandoc inpath outpath {} {:standalone? false})
+    (let [content-out (slurp outpath)]
+      content-out)))
+
 (defn gen-page [^Page page ^Configuration config ^String tmp-dir]
   (let [outpath (str (:output-dir config) "/" (:output page))
         rssoutpath (str (:output-dir config) "/" (name (:route page)) ".xml")
@@ -80,31 +87,40 @@
                               tmpfile))
         headers (->> page :layouts :before (#(concat (or (:headers config) []) [%])) (remove nil?) (map gen-template-file))
         footers (->> page :layouts :after (#(concat [%] (or (:footers config) []))) (remove nil?) (map gen-template-file))]
-
     (fs/create-dirs (fs/parent outpath))
     (spit templatepath (:content page))
     (when (:index? page)
-      (->> (ediblemonad.template/gen-rss-xml page) (spit rssoutpath)))
+      (->> (ediblemonad.template/gen-rss-xml [page] {:transform-content #(render-markdown % tmp-dir)})
+           (spit rssoutpath)))
     (exec-pandoc templatepath outpath
                  (merge config {:headers headers :footers footers :metadata @(:meta page)})
-                 {:shift-heading-level-by (if (:index? page) 1 -1)})))
+                 {:standalone? true :shift-heading-level-by (if (:index? page) 1 -1)})))
 
 (defn gen-site [^Configuration config]
   (let [pages (config->pages config)
-        render-all-rss-xml (fn []
-                             #_(comment must accumulate all articles)
-                             (->> pages
-                                  (filter :index?)
-                                  (map #(map (fn [a] (merge a {:index-page %})) (:articles %)))
-                                  flatten
-                                  ediblemonad.template/gen-rss-xml
-                                  (#(spit (str (:output-dir config) "/all.xml") %))))]
+        chunksize 15
+        pagechunks (partition chunksize chunksize nil pages)]
     (fs/delete-tree (:output-dir config))
     (fs/copy-tree (:static-dir config) (:output-dir config))
     #_{:clj-kondo/ignore [:invalid-arity]}
     (fs/with-temp-dir [tmp-dir {}]
-      (run! #(gen-page % config tmp-dir) pages)
-      #_(render-all-rss-xml))))
+      (let [do-chunk-work (fn [ps]
+                            (println "Generating" (str/join ", " (map :output ps)))
+                            (doall (pmap #(gen-page % config tmp-dir) ps)))]
+        (run! do-chunk-work pagechunks)))))
+
+#_(run! #(gen-page % config tmp-dir) pages)
 
 (defn -main []
   (->> (load-file "blog.config.clj") mk-configuration gen-site))
+
+#_(comment
+    render-all-rss-xml (fn []
+                         #_(comment TODO must accumulate all articles)
+                         (->> pages
+                              (filter :index?)
+                              (map #(map (fn [a] (merge a {:index-page %})) (:articles %)))
+                              flatten
+                              ediblemonad.template/gen-rss-xml
+                              (#(spit (str (:output-dir config) "/all.xml") %)))))
+

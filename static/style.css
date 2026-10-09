@@ -249,6 +249,11 @@ li:has(.card) {
   margin: auto;
 }
 
+.comments-container {
+  --border-top: 1px solid red;
+  --padding-bottom: 1rem;
+}
+
 .breadcrumbs {
   padding: 0.5rem var(--page-h-padding);
   max-width: var(--page-max-width);

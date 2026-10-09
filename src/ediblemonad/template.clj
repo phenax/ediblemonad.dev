@@ -25,7 +25,7 @@
 
 (defn make-link [href text & [attrs]] (elem :a (merge (or attrs {}) {:href href}) text))
 
-(defn gen-rss-channel-xml [page]
+(defn gen-rss-channel-xml [page {:keys [transform-content]}]
   (let [meta @(:meta page)
         title (:title meta)
         description (:description meta)
@@ -39,7 +39,6 @@
                                      (#(str/replace-first % #"#\s+" ""))
                                      str/trim not-empty)
                             (:source-name article)))]
-    #_(comment Need to render the rss content with markdown)
     (elem :channel {}
           (elem :title {} (html-escape title))
           (elem :link {} link)
@@ -58,14 +57,14 @@
                             (elem :comments {} (article-link article))
                             (if (:date article) (elem :pubDate {} (:date article)) "")
                             (elem :description {}
-                                  (str "\n<![CDATA[\n" (:content article) "\n]]>\n")))))
+                                  (str "\n<![CDATA[\n" (transform-content (:content article)) "\n]]>\n")))))
                (str/join "\n")))))
 
-(defn gen-rss-xml [& pages]
+(defn gen-rss-xml [pages opts]
   (str
    "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n"
    (elem :rss {:version "2.0" :xmlns:atom "http://www.w3.org/2005/Atom"}
-         (apply str (map gen-rss-channel-xml pages)))))
+         (apply str (map #(gen-rss-channel-xml % opts) pages)))))
 
 (defn external-link [href text] (make-link href text {:target "_blank _parent" :rel "noopener"}))
 
@@ -109,7 +108,7 @@
                                         (elem :span {:class "card-date"} date)
                                         "")))))
    :show-articles (fn [page render-item & [{:keys [hide-rss-link & opts]}]]
-                    (let [title "RSS stuff"
+                    (let [title (str "ediblemonad.dev/" (name (:route page)))
                           link (str "https://ediblemonad.dev/" (name (:route page)) ".xml")]
                       (str
                        (elem :link {:rel "alternate" :type "application/rss+xml" :href link :title title})
@@ -128,7 +127,8 @@
                       index? (wrap home-link separator current-mark)
                       :else (wrap home-link separator route-link separator current-mark))))
    :comment-section (fn []
-                      (elem :div {:id "comment"}
+                      (elem :div {:id "comment" :class "centered-content"}
+                            (elem :hr {})
                             (elem :script {:src "https://giscus.app/client.js"
                                            :data-repo "phenax/ediblemonad.dev"
                                            :data-repo-id "MDEwOlJlcG9zaXRvcnk3NTY4OTA5MQ=="
@@ -138,7 +138,7 @@
                                            :data-strict "0"
                                            :data-reactions-enabled "1"
                                            :data-emit-metadata "0"
-                                           :data-input-position "bottom"
+                                           :data-input-position "top"
                                            :data-theme "dark"
                                            :data-lang "en"
                                            :crossorigin "anonymous"
