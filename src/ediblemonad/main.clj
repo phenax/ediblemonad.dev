@@ -19,26 +19,34 @@
 (defn route->pages-articles [^symbol route ^RouteConfig route-cfg ^Configuration config]
   (let [{:keys [pages-dir]} config
         route-name (name route)
-        page-for (fn [src out]
+        page-for (fn [src]
                    (let [source-path (str src)
                          source-name (str/replace (fs/file-name source-path) #".md$" "")
-                         date (re-find #"\d{4}-\d{2}-\d{2}" source-name)]
-                     (mk-page {:output (str out) :source source-path :source-name source-name
+                         index? (= source-name "+index")
+                         slug (if index? source-name
+                                  (or (some->> (:article-slug route-cfg)
+                                               (#(re-find % source-name))
+                                               (#(or (second %) (first %)))
+                                               not-empty)
+                                      source-name))
+                         date (re-find #"\d{4}-\d{2}-\d{2}" source-name)
+                         out-path (if index?
+                                    (str route-name "/index.html")
+                                    (str route-name "/" slug ".html"))]
+                     (mk-page {:output out-path :source source-path :slug slug
                                :date date :route-cfg route-cfg :route route})))
         existing #(when (fs/exists? %) %)
-        layouts {:before (some->> (str pages-dir "/" route-name "/+before.html") existing)
-                 :after (some->> (str pages-dir "/" route-name "/+after.html") existing)}
-        articles (->>
-                  (fs/glob (str pages-dir "/" route-name) "*.md")
-                  (remove reserved-path?)
-                  (sort #(compare %2 %1))
-                  (map #(page-for % (str route-name "/" (str/replace (fs/file-name %) #".md$" ".html"))))
-                  (map #(merge % {:layouts layouts}))
-                  (map #(ediblemonad.template/load-page-template config %)))
-        index-page (->>
-                    (page-for (str pages-dir "/" route-name "/+index.md") (str route-name "/index.html"))
-                    (#(merge % {:articles articles :index? true}))
-                    (ediblemonad.template/load-page-template config))
+        layouts {:before (existing (str pages-dir "/" route-name "/+before.html"))
+                 :after (existing (str pages-dir "/" route-name "/+after.html"))}
+        articles (->> (fs/glob (str pages-dir "/" route-name) "*.md")
+                      (remove reserved-path?)
+                      (sort #(compare %2 %1))
+                      (map #(page-for %))
+                      (map #(merge % {:layouts layouts}))
+                      (map #(ediblemonad.template/load-page-template config %)))
+        index-page (->> (page-for (str pages-dir "/" route-name "/+index.md"))
+                        (#(merge % {:articles articles :index? true}))
+                        (ediblemonad.template/load-page-template config))
         pages (if (:article-pages? route-cfg) (concat [index-page] articles) [index-page])]
     (into [] pages)))
 
@@ -104,15 +112,21 @@
     (fs/copy-tree (:static-dir config) (:output-dir config))
     #_{:clj-kondo/ignore [:invalid-arity]}
     (fs/with-temp-dir [tmp-dir {}]
-      (let [do-chunk-work (fn [ps]
-                            (println "Generating" (str/join ", " (map :output ps)))
-                            (doall (pmap #(gen-page % config tmp-dir) ps)))]
-        (run! do-chunk-work pagechunks)))))
+      (if (:build-sync? config)
+        (run! #(do (println "Generating" (:output %))
+                   (gen-page % config tmp-dir)) pages)
+        (let [do-chunk-work (fn [ps]
+                              (println "Generating" (str/join ", " (map :output ps)))
+                              (doall (pmap #(gen-page % config tmp-dir) ps)))]
+          (run! do-chunk-work pagechunks))))))
 
-#_(run! #(gen-page % config tmp-dir) pages)
+(defn override-config [^Configuration config]
+  (if (nil? (some #{"--sync"} *command-line-args*))
+    config
+    (merge config {:build-sync? true})))
 
-(defn -main []
-  (->> (load-file "blog.config.clj") mk-configuration gen-site))
+(defn -main [& [_]]
+  (->> (load-file "blog.config.clj") mk-configuration override-config gen-site))
 
 #_(comment
     render-all-rss-xml (fn []

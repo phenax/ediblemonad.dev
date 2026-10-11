@@ -1,5 +1,5 @@
-build:
-  time bb r
+build *args:
+  time bb r {{args}}
 
 serve:
   npx serve -p 5000 ./build

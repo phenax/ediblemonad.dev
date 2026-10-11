@@ -30,7 +30,7 @@
         title (:title meta)
         description (:description meta)
         link (str "https://ediblemonad.dev/" (name (:route page)))
-        article-link #(str link "/" (:source-name %))
+        article-link #(str link "/" (:slug %))
         article-title (fn [article]
                         (or (:rsstitle @(:meta article))
                             (:title @(:meta article))
@@ -38,7 +38,7 @@
                                      (filter #(str/starts-with? % "# ")) first
                                      (#(str/replace-first % #"#\s+" ""))
                                      str/trim not-empty)
-                            (:source-name article)))]
+                            (:slug article)))]
     (elem :channel {}
           (elem :title {} (html-escape title))
           (elem :link {} link)
@@ -51,7 +51,7 @@
           (->> (:articles page)
                (map (fn [article]
                       (elem :item {}
-                            (elem :guid {} (:source-name article))
+                            (elem :guid {} (:slug article))
                             (elem :title {} (html-escape (article-title article)))
                             (elem :link {} (article-link article))
                             (elem :comments {} (article-link article))
@@ -88,16 +88,16 @@
             (elem :div {:class "image-container"}
                   (elem :video (merge attrs {:src src :loading "lazy" :preload "none"
                                              :controls true :autoplay "autoplay" :muted "true" :loop "loop"}))))
-   :inline-article-card (fn [{:keys [open-text]} ^Page {:keys [route route-cfg source-name content date]}]
-                          (let [href (get-page-link route-cfg route source-name)]
+   :inline-article-card (fn [{:keys [open-text]} ^Page {:keys [route route-cfg slug content date]}]
+                          (let [href (get-page-link route-cfg route slug)]
                             (elem :li {:class "inline-card"}
                                   "\n\n" content "\n\n" (elem :div {:class "post-date"} date)
                                   (elem :div {:class "inline-card-footer text-sm"}
                                         (when (:article-pages? route-cfg)
                                           (make-link href (or open-text "leave a comment") {}))))))
-   :link-article-card (fn [_opts ^Page {:keys [meta route output route-cfg source-name date]}]
+   :link-article-card (fn [_opts ^Page {:keys [meta route output route-cfg slug date]}]
                         (let [{:keys [title description]} @meta
-                              href (get-page-link route-cfg route source-name)]
+                              href (get-page-link route-cfg route slug)]
                           (elem :li {}
                                 (elem :a {:href href :class "card"}
                                       (elem :div {:class "card-title"} (or title output))
@@ -116,11 +116,11 @@
                            (elem :div {:style "text-align: right;"} (external-link link "RSS")))
                        (apply elem :ul {:class "card-container"}
                               (map #(render-item opts %) (:articles page))))))
-   :breadcrumbs (fn [{:keys [route route-cfg source-name index?]}]
+   :breadcrumbs (fn [{:keys [route route-cfg slug index?]}]
                   (let [home-link (make-link "/" "home")
                         separator (elem :span {} "/")
                         route-link (make-link (get-page-link route-cfg route) (name route))
-                        current-mark (elem :span {} (if index? (name route) (or source-name ".")))
+                        current-mark (elem :span {} (if index? (name route) (or slug ".")))
                         wrap (fn [& args] (apply elem :div {:class "centered-content breadcrumbs"} args))]
                     (cond
                       (= :home route) ""

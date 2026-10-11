@@ -8,7 +8,7 @@
  :stylesheets ["/style.css"]
  :routes {:home {:output "index.html"}
           :projects {:type :articles :article-pages? false}
-          :creative-coding {:type :articles}
+          :creative-coding {:type :articles :article-slug #"^\d+-(.*)"}
           :coding4fun {:type :articles}
           :tools {:type :articles}
           :games {:type :articles}
