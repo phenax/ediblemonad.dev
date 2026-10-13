@@ -89,13 +89,13 @@
                   (elem :video (merge attrs {:src src :loading "lazy" :preload "none"
                                              :controls true :autoplay "autoplay" :muted "true" :loop "loop"}))))
    :build-year (fn [] (.format (java.text.SimpleDateFormat. "yyyy") (new java.util.Date)))
-   :inline-article-card (fn [{:keys [open-text]} ^Page {:keys [route route-cfg slug content date]}]
+   :inline-article-card (fn [{:keys [open-text]} ^Page {:keys [route route-cfg slug embedded-content date]}]
                           (let [href (get-page-link route-cfg route slug)]
                             (elem :li {:class "inline-card"}
-                                  "\n\n" content "\n\n" (elem :div {:class "post-date"} date)
+                                  "\n\n" embedded-content "\n\n" (elem :div {:class "post-date"} date)
                                   (elem :div {:class "inline-card-footer text-sm"}
                                         (when (:article-pages? route-cfg)
-                                          (make-link href (or open-text "leave a comment") {}))))))
+                                          (make-link href (or open-text "open/comment") {}))))))
    :link-article-card (fn [_opts ^Page {:keys [meta route output route-cfg slug date]}]
                         (let [{:keys [title description]} @meta
                               href (get-page-link route-cfg route slug)]
@@ -108,12 +108,12 @@
                                       (if (not-empty date)
                                         (elem :span {:class "card-date"} date)
                                         "")))))
-   :show-articles (fn [page render-item & [{:keys [hide-rss-link & opts]}]]
+   :show-articles (fn [page render-item & [opts]]
                     (let [title (str "ediblemonad.dev/" (name (:route page)))
                           link (str "https://ediblemonad.dev/" (name (:route page)) ".xml")]
                       (str
                        (elem :link {:rel "alternate" :type "application/rss+xml" :href link :title title})
-                       (if hide-rss-link ""
+                       (if (:hide-rss-link opts) ""
                            (elem :div {:style "text-align: right;"} (external-link link "RSS")))
                        (apply elem :ul {:class "card-container"}
                               (map #(render-item opts %) (:articles page))))))
@@ -158,7 +158,8 @@
     (eval-template-string contents config extra-bindings)))
 
 (defn load-page-template [^Configuration config ^Page page & [^hash-map extra-bindings]]
-  (let [bindings (merge (or extra-bindings {}) {:articles (:articles page) :page page})
-        {:keys [content meta]} (eval-template-file (:source page) config bindings)]
-    (merge page {:content content :meta meta})))
+  (let [bindings (merge (or extra-bindings {}) {:articles (:articles page) :page page :embedded? false})
+        {:keys [content meta]} (eval-template-file (:source page) config bindings)
+        embedded (eval-template-file (:source page) config (merge bindings {:embedded? true}))]
+    (merge page {:content content :embedded-content (:content embedded) :meta meta})))
 

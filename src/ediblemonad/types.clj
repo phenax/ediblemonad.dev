@@ -1,6 +1,6 @@
 (ns ediblemonad.types)
 
-(defrecord Page [output source slug route route-cfg articles layouts content date meta index?])
+(defrecord Page [output source slug route route-cfg articles layouts content embedded-content date meta index?])
 
 (defn mk-page [map]
   (map->Page (merge {:layouts {} :articles [] :slug "" :meta (atom {}) :index? false} map)))

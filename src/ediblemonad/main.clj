@@ -137,6 +137,5 @@
                               flatten
                               MAKE-PAGE
                               ediblemonad.template/gen-rss-xml
-                              (#(spit (str (:output-dir config) "/all.xml") %))))
-   )
+                              (#(spit (str (:output-dir config) "/all.xml") %)))))
 
