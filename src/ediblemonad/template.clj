@@ -88,6 +88,7 @@
             (elem :div {:class "image-container"}
                   (elem :video (merge attrs {:src src :loading "lazy" :preload "none"
                                              :controls true :autoplay "autoplay" :muted "true" :loop "loop"}))))
+   :build-year (fn [] (.format (java.text.SimpleDateFormat. "yyyy") (new java.util.Date)))
    :inline-article-card (fn [{:keys [open-text]} ^Page {:keys [route route-cfg slug content date]}]
                           (let [href (get-page-link route-cfg route slug)]
                             (elem :li {:class "inline-card"}
@@ -120,12 +121,13 @@
                   (let [home-link (make-link "/" "home")
                         separator (elem :span {} "/")
                         route-link (make-link (get-page-link route-cfg route) (name route))
-                        current-mark (elem :span {} (if index? (name route) (or slug ".")))
+                        current-mark #(elem :span {} %)
                         wrap (fn [& args] (apply elem :div {:class "centered-content breadcrumbs"} args))]
                     (cond
                       (= :home route) ""
-                      index? (wrap home-link separator current-mark)
-                      :else (wrap home-link separator route-link separator current-mark))))
+                      index? (wrap home-link separator (current-mark (name route)))
+                      (not= (:type route-cfg) :articles) (wrap home-link separator (current-mark (name route)))
+                      :else (wrap home-link separator route-link separator (current-mark (or slug "."))))))
    :comment-section (fn []
                       (elem :div {:id "comment" :class "centered-content"}
                             (elem :hr {})

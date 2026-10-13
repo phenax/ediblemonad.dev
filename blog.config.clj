@@ -7,13 +7,17 @@
  :template "pages/template.html"
  :stylesheets ["/style.css"]
  :routes {:home {:output "index.html"}
-          :projects {:type :articles :article-pages? false}
-          :creative-coding {:type :articles :article-slug #"^\d+-(.*)"}
+          :rss {}
+          :blog {:type :articles}
           :coding4fun {:type :articles}
-          :tools {:type :articles}
+          :creative-coding {:type :articles :article-slug #"^\d+-(.*)"}
           :games {:type :articles}
           :hardware {:type :articles}
           :music {:type :articles}
+          :projects {:type :articles :article-pages? false}
           :random {:type :articles}
-          :blog {:type :articles}}}
+          :tools {:type :articles}}}
 
+#_(comment desmos)
+#_(comment whittling)
+#_(comment hardware builds)
