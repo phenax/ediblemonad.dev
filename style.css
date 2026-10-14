@@ -141,9 +141,11 @@ em {
 }
 
 .centered-content {
+  display: block;
   padding: var(--page-v-padding) var(--page-h-padding);
   max-width: var(--page-max-width);
   margin: auto;
+  width: 100%;
 }
 
 a {

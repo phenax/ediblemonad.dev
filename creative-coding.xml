@@ -17,6 +17,26 @@
 <div class="image-container"><video src="/cc/kaleidoblot.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/kaleidos.glsl">code</a></p>
+<p>I see a butterfly... turning into another butterfly... turning into
+another butterfly... turning into... eh I'm bored.</p>
+
+]]>
+</description></item>
+<item><guid>adopted-moth</guid>
+<title>Adopted moth</title>
+<link>https://ediblemonad.dev/creative-coding/adopted-moth</link>
+<comments>https://ediblemonad.dev/creative-coding/adopted-moth</comments>
+
+<description>
+<![CDATA[
+<h1 id="adopted-moth">Adopted moth</h1>
+<div class="image-container"><img src="/cc/adopted-moth.png" alt="Adopted moth" loading="lazy"></img></div>
+
+<p><a target="_blank _parent" rel="noopener" href="/cc/adopted-moth.4k.png">3840x2160</a>
+<br />
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/trtrfr.glsl">code</a></p>
+<p>Fun fact: moths fly towards light because night-night really
+scary</p>
 
 ]]>
 </description></item>
@@ -31,6 +51,7 @@
 <div class="image-container"><video src="/cc/time.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/time.glsl">code</a></p>
+<p>I don't like eyeballs</p>
 
 ]]>
 </description></item>
@@ -73,6 +94,7 @@
 <div class="image-container"><img src="/cc/cloak.png" alt="Cloak" loading="lazy"></img></div>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/cloak.glsl">code</a></p>
+<p>He's not wearing anything under that</p>
 
 ]]>
 </description></item>
@@ -101,8 +123,9 @@
 <div class="image-container"><video src="/cc/mitosis.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/mitosis.glsl">code</a>
-<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/4-im-a-sinner/main.ua">(older
-uiua version)</a></p>
+<br />
+<a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/4-im-a-sinner/main.ua">older
+uiua version</a></p>
 
 ]]>
 </description></item>
