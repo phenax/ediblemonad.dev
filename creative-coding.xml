@@ -55,6 +55,22 @@ scary</p>
 
 ]]>
 </description></item>
+<item><guid>koduval</guid>
+<title>Koduval</title>
+<link>https://ediblemonad.dev/creative-coding/koduval</link>
+<comments>https://ediblemonad.dev/creative-coding/koduval</comments>
+
+<description>
+<![CDATA[
+<h1 id="koduval">Koduval</h1>
+<div class="image-container"><img src="/cc/koduval.png" alt="Koduval" loading="lazy"></img></div>
+
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/koduval.glsl">code</a></p>
+<p>Koduval is a tool used for cutting open coconuts (among other things)
+in south India.</p>
+
+]]>
+</description></item>
 <item><guid>vase</guid>
 <title>Vase</title>
 <link>https://ediblemonad.dev/creative-coding/vase</link>
