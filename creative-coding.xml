@@ -71,6 +71,20 @@ in south India.</p>
 
 ]]>
 </description></item>
+<item><guid>placenta</guid>
+<title>Placenta</title>
+<link>https://ediblemonad.dev/creative-coding/placenta</link>
+<comments>https://ediblemonad.dev/creative-coding/placenta</comments>
+
+<description>
+<![CDATA[
+<h1 id="placenta">Placenta</h1>
+<div class="image-container"><img src="/cc/placenta.png" alt="Placenta" loading="lazy"></img></div>
+
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/placenta.glsl">code</a></p>
+
+]]>
+</description></item>
 <item><guid>vase</guid>
 <title>Vase</title>
 <link>https://ediblemonad.dev/creative-coding/vase</link>
@@ -170,20 +184,6 @@ uiua version</a></p>
 <div class="image-container"><video src="/cc/flow.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/flow.glsl">code</a></p>
-
-]]>
-</description></item>
-<item><guid>ike-whoaah</guid>
-<title>IKE-whoah</title>
-<link>https://ediblemonad.dev/creative-coding/ike-whoaah</link>
-<comments>https://ediblemonad.dev/creative-coding/ike-whoaah</comments>
-
-<description>
-<![CDATA[
-<h1 id="ike-whoah">IKE-whoah</h1>
-<div class="image-container"><img src="/cc/ike-whoaah.gif" alt="IKE-whoah" loading="lazy"></img></div>
-
-<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/uiua-creative-coding/tree/7-dan-flashes/main.ua">code</a></p>
 
 ]]>
 </description></item>
