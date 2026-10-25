@@ -69,6 +69,21 @@ scary</p>
 
 ]]>
 </description></item>
+<item><guid>icecream-sandwich</guid>
+<title>Ice cream sandwich</title>
+<link>https://ediblemonad.dev/creative-coding/icecream-sandwich</link>
+<comments>https://ediblemonad.dev/creative-coding/icecream-sandwich</comments>
+
+<description>
+<![CDATA[
+<h1 id="ice-cream-sandwich">Ice cream sandwich</h1>
+<div class="image-container"><video src="/cc/icecream-sandwich.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/icecream.glsl">code</a></p>
+<p>I like ice cream sandwich</p>
+
+]]>
+</description></item>
 <item><guid>koduval</guid>
 <title>Koduval</title>
 <link>https://ediblemonad.dev/creative-coding/koduval</link>
