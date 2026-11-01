@@ -6,6 +6,8 @@
  :footers ["pages/footer.html"]
  :template "pages/template.html"
  :stylesheets ["/style.css"]
+ :default-route :home
+ :exclude-from-rss [:projects]
  :routes {:home {:output "index.html"}
           :rss {}
           :blog {:type :articles}

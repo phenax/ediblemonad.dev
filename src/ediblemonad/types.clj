@@ -11,8 +11,8 @@
 (defn mk-route-config [map]
   (map->RouteConfig (merge {:type :page :article-pages? true} map)))
 
-(defrecord Configuration [output-dir pages-dir static-dir title-prefix headers footers template stylesheets routes])
+(defrecord Configuration [output-dir pages-dir static-dir title-prefix headers footers template stylesheets routes default-route exclude-from-rss])
 
 (defn mk-configuration [map]
-  (map->Configuration (merge {:output-dir "build" :title-prefix "Web" :footers [] :headers [] :stylesheets []} map)))
+  (map->Configuration (merge {:output-dir "build" :title-prefix "Web" :footers [] :headers [] :stylesheets [] :exclude-from-rss []} map)))
 

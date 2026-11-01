@@ -98,7 +98,7 @@
     (fs/create-dirs (fs/parent outpath))
     (spit templatepath (:content page))
     (when (:index? page)
-      (->> (ediblemonad.template/gen-rss-xml [page] {:transform-content #(render-markdown % tmp-dir)})
+      (->> (ediblemonad.template/gen-rss-xml page (:articles page) {:transform-content #(render-markdown % tmp-dir)})
            (spit rssoutpath)))
     (exec-pandoc templatepath outpath
                  (merge config {:headers headers :footers footers :metadata @(:meta page)})
@@ -106,6 +106,7 @@
 
 (defn gen-site [^Configuration config]
   (let [pages (config->pages config)
+        default-page (first (filter #(= (:default-route config) (:route %)) pages))
         chunksize 15
         pagechunks (partition chunksize chunksize nil pages)]
     (fs/delete-tree (:output-dir config))
@@ -117,8 +118,17 @@
                    (gen-page % config tmp-dir)) pages)
         (let [do-chunk-work (fn [ps]
                               (println "Generating" (str/join ", " (map :output ps)))
-                              (doall (pmap #(gen-page % config tmp-dir) ps)))]
-          (run! do-chunk-work pagechunks))))))
+                              (doall (pmap #(gen-page % config tmp-dir) ps)))
+              render-all-rss-xml (fn [] (->> pages
+                                             (filter :index?)
+                                             (remove #(some #{(:route %)} (:exclude-from-rss config)))
+                                             (map :articles)
+                                             flatten
+                                             (#(ediblemonad.template/gen-rss-xml default-page %
+                                                                                 {:transform-content (fn [f] (render-markdown f tmp-dir))}))
+                                             (#(spit (str (:output-dir config) "/all.xml") %))))]
+          (run! do-chunk-work pagechunks)
+          (render-all-rss-xml))))))
 
 (defn override-config [^Configuration config]
   (if (nil? (some #{"--sync"} *command-line-args*))
@@ -127,15 +137,4 @@
 
 (defn -main [& [_]]
   (->> (load-file "blog.config.clj") mk-configuration override-config gen-site))
-
-#_(comment
-    render-all-rss-xml (fn []
-                         #_(comment TODO must accumulate all articles)
-                         (->> pages
-                              (filter :index?)
-                              (map #(map (fn [a] (merge a {:index-page %})) (:articles %)))
-                              flatten
-                              MAKE-PAGE
-                              ediblemonad.template/gen-rss-xml
-                              (#(spit (str (:output-dir config) "/all.xml") %)))))
 

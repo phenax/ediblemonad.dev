@@ -2,6 +2,8 @@
 
 # Hey there, I'm Akshay
 
+<link rel="alternate" type="application/rss+xml" href="/all.xml" title="Akshay's posts" />
+
 ---
 
 I make stuff:

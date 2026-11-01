@@ -2,6 +2,7 @@
 
 RSS feeds for the things I do here.
 
+- <%= (external-link "/all.xml" "all") %>
 <%= (let [excluded [:projects]]
   (->> (load-file "blog.config.clj")
        :routes

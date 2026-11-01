@@ -25,12 +25,12 @@
 
 (defn make-link [href text & [attrs]] (elem :a (merge (or attrs {}) {:href href}) text))
 
-(defn gen-rss-channel-xml [page {:keys [transform-content]}]
+(defn gen-rss-channel-xml [page articles {:keys [transform-content]}]
   (let [meta @(:meta page)
         title (:title meta)
         description (:description meta)
         link (str "https://ediblemonad.dev/" (name (:route page)))
-        article-link #(str link "/" (:slug %))
+        article-link #(str "https://ediblemonad.dev/" (name (:route %)) "/" (:slug %))
         article-title (fn [article]
                         (or (:rsstitle @(:meta article))
                             (:title @(:meta article))
@@ -48,7 +48,7 @@
                 (elem :title {} "Ediblemonad")
                 (elem :link {} "https://ediblemonad.dev"))
           (if description (elem :description {} (html-escape description)) "")
-          (->> (:articles page)
+          (->> articles
                (map (fn [article]
                       (elem :item {}
                             (elem :guid {} (:slug article))
@@ -60,11 +60,11 @@
                                   (str "\n<![CDATA[\n" (transform-content (:content article)) "\n]]>\n")))))
                (str/join "\n")))))
 
-(defn gen-rss-xml [pages opts]
+(defn gen-rss-xml [page articles opts]
   (str
    "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n"
    (elem :rss {:version "2.0" :xmlns:atom "http://www.w3.org/2005/Atom"}
-         (apply str (map #(gen-rss-channel-xml % opts) pages)))))
+         (gen-rss-channel-xml page articles opts))))
 
 (defn external-link [href text] (make-link href text {:target "_blank _parent" :rel "noopener"}))
 
@@ -109,10 +109,10 @@
                                         (elem :span {:class "card-date"} date)
                                         "")))))
    :show-articles (fn [page render-item & [opts]]
-                    (let [title (str "ediblemonad.dev/" (name (:route page)))
-                          link (str "https://ediblemonad.dev/" (name (:route page)) ".xml")]
+                    (let [link-name (str "ediblemonad/" (name (:route page)))
+                          link (str "/" (name (:route page)) ".xml")]
                       (str
-                       (elem :link {:rel "alternate" :type "application/rss+xml" :href link :title title})
+                       (elem :link {:rel "alternate" :type "application/rss+xml" :href link :title link-name})
                        (if (:hide-rss-link opts) ""
                            (elem :div {:style "text-align: right;"} (external-link link "RSS")))
                        (apply elem :ul {:class "card-container"}
