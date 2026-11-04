@@ -80,7 +80,7 @@
            ([] @(:meta context)))
    :image (fn [src title & [attrs]]
             (elem :div {:class "image-container"}
-                  (elem :img (merge attrs {:src src :alt title :loading "lazy"}))))
+                  (external-link src (elem :img (merge attrs {:src src :alt title :loading "lazy"})))))
    :audio (fn [src & [attrs]]
             (elem :div {:class "image-container"}
                   (elem :audio (merge attrs {:src src :controls true}))))
