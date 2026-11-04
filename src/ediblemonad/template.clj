@@ -25,12 +25,14 @@
 
 (defn make-link [href text & [attrs]] (elem :a (merge (or attrs {}) {:href href}) text))
 
+(def page-article-link #(str "/" (name (:route %)) "/" (:slug %)))
+
 (defn gen-rss-channel-xml [page articles {:keys [transform-content]}]
   (let [meta @(:meta page)
         title (:title meta)
         description (:description meta)
         link (str "https://ediblemonad.dev/" (name (:route page)))
-        article-link #(str "https://ediblemonad.dev/" (name (:route %)) "/" (:slug %))
+        article-link #(str "https://ediblemonad.dev" (page-article-link %))
         article-title (fn [article]
                         (or (:rsstitle @(:meta article))
                             (:title @(:meta article))
@@ -75,6 +77,7 @@
            (let [href (get-page-link (get (:routes config) (if (list? route) (first route) route)) route)]
              (make-link href text attrs)))
    :external-link external-link
+   :embedded-article-link (fn [page text & [attrs]] (make-link (page-article-link page) text attrs))
    :meta (fn
            ([meta] (swap! (:meta context) (fn [m] (merge m meta))) @(:meta context))
            ([] @(:meta context)))
@@ -93,9 +96,9 @@
                           (let [href (get-page-link route-cfg route slug)]
                             (elem :li {:class "inline-card"}
                                   "\n\n" embedded-content "\n\n" (elem :div {:class "post-date"} date)
-                                  (elem :div {:class "inline-card-footer text-sm"}
+                                  (elem :div {:class "inline-card-footer"}
                                         (when (:article-pages? route-cfg)
-                                          (make-link href (or open-text "open/comment") {}))))))
+                                          (make-link href (or open-text "open/comment") {:class "inline-card-footer-open-link"}))))))
    :link-article-card (fn [_opts ^Page {:keys [meta route output route-cfg slug date]}]
                         (let [{:keys [title description]} @meta
                               href (get-page-link route-cfg route slug)]

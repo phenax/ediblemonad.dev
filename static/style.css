@@ -1,5 +1,5 @@
 :root {
-  --color-accent: #007950;
+  --color-accent: #00b090;
   --page-h-padding: 1.7rem;
   --page-v-padding: 1.3rem;
   --page-max-width: 1000px;
@@ -203,11 +203,16 @@ li:has(.card) {
   padding: 1rem 1rem 0rem !important;
   margin-bottom: 3rem;
   list-style: none;
+  position: relative;
 }
 
 .inline-card-footer {
   text-align: right;
   padding-bottom: 0.7rem;
+}
+
+.inline-card-footer-open-link {
+  font-size: 0.84rem;
 }
 
 .post-date {
@@ -227,6 +232,18 @@ li:has(.card) {
 .image-container video {
   width: 100%;
   max-width: 720px;
+}
+
+.img-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.img-table>* {
+  flex: 1 1 calc(50% - 8px);
 }
 
 .header-secondary {
@@ -305,6 +322,10 @@ li:has(.card) {
   :root {
     --page-h-padding: 1.0rem;
     --page-v-padding: 1.0rem;
+  }
+
+  .img-table>* {
+    flex: 1 1 100%;
   }
 }
 
