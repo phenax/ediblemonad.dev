@@ -1,5 +1,5 @@
 :root {
-  --color-accent: #51e9a0;
+  --color-accent: #00b090;
   --page-h-padding: 1.7rem;
   --page-v-padding: 1.3rem;
   --page-max-width: 1000px;
@@ -8,15 +8,17 @@
   --color-gray-3: #333;
   --color-gray-5: #555;
   --color-gray-8: #888;
-  --color-background-1: #000;
-  --color-background-2: var(--color-gray-1);
-  --color-background-3: var(--color-gray-2);
-  --color-foreground-1: #ddd;
-  --color-foreground-2: #fff;
+  --color-background-1: #faf9f8;
+  --color-background-codeblock: #232828;
+  --color-background-codeinline: #dad9d8;
+  --color-foreground-default: #334433;
+  --color-foreground-light: var(--color-foreground-default);
+  --color-foreground-codeblock: #efefef;
+  --color-border: #99aa99;
 
   font-size: 14px;
   font-family: monospace;
-  color: var(--color-foreground-1);
+  color: var(--color-foreground-default);
 }
 
 html,
@@ -27,7 +29,7 @@ body {
 
 hr {
   border: none;
-  border-bottom: 1px solid var(--color-gray-2);
+  border-bottom: 1px solid var(--color-border);
   margin: 1rem 0 1.5rem;
 }
 
@@ -36,8 +38,9 @@ p {
 }
 
 pre {
-  background-color: var(--color-background-2);
+  background-color: var(--color-background-codeblock);
   padding: 1rem;
+  color: var(--color-foreground-codeblock);
 }
 
 pre code {
@@ -47,9 +50,9 @@ pre code {
 }
 
 code {
-  background-color: var(--color-background-3);
+  background-color: var(--color-background-codeinline);
   padding: 0.1em 0.5em;
-  color: var(--color-foreground-2);
+  color: var(--color-foreground-light);
 }
 
 h1,
@@ -60,7 +63,7 @@ h5 {
   font-weight: 500;
   padding-bottom: 0.7em;
   font-weight: bolder;
-  color: var(--color-foreground-2);
+  color: var(--color-foreground-default);
   line-height: 1.3em;
   padding-top: 0.3rem;
 }
@@ -105,7 +108,7 @@ footer hr {
 }
 
 .math {
-  background-color: var(--color-background-2);
+  background-color: var(--color-background-codeinline);
 }
 
 .display.math {
@@ -114,6 +117,7 @@ footer hr {
 
 .inline.math {
   padding: 0 0.3em;
+  display: inline-block;
 }
 
 sub {
@@ -151,6 +155,7 @@ em {
 a {
   color: var(--color-accent);
   text-decoration: none;
+  font-weight: bold;
 }
 
 a:hover {
@@ -159,7 +164,7 @@ a:hover {
 
 .card {
   display: block;
-  border: 1px solid var(--color-gray-2);
+  border: 1px solid var(--color-border);
   padding: 0.6rem 1rem !important;
   margin-bottom: 1rem;
   text-decoration: none !important;
@@ -194,15 +199,20 @@ li:has(.card) {
 }
 
 .inline-card {
-  border: 1px solid var(--color-gray-2);
+  border: 1px solid var(--color-border);
   padding: 1rem 1rem 0rem !important;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   list-style: none;
+  position: relative;
 }
 
 .inline-card-footer {
   text-align: right;
   padding-bottom: 0.7rem;
+}
+
+.inline-card-footer-open-link {
+  font-size: 0.84rem;
 }
 
 .post-date {
@@ -222,6 +232,18 @@ li:has(.card) {
 .image-container video {
   width: 100%;
   max-width: 720px;
+}
+
+.img-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.img-table>* {
+  flex: 1 1 calc(50% - 8px);
 }
 
 .header-secondary {
@@ -264,7 +286,7 @@ li:has(.card) {
   gap: 0.5rem;
   justify-content: flex-start;
   font-size: 0.9rem;
-  border-bottom: 1px solid var(--color-gray-1);
+  border-bottom: 1px solid var(--color-border);
   overflow-wrap: break-word;
   flex-wrap: wrap;
 }
@@ -300,6 +322,10 @@ li:has(.card) {
   :root {
     --page-h-padding: 1.0rem;
     --page-v-padding: 1.0rem;
+  }
+
+  .img-table>* {
+    flex: 1 1 100%;
   }
 }
 

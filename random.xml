@@ -58,9 +58,9 @@ mesmerizing.</p>
   </thead>
   <tbody>
     <tr>
-      <td><div class="image-container"><img style="max-height: 400px;" src="/images/jumping.jpeg" alt="Jumping spider" loading="lazy"></img></div></td>
-      <td><div class="image-container"><img style="max-height: 400px;" src="/images/huntsman.jpg" alt="Huntsman" loading="lazy"></img></div></td>
-      <td><div class="image-container"><img style="max-height: 400px;" src="/images/wood-orb-weaver.jpg" alt="Wood orb weaver" loading="lazy"></img></div></td>
+      <td><div class="image-container"><a target="_blank _parent" rel="noopener" href="/images/jumping.jpeg"><img style="max-height: 400px;" src="/images/jumping.jpeg" alt="Jumping spider" loading="lazy"></img></a></div></td>
+      <td><div class="image-container"><a target="_blank _parent" rel="noopener" href="/images/huntsman.jpg"><img style="max-height: 400px;" src="/images/huntsman.jpg" alt="Huntsman" loading="lazy"></img></a></div></td>
+      <td><div class="image-container"><a target="_blank _parent" rel="noopener" href="/images/wood-orb-weaver.jpg"><img style="max-height: 400px;" src="/images/wood-orb-weaver.jpg" alt="Wood orb weaver" loading="lazy"></img></a></div></td>
     </tr>
   </tbody>
 </table>
