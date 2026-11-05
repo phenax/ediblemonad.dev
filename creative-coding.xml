@@ -36,6 +36,21 @@ another butterfly... turning into... eh I'm bored.</p>
 
 ]]>
 </description></item>
+<item><guid>finally-safe</guid>
+<title>Finally safe</title>
+<link>https://ediblemonad.dev/creative-coding/finally-safe</link>
+<comments>https://ediblemonad.dev/creative-coding/finally-safe</comments>
+
+<description>
+<![CDATA[
+<h1 id="finally-safe">Finally safe</h1>
+<div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/safe.png"><img src="/cc/safe.png" alt="Finally safe" loading="lazy"></img></a></div>
+
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/cell.glsl">code</a></p>
+<p>He protec cuz he too afraid to attac</p>
+
+]]>
+</description></item>
 <item><guid>icecream-sandwich</guid>
 <title>Ice cream sandwich</title>
 <link>https://ediblemonad.dev/creative-coding/icecream-sandwich</link>
@@ -64,6 +79,21 @@ else.</p>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/time.glsl">code</a></p>
 <p>I don't like eyeballs</p>
+
+]]>
+</description></item>
+<item><guid>finally-safe</guid>
+<title>Finally safe</title>
+<link>https://ediblemonad.dev/creative-coding/finally-safe</link>
+<comments>https://ediblemonad.dev/creative-coding/finally-safe</comments>
+
+<description>
+<![CDATA[
+<h1 id="finally-safe">Finally safe</h1>
+<div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/safe.png"><img src="/cc/safe.png" alt="Finally safe" loading="lazy"></img></a></div>
+
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/cell.glsl">code</a></p>
+<p>He protec cuz he afraid of attac</p>
 
 ]]>
 </description></item>
