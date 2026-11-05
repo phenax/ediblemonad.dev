@@ -47,7 +47,8 @@ another butterfly... turning into... eh I'm bored.</p>
 <div class="image-container"><video src="/cc/icecream-sandwich.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/icecream.glsl">code</a></p>
-<p>I like ice cream sandwich</p>
+<p>I like ice cream sandwich. A lot more when I stop liking everything
+else.</p>
 
 ]]>
 </description></item>
@@ -66,25 +67,18 @@ another butterfly... turning into... eh I'm bored.</p>
 
 ]]>
 </description></item>
-<item><guid>flow</guid>
-<title>Flow (collection)</title>
-<link>https://ediblemonad.dev/creative-coding/flow</link>
-<comments>https://ediblemonad.dev/creative-coding/flow</comments>
+<item><guid>evolution</guid>
+<title>Evolution</title>
+<link>https://ediblemonad.dev/creative-coding/evolution</link>
+<comments>https://ediblemonad.dev/creative-coding/evolution</comments>
 
 <description>
 <![CDATA[
-<h1 id="flow-collection">Flow (collection)</h1>
-  <div class="img-table">
-    <div><h4>Flames</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.flames.png"><img src="/cc/flow/flow.FlowProgram.flames.png" alt="Flames" loading="lazy"></img></a></div></div>
-    <div><h4>Gentle</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.gentle.png"><img src="/cc/flow/flow.FlowProgram.gentle.png" alt="Gentle" loading="lazy"></img></a></div></div>
-    <div><h4>Now and then</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.nowandthen.png"><img src="/cc/flow/flow.FlowProgram.nowandthen.png" alt="Now and then" loading="lazy"></img></a></div></div>
-    <div><h4>Stuck in beetween</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.stuckinbetween.png"><img src="/cc/flow/flow.FlowProgram.stuckinbetween.png" alt="Stuck in between" loading="lazy"></img></a></div></div>
-    <div><h4>Fibers</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.flow.png"><img src="/cc/flow/flow.FlowProgram.flow.png" alt="Fibers" loading="lazy"></img></a></div></div>
-    <div><h4>Doorway</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.hollow.png"><img src="/cc/flow/flow.FlowProgram.hollow.png" alt="Doorway" loading="lazy"></img></a></div></div>
-  </div>
+<h1 id="evolution">Evolution</h1>
+<div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.eye.png"><img src="/cc/flow/flow.FlowProgram.eye.png" alt="Evolution" loading="lazy"></img></a></div>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/kotlin/flow/FlowProgram.kt">code</a></p>
-<p>All about the flo, bro</p>
+<p>Order from chaos</p>
 
 ]]>
 </description></item>
@@ -104,6 +98,30 @@ in south India.</p>
 
 ]]>
 </description></item>
+<item><guid>flow</guid>
+<title>Flow (collection)</title>
+<link>https://ediblemonad.dev/creative-coding/flow</link>
+<comments>https://ediblemonad.dev/creative-coding/flow</comments>
+
+<description>
+<![CDATA[
+<h1 id="flow-collection">Flow (collection)</h1>
+<div class="img-table">
+  <div><h4>Flames</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.flames.png"><img src="/cc/flow/flow.FlowProgram.flames.png" alt="Flames" loading="lazy"></img></a></div></div>
+  <div><h4>Glide</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.gentle.png"><img src="/cc/flow/flow.FlowProgram.gentle.png" alt="Glide" loading="lazy"></img></a></div></div>
+
+  <div><h4>Now and then</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.nowandthen.png"><img src="/cc/flow/flow.FlowProgram.nowandthen.png" alt="Now and then" loading="lazy"></img></a></div></div>
+  <div><h4>Stuck in beetween</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.stuckinbetween.png"><img src="/cc/flow/flow.FlowProgram.stuckinbetween.png" alt="Stuck in between" loading="lazy"></img></a></div></div>
+  <div><h4>Doorway</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.hollow.png"><img src="/cc/flow/flow.FlowProgram.hollow.png" alt="Doorway" loading="lazy"></img></a></div></div>
+  <div><h4>Fibers</h4><div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/flow/flow.FlowProgram.flow.png"><img src="/cc/flow/flow.FlowProgram.flow.png" alt="Fibers" loading="lazy"></img></a></div></div>
+
+</div>
+
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/kotlin/flow/FlowProgram.kt">code</a></p>
+<p>All about the flo, bro</p>
+
+]]>
+</description></item>
 <item><guid>placenta</guid>
 <title>Placenta</title>
 <link>https://ediblemonad.dev/creative-coding/placenta</link>
@@ -115,6 +133,8 @@ in south India.</p>
 <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/placenta.png"><img src="/cc/placenta.png" alt="Placenta" loading="lazy"></img></a></div>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/placenta.glsl">code</a></p>
+<p>Placenta is an organ that develops in the uterus during pregnancy to
+connect the mother and the developing fetus.</p>
 
 ]]>
 </description></item>
@@ -273,21 +293,6 @@ uiua version</a></p>
 <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/vacation.png"><img src="/cc/vacation.png" alt="Vacation" loading="lazy"></img></a></div>
 
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/vacation.glsl">code</a></p>
-
-]]>
-</description></item>
-<item><guid>sql-mario-bros</guid>
-<title>SQL mario bros</title>
-<link>https://ediblemonad.dev/creative-coding/sql-mario-bros</link>
-<comments>https://ediblemonad.dev/creative-coding/sql-mario-bros</comments>
-
-<description>
-<![CDATA[
-<h1 id="sql-mario-bros">SQL mario bros</h1>
-<p>Using SQL to generate music.</p>
-<div class="image-container"><audio src="/cc/sql-mario-bros.mp3" controls="true"></audio></div>
-
-<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/sqlite-creative-coding/tree/src/supermariobros.audio.sql">code</a></p>
 
 ]]>
 </description></item>
