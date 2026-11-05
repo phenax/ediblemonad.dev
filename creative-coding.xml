@@ -22,20 +22,6 @@ another butterfly... turning into... eh I'm bored.</p>
 
 ]]>
 </description></item>
-<item><guid>cross</guid>
-<title>Cross</title>
-<link>https://ediblemonad.dev/creative-coding/cross</link>
-<comments>https://ediblemonad.dev/creative-coding/cross</comments>
-
-<description>
-<![CDATA[
-<h1 id="cross">Cross</h1>
-<div class="image-container"><video src="/cc/cross.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
-
-<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/kotlin/blood/BloodProgram.kt">code</a></p>
-
-]]>
-</description></item>
 <item><guid>finally-safe</guid>
 <title>Safe at last</title>
 <link>https://ediblemonad.dev/creative-coding/finally-safe</link>
@@ -51,19 +37,17 @@ another butterfly... turning into... eh I'm bored.</p>
 
 ]]>
 </description></item>
-<item><guid>icecream-sandwich</guid>
-<title>Ice cream sandwich</title>
-<link>https://ediblemonad.dev/creative-coding/icecream-sandwich</link>
-<comments>https://ediblemonad.dev/creative-coding/icecream-sandwich</comments>
+<item><guid>cross</guid>
+<title>Cross</title>
+<link>https://ediblemonad.dev/creative-coding/cross</link>
+<comments>https://ediblemonad.dev/creative-coding/cross</comments>
 
 <description>
 <![CDATA[
-<h1 id="ice-cream-sandwich">Ice cream sandwich</h1>
-<div class="image-container"><video src="/cc/icecream-sandwich.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+<h1 id="cross">Cross</h1>
+<div class="image-container"><video src="/cc/cross.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
 
-<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/icecream.glsl">code</a></p>
-<p>I like ice cream sandwich. A lot more when I stop liking everything
-else.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/kotlin/blood/BloodProgram.kt">code</a></p>
 
 ]]>
 </description></item>
@@ -97,19 +81,19 @@ else.</p>
 
 ]]>
 </description></item>
-<item><guid>koduval</guid>
-<title>Koduval</title>
-<link>https://ediblemonad.dev/creative-coding/koduval</link>
-<comments>https://ediblemonad.dev/creative-coding/koduval</comments>
+<item><guid>placenta</guid>
+<title>Placenta</title>
+<link>https://ediblemonad.dev/creative-coding/placenta</link>
+<comments>https://ediblemonad.dev/creative-coding/placenta</comments>
 
 <description>
 <![CDATA[
-<h1 id="koduval">Koduval</h1>
-<div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/koduval.png"><img src="/cc/koduval.png" alt="Koduval" loading="lazy"></img></a></div>
+<h1 id="placenta">Placenta</h1>
+<div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/placenta.png"><img src="/cc/placenta.png" alt="Placenta" loading="lazy"></img></a></div>
 
-<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/koduval.glsl">code</a></p>
-<p>Koduval is a tool used for cutting open coconuts (among other things)
-in south India.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/placenta.glsl">code</a></p>
+<p>Placenta is an organ that develops in the uterus during pregnancy to
+connect the mother and the developing fetus.</p>
 
 ]]>
 </description></item>
@@ -137,19 +121,35 @@ in south India.</p>
 
 ]]>
 </description></item>
-<item><guid>placenta</guid>
-<title>Placenta</title>
-<link>https://ediblemonad.dev/creative-coding/placenta</link>
-<comments>https://ediblemonad.dev/creative-coding/placenta</comments>
+<item><guid>koduval</guid>
+<title>Koduval</title>
+<link>https://ediblemonad.dev/creative-coding/koduval</link>
+<comments>https://ediblemonad.dev/creative-coding/koduval</comments>
 
 <description>
 <![CDATA[
-<h1 id="placenta">Placenta</h1>
-<div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/placenta.png"><img src="/cc/placenta.png" alt="Placenta" loading="lazy"></img></a></div>
+<h1 id="koduval">Koduval</h1>
+<div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/koduval.png"><img src="/cc/koduval.png" alt="Koduval" loading="lazy"></img></a></div>
 
-<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/placenta.glsl">code</a></p>
-<p>Placenta is an organ that develops in the uterus during pregnancy to
-connect the mother and the developing fetus.</p>
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/koduval.glsl">code</a></p>
+<p>Koduval is a tool used for cutting open coconuts (among other things)
+in south India.</p>
+
+]]>
+</description></item>
+<item><guid>icecream-sandwich</guid>
+<title>Ice cream sandwich</title>
+<link>https://ediblemonad.dev/creative-coding/icecream-sandwich</link>
+<comments>https://ediblemonad.dev/creative-coding/icecream-sandwich</comments>
+
+<description>
+<![CDATA[
+<h1 id="ice-cream-sandwich">Ice cream sandwich</h1>
+<div class="image-container"><video src="/cc/icecream-sandwich.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/resources/shaders/icecream.glsl">code</a></p>
+<p>I like ice cream sandwich. A lot more when I stop liking everything
+else.</p>
 
 ]]>
 </description></item>
