@@ -1,9 +1,10 @@
 # Flow <%= (if embedded? (embedded-article-link page "(collection)") "(collection)") %>
 
 <div class="img-table">
-  <div><h4>Flames</h4><%= (image "/cc/flow/flow.FlowProgram.flames.png" "Flames") %></div>
+  <div><h4>Flora</h4><%= (image "/cc/flow/flow.flora.webp" "Flora") %></div>
   <div><h4>Glide</h4><%= (image "/cc/flow/flow.FlowProgram.gentle.png" "Glide") %></div>
   <% (when (not embedded?) %>
+  <div><h4>Flames</h4><%= (image "/cc/flow/flow.FlowProgram.flames.png" "Flames") %></div>
   <div><h4>Now and then</h4><%= (image "/cc/flow/flow.FlowProgram.nowandthen.png" "Now and then") %></div>
   <div><h4>Stuck in beetween</h4><%= (image "/cc/flow/flow.FlowProgram.stuckinbetween.png" "Stuck in between") %></div>
   <div><h4>Doorway</h4><%= (image "/cc/flow/flow.FlowProgram.hollow.png" "Doorway") %></div>
@@ -12,7 +13,9 @@
 </div>
 
 <%= (external-link "https://git.ediblemonad.dev/art-playground-openrndr/tree/src/main/kotlin/flow/FlowProgram.kt" "code") %>
-
 <% (when (not embedded?) %>
+<%= (external-link "https://git.ediblemonad.dev/art-playground-love/tree/art/flow/flora.fnl" "code (flora)") %>
+
+
 All about the flo, bro
 <% ) %>
