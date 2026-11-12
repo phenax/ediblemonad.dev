@@ -22,6 +22,28 @@ My hands are tied as I hit a brick wall and get stuck between a rock and a hard 
   <%= (image "/cc/constraints/constraints.p7.webp" "Constraints p7") %>
   <%= (image "/cc/constraints/constraints.p8.webp" "Constraints p8") %>
 </div>
+
+<br />
+
+---
+
+### Process
+
+<details>
+  <summary>Show process recordings</summary>
+  <div class="img-table">
+    <%= (video "/cc/constraints/constraints.p1.mp4") %>
+    <%= (video "/cc/constraints/constraints.p2.mp4") %>
+    <%= (video "/cc/constraints/constraints.p3.mp4") %>
+    <%= (video "/cc/constraints/constraints.p4.mp4") %>
+    <%= (video "/cc/constraints/constraints.p5.mp4") %>
+    <%= (video "/cc/constraints/constraints.p6.mp4") %>
+    <%= (video "/cc/constraints/constraints.p7.mp4") %>
+    <%= (video "/cc/constraints/constraints.p8.mp4") %>
+  </div>
+</details>
+
+<br />
 <% ) %>
 
 <%= (external-link "https://git.ediblemonad.dev/art-playground-love/tree/art/constraints" "code") %>
