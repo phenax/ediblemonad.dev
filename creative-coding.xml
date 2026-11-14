@@ -27,6 +27,26 @@ and a hard place</p>
   <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/constraints/constraints.p8.webp"><img src="/cc/constraints/constraints.p8.webp" alt="Constraints p8" loading="lazy"></img></a></div>
 </div>
 
+<br />
+
+<hr />
+<h3 id="process">Process</h3>
+<details>
+  <summary>Show process recordings</summary>
+  <div class="img-table">
+    <div class="image-container"><video src="/cc/constraints/constraints.p1.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+    <div class="image-container"><video src="/cc/constraints/constraints.p2.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+    <div class="image-container"><video src="/cc/constraints/constraints.p3.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+    <div class="image-container"><video src="/cc/constraints/constraints.p4.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+    <div class="image-container"><video src="/cc/constraints/constraints.p5.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+    <div class="image-container"><video src="/cc/constraints/constraints.p6.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+    <div class="image-container"><video src="/cc/constraints/constraints.p7.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+    <div class="image-container"><video src="/cc/constraints/constraints.p8.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+  </div>
+</details>
+
+<br />
+
 <p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-love/tree/art/constraints">code</a></p>
 
 ]]>
