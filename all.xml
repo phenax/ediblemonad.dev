@@ -670,6 +670,43 @@ another butterfly... turning into... eh I'm bored.</p>
 
 ]]>
 </description></item>
+<item><guid>paint</guid>
+<title>Paint (collection)</title>
+<link>https://ediblemonad.dev/creative-coding/paint</link>
+<comments>https://ediblemonad.dev/creative-coding/paint</comments>
+
+<description>
+<![CDATA[
+<h1 id="paint-collection">Paint (collection)</h1>
+<p>Pour some paint on it</p>
+<div class="img-table">
+  <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/paint/paint.p1.webp"><img src="/cc/paint/paint.p1.webp" alt="Paint p1" loading="lazy"></img></a></div>
+  <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/paint/paint.p3.webp"><img src="/cc/paint/paint.p3.webp" alt="Paint p3" loading="lazy"></img></a></div>
+  <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/paint/paint.p5.webp"><img src="/cc/paint/paint.p5.webp" alt="Paint p5" loading="lazy"></img></a></div>
+  <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/paint/paint.p2.webp"><img src="/cc/paint/paint.p2.webp" alt="Paint p2" loading="lazy"></img></a></div>
+  <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/paint/paint.p6.webp"><img src="/cc/paint/paint.p6.webp" alt="Paint p6" loading="lazy"></img></a></div>
+  <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/paint/paint.p8.webp"><img src="/cc/paint/paint.p8.webp" alt="Paint p8" loading="lazy"></img></a></div>
+  <div class="image-container"><a target="_blank _parent" rel="noopener" href="/cc/paint/paint.p7.webp"><img src="/cc/paint/paint.p7.webp" alt="Paint p7" loading="lazy"></img></a></div>
+</div>
+
+<br />
+
+<hr />
+<h3 id="process">Process</h3>
+<details>
+  <summary>Show process recordings</summary>
+  <div class="img-table">
+    <div class="image-container"><video src="/cc/paint/paint.p1.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+    <div class="image-container"><video src="/cc/paint/paint.p2.mp4" loading="lazy" preload="none" controls="true" autoplay="autoplay" muted="true" loop="loop"></video></div>
+  </div>
+</details>
+
+<br />
+
+<p><a target="_blank _parent" rel="noopener" href="https://git.ediblemonad.dev/art-playground-love/tree/art/paint">code</a></p>
+
+]]>
+</description></item>
 <item><guid>flora</guid>
 <title>Flōra</title>
 <link>https://ediblemonad.dev/creative-coding/flora</link>
