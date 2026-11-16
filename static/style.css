@@ -228,6 +228,10 @@ li:has(.card) {
   padding: 0.6rem 0;
 }
 
+.img-table .image-container {
+  padding: 0;
+}
+
 .image-container img,
 .image-container video {
   width: 100%;
@@ -238,12 +242,13 @@ li:has(.card) {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 1rem;
+  --tbl-gap: 2rem;
+  gap: var(--tbl-gap);
   padding-top: 1rem;
 }
 
 .img-table>* {
-  flex: 1 1 calc(50% - 8px);
+  flex: 1 1 calc(50% - var(--tbl-gap)/2);
 }
 
 .header-secondary {

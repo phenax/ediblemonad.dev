@@ -5,7 +5,7 @@
   <%= (image "/cc/paint/paint.p3.webp" "Paint p3") %>
   <%= (image "/cc/paint/paint.p2.webp" "Paint p2") %>
   <%= (image "/cc/paint/paint.p1.webp" "Paint p1") %>
-  <%= (image "/cc/paint/paint.p5.webp" "Paint p5") %>
+  <%= (image "/cc/paint/paint.p9.webp" "Paint p9") %>
 </div>
 <% ) %>
 
@@ -18,6 +18,7 @@ Pour some paint on it
   <%= (image "/cc/paint/paint.p5.webp" "Paint p5") %>
   <%= (image "/cc/paint/paint.p2.webp" "Paint p2") %>
   <%= (image "/cc/paint/paint.p6.webp" "Paint p6") %>
+  <%= (image "/cc/paint/paint.p9.webp" "Paint p9") %>
   <%= (image "/cc/paint/paint.p8.webp" "Paint p8") %>
   <%= (image "/cc/paint/paint.p7.webp" "Paint p7") %>
 </div>
